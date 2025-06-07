@@ -1,7 +1,7 @@
 # LucaryShop
+### Start date: June 7, 2025
 
 LucaryShop is a modular e-commerce iOS application built using MVVM-Coordinator architecture and modern iOS technologies.
-
 ## Technologies Used
 - UIKit & SnapKit
 - MVVM + Coordinator + Builder Pattern
@@ -21,3 +21,4 @@ LucaryShop is a modular e-commerce iOS application built using MVVM-Coordinator 
 - Modular architecture
 - Reusable components
 - Multilingual support
+
