@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		CE1787E42DF46D3100A91620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1787E32DF46D3100A91620 /* AppDelegate.swift */; };
 		CE1787E62DF46D3100A91620 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1787E52DF46D3100A91620 /* SceneDelegate.swift */; };
-		CE1787E82DF46D3100A91620 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1787E72DF46D3100A91620 /* ViewController.swift */; };
 		CE1787ED2DF46D3700A91620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1787EC2DF46D3700A91620 /* Assets.xcassets */; };
 		CE1787F02DF46D3700A91620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1787EE2DF46D3700A91620 /* LaunchScreen.storyboard */; };
 		CE1787F92DF46D4500A91620 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE1787F82DF46D4500A91620 /* SnapKit */; };
@@ -37,6 +36,7 @@
 		CE17883F2DF48E2000A91620 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17883E2DF48E2000A91620 /* LoginViewModel.swift */; };
 		CE1788422DF48E3A00A91620 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788412DF48E3A00A91620 /* LoginBuilder.swift */; };
 		CE1788452DF48E6100A91620 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788442DF48E6100A91620 /* LoginCoordinator.swift */; };
+		CE46264D2DF61BD80026AFE6 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46264C2DF61BD80026AFE6 /* SplashView.swift */; };
 		CE5C6BF32DF48F9500821985 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6BF22DF48F9500821985 /* RegisterViewController.swift */; };
 		CE5C6BF52DF48FB200821985 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6BF42DF48FB200821985 /* RegisterViewModel.swift */; };
 		CE5C6BF72DF48FC900821985 /* RegisterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6BF62DF48FC900821985 /* RegisterBuilder.swift */; };
@@ -63,8 +63,6 @@
 		CE5C6C382DF4AF3000821985 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6C372DF4AF3000821985 /* Category.swift */; };
 		CE5C6C3D2DF4AF9200821985 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6C3C2DF4AF9200821985 /* SplashViewController.swift */; };
 		CE5C6C3F2DF4AFA100821985 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6C3E2DF4AFA100821985 /* SplashViewModel.swift */; };
-		CE5C6C412DF4AFDB00821985 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6C402DF4AFDB00821985 /* SplashCoordinator.swift */; };
-		CE5C6C442DF4B00100821985 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6C432DF4B00100821985 /* SplashBuilder.swift */; };
 		CE5C6C4A2DF4B07300821985 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6C492DF4B07300821985 /* OnboardingViewController.swift */; };
 		CE5C6C4C2DF4B08200821985 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6C4B2DF4B08200821985 /* OnboardingViewModel.swift */; };
 		CE5C6C4E2DF4B09600821985 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C6C4D2DF4B09600821985 /* OnboardingSlide.swift */; };
@@ -83,7 +81,6 @@
 		CE1787E02DF46D3100A91620 /* LucaryShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LucaryShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1787E32DF46D3100A91620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE1787E52DF46D3100A91620 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE1787E72DF46D3100A91620 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE1787EC2DF46D3700A91620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE1787EF2DF46D3700A91620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE1787F12DF46D3700A91620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,6 +107,7 @@
 		CE17883E2DF48E2000A91620 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CE1788412DF48E3A00A91620 /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		CE1788442DF48E6100A91620 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		CE46264C2DF61BD80026AFE6 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		CE5C6BF22DF48F9500821985 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		CE5C6BF42DF48FB200821985 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		CE5C6BF62DF48FC900821985 /* RegisterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBuilder.swift; sourceTree = "<group>"; };
@@ -136,8 +134,6 @@
 		CE5C6C372DF4AF3000821985 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CE5C6C3C2DF4AF9200821985 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		CE5C6C3E2DF4AFA100821985 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
-		CE5C6C402DF4AFDB00821985 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
-		CE5C6C432DF4B00100821985 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
 		CE5C6C492DF4B07300821985 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		CE5C6C4B2DF4B08200821985 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		CE5C6C4D2DF4B09600821985 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
@@ -191,7 +187,6 @@
 				CE1788032DF4721900A91620 /* Core */,
 				CE1787FF2DF4714A00A91620 /* Resources */,
 				CE1787FC2DF46D5400A91620 /* App */,
-				CE1787E72DF46D3100A91620 /* ViewController.swift */,
 				CE1787EE2DF46D3700A91620 /* LaunchScreen.storyboard */,
 				CE1787F12DF46D3700A91620 /* Info.plist */,
 			);
@@ -308,8 +303,7 @@
 		CE17880E2DF472F800A91620 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				CE5C6C422DF4AFE200821985 /* Coordinator */,
-				CE5C6C3B2DF4AF7700821985 /* Builder */,
+				CE46264B2DF61BBD0026AFE6 /* Controller */,
 				CE5C6C3A2DF4AF6B00821985 /* ViewModel */,
 				CE5C6C392DF4AF6400821985 /* View */,
 			);
@@ -489,6 +483,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		CE46264B2DF61BBD0026AFE6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C6C3C2DF4AF9200821985 /* SplashViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CE5C6BF12DF48F4D00821985 /* Builder */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,7 +662,7 @@
 		CE5C6C392DF4AF6400821985 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE5C6C3C2DF4AF9200821985 /* SplashViewController.swift */,
+				CE46264C2DF61BD80026AFE6 /* SplashView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -671,22 +673,6 @@
 				CE5C6C3E2DF4AFA100821985 /* SplashViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		CE5C6C3B2DF4AF7700821985 /* Builder */ = {
-			isa = PBXGroup;
-			children = (
-				CE5C6C432DF4B00100821985 /* SplashBuilder.swift */,
-			);
-			path = Builder;
-			sourceTree = "<group>";
-		};
-		CE5C6C422DF4AFE200821985 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				CE5C6C402DF4AFDB00821985 /* SplashCoordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		CE5C6C452DF4B02300821985 /* View */ = {
@@ -824,7 +810,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5C6C062DF4918500821985 /* ForgotPasswordViewController.swift in Sources */,
-				CE5C6C412DF4AFDB00821985 /* SplashCoordinator.swift in Sources */,
 				CE17883F2DF48E2000A91620 /* LoginViewModel.swift in Sources */,
 				CE5C6C092DF4995D00821985 /* ForgotPasswordCoordinator.swift in Sources */,
 				CE5C6C2D2DF4A1B500821985 /* ProfileBuilder.swift in Sources */,
@@ -845,10 +830,9 @@
 				CE1788302DF486E900A91620 /* URLSession+Extensions.swift in Sources */,
 				CE1788282DF4868D00A91620 /* UserDefaultsManager.swift in Sources */,
 				CE5C6C042DF4916700821985 /* ForgotPasswordViewModel.swift in Sources */,
-				CE5C6C442DF4B00100821985 /* SplashBuilder.swift in Sources */,
+				CE46264D2DF61BD80026AFE6 /* SplashView.swift in Sources */,
 				CE1788222DF4865500A91620 /* NotificationManager.swift in Sources */,
 				CE5C6C362DF4AF2300821985 /* Order.swift in Sources */,
-				CE1787E82DF46D3100A91620 /* ViewController.swift in Sources */,
 				CE5C6C292DF4A19900821985 /* ProfileViewController.swift in Sources */,
 				CE5C6C502DF4B0B200821985 /* OnboardingBuilder.swift in Sources */,
 				CE17883C2DF48DA200A91620 /* LoginViewController.swift in Sources */,

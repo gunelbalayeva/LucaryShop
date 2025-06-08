@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import UIKit
+
+final class OnboardingViewControllerBuilder {
+    static func build() -> UIViewController {
+        let viewController = OnboardingViewController()
+
+
+        return viewController
+    }
+}
