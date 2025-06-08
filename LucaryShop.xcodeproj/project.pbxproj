@@ -206,18 +206,11 @@
 		CE1787FF2DF4714A00A91620 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE46264E2DF620990026AFE6 /* Fonts */,
 				CE1788392DF48B7C00A91620 /* Localization */,
-				CE1788002DF4716500A91620 /* Fonts */,
 				CE1787EC2DF46D3700A91620 /* Assets.xcassets */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		CE1788002DF4716500A91620 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		CE1788032DF4721900A91620 /* Core */ = {
@@ -489,6 +482,13 @@
 				CE5C6C3C2DF4AF9200821985 /* SplashViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE46264E2DF620990026AFE6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		CE5C6BF12DF48F4D00821985 /* Builder */ = {
