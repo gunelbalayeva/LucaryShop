@@ -33,7 +33,7 @@ final class SplashView: UIView {
     let animatedLabel: UILabel = {
         let label = UILabel()
         label.text = "Lucary"
-        label.font = UIFont(name: "Zapfino", size: 32)
+        label.font = UIFont(name: "MeaCulpa-Regular", size: 60)
         label.textAlignment = .center
         label.textColor = UIColor(named: "logoColor")
         return label
