@@ -8,6 +8,7 @@ LucaryShop is a modular e-commerce iOS application built using MVVM-Coordinator 
 - Combine
 - Alamofire / URLSession
 - Kingfisher
+- API
 - MapsKit
 - Localization
 - Keychain & UserDefaults
