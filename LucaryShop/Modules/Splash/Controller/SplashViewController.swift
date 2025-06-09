@@ -25,6 +25,10 @@ final class SplashViewController: UIViewController {
         viewModel.startLabelAnimation(for: splashView.animatedLabel)
         navigateToOnboarding()
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        viewModel.addShimmerEffect(to: splashView.logoImageView)
+    }
     
     private func navigateToOnboarding() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {

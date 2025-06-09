@@ -11,6 +11,11 @@ import UIKit
 final class SplashViewModel {
     
     func addShimmerEffect(to logoImageView: UIImageView) {
+        logoImageView.layer.sublayers?.forEach { layer in
+            if layer is CAGradientLayer {
+                layer.removeFromSuperlayer()
+            }
+        }
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
             UIColor.clear.cgColor,
@@ -21,6 +26,11 @@ final class SplashViewModel {
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         gradientLayer.frame = logoImageView.bounds
+        gradientLayer.cornerRadius = logoImageView.layer.cornerRadius
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = UIBezierPath(ovalIn: logoImageView.bounds).cgPath
+        gradientLayer.mask = maskLayer
         logoImageView.layer.addSublayer(gradientLayer)
         
         let shimmerAnimation = CABasicAnimation(keyPath: "transform.translation.x")
@@ -29,6 +39,18 @@ final class SplashViewModel {
         shimmerAnimation.duration = 2.5
         shimmerAnimation.repeatCount = .infinity
         gradientLayer.add(shimmerAnimation, forKey: "shimmer")
+        
+        var transform = CATransform3DIdentity
+        transform.m34 = -1.0 / 500.0
+        logoImageView.layer.transform = transform
+        
+        let waveAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.y")
+        waveAnimation.values = [0.0, 0.12, -0.12, 0.12, 0.0]
+        waveAnimation.keyTimes = [0.0, 0.25, 0.5, 0.75, 1.0]
+        waveAnimation.duration = 2.5
+        waveAnimation.repeatCount = .infinity
+        waveAnimation.isAdditive = true
+        logoImageView.layer.add(waveAnimation, forKey: "flagWave")
     }
     
     func startWaveAnimation(on shadowView: UIView) {

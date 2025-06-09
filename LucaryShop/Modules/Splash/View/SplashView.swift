@@ -18,11 +18,12 @@ final class SplashView: UIView {
         view.layer.shadowOpacity = 0.25
         view.layer.shadowOffset = CGSize(width: 0, height: 8)
         view.layer.shadowRadius = 15
+        view.layer.masksToBounds = false
         return view
     }()
     
     let logoImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "Logo"))
+        let imageView = UIImageView(image: UIImage(named: "logo"))
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 100
         imageView.layer.masksToBounds = true
@@ -57,7 +58,7 @@ final class SplashView: UIView {
         
         shadowView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.height.equalTo(300)
+            make.width.height.equalTo(200)
         }
         stackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
