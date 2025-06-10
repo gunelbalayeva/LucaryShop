@@ -5,7 +5,6 @@
 //  Created by User on 07.06.25.
 //
 import UIKit
-
 extension UILabel {
     
     func setStyle(fontName: String? = nil, fontSize: CGFloat, weight: UIFont.Weight = .regular, textColor: UIColor = .label, alignment: NSTextAlignment = .natural, numberOfLines: Int = 1) {
