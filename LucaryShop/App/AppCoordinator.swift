@@ -8,20 +8,30 @@
 import Foundation
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator:AnyObject {
     func start()
 }
 
 final class AppCoordinator: Coordinator {
-    private let window: UIWindow
+    var navigationController: UINavigationController
     
-    init(window: UIWindow) {
-        self.window = window
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
     }
     
     func start() {
-        let splashVC = SplashViewController()
-        window.rootViewController = splashVC
-        window.makeKeyAndVisible()
+        let vc = SplashBuild(cordinator: self).build()
+        navigationController.setViewControllers([vc], animated: true)
     }
+    
+    func goToPermissionsOnboarding() {
+        let vc = PermissionsOnboardingBuilder(coordinator: self).build()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToGetStartedOnboarding() {
+        let vc = GetStartedOnboardingBuilder(coordinator: self).build()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
 }

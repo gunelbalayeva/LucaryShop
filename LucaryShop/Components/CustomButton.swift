@@ -15,7 +15,6 @@ final class CustomButton: UIButton {
     private var buttonStyle: ButtonStyle
     private let buttonHeight: CGFloat
     private let buttonWidth: CGFloat
-    
     private let spinner = UIActivityIndicatorView(style: .medium)
     private var originalTitle: String?
     

@@ -50,21 +50,13 @@ final class SplashView: UIView {
     
     private func setupUI() {
         let stackView = UIStackView(arrangedSubviews: [logoImageView, animatedLabel])
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 20
-        addSubview(shadowView)
-        shadowView.addSubview(stackView)
-        
-        shadowView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.height.equalTo(200)
-        }
-        stackView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
-        logoImageView.snp.makeConstraints { make in
-            make.width.height.equalTo(200)
-        }
+        stackView.configure(axis: .vertical, alignment: .center, spacing: 20)
+        self.addSubviews(views: shadowView)
+        shadowView.addSubviews(views: stackView)
+        shadowView.centerInSuperview()
+        shadowView.setSize(width: 200, height: 200)
+        stackView.centerInSuperview()
+        logoImageView.setSize(width: 200, height: 200)
     }
+    
 }

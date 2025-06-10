@@ -84,4 +84,18 @@ extension UIView {
             make.height.equalTo(height)
         }
     }
+    
+    func pinToSuperviewEdges(insets: UIEdgeInsets = .zero) {
+        guard let superview = self.superview else { return }
+        self.snp.makeConstraints { make in
+            make.edges.equalTo(superview).inset(insets)
+        }
+    }
+    
+    func setTopBottom(top: ConstraintRelatableTarget, bottom: ConstraintRelatableTarget, topInset: CGFloat = 0, bottomInset: CGFloat = 0) {
+        self.snp.makeConstraints { make in
+            make.top.equalTo(top).inset(topInset)
+            make.bottom.equalTo(bottom).inset(bottomInset)
+        }
+    }
 }

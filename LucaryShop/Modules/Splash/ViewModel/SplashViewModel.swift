@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 final class SplashViewModel {
+    private let cordinator :AppCoordinator
+        
+        init(cordinator: AppCoordinator) {
+            self.cordinator = cordinator
+        }
     
     func addShimmerEffect(to logoImageView: UIImageView) {
         logoImageView.layer.sublayers?.forEach { layer in
@@ -76,5 +81,9 @@ final class SplashViewModel {
         DispatchQueue.main.asyncAfter(deadline: .now() + charIndex) {
             self.startLabelAnimation(for: label)
         }
+    }
+    
+    func goToNext() {
+        cordinator.goToPermissionsOnboarding()
     }
 }

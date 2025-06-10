@@ -1,26 +1,29 @@
 //
-//  OnboardingViewModel.swift
+//  FeaturesViewModel.swift
 //  LucaryShop
 //
-//  Created by User on 07.06.25.
+//  Created by User on 10.06.25.
 //
+
 
 import Foundation
 import UIKit
 
-final class OnboardingViewModel {
+final class FeaturesViewModel {
     
     private let model: OnboardingModel
-    
-    init(model: OnboardingModel) {
+    private let cordinator :AppCoordinator
+        
+    init(model: OnboardingModel, cordinator: AppCoordinator) {
         self.model = model
+        self.cordinator = cordinator
     }
-    
     var image: UIImage? {
         UIImage(named: model.imageName)
     }
-    
+
     var titleText: String {
         model.title
     }
+    
 }

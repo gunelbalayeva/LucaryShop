@@ -10,7 +10,9 @@ import UIKit
 final class SplashViewController: UIViewController {
     
     private let splashView = SplashView()
-    private let viewModel = SplashViewModel()
+    private let viewModel :SplashViewModel
+    private let coordinator: AppCoordinator
+    
     
     override func loadView() {
         view = splashView
@@ -24,6 +26,16 @@ final class SplashViewController: UIViewController {
         navigateToOnboarding()
     }
     
+    init(viewModel: SplashViewModel, coordinator: AppCoordinator) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         viewModel.addShimmerEffect(to: splashView.logoImageView)
@@ -32,9 +44,11 @@ final class SplashViewController: UIViewController {
     
     private func navigateToOnboarding() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            let onboardingVC = OnboardingViewControllerBuilder.build()
+            let builder = OnboardingViewControllerBuilder(coordinator: self.coordinator)
+            let onboardingVC = builder.build()
             onboardingVC.modalPresentationStyle = .fullScreen
-            self.present(onboardingVC, animated: true, completion: nil)
+            self.navigationController?.setNavigationBarHidden(true, animated: false)
+            self.navigationController?.pushViewController(onboardingVC, animated: true)
         }
     }
 }

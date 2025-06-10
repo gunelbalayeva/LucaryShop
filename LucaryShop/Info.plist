@@ -4,7 +4,9 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Oswald-VariableFont_wght.ttf</string>
 		<string>MeaCulpa-Regular.ttf</string>
+		<string>Savate-VariableFont_wght.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

@@ -9,10 +9,25 @@ import Foundation
 import UIKit
 
 final class OnboardingViewControllerBuilder {
-    static func build() -> UIViewController {
-        let viewController = OnboardingViewController()
-
-
-        return viewController
+    
+    private let coordinator: AppCoordinator
+    
+    init(coordinator: AppCoordinator) {
+        self.coordinator = coordinator
+    }
+    
+    func build() -> UIViewController {
+        let welcome = WelcomeOnboardingViewController(
+            viewModel: OnboardingViewModel(
+                model: OnboardingModel(imageName: "GetStartedOnboarding", 
+                                       title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. !"))
+        )
+        let features = FeaturesOnboardingViewController(
+            viewModel: OnboardingViewModel(
+                model:OnboardingModel(imageName: "FeaturesOnboarding", 
+                                      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. !"))
+            )
+        let permissions = PermissionsOnboardingBuilder(coordinator: coordinator).build()
+        return PageViewController(pages: [welcome, features, permissions])
     }
 }
