@@ -23,14 +23,12 @@ final class GetStartedOnboardingViewController :UIViewController{
         pageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
         pageView.configure(viewModel: viewModel)
     }
     init(viewModel: GetStartedOnboardingViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

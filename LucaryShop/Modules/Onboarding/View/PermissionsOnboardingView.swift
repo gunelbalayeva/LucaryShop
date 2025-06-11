@@ -17,6 +17,15 @@ final class PermissionsOnboardingView: UIView {
         return image
     }()
     
+    private let blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.alpha = 0.6
+        blurView.layer.cornerRadius = 0
+        blurView.clipsToBounds = true
+        return blurView
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.setStyle(fontName: "Oswald",
