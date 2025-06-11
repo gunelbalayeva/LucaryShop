@@ -14,8 +14,6 @@ final class OnboardingPageView: UIView {
     private let imageView : UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 12
-        image.clipsToBounds = true
         return image
     }()
     
@@ -42,6 +40,7 @@ final class OnboardingPageView: UIView {
         self.addSubviews(views: view)
         view.addSubviews(views: imageView, titleLabel)
         
+        self.addSubviewSnp(view, insets: .init(top: 0, left: 0, bottom: 0, right: 0))
         
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(0)
