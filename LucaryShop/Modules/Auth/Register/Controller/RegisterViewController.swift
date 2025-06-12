@@ -8,7 +8,7 @@
 import UIKit
 
 final class RegisterViewController :UIViewController {
-    private let splashView = RegisterView()
+    private let registerView = RegisterView()
     private let viewModel:RegisterViewModel
     private let coordinator: RegisterCoordinator
     

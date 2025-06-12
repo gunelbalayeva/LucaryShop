@@ -95,6 +95,18 @@
 		CEA1C3322DFAC9F200E9B74B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3312DFAC9F200E9B74B /* RegisterView.swift */; };
 		CEA1C3352DFADDA400E9B74B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3342DFADDA400E9B74B /* LoginView.swift */; };
 		CEA1C3382DFAE18D00E9B74B /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3372DFAE18D00E9B74B /* ForgotPasswordView.swift */; };
+		CEA1C33A2DFB09B000E9B74B /* SendOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3392DFB09B000E9B74B /* SendOTPViewController.swift */; };
+		CEA1C33C2DFB09E400E9B74B /* VerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C33B2DFB09E400E9B74B /* VerifyOTPViewController.swift */; };
+		CEA1C33E2DFB0A0A00E9B74B /* SendOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C33D2DFB0A0A00E9B74B /* SendOTPView.swift */; };
+		CEA1C3402DFB0A3400E9B74B /* SendOTPViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C33F2DFB0A3400E9B74B /* SendOTPViewViewModel.swift */; };
+		CEA1C3422DFB0A4E00E9B74B /* SendOTPViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3412DFB0A4E00E9B74B /* SendOTPViewBuilder.swift */; };
+		CEA1C3442DFB0A6F00E9B74B /* VerifyOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3432DFB0A6F00E9B74B /* VerifyOTPView.swift */; };
+		CEA1C3462DFB0A9300E9B74B /* VerifyOTPBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3452DFB0A9300E9B74B /* VerifyOTPBuilder.swift */; };
+		CEA1C3482DFB0AAD00E9B74B /* VerifyOTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3472DFB0AAD00E9B74B /* VerifyOTPViewModel.swift */; };
+		CEA1C34A2DFB0B0F00E9B74B /* ChangePasswordViewController  .swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3492DFB0B0F00E9B74B /* ChangePasswordViewController  .swift */; };
+		CEA1C34C2DFB0BAB00E9B74B /*  ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C34B2DFB0BAB00E9B74B /*  ChangePasswordView.swift */; };
+		CEA1C34E2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C34D2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift */; };
+		CEA1C3502DFB0C0800E9B74B /*  ChangePasswordBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C34F2DFB0C0800E9B74B /*  ChangePasswordBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -185,6 +197,18 @@
 		CEA1C3312DFAC9F200E9B74B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		CEA1C3342DFADDA400E9B74B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CEA1C3372DFAE18D00E9B74B /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		CEA1C3392DFB09B000E9B74B /* SendOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOTPViewController.swift; sourceTree = "<group>"; };
+		CEA1C33B2DFB09E400E9B74B /* VerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewController.swift; sourceTree = "<group>"; };
+		CEA1C33D2DFB0A0A00E9B74B /* SendOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOTPView.swift; sourceTree = "<group>"; };
+		CEA1C33F2DFB0A3400E9B74B /* SendOTPViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOTPViewViewModel.swift; sourceTree = "<group>"; };
+		CEA1C3412DFB0A4E00E9B74B /* SendOTPViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOTPViewBuilder.swift; sourceTree = "<group>"; };
+		CEA1C3432DFB0A6F00E9B74B /* VerifyOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPView.swift; sourceTree = "<group>"; };
+		CEA1C3452DFB0A9300E9B74B /* VerifyOTPBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPBuilder.swift; sourceTree = "<group>"; };
+		CEA1C3472DFB0AAD00E9B74B /* VerifyOTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewModel.swift; sourceTree = "<group>"; };
+		CEA1C3492DFB0B0F00E9B74B /* ChangePasswordViewController  .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChangePasswordViewController  .swift"; sourceTree = "<group>"; };
+		CEA1C34B2DFB0BAB00E9B74B /*  ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ChangePasswordView.swift"; sourceTree = "<group>"; };
+		CEA1C34D2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ChangePasswordViewModel.swift"; sourceTree = "<group>"; };
+		CEA1C34F2DFB0C0800E9B74B /*  ChangePasswordBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ChangePasswordBuilder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,11 +418,11 @@
 		CE1788132DF4734B00A91620 /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
-				CEA1C3362DFAE16200E9B74B /* Controller */,
 				CE5C6C072DF491B100821985 /* Coordinator */,
 				CE5C6C002DF490B100821985 /* Builder */,
 				CE5C6BFF2DF490A600821985 /* ViewModel */,
 				CE5C6BFE2DF4909F00821985 /* View */,
+				CEA1C3362DFAE16200E9B74B /* Controller */,
 			);
 			path = ForgotPassword;
 			sourceTree = "<group>";
@@ -585,6 +609,9 @@
 			isa = PBXGroup;
 			children = (
 				CEA1C3372DFAE18D00E9B74B /* ForgotPasswordView.swift */,
+				CEA1C33D2DFB0A0A00E9B74B /* SendOTPView.swift */,
+				CEA1C3432DFB0A6F00E9B74B /* VerifyOTPView.swift */,
+				CEA1C34B2DFB0BAB00E9B74B /*  ChangePasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -593,6 +620,9 @@
 			isa = PBXGroup;
 			children = (
 				CE5C6C032DF4916700821985 /* ForgotPasswordViewModel.swift */,
+				CEA1C33F2DFB0A3400E9B74B /* SendOTPViewViewModel.swift */,
+				CEA1C3472DFB0AAD00E9B74B /* VerifyOTPViewModel.swift */,
+				CEA1C34D2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -601,6 +631,9 @@
 			isa = PBXGroup;
 			children = (
 				CE5C6C012DF4913600821985 /* ForgotPasswordBuilder.swift */,
+				CEA1C3412DFB0A4E00E9B74B /* SendOTPViewBuilder.swift */,
+				CEA1C3452DFB0A9300E9B74B /* VerifyOTPBuilder.swift */,
+				CEA1C34F2DFB0C0800E9B74B /*  ChangePasswordBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -834,6 +867,9 @@
 			isa = PBXGroup;
 			children = (
 				CE5C6C052DF4918500821985 /* ForgotPasswordViewController.swift */,
+				CEA1C3392DFB09B000E9B74B /* SendOTPViewController.swift */,
+				CEA1C33B2DFB09E400E9B74B /* VerifyOTPViewController.swift */,
+				CEA1C3492DFB0B0F00E9B74B /* ChangePasswordViewController  .swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -929,6 +965,7 @@
 				CE5E3C952DF86896005B827B /* GetStartedOnboardingView.swift in Sources */,
 				CE17882C2DF486C500A91620 /* RequestBuilder.swift in Sources */,
 				CE5C6C382DF4AF3000821985 /* Category.swift in Sources */,
+				CEA1C33E2DFB0A0A00E9B74B /* SendOTPView.swift in Sources */,
 				CE5C6BFA2DF48FE900821985 /* RegisterCoordinator.swift in Sources */,
 				CE1788242DF4866D00A91620 /* LocalizationManager.swift in Sources */,
 				CE5C6C3D2DF4AF9200821985 /* SplashViewController.swift in Sources */,
@@ -938,6 +975,7 @@
 				CE5C6C202DF4A14500821985 /* ProductDetailBuilder.swift in Sources */,
 				CE5E3C872DF855F7005B827B /* PermissionsOnboardingViewController.swift in Sources */,
 				CE5C6C522DF4B16F00821985 /* ProductService.swift in Sources */,
+				CEA1C3422DFB0A4E00E9B74B /* SendOTPViewBuilder.swift in Sources */,
 				CE5C6C1D2DF4A12F00821985 /* ProductDetailViewModel.swift in Sources */,
 				CE5E3C792DF826B3005B827B /* OnboardingPageView.swift in Sources */,
 				CE5E3CA02DF89F80005B827B /* PermissionsOnboardingBuilder.swift in Sources */,
@@ -953,6 +991,7 @@
 				CE5C6C042DF4916700821985 /* ForgotPasswordViewModel.swift in Sources */,
 				CE46264D2DF61BD80026AFE6 /* SplashView.swift in Sources */,
 				CE1788222DF4865500A91620 /* NotificationManager.swift in Sources */,
+				CEA1C34C2DFB0BAB00E9B74B /*  ChangePasswordView.swift in Sources */,
 				CE5C6C362DF4AF2300821985 /* Order.swift in Sources */,
 				CE5C6C292DF4A19900821985 /* ProfileViewController.swift in Sources */,
 				CE5E3C9A2DF885C1005B827B /* SplashBuild.swift in Sources */,
@@ -970,12 +1009,19 @@
 				CE1787E42DF46D3100A91620 /* AppDelegate.swift in Sources */,
 				CE5C6BF72DF48FC900821985 /* RegisterBuilder.swift in Sources */,
 				CE5C6BF52DF48FB200821985 /* RegisterViewModel.swift in Sources */,
+				CEA1C3482DFB0AAD00E9B74B /* VerifyOTPViewModel.swift in Sources */,
 				CE5C6C2B2DF4A1A800821985 /* ProfileViewModel.swift in Sources */,
+				CEA1C3502DFB0C0800E9B74B /*  ChangePasswordBuilder.swift in Sources */,
+				CEA1C33C2DFB09E400E9B74B /* VerifyOTPViewController.swift in Sources */,
+				CEA1C33A2DFB09B000E9B74B /* SendOTPViewController.swift in Sources */,
+				CEA1C34A2DFB0B0F00E9B74B /* ChangePasswordViewController  .swift in Sources */,
 				CE5C6C0F2DF4A08E00821985 /* HomeViewModel.swift in Sources */,
+				CEA1C3442DFB0A6F00E9B74B /* VerifyOTPView.swift in Sources */,
 				CE5C6C582DF4B1A700821985 /* ProductCardView.swift in Sources */,
 				CE5C6C122DF4A0A700821985 /* HomeBuilder.swift in Sources */,
 				CE17882E2DF486D200A91620 /* Endpoint.swift in Sources */,
 				CE5E3C9C2DF8897E005B827B /* GetStartedOnboardingViewModel.swift in Sources */,
+				CEA1C3402DFB0A3400E9B74B /* SendOTPViewViewModel.swift in Sources */,
 				CE1788452DF48E6100A91620 /* LoginCoordinator.swift in Sources */,
 				CE5C6C562DF4B19A00821985 /* CustomTextField.swift in Sources */,
 				CE1788262DF4867C00A91620 /* KeychainManager.swift in Sources */,
@@ -984,6 +1030,7 @@
 				CE5C6C022DF4913600821985 /* ForgotPasswordBuilder.swift in Sources */,
 				CE1788362DF4896A00A91620 /* CartViewModel.swift in Sources */,
 				CE5E3C972DF8732A005B827B /* PageViewController.swift in Sources */,
+				CEA1C3462DFB0A9300E9B74B /* VerifyOTPBuilder.swift in Sources */,
 				CE5E3C892DF85613005B827B /* GetStartedOnboardingViewController  .swift in Sources */,
 				CE5E3C832DF854C5005B827B /* WelcomeOnboardingViewController .swift in Sources */,
 				CE5E3CA42DF8D49E005B827B /* UIStackView.swift in Sources */,
@@ -995,6 +1042,7 @@
 				CE5C6C542DF4B18D00821985 /* CustomButton.swift in Sources */,
 				CE5C6C1A2DF4A11100821985 /* ProductDetailViewController.swift in Sources */,
 				CE5C6C5D2DF4B20400821985 /* OrdersViewController.swift in Sources */,
+				CEA1C34E2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift in Sources */,
 				CE17881C2DF4861C00A91620 /* UIImageView+Kingfisher.swift in Sources */,
 				CE5C6C302DF4A1CE00821985 /* ProfileCoordinator.swift in Sources */,
 				CE17881E2DF4862D00A91620 /* String+Localization.swift in Sources */,
