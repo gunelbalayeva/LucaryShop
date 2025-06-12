@@ -6,3 +6,10 @@
 //
 
 import Foundation
+final class LoginViewModel {
+    private let cordinator :LoginCoordinator
+        
+    init(cordinator: LoginCoordinator) {
+        self.cordinator = cordinator
+    }
+}

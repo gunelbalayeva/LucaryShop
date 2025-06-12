@@ -1,5 +1,5 @@
 //
-//  RegisterViewController.swift
+//  LoginViewController.swift
 //  LucaryShop
 //
 //  Created by User on 07.06.25.
@@ -7,17 +7,17 @@
 
 import UIKit
 
-final class RegisterViewController :UIViewController {
-    private let splashView = RegisterView()
-    private let viewModel:RegisterViewModel
-    private let coordinator: RegisterCoordinator
+final class LoginViewController:UIViewController {
+    private let splashView = LoginView()
+    private let viewModel :LoginViewModel
+    private let coordinator: LoginCoordinator
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
     }
     
-    init(viewModel: RegisterViewModel, coordinator: RegisterCoordinator) {
+    init(viewModel: LoginViewModel, coordinator: LoginCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)

@@ -9,4 +9,9 @@ import UIKit
 
 final class RegisterViewModel {
     
+    private let cordinator :RegisterCoordinator
+    
+    init(cordinator: RegisterCoordinator) {
+        self.cordinator = cordinator
+    }
 }

@@ -1,23 +1,22 @@
 //
-//  RegisterViewController.swift
+//  ForgotPasswordViewController.swift
 //  LucaryShop
 //
 //  Created by User on 07.06.25.
 //
 
 import UIKit
-
-final class RegisterViewController :UIViewController {
-    private let splashView = RegisterView()
-    private let viewModel:RegisterViewModel
-    private let coordinator: RegisterCoordinator
+final class ForgotPasswordViewController :UIViewController{
+    
+    private let splashView = ForgotPasswordView()
+    private let viewModel :ForgotPasswordViewModel
+    private let coordinator: ForgotPasswordCoordinator
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
     }
     
-    init(viewModel: RegisterViewModel, coordinator: RegisterCoordinator) {
+    init(viewModel: ForgotPasswordViewModel, coordinator: ForgotPasswordCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -27,4 +26,3 @@ final class RegisterViewController :UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

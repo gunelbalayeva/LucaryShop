@@ -9,16 +9,15 @@ import UIKit
 
 final class RegisterCoordinator {
     weak var parentCoordinator: AppCoordinator?
-     var navigationController: UINavigationController
-
-     init(navigationController: UINavigationController, parentCoordinator: AppCoordinator) {
-         self.navigationController = navigationController
-         self.parentCoordinator = parentCoordinator
-     }
-
-       func start() {
-           let vc = RegisterViewController()
-
-           navigationController.setViewControllers([vc], animated: true)
-       }
+    var navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController, parentCoordinator: AppCoordinator) {
+        self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
+    }
+    
+    func start() {
+        let vc = RegisterBuilder(cordinator: self).build()
+        navigationController.setViewControllers([vc], animated: true)
+    }
 }

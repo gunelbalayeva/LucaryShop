@@ -93,6 +93,8 @@
 		CE5E3CA02DF89F80005B827B /* PermissionsOnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E3C9F2DF89F80005B827B /* PermissionsOnboardingBuilder.swift */; };
 		CE5E3CA42DF8D49E005B827B /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E3CA32DF8D49E005B827B /* UIStackView.swift */; };
 		CEA1C3322DFAC9F200E9B74B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3312DFAC9F200E9B74B /* RegisterView.swift */; };
+		CEA1C3352DFADDA400E9B74B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3342DFADDA400E9B74B /* LoginView.swift */; };
+		CEA1C3382DFAE18D00E9B74B /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3372DFAE18D00E9B74B /* ForgotPasswordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,6 +183,8 @@
 		CE5E3C9F2DF89F80005B827B /* PermissionsOnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsOnboardingBuilder.swift; sourceTree = "<group>"; };
 		CE5E3CA32DF8D49E005B827B /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		CEA1C3312DFAC9F200E9B74B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		CEA1C3342DFADDA400E9B74B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		CEA1C3372DFAE18D00E9B74B /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,6 +370,7 @@
 		CE1788112DF4733000A91620 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				CEA1C3332DFADD8700E9B74B /* Controller */,
 				CE1788432DF48E4A00A91620 /* Coordinator */,
 				CE1788402DF48E2800A91620 /* Builder */,
 				CE17883D2DF48DD500A91620 /* ViewModel */,
@@ -389,6 +394,7 @@
 		CE1788132DF4734B00A91620 /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
+				CEA1C3362DFAE16200E9B74B /* Controller */,
 				CE5C6C072DF491B100821985 /* Coordinator */,
 				CE5C6C002DF490B100821985 /* Builder */,
 				CE5C6BFF2DF490A600821985 /* ViewModel */,
@@ -472,7 +478,7 @@
 		CE17883A2DF48D8E00A91620 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE17883B2DF48DA200A91620 /* LoginViewController.swift */,
+				CEA1C3342DFADDA400E9B74B /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -578,7 +584,7 @@
 		CE5C6BFE2DF4909F00821985 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE5C6C052DF4918500821985 /* ForgotPasswordViewController.swift */,
+				CEA1C3372DFAE18D00E9B74B /* ForgotPasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -816,6 +822,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		CEA1C3332DFADD8700E9B74B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE17883B2DF48DA200A91620 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEA1C3362DFAE16200E9B74B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C6C052DF4918500821985 /* ForgotPasswordViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -921,6 +943,7 @@
 				CE5E3CA02DF89F80005B827B /* PermissionsOnboardingBuilder.swift in Sources */,
 				CE1788382DF4897800A91620 /* CartBuilder.swift in Sources */,
 				CE1787FE2DF4712900A91620 /* AppCoordinator.swift in Sources */,
+				CEA1C3382DFAE18D00E9B74B /* ForgotPasswordView.swift in Sources */,
 				CE5C6C642DF4B26200821985 /* ProductCell.swift in Sources */,
 				CE5E3C9E2DF89F46005B827B /* PermissionsOnboardingViewModel.swift in Sources */,
 				CE1788202DF4864000A91620 /* Combine+Extensions.swift in Sources */,
@@ -935,6 +958,7 @@
 				CE5E3C9A2DF885C1005B827B /* SplashBuild.swift in Sources */,
 				CE5C6C502DF4B0B200821985 /* OnboardingBuilder.swift in Sources */,
 				CE17883C2DF48DA200A91620 /* LoginViewController.swift in Sources */,
+				CEA1C3352DFADDA400E9B74B /* LoginView.swift in Sources */,
 				CE1788342DF4895B00A91620 /* CartViewController.swift in Sources */,
 				CE5C6C322DF4AF0200821985 /* User.swift in Sources */,
 				CE1788062DF4724700A91620 /* UIView+Ext.swift in Sources */,
