@@ -10,13 +10,24 @@ import UIKit
 final class OnboardingPageView: UIView {
     
     private let view = UIView()
+    private let imageContainerView: UIView = {
+        let view = UIView()
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 0, height: 7)
+        view.layer.shadowRadius = 12
+        view.layer.cornerRadius = 30
+        view.backgroundColor = .clear
+        return view
+    }()
     
     private let imageView : UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 30
+        image.clipsToBounds = true
         return image
     }()
-    
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -38,19 +49,19 @@ final class OnboardingPageView: UIView {
     
     func setupLayout(){
         self.addSubviews(views: view)
-        view.addSubviews(views: imageView, titleLabel)
-        
-        self.addSubviewSnp(view, insets: .init(top: 0, left: 0, bottom: 0, right: 0))
-        
-        imageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(0)
-            make.centerX.equalToSuperview()
+        view.addSubviews(views: imageContainerView, titleLabel)
+        imageContainerView.addSubview(imageView)
+        self.addSubviewSnp(view, insets: .zero)
+        imageContainerView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(80)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(488)
         }
-        imageView.setHeight(488)
-        imageView.setWidth(396)
-        
+        imageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(30)
+            make.top.equalTo(imageContainerView.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(16)
         }
     }

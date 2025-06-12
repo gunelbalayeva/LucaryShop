@@ -5,7 +5,10 @@
 //  Created by User on 07.06.25.
 //
 
-import Foundation
-class ForgotPasswordViewController {
+import UIKit
+final class ForgotPasswordViewController :UIViewController{
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

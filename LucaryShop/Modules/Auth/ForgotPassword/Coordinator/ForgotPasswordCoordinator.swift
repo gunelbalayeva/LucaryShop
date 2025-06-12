@@ -5,4 +5,21 @@
 //  Created by User on 07.06.25.
 //
 
-import Foundation
+import UIKit
+
+final class ForgotPasswordCoordinator {
+    weak var parentCoordinator: AppCoordinator?
+     var navigationController: UINavigationController
+
+     init(navigationController: UINavigationController, parentCoordinator: AppCoordinator) {
+         self.navigationController = navigationController
+         self.parentCoordinator = parentCoordinator
+     }
+
+    
+    func start() {
+        let vc = ForgotPasswordViewController()
+        
+        navigationController.setViewControllers([vc], animated: true)
+    }
+}

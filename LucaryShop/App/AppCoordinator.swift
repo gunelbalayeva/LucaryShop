@@ -12,6 +12,13 @@ protocol Coordinator:AnyObject {
     func start()
 }
 
+enum AuthFlowType {
+    case login
+    case register
+    case forgotPassword
+}
+
+
 final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     
@@ -34,4 +41,26 @@ final class AppCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func startAuthFlow(_ flow: AuthFlowType) {
+        switch flow {
+        case .login:
+            let loginCoordinator = LoginCoordinator(
+                navigationController: navigationController,
+                parentCoordinator: self
+            )
+            loginCoordinator.start()
+            
+        case .register:
+            let registerCoordinator = RegisterCoordinator(
+                navigationController: navigationController,
+                parentCoordinator:self)
+            registerCoordinator.start()
+            
+        case .forgotPassword:
+            let forgotCoordinator = ForgotPasswordCoordinator(
+                navigationController: navigationController,
+                parentCoordinator:self)
+            forgotCoordinator.start()
+        }
+    }
 }

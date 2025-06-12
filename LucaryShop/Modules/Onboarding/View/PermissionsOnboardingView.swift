@@ -10,20 +10,23 @@ import UIKit
 final class PermissionsOnboardingView: UIView {
     
     private let containerView = UIView()
-    
-    private let imageView: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFill
-        return image
+    private let imageContainerView: UIView = {
+        let view = UIView()
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 0, height: 7)
+        view.layer.shadowRadius = 12
+        view.layer.cornerRadius = 30
+        view.backgroundColor = .clear
+        return view
     }()
     
-    private let blurView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: .light)
-        let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.alpha = 0.6
-        blurView.layer.cornerRadius = 0
-        blurView.clipsToBounds = true
-        return blurView
+    private let imageView : UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 30
+        image.clipsToBounds = true
+        return image
     }()
     
     private let titleLabel: UILabel = {
@@ -59,22 +62,23 @@ final class PermissionsOnboardingView: UIView {
     
     private func setupLayout() {
         self.addSubviews(views: containerView)
-        containerView.addSubviews(views: imageView, titleLabel, startNowButton)
+        containerView.addSubviews(views: imageContainerView, titleLabel, startNowButton)
+        imageContainerView.addSubview(imageView)
         self.addSubviewSnp(containerView, insets: .zero)
-        
-        imageView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.centerX.equalToSuperview()
-        }
-        imageView.setSize(width: 396, height: 488)
-        
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(40)
+        imageContainerView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(80)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
-        
+        imageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        imageContainerView.setSize(width: 396, height: 480)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(imageContainerView.snp.bottom).offset(20)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
         startNowButton.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(100)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(40)
             $0.centerX.equalToSuperview()
             $0.bottom.lessThanOrEqualToSuperview().offset(-20)
         }
@@ -99,5 +103,4 @@ final class PermissionsOnboardingView: UIView {
         imageView.image = viewModel.image
         titleLabel.text = viewModel.titleText
     }
-    
 }
