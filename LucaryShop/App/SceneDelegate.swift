@@ -11,13 +11,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     var coordinator: AppCoordinator?
-    
-    
+    let authService = AuthService(networkService: URLSessionNetworkService())
+//    let authService = AuthService(networkService: AlamofireNetworkService())
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene  = (scene as? UIWindowScene) else { return }
         let navigationController = UINavigationController()
         window = UIWindow(windowScene: scene)
-        coordinator = AppCoordinator(navigationController: navigationController)
+        coordinator = AppCoordinator(navigationController: navigationController, authService: authService)
         coordinator?.start()
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

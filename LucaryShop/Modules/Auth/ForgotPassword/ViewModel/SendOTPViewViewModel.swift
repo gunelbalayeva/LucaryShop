@@ -9,9 +9,10 @@ import UIKit
 
 final class SendOTPViewViewModel{
     private let cordinator :ForgotPasswordCoordinator
+    private let authService: AuthService
     
-    init(cordinator: ForgotPasswordCoordinator) {
+    init(cordinator: ForgotPasswordCoordinator, authService: AuthService) {
         self.cordinator = cordinator
+        self.authService = authService
     }
-    
 }

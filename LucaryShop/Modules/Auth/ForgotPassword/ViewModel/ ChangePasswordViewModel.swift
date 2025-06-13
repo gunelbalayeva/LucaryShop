@@ -12,9 +12,11 @@ final class ChangePasswordViewModel {
     
     private let cordinator :ForgotPasswordCoordinator
     @Published var password: String = ""
+    private let authService: AuthService
     
-    init(cordinator: ForgotPasswordCoordinator) {
+    init(cordinator: ForgotPasswordCoordinator, authService: AuthService) {
         self.cordinator = cordinator
+        self.authService = authService
     }
     
     var isPasswordValidPublisher: AnyPublisher<Bool, Never> {
@@ -25,7 +27,15 @@ final class ChangePasswordViewModel {
                 && password.rangeOfCharacter(from: .letters) != nil
             }
             .eraseToAnyPublisher()
-    }  // abc123
+    }  // mes: abc123
+    
+    func changePassword(completion: @escaping (Result<Void, Error>) -> Void) {
+        let request = ResetPassword.ResetPasswordRequest(newPassword: password)
+        
+        authService.resetPassword(request: request) { result in
+            completion(result)
+        }
+    }
     
     func didSuccessfullyChangePassword() {
         cordinator.finish()

@@ -16,29 +16,30 @@ final class ForgotPasswordCoordinator {
     
     weak var parentCoordinator: AppCoordinator?
     var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController, parentCoordinator: AppCoordinator) {
-        self.navigationController = navigationController
+    private let authService: AuthService
+
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, authService: AuthService) {
         self.parentCoordinator = parentCoordinator
+        self.navigationController = navigationController
+        self.authService = authService
     }
     
-    
     func start() {
-        let vc = ForgotPasswordBuilder(cordinator: self).build()
+        let vc = ForgotPasswordBuilder(cordinator: self, authService: authService).build()
         navigationController.setViewControllers([vc], animated: true)
     }
     func navigate(to step: ForgotPasswordStep) {
         switch step {
         case .sendOTP:
-            let vc = SendOTPViewBuilder(cordinator: self).build()
+            let vc = SendOTPViewBuilder(cordinator: self, authService: authService).build()
             navigationController.pushViewController(vc, animated: true)
             
         case .verifyOTP:
-            let vc = VerifyOTPBuilder(cordinator: self).build()
+            let vc = VerifyOTPBuilder(cordinator: self, authService: authService).build()
             navigationController.pushViewController(vc, animated: true)
             
         case .changePassword:
-            let vc = ChangePasswordBuilder(cordinator: self).build()
+            let vc = ChangePasswordBuilder(cordinator: self, authService: authService).build()
             navigationController.pushViewController(vc, animated: true)
         }
     }

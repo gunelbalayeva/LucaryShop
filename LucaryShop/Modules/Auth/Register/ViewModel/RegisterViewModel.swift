@@ -10,8 +10,10 @@ import UIKit
 final class RegisterViewModel {
     
     private let cordinator :RegisterCoordinator
-    
-    init(cordinator: RegisterCoordinator) {
+    private let authService: AuthService
+
+    init(cordinator: RegisterCoordinator, authService: AuthService) {
         self.cordinator = cordinator
+        self.authService = authService
     }
 }

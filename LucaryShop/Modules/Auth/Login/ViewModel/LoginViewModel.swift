@@ -7,9 +7,18 @@
 
 import Foundation
 final class LoginViewModel {
-    private let cordinator :LoginCoordinator
-        
-    init(cordinator: LoginCoordinator) {
-        self.cordinator = cordinator
+    private let coordinator: LoginCoordinator
+    private let authService: AuthService
+    
+    init(coordinator: LoginCoordinator, authService: AuthService) {
+        self.coordinator = coordinator
+        self.authService = authService
+    }
+    
+    func login(email: String, password: String) {
+        let request = Login.LoginRequest(email: email, password: password)
+        authService.login(request: request) { [weak self] result in
+            
+        }
     }
 }

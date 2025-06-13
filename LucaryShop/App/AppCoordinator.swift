@@ -20,9 +20,11 @@ enum AuthFlowType {
 
 final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
+    private let authService: AuthService
+
+    init(navigationController: UINavigationController, authService: AuthService) {
         self.navigationController = navigationController
+        self.authService = authService
     }
     
     func start() {
@@ -44,17 +46,14 @@ final class AppCoordinator: Coordinator {
         switch flow {
         case .login:
             let loginCoordinator = LoginCoordinator(
-                navigationController: navigationController,
-                parentCoordinator: self)
+                parentCoordinator: self, navigationController: navigationController, authService: authService)
             loginCoordinator.onFinish = { [weak self] in
                 self?.startHomeFlow()
             }
             loginCoordinator.start()
-            
         case .register:
             let registerCoordinator = RegisterCoordinator(
-                navigationController: navigationController,
-                parentCoordinator:self)
+                parentCoordinator:self, navigationController: navigationController, authService: authService)
             registerCoordinator.onFinish = { [weak self] in
                 self?.startHomeFlow()
             }
@@ -62,8 +61,7 @@ final class AppCoordinator: Coordinator {
             
         case .forgotPassword:
             let forgotCoordinator = ForgotPasswordCoordinator(
-                navigationController: navigationController,
-                parentCoordinator:self)
+                parentCoordinator:self, navigationController: navigationController, authService: authService)
             forgotCoordinator.start()
         }
     }

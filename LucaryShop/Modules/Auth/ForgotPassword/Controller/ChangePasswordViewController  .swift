@@ -8,7 +8,6 @@
 import UIKit
 import Combine
 final class ChangePasswordViewController:UIViewController{
-    
     private let changePasswordView = ChangePasswordView()
     private let viewModel :ChangePasswordViewModel
     private let coordinator: ForgotPasswordCoordinator
@@ -63,7 +62,23 @@ final class ChangePasswordViewController:UIViewController{
     
     @objc
     private func changePasswordTapped() {
-        viewModel.didSuccessfullyChangePassword()
+        viewModel.changePassword { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self?.viewModel.didSuccessfullyChangePassword()
+                case .failure(let error):
+                    self?.showError(error)
+                    
+                }
+            }
+        }
+    }
+    
+    private func showError(_ error: Error) {
+        let alert = UIAlertController(title: "Xəta", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
     
 }

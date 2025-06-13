@@ -26,9 +26,9 @@
 		CE1788282DF4868D00A91620 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788272DF4868D00A91620 /* UserDefaultsManager.swift */; };
 		CE17882A2DF486B700A91620 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788292DF486B700A91620 /* APIClient.swift */; };
 		CE17882C2DF486C500A91620 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17882B2DF486C500A91620 /* RequestBuilder.swift */; };
-		CE17882E2DF486D200A91620 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17882D2DF486D200A91620 /* Endpoint.swift */; };
+		CE17882E2DF486D200A91620 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17882D2DF486D200A91620 /* AuthEndpoint.swift */; };
 		CE1788302DF486E900A91620 /* URLSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17882F2DF486E900A91620 /* URLSession+Extensions.swift */; };
-		CE1788322DF486FA00A91620 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788312DF486FA00A91620 /* AlamofireManager.swift */; };
+		CE1788322DF486FA00A91620 /* AlamofireNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788312DF486FA00A91620 /* AlamofireNetworkService.swift */; };
 		CE1788342DF4895B00A91620 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788332DF4895B00A91620 /* CartViewController.swift */; };
 		CE1788362DF4896A00A91620 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788352DF4896A00A91620 /* CartViewModel.swift */; };
 		CE1788382DF4897800A91620 /* CartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788372DF4897800A91620 /* CartBuilder.swift */; };
@@ -107,6 +107,19 @@
 		CEA1C34C2DFB0BAB00E9B74B /*  ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C34B2DFB0BAB00E9B74B /*  ChangePasswordView.swift */; };
 		CEA1C34E2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C34D2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift */; };
 		CEA1C3502DFB0C0800E9B74B /*  ChangePasswordBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C34F2DFB0C0800E9B74B /*  ChangePasswordBuilder.swift */; };
+		CEA1C3522DFC1D5D00E9B74B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3512DFC1D5D00E9B74B /* NetworkService.swift */; };
+		CEA1C3552DFC209C00E9B74B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEA1C3542DFC209C00E9B74B /* Alamofire */; };
+		CEA1C3572DFC209C00E9B74B /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEA1C3562DFC209C00E9B74B /* AlamofireDynamic */; };
+		CEA1C3592DFC4C2200E9B74B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3582DFC4C2200E9B74B /* NetworkError.swift */; };
+		CEA1C35B2DFC517800E9B74B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C35A2DFC517800E9B74B /* Login.swift */; };
+		CEA1C35D2DFC519000E9B74B /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C35C2DFC519000E9B74B /* Register.swift */; };
+		CEA1C35F2DFC51B300E9B74B /* OTPVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C35E2DFC51B300E9B74B /* OTPVerification.swift */; };
+		CEA1C3612DFC522300E9B74B /* SendEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3602DFC522300E9B74B /* SendEmail.swift */; };
+		CEA1C3632DFC524600E9B74B /*  ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3622DFC524600E9B74B /*  ResetPassword.swift */; };
+		CEA1C3652DFC528700E9B74B /* MeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3642DFC528700E9B74B /* MeResponse.swift */; };
+		CEA1C3682DFC5C8800E9B74B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3672DFC5C8800E9B74B /* AuthService.swift */; };
+		CEA1C36A2DFC600500E9B74B /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3692DFC600500E9B74B /* URLSessionNetworkService.swift */; };
+		CEA1C36C2DFC613900E9B74B /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C36B2DFC613900E9B74B /* EmptyResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,9 +142,9 @@
 		CE1788272DF4868D00A91620 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		CE1788292DF486B700A91620 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		CE17882B2DF486C500A91620 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
-		CE17882D2DF486D200A91620 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		CE17882D2DF486D200A91620 /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
 		CE17882F2DF486E900A91620 /* URLSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensions.swift"; sourceTree = "<group>"; };
-		CE1788312DF486FA00A91620 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
+		CE1788312DF486FA00A91620 /* AlamofireNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkService.swift; sourceTree = "<group>"; };
 		CE1788332DF4895B00A91620 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		CE1788352DF4896A00A91620 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		CE1788372DF4897800A91620 /* CartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuilder.swift; sourceTree = "<group>"; };
@@ -209,6 +222,17 @@
 		CEA1C34B2DFB0BAB00E9B74B /*  ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ChangePasswordView.swift"; sourceTree = "<group>"; };
 		CEA1C34D2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ChangePasswordViewModel.swift"; sourceTree = "<group>"; };
 		CEA1C34F2DFB0C0800E9B74B /*  ChangePasswordBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ChangePasswordBuilder.swift"; sourceTree = "<group>"; };
+		CEA1C3512DFC1D5D00E9B74B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CEA1C3582DFC4C2200E9B74B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		CEA1C35A2DFC517800E9B74B /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		CEA1C35C2DFC519000E9B74B /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		CEA1C35E2DFC51B300E9B74B /* OTPVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerification.swift; sourceTree = "<group>"; };
+		CEA1C3602DFC522300E9B74B /* SendEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmail.swift; sourceTree = "<group>"; };
+		CEA1C3622DFC524600E9B74B /*  ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ResetPassword.swift"; sourceTree = "<group>"; };
+		CEA1C3642DFC528700E9B74B /* MeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeResponse.swift; sourceTree = "<group>"; };
+		CEA1C3672DFC5C8800E9B74B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		CEA1C3692DFC600500E9B74B /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
+		CEA1C36B2DFC613900E9B74B /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +241,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5E3C732DF777BE005B827B /* Kingfisher in Frameworks */,
+				CEA1C3552DFC209C00E9B74B /* Alamofire in Frameworks */,
+				CEA1C3572DFC209C00E9B74B /* AlamofireDynamic in Frameworks */,
 				CE1787F92DF46D4500A91620 /* SnapKit in Frameworks */,
 				CE1787FB2DF46D4500A91620 /* SnapKit-Dynamic in Frameworks */,
 			);
@@ -246,8 +272,6 @@
 			children = (
 				CE1788192DF473FF00A91620 /* Components */,
 				CE17880D2DF472E000A91620 /* Modules */,
-				CE17880C2DF472C500A91620 /* Models */,
-				CE17880B2DF472A800A91620 /* Services */,
 				CE1788032DF4721900A91620 /* Core */,
 				CE1787FF2DF4714A00A91620 /* Resources */,
 				CE1787FC2DF46D5400A91620 /* App */,
@@ -280,6 +304,8 @@
 		CE1788032DF4721900A91620 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CE17880C2DF472C500A91620 /* Models */,
+				CE17880B2DF472A800A91620 /* Services */,
 				CE17880A2DF4728C00A91620 /* Utilities */,
 				CE1788092DF4727B00A91620 /* Networking */,
 				CE1788042DF4722C00A91620 /* Extensions */,
@@ -290,6 +316,7 @@
 		CE1788042DF4722C00A91620 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CE17882F2DF486E900A91620 /* URLSession+Extensions.swift */,
 				CE1788052DF4724700A91620 /* UIView+Ext.swift */,
 				CE1788072DF4725C00A91620 /* UILabel+Ext.swift */,
 				CE17881B2DF4861C00A91620 /* UIImageView+Kingfisher.swift */,
@@ -305,9 +332,9 @@
 			children = (
 				CE1788292DF486B700A91620 /* APIClient.swift */,
 				CE17882B2DF486C500A91620 /* RequestBuilder.swift */,
-				CE17882D2DF486D200A91620 /* Endpoint.swift */,
-				CE17882F2DF486E900A91620 /* URLSession+Extensions.swift */,
-				CE1788312DF486FA00A91620 /* AlamofireManager.swift */,
+				CE17882D2DF486D200A91620 /* AuthEndpoint.swift */,
+				CE1788312DF486FA00A91620 /* AlamofireNetworkService.swift */,
+				CEA1C3582DFC4C2200E9B74B /* NetworkError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -327,6 +354,9 @@
 			isa = PBXGroup;
 			children = (
 				CE5C6C512DF4B16F00821985 /* ProductService.swift */,
+				CEA1C3512DFC1D5D00E9B74B /* NetworkService.swift */,
+				CEA1C3672DFC5C8800E9B74B /* AuthService.swift */,
+				CEA1C3692DFC600500E9B74B /* URLSessionNetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -334,6 +364,7 @@
 		CE17880C2DF472C500A91620 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CEA1C3662DFC52ED00E9B74B /* AuthModel */,
 				CE5E3C7A2DF826D5005B827B /* OnboardingModel.swift */,
 				CE5C6C312DF4AF0200821985 /* User.swift */,
 				CE5C6C332DF4AF1400821985 /* Product.swift */,
@@ -874,6 +905,20 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		CEA1C3662DFC52ED00E9B74B /* AuthModel */ = {
+			isa = PBXGroup;
+			children = (
+				CEA1C35A2DFC517800E9B74B /* Login.swift */,
+				CEA1C35C2DFC519000E9B74B /* Register.swift */,
+				CEA1C35E2DFC51B300E9B74B /* OTPVerification.swift */,
+				CEA1C3602DFC522300E9B74B /* SendEmail.swift */,
+				CEA1C3622DFC524600E9B74B /*  ResetPassword.swift */,
+				CEA1C3642DFC528700E9B74B /* MeResponse.swift */,
+				CEA1C36B2DFC613900E9B74B /* EmptyResponse.swift */,
+			);
+			path = AuthModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -894,6 +939,8 @@
 				CE1787F82DF46D4500A91620 /* SnapKit */,
 				CE1787FA2DF46D4500A91620 /* SnapKit-Dynamic */,
 				CE5E3C722DF777BE005B827B /* Kingfisher */,
+				CEA1C3542DFC209C00E9B74B /* Alamofire */,
+				CEA1C3562DFC209C00E9B74B /* AlamofireDynamic */,
 			);
 			productName = LucaryShop;
 			productReference = CE1787E02DF46D3100A91620 /* LucaryShop.app */;
@@ -926,6 +973,7 @@
 			packageReferences = (
 				CE1787F72DF46D4500A91620 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CE5E3C712DF777BE005B827B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CEA1C3532DFC209C00E9B74B /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = CE1787E12DF46D3100A91620 /* Products */;
 			projectDirPath = "";
@@ -959,9 +1007,12 @@
 			files = (
 				CE5C6C062DF4918500821985 /* ForgotPasswordViewController.swift in Sources */,
 				CE17883F2DF48E2000A91620 /* LoginViewModel.swift in Sources */,
+				CEA1C3522DFC1D5D00E9B74B /* NetworkService.swift in Sources */,
 				CE5C6C092DF4995D00821985 /* ForgotPasswordCoordinator.swift in Sources */,
 				CE5C6C2D2DF4A1B500821985 /* ProfileBuilder.swift in Sources */,
 				CE5C6C0C2DF4A06F00821985 /* HomeViewController.swift in Sources */,
+				CEA1C35F2DFC51B300E9B74B /* OTPVerification.swift in Sources */,
+				CEA1C3682DFC5C8800E9B74B /* AuthService.swift in Sources */,
 				CE5E3C952DF86896005B827B /* GetStartedOnboardingView.swift in Sources */,
 				CE17882C2DF486C500A91620 /* RequestBuilder.swift in Sources */,
 				CE5C6C382DF4AF3000821985 /* Category.swift in Sources */,
@@ -992,8 +1043,10 @@
 				CE46264D2DF61BD80026AFE6 /* SplashView.swift in Sources */,
 				CE1788222DF4865500A91620 /* NotificationManager.swift in Sources */,
 				CEA1C34C2DFB0BAB00E9B74B /*  ChangePasswordView.swift in Sources */,
+				CEA1C3592DFC4C2200E9B74B /* NetworkError.swift in Sources */,
 				CE5C6C362DF4AF2300821985 /* Order.swift in Sources */,
 				CE5C6C292DF4A19900821985 /* ProfileViewController.swift in Sources */,
+				CEA1C35D2DFC519000E9B74B /* Register.swift in Sources */,
 				CE5E3C9A2DF885C1005B827B /* SplashBuild.swift in Sources */,
 				CE5C6C502DF4B0B200821985 /* OnboardingBuilder.swift in Sources */,
 				CE17883C2DF48DA200A91620 /* LoginViewController.swift in Sources */,
@@ -1004,7 +1057,7 @@
 				CE5C6C232DF4A15D00821985 /* ProductDetailCoordinator.swift in Sources */,
 				CE5C6C4C2DF4B08200821985 /* OnboardingViewModel.swift in Sources */,
 				CE5C6C162DF4A0D200821985 /* HomeCoordinator.swift in Sources */,
-				CE1788322DF486FA00A91620 /* AlamofireManager.swift in Sources */,
+				CE1788322DF486FA00A91620 /* AlamofireNetworkService.swift in Sources */,
 				CE5C6C612DF4B22200821985 /* OrdersBuilder.swift in Sources */,
 				CE1787E42DF46D3100A91620 /* AppDelegate.swift in Sources */,
 				CE5C6BF72DF48FC900821985 /* RegisterBuilder.swift in Sources */,
@@ -1012,6 +1065,7 @@
 				CEA1C3482DFB0AAD00E9B74B /* VerifyOTPViewModel.swift in Sources */,
 				CE5C6C2B2DF4A1A800821985 /* ProfileViewModel.swift in Sources */,
 				CEA1C3502DFB0C0800E9B74B /*  ChangePasswordBuilder.swift in Sources */,
+				CEA1C36C2DFC613900E9B74B /* EmptyResponse.swift in Sources */,
 				CEA1C33C2DFB09E400E9B74B /* VerifyOTPViewController.swift in Sources */,
 				CEA1C33A2DFB09B000E9B74B /* SendOTPViewController.swift in Sources */,
 				CEA1C34A2DFB0B0F00E9B74B /* ChangePasswordViewController  .swift in Sources */,
@@ -1019,7 +1073,7 @@
 				CEA1C3442DFB0A6F00E9B74B /* VerifyOTPView.swift in Sources */,
 				CE5C6C582DF4B1A700821985 /* ProductCardView.swift in Sources */,
 				CE5C6C122DF4A0A700821985 /* HomeBuilder.swift in Sources */,
-				CE17882E2DF486D200A91620 /* Endpoint.swift in Sources */,
+				CE17882E2DF486D200A91620 /* AuthEndpoint.swift in Sources */,
 				CE5E3C9C2DF8897E005B827B /* GetStartedOnboardingViewModel.swift in Sources */,
 				CEA1C3402DFB0A3400E9B74B /* SendOTPViewViewModel.swift in Sources */,
 				CE1788452DF48E6100A91620 /* LoginCoordinator.swift in Sources */,
@@ -1030,9 +1084,11 @@
 				CE5C6C022DF4913600821985 /* ForgotPasswordBuilder.swift in Sources */,
 				CE1788362DF4896A00A91620 /* CartViewModel.swift in Sources */,
 				CE5E3C972DF8732A005B827B /* PageViewController.swift in Sources */,
+				CEA1C3632DFC524600E9B74B /*  ResetPassword.swift in Sources */,
 				CEA1C3462DFB0A9300E9B74B /* VerifyOTPBuilder.swift in Sources */,
 				CE5E3C892DF85613005B827B /* GetStartedOnboardingViewController  .swift in Sources */,
 				CE5E3C832DF854C5005B827B /* WelcomeOnboardingViewController .swift in Sources */,
+				CEA1C36A2DFC600500E9B74B /* URLSessionNetworkService.swift in Sources */,
 				CE5E3CA42DF8D49E005B827B /* UIStackView.swift in Sources */,
 				CE1787E62DF46D3100A91620 /* SceneDelegate.swift in Sources */,
 				CE1788422DF48E3A00A91620 /* LoginBuilder.swift in Sources */,
@@ -1041,12 +1097,15 @@
 				CE5C6C3F2DF4AFA100821985 /* SplashViewModel.swift in Sources */,
 				CE5C6C542DF4B18D00821985 /* CustomButton.swift in Sources */,
 				CE5C6C1A2DF4A11100821985 /* ProductDetailViewController.swift in Sources */,
+				CEA1C3652DFC528700E9B74B /* MeResponse.swift in Sources */,
 				CE5C6C5D2DF4B20400821985 /* OrdersViewController.swift in Sources */,
 				CEA1C34E2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift in Sources */,
 				CE17881C2DF4861C00A91620 /* UIImageView+Kingfisher.swift in Sources */,
+				CEA1C35B2DFC517800E9B74B /* Login.swift in Sources */,
 				CE5C6C302DF4A1CE00821985 /* ProfileCoordinator.swift in Sources */,
 				CE17881E2DF4862D00A91620 /* String+Localization.swift in Sources */,
 				CE5C6C5F2DF4B21300821985 /* OrdersViewModel.swift in Sources */,
+				CEA1C3612DFC522300E9B74B /* SendEmail.swift in Sources */,
 				CE5C6C342DF4AF1400821985 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1276,6 +1335,14 @@
 				minimumVersion = 8.3.2;
 			};
 		};
+		CEA1C3532DFC209C00E9B74B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1293,6 +1360,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE5E3C712DF777BE005B827B /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		CEA1C3542DFC209C00E9B74B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEA1C3532DFC209C00E9B74B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		CEA1C3562DFC209C00E9B74B /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEA1C3532DFC209C00E9B74B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

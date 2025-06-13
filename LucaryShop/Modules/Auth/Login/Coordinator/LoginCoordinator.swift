@@ -10,15 +10,19 @@ import UIKit
 final class LoginCoordinator {
     weak var parentCoordinator: AppCoordinator?
     var navigationController: UINavigationController
+    private let authService: AuthService
+
     var onFinish: (() -> Void)?
     
-    init(navigationController: UINavigationController, parentCoordinator: AppCoordinator) {
-        self.navigationController = navigationController
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, authService: AuthService, onFinish: ( () -> Void)? = nil) {
         self.parentCoordinator = parentCoordinator
+        self.navigationController = navigationController
+        self.authService = authService
+        self.onFinish = onFinish
     }
     
     func start() {
-        let vc = LoginBuilder(cordinator: self).build()
+        let vc = LoginBuilder(cordinator: self, authService: authService).build()
         navigationController.setViewControllers([vc], animated: true)
     }
     

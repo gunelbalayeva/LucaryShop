@@ -9,13 +9,15 @@ import UIKit
 
 final class ForgotPasswordBuilder {
     private let cordinator :ForgotPasswordCoordinator
-    
-    init(cordinator: ForgotPasswordCoordinator) {
+    private let authService: AuthService
+
+    init(cordinator: ForgotPasswordCoordinator, authService: AuthService) {
         self.cordinator = cordinator
+        self.authService = authService
     }
     
     func build () -> UIViewController {
-        let viewmodel = ForgotPasswordViewModel(cordinator: cordinator)
+        let viewmodel = ForgotPasswordViewModel(cordinator: cordinator, authService: authService)
         let vc  = ForgotPasswordViewController(viewModel: viewmodel, coordinator: cordinator)
         return vc
     }

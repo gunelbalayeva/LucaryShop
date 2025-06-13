@@ -9,12 +9,15 @@ import UIKit
 
 final class LoginBuilder {
     private let cordinator :LoginCoordinator
+    private let authService: AuthService
     
-    init(cordinator: LoginCoordinator) {
+    init(cordinator: LoginCoordinator, authService: AuthService) {
         self.cordinator = cordinator
+        self.authService = authService
     }
+   
     func build () -> UIViewController {
-        let viewmodel = LoginViewModel(cordinator: cordinator)
+        let viewmodel = LoginViewModel(coordinator: cordinator, authService: authService)
         let vc  = LoginViewController(viewModel: viewmodel, coordinator: cordinator)
         return vc
     }
