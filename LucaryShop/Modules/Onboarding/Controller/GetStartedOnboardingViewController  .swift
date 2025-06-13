@@ -16,6 +16,7 @@ final class GetStartedOnboardingViewController :UIViewController{
         super.viewDidLoad()
         view.backgroundColor = .onboarding
         setupUI()
+        bindActions()
     }
     
     func setupUI(){
@@ -25,6 +26,17 @@ final class GetStartedOnboardingViewController :UIViewController{
         }
         pageView.configure(viewModel: viewModel)
     }
+    
+    private func bindActions() {
+           pageView.onSignInTapped = { [weak self] in
+               self?.viewModel.goToLogin()
+           }
+           
+           pageView.onSignUpTapped = { [weak self] in
+               self?.viewModel.goToRegister()
+           }
+       }
+    
     init(viewModel: GetStartedOnboardingViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

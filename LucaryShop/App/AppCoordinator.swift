@@ -18,7 +18,6 @@ enum AuthFlowType {
     case forgotPassword
 }
 
-
 final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     
@@ -46,14 +45,19 @@ final class AppCoordinator: Coordinator {
         case .login:
             let loginCoordinator = LoginCoordinator(
                 navigationController: navigationController,
-                parentCoordinator: self
-            )
+                parentCoordinator: self)
+            loginCoordinator.onFinish = { [weak self] in
+                self?.startHomeFlow()
+            }
             loginCoordinator.start()
             
         case .register:
             let registerCoordinator = RegisterCoordinator(
                 navigationController: navigationController,
                 parentCoordinator:self)
+            registerCoordinator.onFinish = { [weak self] in
+                self?.startHomeFlow()
+            }
             registerCoordinator.start()
             
         case .forgotPassword:
@@ -63,4 +67,9 @@ final class AppCoordinator: Coordinator {
             forgotCoordinator.start()
         }
     }
+    func startHomeFlow() {
+//        let mainCoordinator = HomeCoordinator(navigationController: navigationController)
+//        mainCoordinator.start()
+    }
+
 }

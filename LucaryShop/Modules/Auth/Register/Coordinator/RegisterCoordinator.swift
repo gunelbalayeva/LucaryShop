@@ -8,9 +8,11 @@
 import UIKit
 
 final class RegisterCoordinator {
+    
     weak var parentCoordinator: AppCoordinator?
     var navigationController: UINavigationController
-    
+    var onFinish: (() -> Void)?
+
     init(navigationController: UINavigationController, parentCoordinator: AppCoordinator) {
         self.navigationController = navigationController
         self.parentCoordinator = parentCoordinator
@@ -19,5 +21,9 @@ final class RegisterCoordinator {
     func start() {
         let vc = RegisterBuilder(cordinator: self).build()
         navigationController.setViewControllers([vc], animated: true)
+    }
+    
+    func registerCompleted() {
+            onFinish?()
     }
 }

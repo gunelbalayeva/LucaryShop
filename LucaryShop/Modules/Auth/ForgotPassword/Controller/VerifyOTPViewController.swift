@@ -16,6 +16,14 @@ final class VerifyOTPViewController :UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    private func setupUI() {
+        view.addSubview(vertfyOtpView)
+        vertfyOtpView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     init(viewModel: VerifyOTPViewModel, coordinator: ForgotPasswordCoordinator) {

@@ -14,7 +14,16 @@ final class SendOTPViewController :UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
     }
+    
+    private func setupUI() {
+        view.addSubview(sendOtpView)
+        sendOtpView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
     init(viewModel: SendOTPViewViewModel, coordinator: ForgotPasswordCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator

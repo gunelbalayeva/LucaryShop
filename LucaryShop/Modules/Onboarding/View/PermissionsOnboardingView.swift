@@ -44,7 +44,6 @@ final class PermissionsOnboardingView: UIView {
         return button
     }()
     
-    
     var onButtonTapped: (() -> Void)?
     init(viewModel: PermissionsOnboardingViewModel, onButtonTapped: (() -> Void)? = nil) {
         self.onButtonTapped = onButtonTapped
@@ -54,11 +53,9 @@ final class PermissionsOnboardingView: UIView {
         setupActions()
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     private func setupLayout() {
         self.addSubviews(views: containerView)

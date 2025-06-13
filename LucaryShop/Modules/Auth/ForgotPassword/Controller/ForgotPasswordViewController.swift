@@ -8,12 +8,19 @@
 import UIKit
 final class ForgotPasswordViewController :UIViewController{
     
-    private let splashView = ForgotPasswordView()
+    private let forgotView = ForgotPasswordView()
     private let viewModel :ForgotPasswordViewModel
     private let coordinator: ForgotPasswordCoordinator
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    private func setupUI() {
+        view.addSubview(forgotView)
+        forgotView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     init(viewModel: ForgotPasswordViewModel, coordinator: ForgotPasswordCoordinator) {

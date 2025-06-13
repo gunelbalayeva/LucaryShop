@@ -24,4 +24,12 @@ final class GetStartedOnboardingViewModel {
     var titleText: String {
         model.title
     }
+    
+    func goToLogin() {
+        cordinator.startAuthFlow(.login)
+    }
+
+    func goToRegister() {
+        cordinator.startAuthFlow(.register)
+    }
 }

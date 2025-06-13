@@ -28,18 +28,22 @@ final class ForgotPasswordCoordinator {
         navigationController.setViewControllers([vc], animated: true)
     }
     func navigate(to step: ForgotPasswordStep) {
-            switch step {
-            case .sendOTP:
-                let vc = SendOTPViewBuilder(cordinator: self).build()
-                navigationController.pushViewController(vc, animated: true)
-
-            case .verifyOTP:
-                let vc = VerifyOTPBuilder(cordinator: self).build()
-                navigationController.pushViewController(vc, animated: true)
-
-            case .changePassword:
-                let vc = ChangePasswordBuilder(cordinator: self).build()
-                navigationController.pushViewController(vc, animated: true)
-            }
+        switch step {
+        case .sendOTP:
+            let vc = SendOTPViewBuilder(cordinator: self).build()
+            navigationController.pushViewController(vc, animated: true)
+            
+        case .verifyOTP:
+            let vc = VerifyOTPBuilder(cordinator: self).build()
+            navigationController.pushViewController(vc, animated: true)
+            
+        case .changePassword:
+            let vc = ChangePasswordBuilder(cordinator: self).build()
+            navigationController.pushViewController(vc, animated: true)
         }
+    }
+    
+    func finish() {
+        parentCoordinator?.startAuthFlow(.login)
+    }
 }

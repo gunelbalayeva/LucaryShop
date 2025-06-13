@@ -15,8 +15,14 @@ final class RegisterViewController :UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        setupUI()
     }
-    
+    private func setupUI() {
+        view.addSubview(registerView)
+        registerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
     init(viewModel: RegisterViewModel, coordinator: RegisterCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
