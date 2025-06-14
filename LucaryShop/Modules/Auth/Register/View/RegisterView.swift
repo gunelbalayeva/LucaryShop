@@ -11,6 +11,7 @@ final class RegisterView:UIView {
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
+    var onCreateAccountTapped: (() -> Void)?
     
     private let headImageView: UIImageView = {
         let image = UIImageView()
@@ -22,14 +23,14 @@ final class RegisterView:UIView {
     }()
     
     private let headLabel = UILabel().withStyle(text: "Create Account", size: 24 )
-    private let usernameLabel = UILabel().withStyle(text: "Username", size: 16)
-    private let nameTextField = CustomTextField().with(placeholder: "Enter your name")
+    private let usernameLabel = UILabel().withStyle(text: "Name", size: 16)
+    let nameTextField = CustomTextField().with(placeholder: "Enter your name")
     private let surnameLabel = UILabel().withStyle(text: "Surname", size: 16)
-    private let surnameTextField = CustomTextField().with(placeholder: "Enter your surname")
+    let surnameTextField = CustomTextField().with(placeholder: "Enter your surname")
     private let emailLabel = UILabel().withStyle(text: "Email", size: 16)
-    private let emailTextField = CustomTextField().with(placeholder: "Enter your e-mail")
+    let emailTextField = CustomTextField().with(placeholder: "Enter your e-mail")
     private let passwordLabel = UILabel().withStyle(text: "Password", size: 16)
-    private let passwordTextField: CustomTextField = {
+    let passwordTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "Create your password"
         textField.isSecureTextEntry = true
@@ -39,7 +40,7 @@ final class RegisterView:UIView {
         return textField
     }()
     
-    private let createAccountButton: CustomButton = {
+    let createAccountButton: CustomButton = {
         let button = CustomButton(style: .filled)
         button.setTitle("Create Account", for: .normal)
         return button
@@ -50,6 +51,7 @@ final class RegisterView:UIView {
         setupUI()
         setupKeyboardObservers()
         addTapGestureToHideKeyboard()
+        createAccountButton.addTarget(self, action: #selector(createAccountTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -157,9 +159,12 @@ final class RegisterView:UIView {
         }
     }
     
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
+    @objc
+    private func createAccountTapped() {
+        onCreateAccountTapped?()
+    }
 }

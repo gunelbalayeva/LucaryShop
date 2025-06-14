@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 extension UIStackView {
     func configure(axis: NSLayoutConstraint.Axis, alignment: Alignment, spacing: CGFloat) {
         self.axis = axis

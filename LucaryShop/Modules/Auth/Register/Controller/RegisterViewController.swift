@@ -22,13 +22,17 @@ final class RegisterViewController :UIViewController {
         super.viewDidAppear(animated)
         view.layoutIfNeeded()
     }
-
+    
     private func setupUI() {
         view.addSubview(registerView)
         registerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        registerView.onCreateAccountTapped = { [weak self] in
+            self?.registerButtonTapped()
+        }
     }
+    
     init(viewModel: RegisterViewModel, coordinator: RegisterCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
@@ -38,5 +42,38 @@ final class RegisterViewController :UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc
+    private func registerButtonTapped() {
+        let name = registerView.nameTextField.text ?? ""
+        let surname = registerView.surnameTextField.text ?? ""
+        let email = registerView.emailTextField.text ?? ""
+        let password = registerView.passwordTextField.text ?? ""
+        viewModel.register(name: name, surname: surname, email: email, password: password) {
+            [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self?.showSuccessAndNavigate()
+                case .failure(let error):
+                    self?.showError(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    private func showSuccessAndNavigate() {
+        let alert = UIAlertController(title: "Uğurlu qeydiyyat", message: "Hesabınız yaradıldı!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            self.coordinator.registerCompleted()
+        }))
+        present(alert, animated: true)
+    }
+    
+    private func showError(_ message: String) {
+        let alert = UIAlertController(title: "Xəta", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
 }
-

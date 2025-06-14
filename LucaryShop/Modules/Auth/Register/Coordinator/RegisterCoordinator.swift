@@ -13,7 +13,7 @@ final class RegisterCoordinator {
     var navigationController: UINavigationController
     private let authService: AuthService
     var onFinish: (() -> Void)?
-
+    
     init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, authService: AuthService, onFinish: ( () -> Void)? = nil) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
@@ -27,6 +27,6 @@ final class RegisterCoordinator {
     }
     
     func registerCompleted() {
-            onFinish?()
+        onFinish?()
     }
 }

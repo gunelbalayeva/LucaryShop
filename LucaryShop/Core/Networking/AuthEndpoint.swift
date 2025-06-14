@@ -16,10 +16,10 @@ enum AuthEndpoint {
     var path: String {
         switch self {
         case .login: return "/auth/login"
-        case .register: return "/auth/register"
+        case .register: return "/users/register"
         case .otpVerify: return "/auth/verify-otp"
         case .sendEmail: return "/auth/send-otp"
-        case .resetPassword: return "/auth/change-password"
+        case .resetPassword: return "/users/change-password"
         case .me: return "/api/auth/me"
         }
     }

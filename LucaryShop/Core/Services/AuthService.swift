@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 final class AuthService {
     private let networkService: NetworkService
