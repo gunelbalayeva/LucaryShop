@@ -76,4 +76,11 @@ final class CustomTextField:UITextField {
             updateAppearance()
         }
     }
+    
+    func with(placeholder: String) -> CustomTextField {
+            self.placeholder = placeholder
+            self.isSecureTextEntry = false
+            self.setHeight(42)
+            return self
+        }
 }

@@ -17,4 +17,12 @@ extension UILabel {
         self.textAlignment = alignment
         self.numberOfLines = numberOfLines
     }
+    
+    func withStyle(text: String, size: CGFloat) -> UILabel {
+            self.text = text
+            self.textColor = .gray
+            self.font = .systemFont(ofSize: size, weight: .medium)
+            self.textAlignment = .left
+            return self
+        }
 }

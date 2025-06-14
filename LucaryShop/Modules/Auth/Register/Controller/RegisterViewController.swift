@@ -17,6 +17,12 @@ final class RegisterViewController :UIViewController {
         view.backgroundColor = .systemBackground
         setupUI()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        view.layoutIfNeeded()
+    }
+
     private func setupUI() {
         view.addSubview(registerView)
         registerView.snp.makeConstraints { make in
