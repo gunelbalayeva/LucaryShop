@@ -21,7 +21,6 @@ extension UIView {
         }
     }
     
-    
     // MARK: - Add Subview with Insets to a Target Constraint
     func addSubviewSnp(_ view: UIView, to target: ConstraintRelatableTarget, insets: UIEdgeInsets) {
         self.addSubview(view)
@@ -128,6 +127,12 @@ extension UIView {
     func makeCircular() {
            self.layer.cornerRadius = min(self.frame.size.width, self.frame.size.height) / 2
            self.layer.masksToBounds = true
+           self.clipsToBounds = true
+       }
+    
+    func makeCardStyle(cornerRadius: CGFloat = 16, backgroundColor: UIColor = .white) {
+           self.backgroundColor = backgroundColor
+           self.layer.cornerRadius = cornerRadius
            self.clipsToBounds = true
        }
 }

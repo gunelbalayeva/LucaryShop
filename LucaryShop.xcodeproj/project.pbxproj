@@ -120,6 +120,10 @@
 		CEA1C3682DFC5C8800E9B74B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3672DFC5C8800E9B74B /* AuthService.swift */; };
 		CEA1C36A2DFC600500E9B74B /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3692DFC600500E9B74B /* URLSessionNetworkService.swift */; };
 		CEA1C36C2DFC613900E9B74B /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C36B2DFC613900E9B74B /* EmptyResponse.swift */; };
+		CEA1C3712DFE15EE00E9B74B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CEA1C3702DFE15EE00E9B74B /* Lottie */; };
+		CEA1C3732DFE15EE00E9B74B /* Lottie-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEA1C3722DFE15EE00E9B74B /* Lottie-Dynamic */; };
+		CEA1C3782DFE189D00E9B74B /* SuccessPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3772DFE189D00E9B74B /* SuccessPopupView.swift */; };
+		CEA1C37A2DFE1BA400E9B74B /* fireworks.json in Resources */ = {isa = PBXBuildFile; fileRef = CEA1C3792DFE1BA400E9B74B /* fireworks.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -233,6 +237,8 @@
 		CEA1C3672DFC5C8800E9B74B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		CEA1C3692DFC600500E9B74B /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
 		CEA1C36B2DFC613900E9B74B /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
+		CEA1C3772DFE189D00E9B74B /* SuccessPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupView.swift; sourceTree = "<group>"; };
+		CEA1C3792DFE1BA400E9B74B /* fireworks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fireworks.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,11 +246,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA1C3732DFE15EE00E9B74B /* Lottie-Dynamic in Frameworks */,
 				CE5E3C732DF777BE005B827B /* Kingfisher in Frameworks */,
 				CEA1C3552DFC209C00E9B74B /* Alamofire in Frameworks */,
 				CEA1C3572DFC209C00E9B74B /* AlamofireDynamic in Frameworks */,
 				CE1787F92DF46D4500A91620 /* SnapKit in Frameworks */,
 				CE1787FB2DF46D4500A91620 /* SnapKit-Dynamic in Frameworks */,
+				CEA1C3712DFE15EE00E9B74B /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +302,7 @@
 		CE1787FF2DF4714A00A91620 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CEA1C3742DFE175200E9B74B /* Animations */,
 				CE46264E2DF620990026AFE6 /* Fonts */,
 				CE1788392DF48B7C00A91620 /* Localization */,
 				CE1787EC2DF46D3700A91620 /* Assets.xcassets */,
@@ -566,6 +575,7 @@
 			isa = PBXGroup;
 			children = (
 				CEA1C3312DFAC9F200E9B74B /* RegisterView.swift */,
+				CEA1C3772DFE189D00E9B74B /* SuccessPopupView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -919,6 +929,14 @@
 			path = AuthModel;
 			sourceTree = "<group>";
 		};
+		CEA1C3742DFE175200E9B74B /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				CEA1C3792DFE1BA400E9B74B /* fireworks.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -941,6 +959,8 @@
 				CE5E3C722DF777BE005B827B /* Kingfisher */,
 				CEA1C3542DFC209C00E9B74B /* Alamofire */,
 				CEA1C3562DFC209C00E9B74B /* AlamofireDynamic */,
+				CEA1C3702DFE15EE00E9B74B /* Lottie */,
+				CEA1C3722DFE15EE00E9B74B /* Lottie-Dynamic */,
 			);
 			productName = LucaryShop;
 			productReference = CE1787E02DF46D3100A91620 /* LucaryShop.app */;
@@ -974,6 +994,7 @@
 				CE1787F72DF46D4500A91620 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CE5E3C712DF777BE005B827B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CEA1C3532DFC209C00E9B74B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				CEA1C36F2DFE15EE00E9B74B /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = CE1787E12DF46D3100A91620 /* Products */;
 			projectDirPath = "";
@@ -995,6 +1016,7 @@
 				CE1787ED2DF46D3700A91620 /* Assets.xcassets in Resources */,
 				CE5E3C702DF757BF005B827B /* MeaCulpa-Regular.ttf in Resources */,
 				CE5E3C912DF85C8A005B827B /* Oswald-VariableFont_wght.ttf in Resources */,
+				CEA1C37A2DFE1BA400E9B74B /* fireworks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1103,6 +1125,7 @@
 				CE17881C2DF4861C00A91620 /* UIImageView+Kingfisher.swift in Sources */,
 				CEA1C35B2DFC517800E9B74B /* Login.swift in Sources */,
 				CE5C6C302DF4A1CE00821985 /* ProfileCoordinator.swift in Sources */,
+				CEA1C3782DFE189D00E9B74B /* SuccessPopupView.swift in Sources */,
 				CE17881E2DF4862D00A91620 /* String+Localization.swift in Sources */,
 				CE5C6C5F2DF4B21300821985 /* OrdersViewModel.swift in Sources */,
 				CEA1C3612DFC522300E9B74B /* SendEmail.swift in Sources */,
@@ -1343,6 +1366,14 @@
 				minimumVersion = 5.10.2;
 			};
 		};
+		CEA1C36F2DFE15EE00E9B74B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1370,6 +1401,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CEA1C3532DFC209C00E9B74B /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = AlamofireDynamic;
+		};
+		CEA1C3702DFE15EE00E9B74B /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEA1C36F2DFE15EE00E9B74B /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		CEA1C3722DFE15EE00E9B74B /* Lottie-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEA1C36F2DFE15EE00E9B74B /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = "Lottie-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

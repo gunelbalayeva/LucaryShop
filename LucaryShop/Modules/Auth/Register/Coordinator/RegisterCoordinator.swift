@@ -8,7 +8,6 @@
 import UIKit
 
 final class RegisterCoordinator {
-    
     weak var parentCoordinator: AppCoordinator?
     var navigationController: UINavigationController
     private let authService: AuthService

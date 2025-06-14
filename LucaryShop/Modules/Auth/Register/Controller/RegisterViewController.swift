@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 final class RegisterViewController :UIViewController {
     private let registerView = RegisterView()
     private let viewModel:RegisterViewModel
@@ -54,7 +53,7 @@ final class RegisterViewController :UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    self?.showSuccessAndNavigate()
+                    self?.showSuccessAndNavigate(with: name)
                 case .failure(let error):
                     self?.showError(error.localizedDescription)
                 }
@@ -62,12 +61,12 @@ final class RegisterViewController :UIViewController {
         }
     }
     
-    private func showSuccessAndNavigate() {
-        let alert = UIAlertController(title: "Uğurlu qeydiyyat", message: "Hesabınız yaradıldı!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.coordinator.registerCompleted()
-        }))
-        present(alert, animated: true)
+    private func showSuccessAndNavigate(with name: String) {
+        let popup = SuccessPopupView(frame: view.bounds, userName: name)
+        view.addSubview(popup)
+        popup.dismiss(after: 3.0) { [weak self] in
+            self?.coordinator.registerCompleted()
+        }
     }
     
     private func showError(_ message: String) {
