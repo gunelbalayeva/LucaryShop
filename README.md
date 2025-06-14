@@ -57,3 +57,5 @@ LucaryShop is a modular e-commerce iOS application built using MVVM-Coordinator 
 ### Testing
 - **Unit Testing** – To test business logic and view models.
 - **UI Testing** – For validating user interface flows and interactions.
+
+- Register successfull oldu 14 Iyun
