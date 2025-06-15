@@ -11,13 +11,15 @@ final class LoginCoordinator {
     weak var parentCoordinator: AppCoordinator?
     var navigationController: UINavigationController
     private let authService: AuthService
-    
+    let verificationId: String
+
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, authService: AuthService, onFinish: ( () -> Void)? = nil) {
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, authService: AuthService, verificationId: String, onFinish: ( () -> Void)? = nil) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.authService = authService
+        self.verificationId = verificationId
         self.onFinish = onFinish
     }
     
@@ -40,8 +42,7 @@ final class LoginCoordinator {
         let forgotCoordinator = ForgotPasswordCoordinator(
             parentCoordinator: parentCoordinator,
             navigationController: navigationController,
-            authService: authService
-        )
+            authService: authService, verificationId: verificationId)
         forgotCoordinator.start()
     }
 }

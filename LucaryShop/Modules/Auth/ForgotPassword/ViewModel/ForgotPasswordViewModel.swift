@@ -16,16 +16,16 @@ final class ForgotPasswordViewModel{
         self.authService = authService
     }
     
-    func sendOTP(email: String, completion: @escaping (Bool) -> Void) {
-        let request = SendEmail.SendEmailRequest(email: email)
-        authService.sendEmail(request: request) { result in
-            switch result {
-            case .success:
-                completion(true)
-            case .failure(let error):
-                completion(false)
+    func sendOTP(email: String, completion: @escaping (Result<String, Error>) -> Void) {
+            let request = SendEmail.SendEmailRequest(email: email)
+            authService.sendEmail(request: request) { result in
+                switch result {
+                case .success(let response):
+                    completion(.success(response.verificationId))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
         }
-    }
 
 }

@@ -9,23 +9,35 @@ import UIKit
 
 final class ChangePasswordView: UIView {
     
+    var changePasswordTapped: (() -> Void)?
+    private let headLabel = UILabel().withStyle(text: "Change Password", size: 24 )
+    
+    private let headImageView: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.clipsToBounds = true
+        image.image = UIImage(named: "logo")
+        return image
+    }()
+    
+    private let emailLabel = UILabel().withStyle(text: "Email", size: 16)
+    let emailTextField = CustomTextField().with(placeholder: "Enter email (e.g. you@example.com)")
+    
+    private let passwordLabel = UILabel().withStyle(text: "Password", size: 16)
+    
     let passwordTextField: CustomTextField = {
-        let textField = CustomTextField()
+        let textField = CustomTextField().with(placeholder: "Change your password")
         textField.isSecureTextEntry = true
-        textField.placeholder = "Yeni şifrəni daxil edin"
+        textField.layer.cornerRadius = 20
+        textField.textContentType = .none
+        textField.setHeight(44)
         return textField
     }()
     
-    let infoLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Şifrə güclü olmalıdır"
-        label.setStyle(fontSize: 14, textColor: .gray, alignment: .center)
-        return label
-    }()
     
     let changePasswordButton: CustomButton = {
         let button = CustomButton(style: .filled)
-        button.setTitle("Şifrəni dəyiş", for: .normal)
+        button.setTitle("Change Password", for: .normal)
         return button
     }()
     
@@ -43,17 +55,6 @@ final class ChangePasswordView: UIView {
         addSubviewSnp(passwordTextField, insets: .init(top: 60, left: 24, bottom: 0, right: 24))
         passwordTextField.setHeight(48)
         
-        addSubview(infoLabel)
-        infoLabel.snp.makeConstraints { make in
-            make.top.equalTo(passwordTextField.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(24)
-        }
         
-        addSubview(changePasswordButton)
-        changePasswordButton.snp.makeConstraints { make in
-            make.top.equalTo(infoLabel.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview().inset(24)
-            make.height.equalTo(50)
-        }
     }
 }

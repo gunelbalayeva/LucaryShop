@@ -20,7 +20,15 @@ final class SendOTPView :UIView{
     private let headLabel = UILabel().withStyle(text: "Send OTP Code", size: 24)
     
     private let emailLabel = UILabel().withStyle(text: "Email", size: 16)
-    let emailTextField = CustomTextField().with(placeholder: "Enter email (e.g. you@example.com)")
+    
+    let emailTextField: CustomTextField = {
+        let textField = CustomTextField().with(placeholder: "Enter email (e.g. you@example.com)")
+        textField.isSecureTextEntry = true
+        textField.layer.cornerRadius = 20
+        textField.textContentType = .none
+        textField.setHeight(44)
+        return textField
+    }()
     
     let getPasswordButton: CustomButton = {
         let button = CustomButton(style: .filled)

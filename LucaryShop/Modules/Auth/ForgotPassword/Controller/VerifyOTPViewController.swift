@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import UIKit
 
 final class VerifyOTPViewController :UIViewController{
@@ -17,12 +16,8 @@ final class VerifyOTPViewController :UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    }
-    
-    private func setupUI() {
-        view.addSubview(vertfyOtpView)
-        vertfyOtpView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        vertfyOtpView.verifyOTPCodeTapped = { [weak self] in
+            self?.submitOTP()
         }
     }
     
@@ -36,4 +31,57 @@ final class VerifyOTPViewController :UIViewController{
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setupUI() {
+        view.addSubview(vertfyOtpView)
+        vertfyOtpView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    
+    private func submitOTP() {
+        let code = [
+            vertfyOtpView.oneTextField.text,
+            vertfyOtpView.twoTextField.text,
+            vertfyOtpView.threeTextField.text,
+            vertfyOtpView.fourTextField.text,
+            vertfyOtpView.fiveTextField.text,
+            vertfyOtpView.sixTextField.text
+        ].compactMap { $0 }.joined()
+        
+        guard code.count == 6 else {
+            showErrorAnimation(message: "Zəhmət olmasa 6 rəqəmli OTP kodunu daxil edin")
+            return
+        }
+        let verificationId = viewModel.verificationId
+        viewModel.verifyOTP(code: code, verificationId: verificationId) { [weak self] success in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                
+                if success {
+                    print("OTP Verified")
+                    self.showSuccessAndNavigate(with: "istifadəçi")
+                } else {
+                    print("OTP Failed")
+                    self.showErrorAnimation(message: "OTP kodu düzgün daxil edilməyib")
+                }
+            }
+        }
+    }
+    
+    private func showErrorAnimation(message: String) {
+        let popup = ErrorPopupView(frame: view.bounds, message: message)
+        view.addSubview(popup)
+        popup.dismiss(after: 3.0)
+    }
+    
+    
+    
+    private func showSuccessAndNavigate(with name: String) {
+        let popup = VerifySuccessPopupView(frame: view.bounds, userName: name)
+        view.addSubview(popup)
+        popup.dismiss(after: 3.0) { [weak self] in
+            self?.coordinator.navigate(to: .changePassword)
+        }
+    }
 }

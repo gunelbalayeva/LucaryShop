@@ -11,14 +11,16 @@ import UIKit
 final class VerifyOTPBuilder {
     private let cordinator :ForgotPasswordCoordinator
     private let authService: AuthService
+    private let verificationId: String 
     
-    init(cordinator: ForgotPasswordCoordinator, authService: AuthService) {
+    init(cordinator: ForgotPasswordCoordinator, authService: AuthService, verificationId: String) {
         self.cordinator = cordinator
         self.authService = authService
+        self.verificationId = verificationId
     }
     
     func build () -> UIViewController {
-        let viewmodel = VerifyOTPViewModel(cordinator: cordinator, authService: authService)
+        let viewmodel = VerifyOTPViewModel(cordinator: cordinator, authService: authService, verificationId: verificationId)
         let vc  = VerifyOTPViewController(viewModel: viewmodel, coordinator: cordinator)
         return vc
     }

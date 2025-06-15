@@ -105,7 +105,6 @@ final class CustomTextField:UITextField {
     
     func with(placeholder: String) -> CustomTextField {
         self.placeholder = placeholder
-        self.isSecureTextEntry = false
         self.setHeight(42)
         self.attributedPlaceholder = NSAttributedString(
             string: placeholder,

@@ -47,17 +47,18 @@ final class ForgotPasswordViewController :UIViewController{
                 self.showError("Düzgün formatda email daxil edin.")
                 return
             }
-            self.viewModel.sendOTP(email: email) { success in
+            self.viewModel.sendOTP(email: email) { result in
                 DispatchQueue.main.async {
-                    if success {
-                        self.coordinator.navigate(to: .verifyOTP)
-                    } else {
+                    switch result {
+                    case .success(let verificationId):
+                        self.coordinator.navigateToVerifyOTP(with: verificationId)
+                    case .failure(_):
                         self.showError("OTP göndərilə bilmədi.")
                     }
                 }
             }
         }
-
+        
     }
     
     private func showError(_ message: String) {
@@ -71,5 +72,5 @@ final class ForgotPasswordViewController :UIViewController{
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
-
+    
 }

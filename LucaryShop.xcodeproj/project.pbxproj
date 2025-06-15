@@ -122,6 +122,9 @@
 		CEA1C37A2DFE1BA400E9B74B /* fireworks.json in Resources */ = {isa = PBXBuildFile; fileRef = CEA1C3792DFE1BA400E9B74B /* fireworks.json */; };
 		CED1C3892DFEB6330064AC1F /* Success.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C3882DFEB6330064AC1F /* Success.json */; };
 		CED1C38B2DFEB9ED0064AC1F /* Error.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C38A2DFEB9ED0064AC1F /* Error.json */; };
+		CED1C38D2DFF09280064AC1F /* VerifyOTP.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C38C2DFF09280064AC1F /* VerifyOTP.json */; };
+		CED1C3902DFF37E40064AC1F /* ErrorPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C38F2DFF37E40064AC1F /* ErrorPopupView.swift */; };
+		CED1C3922DFF38960064AC1F /* VerifySuccessPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3912DFF38960064AC1F /* VerifySuccessPopupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -235,6 +238,9 @@
 		CEA1C3792DFE1BA400E9B74B /* fireworks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fireworks.json; sourceTree = "<group>"; };
 		CED1C3882DFEB6330064AC1F /* Success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Success.json; sourceTree = "<group>"; };
 		CED1C38A2DFEB9ED0064AC1F /* Error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Error.json; sourceTree = "<group>"; };
+		CED1C38C2DFF09280064AC1F /* VerifyOTP.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VerifyOTP.json; sourceTree = "<group>"; };
+		CED1C38F2DFF37E40064AC1F /* ErrorPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopupView.swift; sourceTree = "<group>"; };
+		CED1C3912DFF38960064AC1F /* VerifySuccessPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifySuccessPopupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -900,6 +906,7 @@
 		CEA1C3362DFAE16200E9B74B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C38E2DFF37B40064AC1F /* PopupView */,
 				CE5C6C052DF4918500821985 /* ForgotPasswordViewController.swift */,
 				CEA1C33B2DFB09E400E9B74B /* VerifyOTPViewController.swift */,
 				CEA1C3492DFB0B0F00E9B74B /* ChangePasswordViewController  .swift */,
@@ -924,6 +931,7 @@
 		CEA1C3742DFE175200E9B74B /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C38C2DFF09280064AC1F /* VerifyOTP.json */,
 				CED1C38A2DFEB9ED0064AC1F /* Error.json */,
 				CED1C3882DFEB6330064AC1F /* Success.json */,
 				CEA1C3792DFE1BA400E9B74B /* fireworks.json */,
@@ -935,6 +943,15 @@
 			isa = PBXGroup;
 			children = (
 				CEA1C3772DFE189D00E9B74B /* SuccessPopupView.swift */,
+			);
+			path = PopupView;
+			sourceTree = "<group>";
+		};
+		CED1C38E2DFF37B40064AC1F /* PopupView */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C38F2DFF37E40064AC1F /* ErrorPopupView.swift */,
+				CED1C3912DFF38960064AC1F /* VerifySuccessPopupView.swift */,
 			);
 			path = PopupView;
 			sourceTree = "<group>";
@@ -1014,6 +1031,7 @@
 			files = (
 				CED1C38B2DFEB9ED0064AC1F /* Error.json in Resources */,
 				CE1787F02DF46D3700A91620 /* LaunchScreen.storyboard in Resources */,
+				CED1C38D2DFF09280064AC1F /* VerifyOTP.json in Resources */,
 				CE1788022DF471A700A91620 /* Localizable.strings in Resources */,
 				CE5E3C7D2DF84DA7005B827B /* Savate-VariableFont_wght.ttf in Resources */,
 				CE1787ED2DF46D3700A91620 /* Assets.xcassets in Resources */,
@@ -1086,6 +1104,7 @@
 				CE1787E42DF46D3100A91620 /* AppDelegate.swift in Sources */,
 				CE5C6BF72DF48FC900821985 /* RegisterBuilder.swift in Sources */,
 				CE5C6BF52DF48FB200821985 /* RegisterViewModel.swift in Sources */,
+				CED1C3922DFF38960064AC1F /* VerifySuccessPopupView.swift in Sources */,
 				CEA1C3482DFB0AAD00E9B74B /* VerifyOTPViewModel.swift in Sources */,
 				CE5C6C2B2DF4A1A800821985 /* ProfileViewModel.swift in Sources */,
 				CEA1C3502DFB0C0800E9B74B /*  ChangePasswordBuilder.swift in Sources */,
@@ -1107,6 +1126,7 @@
 				CE1788362DF4896A00A91620 /* CartViewModel.swift in Sources */,
 				CE5E3C972DF8732A005B827B /* PageViewController.swift in Sources */,
 				CEA1C3632DFC524600E9B74B /*  ResetPassword.swift in Sources */,
+				CED1C3902DFF37E40064AC1F /* ErrorPopupView.swift in Sources */,
 				CEA1C3462DFB0A9300E9B74B /* VerifyOTPBuilder.swift in Sources */,
 				CE5E3C892DF85613005B827B /* GetStartedOnboardingViewController  .swift in Sources */,
 				CE5E3C832DF854C5005B827B /* WelcomeOnboardingViewController .swift in Sources */,

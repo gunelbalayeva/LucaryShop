@@ -7,6 +7,7 @@
 
 import Foundation
 struct OTPVerification {
+    
     struct OTPVerifyRequest: Encodable {
         let verificationId: String
         let otp: String

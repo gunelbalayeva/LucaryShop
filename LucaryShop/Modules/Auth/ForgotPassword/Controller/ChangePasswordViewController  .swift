@@ -16,17 +16,18 @@ final class ChangePasswordViewController:UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = changePasswordView
         setupBindings()
         setupActions()
         setupUI()
     }
+    
     private func setupUI() {
         view.addSubview(changePasswordView)
         changePasswordView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
+
     
     init(viewModel: ChangePasswordViewModel, coordinator: ForgotPasswordCoordinator) {
         self.viewModel = viewModel
@@ -41,8 +42,8 @@ final class ChangePasswordViewController:UIViewController{
     private func setupBindings() {
         viewModel.isPasswordValidPublisher
             .sink { [weak self] isValid in
-                self?.changePasswordView.infoLabel.textColor = isValid ? .systemGreen : .systemRed
-                self?.changePasswordView.infoLabel.text = isValid ?
+                self?.changePasswordView.emailTextField.textColor = isValid ? .systemGreen : .systemRed
+                self?.changePasswordView.passwordTextField.text = isValid ?
                 "Şifrə güclüdür" : "Şifrə ən azı 6 simvol olmalıdır"
                 self?.changePasswordView.changePasswordButton.isEnabled = isValid
                 self?.changePasswordView.changePasswordButton.alpha = isValid ? 1.0 : 0.5
