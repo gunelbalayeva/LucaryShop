@@ -9,6 +9,7 @@ import UIKit
 enum ButtonStyle {
     case filled
     case outlined
+    case plain
 }
 
 final class CustomButton: UIButton {
@@ -54,6 +55,11 @@ final class CustomButton: UIButton {
             setTitleColor(UIColor(named: "baseButton"), for: .normal)
             layer.borderWidth = 2
             layer.borderColor = UIColor(named: "baseButton")?.cgColor
+        case .plain:
+            backgroundColor = .clear
+            setTitleColor(UIColor(named: "baseButton"), for: .normal)
+            layer.borderWidth = 0
+            layer.borderColor = nil
         }
     }
     
@@ -73,7 +79,7 @@ final class CustomButton: UIButton {
     }
     
     // MARK: - Haptic Feedback
-    private func setupHapticFeedback() {
+    func setupHapticFeedback() {
         addTarget(self, action: #selector(triggerHaptic), for: .touchUpInside)
     }
     

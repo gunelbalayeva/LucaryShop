@@ -94,11 +94,8 @@
 		CE5E3CA42DF8D49E005B827B /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E3CA32DF8D49E005B827B /* UIStackView.swift */; };
 		CEA1C3322DFAC9F200E9B74B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3312DFAC9F200E9B74B /* RegisterView.swift */; };
 		CEA1C3352DFADDA400E9B74B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3342DFADDA400E9B74B /* LoginView.swift */; };
-		CEA1C3382DFAE18D00E9B74B /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3372DFAE18D00E9B74B /* ForgotPasswordView.swift */; };
-		CEA1C33A2DFB09B000E9B74B /* SendOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3392DFB09B000E9B74B /* SendOTPViewController.swift */; };
 		CEA1C33C2DFB09E400E9B74B /* VerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C33B2DFB09E400E9B74B /* VerifyOTPViewController.swift */; };
 		CEA1C33E2DFB0A0A00E9B74B /* SendOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C33D2DFB0A0A00E9B74B /* SendOTPView.swift */; };
-		CEA1C3402DFB0A3400E9B74B /* SendOTPViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C33F2DFB0A3400E9B74B /* SendOTPViewViewModel.swift */; };
 		CEA1C3422DFB0A4E00E9B74B /* SendOTPViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3412DFB0A4E00E9B74B /* SendOTPViewBuilder.swift */; };
 		CEA1C3442DFB0A6F00E9B74B /* VerifyOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3432DFB0A6F00E9B74B /* VerifyOTPView.swift */; };
 		CEA1C3462DFB0A9300E9B74B /* VerifyOTPBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3452DFB0A9300E9B74B /* VerifyOTPBuilder.swift */; };
@@ -124,6 +121,8 @@
 		CEA1C3732DFE15EE00E9B74B /* Lottie-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEA1C3722DFE15EE00E9B74B /* Lottie-Dynamic */; };
 		CEA1C3782DFE189D00E9B74B /* SuccessPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3772DFE189D00E9B74B /* SuccessPopupView.swift */; };
 		CEA1C37A2DFE1BA400E9B74B /* fireworks.json in Resources */ = {isa = PBXBuildFile; fileRef = CEA1C3792DFE1BA400E9B74B /* fireworks.json */; };
+		CED1C3892DFEB6330064AC1F /* Success.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C3882DFEB6330064AC1F /* Success.json */; };
+		CED1C38B2DFEB9ED0064AC1F /* Error.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C38A2DFEB9ED0064AC1F /* Error.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -213,11 +212,8 @@
 		CE5E3CA32DF8D49E005B827B /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		CEA1C3312DFAC9F200E9B74B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		CEA1C3342DFADDA400E9B74B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		CEA1C3372DFAE18D00E9B74B /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
-		CEA1C3392DFB09B000E9B74B /* SendOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOTPViewController.swift; sourceTree = "<group>"; };
 		CEA1C33B2DFB09E400E9B74B /* VerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewController.swift; sourceTree = "<group>"; };
 		CEA1C33D2DFB0A0A00E9B74B /* SendOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOTPView.swift; sourceTree = "<group>"; };
-		CEA1C33F2DFB0A3400E9B74B /* SendOTPViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOTPViewViewModel.swift; sourceTree = "<group>"; };
 		CEA1C3412DFB0A4E00E9B74B /* SendOTPViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOTPViewBuilder.swift; sourceTree = "<group>"; };
 		CEA1C3432DFB0A6F00E9B74B /* VerifyOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPView.swift; sourceTree = "<group>"; };
 		CEA1C3452DFB0A9300E9B74B /* VerifyOTPBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPBuilder.swift; sourceTree = "<group>"; };
@@ -239,6 +235,8 @@
 		CEA1C36B2DFC613900E9B74B /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		CEA1C3772DFE189D00E9B74B /* SuccessPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupView.swift; sourceTree = "<group>"; };
 		CEA1C3792DFE1BA400E9B74B /* fireworks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fireworks.json; sourceTree = "<group>"; };
+		CED1C3882DFEB6330064AC1F /* Success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Success.json; sourceTree = "<group>"; };
+		CED1C38A2DFEB9ED0064AC1F /* Error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Error.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -649,7 +647,6 @@
 		CE5C6BFE2DF4909F00821985 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CEA1C3372DFAE18D00E9B74B /* ForgotPasswordView.swift */,
 				CEA1C33D2DFB0A0A00E9B74B /* SendOTPView.swift */,
 				CEA1C3432DFB0A6F00E9B74B /* VerifyOTPView.swift */,
 				CEA1C34B2DFB0BAB00E9B74B /*  ChangePasswordView.swift */,
@@ -661,7 +658,6 @@
 			isa = PBXGroup;
 			children = (
 				CE5C6C032DF4916700821985 /* ForgotPasswordViewModel.swift */,
-				CEA1C33F2DFB0A3400E9B74B /* SendOTPViewViewModel.swift */,
 				CEA1C3472DFB0AAD00E9B74B /* VerifyOTPViewModel.swift */,
 				CEA1C34D2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift */,
 			);
@@ -908,7 +904,6 @@
 			isa = PBXGroup;
 			children = (
 				CE5C6C052DF4918500821985 /* ForgotPasswordViewController.swift */,
-				CEA1C3392DFB09B000E9B74B /* SendOTPViewController.swift */,
 				CEA1C33B2DFB09E400E9B74B /* VerifyOTPViewController.swift */,
 				CEA1C3492DFB0B0F00E9B74B /* ChangePasswordViewController  .swift */,
 			);
@@ -932,6 +927,8 @@
 		CEA1C3742DFE175200E9B74B /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C38A2DFEB9ED0064AC1F /* Error.json */,
+				CED1C3882DFEB6330064AC1F /* Success.json */,
 				CEA1C3792DFE1BA400E9B74B /* fireworks.json */,
 			);
 			path = Animations;
@@ -1018,11 +1015,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED1C38B2DFEB9ED0064AC1F /* Error.json in Resources */,
 				CE1787F02DF46D3700A91620 /* LaunchScreen.storyboard in Resources */,
 				CE1788022DF471A700A91620 /* Localizable.strings in Resources */,
 				CE5E3C7D2DF84DA7005B827B /* Savate-VariableFont_wght.ttf in Resources */,
 				CE1787ED2DF46D3700A91620 /* Assets.xcassets in Resources */,
 				CE5E3C702DF757BF005B827B /* MeaCulpa-Regular.ttf in Resources */,
+				CED1C3892DFEB6330064AC1F /* Success.json in Resources */,
 				CE5E3C912DF85C8A005B827B /* Oswald-VariableFont_wght.ttf in Resources */,
 				CEA1C37A2DFE1BA400E9B74B /* fireworks.json in Resources */,
 			);
@@ -1062,7 +1061,6 @@
 				CE5E3CA02DF89F80005B827B /* PermissionsOnboardingBuilder.swift in Sources */,
 				CE1788382DF4897800A91620 /* CartBuilder.swift in Sources */,
 				CE1787FE2DF4712900A91620 /* AppCoordinator.swift in Sources */,
-				CEA1C3382DFAE18D00E9B74B /* ForgotPasswordView.swift in Sources */,
 				CE5C6C642DF4B26200821985 /* ProductCell.swift in Sources */,
 				CE5E3C9E2DF89F46005B827B /* PermissionsOnboardingViewModel.swift in Sources */,
 				CE1788202DF4864000A91620 /* Combine+Extensions.swift in Sources */,
@@ -1097,7 +1095,6 @@
 				CEA1C3502DFB0C0800E9B74B /*  ChangePasswordBuilder.swift in Sources */,
 				CEA1C36C2DFC613900E9B74B /* EmptyResponse.swift in Sources */,
 				CEA1C33C2DFB09E400E9B74B /* VerifyOTPViewController.swift in Sources */,
-				CEA1C33A2DFB09B000E9B74B /* SendOTPViewController.swift in Sources */,
 				CEA1C34A2DFB0B0F00E9B74B /* ChangePasswordViewController  .swift in Sources */,
 				CE5C6C0F2DF4A08E00821985 /* HomeViewModel.swift in Sources */,
 				CEA1C3442DFB0A6F00E9B74B /* VerifyOTPView.swift in Sources */,
@@ -1105,7 +1102,6 @@
 				CE5C6C122DF4A0A700821985 /* HomeBuilder.swift in Sources */,
 				CE17882E2DF486D200A91620 /* AuthEndpoint.swift in Sources */,
 				CE5E3C9C2DF8897E005B827B /* GetStartedOnboardingViewModel.swift in Sources */,
-				CEA1C3402DFB0A3400E9B74B /* SendOTPViewViewModel.swift in Sources */,
 				CE1788452DF48E6100A91620 /* LoginCoordinator.swift in Sources */,
 				CE5C6C562DF4B19A00821985 /* CustomTextField.swift in Sources */,
 				CE1788262DF4867C00A91620 /* KeychainManager.swift in Sources */,

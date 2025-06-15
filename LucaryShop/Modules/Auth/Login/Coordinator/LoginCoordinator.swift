@@ -11,7 +11,7 @@ final class LoginCoordinator {
     weak var parentCoordinator: AppCoordinator?
     var navigationController: UINavigationController
     private let authService: AuthService
-
+    
     var onFinish: (() -> Void)?
     
     init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, authService: AuthService, onFinish: ( () -> Void)? = nil) {
@@ -28,5 +28,20 @@ final class LoginCoordinator {
     
     func finish() {
         onFinish?()
+    }
+    
+    func showHomePage() {
+        let homeVC = HomeViewController()
+        navigationController.pushViewController(homeVC, animated: true)
+    }
+    
+    
+    func showForgotPasswordPage() {
+        let forgotCoordinator = ForgotPasswordCoordinator(
+            parentCoordinator: parentCoordinator,
+            navigationController: navigationController,
+            authService: authService
+        )
+        forgotCoordinator.start()
     }
 }

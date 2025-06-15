@@ -8,28 +8,34 @@
 import UIKit
 final class ForgotPasswordViewController :UIViewController{
     
-    private let forgotView = ForgotPasswordView()
+    private let forgotView = SendOTPView()
     private let viewModel :ForgotPasswordViewModel
     private let coordinator: ForgotPasswordCoordinator
-    
+    private let authService: AuthService
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .green
+        title = "Forgot Password"
         setupUI()
     }
+    
     private func setupUI() {
         view.addSubview(forgotView)
         forgotView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
-    
-    init(viewModel: ForgotPasswordViewModel, coordinator: ForgotPasswordCoordinator) {
+   
+    init(viewModel: ForgotPasswordViewModel, coordinator: ForgotPasswordCoordinator, authService: AuthService) {
         self.viewModel = viewModel
         self.coordinator = coordinator
+        self.authService = authService
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }

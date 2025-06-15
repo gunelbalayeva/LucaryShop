@@ -16,16 +16,13 @@ final class LoginViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
-        setupUI()
+        view.backgroundColor = .systemBackground
+        setupActions()
+    }
+    override func loadView() {
+        self.view = loginView
     }
     
-    private func setupUI() {
-        view.addSubview(loginView)
-        loginView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
     
     init(viewModel: LoginViewModel, coordinator: LoginCoordinator) {
         self.viewModel = viewModel
@@ -35,6 +32,40 @@ final class LoginViewController:UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupActions() {
+        loginView.onLoginTapped = { [weak self] in
+            guard let self = self else { return }
+            let email = self.loginView.emailTextField.text ?? ""
+            let password = self.loginView.passwordTextField.text ?? ""
+            
+            self.viewModel.login(email: email, password: password) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success:
+                        self.showSuccessAndNavigate(with: email)
+                    case .failure(let error):
+                        self.showError(error.localizedDescription)
+                    }
+                }
+            }
+        }
+        loginView.onForgotPasswordTapped = { [weak self] in
+            self?.viewModel.forgotPasswordTapped()
+        }
+    }
+    
+    
+    private func showSuccessAndNavigate(with name: String) {
+        coordinator.showHomePage()
+    }
+    
+    
+    private func showError(_ message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
 }
 

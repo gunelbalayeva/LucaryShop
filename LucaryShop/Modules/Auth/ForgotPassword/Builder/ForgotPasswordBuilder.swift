@@ -18,7 +18,7 @@ final class ForgotPasswordBuilder {
     
     func build () -> UIViewController {
         let viewmodel = ForgotPasswordViewModel(cordinator: cordinator, authService: authService)
-        let vc  = ForgotPasswordViewController(viewModel: viewmodel, coordinator: cordinator)
+        let vc  = ForgotPasswordViewController(viewModel: viewmodel, coordinator: cordinator, authService: authService)
         return vc
     }
 }

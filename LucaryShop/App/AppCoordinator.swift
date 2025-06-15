@@ -70,5 +70,4 @@ final class AppCoordinator: Coordinator {
 //        let mainCoordinator = HomeCoordinator(navigationController: navigationController)
 //        mainCoordinator.start()
     }
-
 }
