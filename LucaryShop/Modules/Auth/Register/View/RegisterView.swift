@@ -27,8 +27,10 @@ final class RegisterView:UIView {
     let nameTextField = CustomTextField().with(placeholder: "Enter your name")
     private let surnameLabel = UILabel().withStyle(text: "Surname", size: 16)
     let surnameTextField = CustomTextField().with(placeholder: "Enter your surname")
+    
     private let emailLabel = UILabel().withStyle(text: "Email", size: 16)
     let emailTextField = CustomTextField().with(placeholder: "Enter email (e.g. you@example.com)")
+    
     private let passwordLabel = UILabel().withStyle(text: "Password", size: 16)
     
     let passwordTextField: CustomTextField = {
