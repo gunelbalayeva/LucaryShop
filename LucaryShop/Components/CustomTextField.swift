@@ -24,6 +24,8 @@ final class CustomTextField:UITextField {
     private func commonInit() {
         setupUI()
         addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        addTarget(self, action: #selector(editingBegan), for: .editingDidBegin)
+        addTarget(self, action: #selector(editingEnded), for: .editingDidEnd)
     }
     
     private func setupUI() {
@@ -35,6 +37,30 @@ final class CustomTextField:UITextField {
         font = UIFont.systemFont(ofSize: 16)
         updateAppearance()
     }
+    
+    
+    @objc
+    private func editingBegan() {
+        animateBorderColor(to: UIColor(named: "baseButton")?.cgColor)
+        alpha = 1.0
+    }
+    
+    @objc
+    private func editingEnded() {
+        updateAppearance()
+    }
+    
+    private func animateBorderColor(to color: CGColor?) {
+        guard let color = color else { return }
+        
+        let animation = CABasicAnimation(keyPath: "borderColor")
+        animation.fromValue = layer.borderColor
+        animation.toValue = color
+        animation.duration = 0.25
+        layer.add(animation, forKey: "borderColor")
+        layer.borderColor = color
+    }
+    
     
     @objc
     private func editingChanged() {
@@ -78,9 +104,15 @@ final class CustomTextField:UITextField {
     }
     
     func with(placeholder: String) -> CustomTextField {
-            self.placeholder = placeholder
-            self.isSecureTextEntry = false
-            self.setHeight(42)
-            return self
-        }
+        self.placeholder = placeholder
+        self.isSecureTextEntry = false
+        self.setHeight(42)
+        self.attributedPlaceholder = NSAttributedString(
+            string: placeholder,
+            attributes: [
+                .foregroundColor: UIColor(named: "baseButton") ?? UIColor.gray
+            ]
+        )
+        return self
+    }
 }

@@ -30,8 +30,9 @@ final class RegisterView:UIView {
     private let emailLabel = UILabel().withStyle(text: "Email", size: 16)
     let emailTextField = CustomTextField().with(placeholder: "Enter your e-mail")
     private let passwordLabel = UILabel().withStyle(text: "Password", size: 16)
+    
     let passwordTextField: CustomTextField = {
-        let textField = CustomTextField()
+        let textField = CustomTextField().with(placeholder: "Enter your name")
         textField.placeholder = "Create your password"
         textField.isSecureTextEntry = true
         textField.layer.cornerRadius = 20
@@ -39,6 +40,7 @@ final class RegisterView:UIView {
         textField.setHeight(44)
         return textField
     }()
+    
     
     let createAccountButton: CustomButton = {
         let button = CustomButton(style: .filled)
