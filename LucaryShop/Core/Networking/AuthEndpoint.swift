@@ -70,6 +70,7 @@ enum AuthEndpoint {
             allHeaders["Authorization"] = "Bearer \(token)"
         }
 
+        print(allHeaders)
         return APIRequest(
             url: URL(string: "https://e-commerce-app-150649679863.europe-west1.run.app\(path)")!,
             method: method,

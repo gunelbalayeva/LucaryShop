@@ -13,4 +13,15 @@ extension UIViewController {
            alert.addAction(UIAlertAction(title: "OK", style: .default))
            present(alert, animated: true)
        }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        return email.contains("@") && email.contains(".")
+    }
+
+    func isValidPassword(_ password: String) -> Bool {
+        return password.count >= 6 &&
+            password.rangeOfCharacter(from: .decimalDigits) != nil &&
+            password.rangeOfCharacter(from: .letters) != nil
+    }
+
 }

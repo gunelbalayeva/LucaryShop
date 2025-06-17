@@ -48,6 +48,21 @@ final class RegisterViewController :UIViewController {
         let surname = registerView.surnameTextField.text ?? ""
         let email = registerView.emailTextField.text ?? ""
         let password = registerView.passwordTextField.text ?? ""
+        
+        guard !name.isEmpty, !surname.isEmpty, !email.isEmpty, !password.isEmpty else {
+            showError(AppRegisterError.invalidInput.userMessage)
+            return
+        }
+        
+        guard isValidEmail(email) else {
+            showError(AppRegisterError.invalidEmail.userMessage)
+            return
+        }
+        
+        guard isValidPassword(password) else {
+            showError(AppRegisterError.invalidPassword.userMessage)
+            return
+        }
         viewModel.register(name: name, surname: surname, email: email, password: password) {
             [weak self] result in
             DispatchQueue.main.async {
@@ -68,11 +83,4 @@ final class RegisterViewController :UIViewController {
             self?.coordinator.registerCompleted()
         }
     }
-    
-    private func showError(_ message: String) {
-        let alert = UIAlertController(title: "Xəta", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
-    
 }

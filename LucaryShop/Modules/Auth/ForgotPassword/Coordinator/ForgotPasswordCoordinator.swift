@@ -4,10 +4,6 @@
 //
 //  Created by User on 07.06.25.
 //
-// gunelbalayeva97@gmail.com
-// gunel1997
-// testov25@gmail.com
-    // test12345
 import UIKit
 enum ForgotPasswordStep {
     case verifyOTP

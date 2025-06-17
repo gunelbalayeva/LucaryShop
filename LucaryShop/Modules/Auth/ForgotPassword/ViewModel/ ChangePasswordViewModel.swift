@@ -12,6 +12,7 @@ final class ChangePasswordViewModel {
     
     private let cordinator :ForgotPasswordCoordinator
     @Published var password: String = ""
+    @Published var hasStartedTyping = false
     private let authService: AuthService
     
     init(cordinator: ForgotPasswordCoordinator, authService: AuthService) {
@@ -20,22 +21,32 @@ final class ChangePasswordViewModel {
     }
     
     var isPasswordValidPublisher: AnyPublisher<Bool, Never> {
-        return $password
-            .map { password in
-                password.count >= 6
-                && password.rangeOfCharacter(from: .decimalDigits) != nil
-                && password.rangeOfCharacter(from: .letters) != nil
-            }
-            .eraseToAnyPublisher()
-    }  // mes: abc123
-    
-    func changePassword(completion: @escaping (Result<Void, Error>) -> Void) {
-        let request = ResetPassword.ResetPasswordRequest(newPassword: password)
-        
-        authService.resetPassword(request: request) { result in
-            completion(result)
+            return $password
+                .map { password in
+                    password.count >= 6
+                    && password.rangeOfCharacter(from: .decimalDigits) != nil
+                    && password.rangeOfCharacter(from: .letters) != nil
+                }
+                .eraseToAnyPublisher()
         }
-    }
+        
+        func changePassword(completion: @escaping (Result<Void, Error>) -> Void)  {
+            let request = ResetPassword.ResetPasswordRequest(newPassword: password)
+            authService.resetPassword(request: request) { result in
+                switch result {
+                case .success(_):
+                    DispatchQueue.main.async {
+                        self.cordinator.start()
+                        completion(.success(()))
+                    }
+                case .failure(let error):
+                    print(error)
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
+                }
+            }
+        }
     
     func didSuccessfullyChangePassword() {
         cordinator.finish()

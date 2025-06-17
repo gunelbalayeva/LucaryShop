@@ -19,6 +19,11 @@ final class ChangePasswordViewController:UIViewController{
         setupBindings()
         setupActions()
         setupUI()
+        if let token = KeychainManager.shared.getToken() {
+            print(token)
+        } else {
+            print("Token tapılmadı")
+        }
     }
     
     private func setupUI() {
@@ -27,7 +32,7 @@ final class ChangePasswordViewController:UIViewController{
             make.edges.equalToSuperview()
         }
     }
-
+    
     
     init(viewModel: ChangePasswordViewModel, coordinator: ForgotPasswordCoordinator) {
         self.viewModel = viewModel
@@ -40,25 +45,67 @@ final class ChangePasswordViewController:UIViewController{
     }
     
     private func setupBindings() {
-        viewModel.isPasswordValidPublisher
-            .sink { [weak self] isValid in
-                self?.changePasswordView.emailTextField.textColor = isValid ? .systemGreen : .systemRed
-                self?.changePasswordView.passwordTextField.text = isValid ?
-                "Şifrə güclüdür" : "Şifrə ən azı 6 simvol olmalıdır"
-                self?.changePasswordView.changePasswordButton.isEnabled = isValid
-                self?.changePasswordView.changePasswordButton.alpha = isValid ? 1.0 : 0.5
+        Publishers.CombineLatest(
+            viewModel.$password,
+            viewModel.$hasStartedTyping
+        )
+
+        .dropFirst()
+        .receive(on: RunLoop.main)
+        .sink { [weak self] password, hasStartedTyping in
+            guard let self = self else { return }
+            
+            let isPasswordValid = password.count >= 6 &&
+                password.rangeOfCharacter(from: .decimalDigits) != nil &&
+                password.rangeOfCharacter(from: .letters) != nil
+            
+            if hasStartedTyping {
+                self.changePasswordView.passwordTextField.layer.borderWidth = 1
+                self.changePasswordView.passwordTextField.layer.borderColor = isPasswordValid ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
+            } else {
+                self.changePasswordView.passwordTextField.layer.borderWidth = 0
             }
-            .store(in: &cancellables)
+
+            self.changePasswordView.changePasswordButton.isEnabled = isPasswordValid
+            self.changePasswordView.changePasswordButton.alpha = isPasswordValid ? 1.0 : 0.5
+        }
+        .store(in: &cancellables)
     }
     
     private func setupActions() {
-        changePasswordView.passwordTextField.addTarget(self, action: #selector(passwordTextChanged), for: .editingChanged)
+        changePasswordView.passwordTextField.addTarget(self, action: #selector(passwordTextChanged(_:)), for: .editingChanged)
+        changePasswordView.passwordTextField.addTarget(self, action: #selector(passwordEditingDidBegin(_:)), for: .editingDidBegin)
+        changePasswordView.passwordTextField.addTarget(self, action: #selector(passwordEditingDidEnd(_:)), for: .editingDidEnd)
+        
         changePasswordView.changePasswordButton.addTarget(self, action: #selector(changePasswordTapped), for: .touchUpInside)
     }
     
+  
     @objc
     private func passwordTextChanged(_ sender: UITextField) {
         viewModel.password = sender.text ?? ""
+    }
+    
+    @objc
+    private func passwordEditingDidBegin(_ sender: UITextField) {
+        viewModel.hasStartedTyping = true
+    }
+    
+    @objc
+    private func passwordEditingDidEnd(_ sender: UITextField) {
+        let password = sender.text ?? ""
+        let isValid = password.count >= 6 &&
+        password.rangeOfCharacter(from: .decimalDigits) != nil &&
+        password.rangeOfCharacter(from: .letters) != nil
+        if !isValid {
+            let alert = UIAlertController(
+                title: "Weak password",
+                message: "The password must be at least 6 characters long and contain both letters and numbers.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+        }
     }
     
     @objc
@@ -70,16 +117,18 @@ final class ChangePasswordViewController:UIViewController{
                     self?.viewModel.didSuccessfullyChangePassword()
                 case .failure(let error):
                     self?.showError(error)
-                    
                 }
             }
         }
     }
     
     private func showError(_ error: Error) {
-        let alert = UIAlertController(title: "Xəta", message: error.localizedDescription, preferredStyle: .alert)
+        let alert = UIAlertController(
+            title: "Xəta",
+            message: error.localizedDescription,
+            preferredStyle: .alert
+        )
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
-    
 }

@@ -39,18 +39,24 @@ final class LoginViewController:UIViewController {
             guard let self = self else { return }
             let email = self.loginView.emailTextField.text ?? ""
             let password = self.loginView.passwordTextField.text ?? ""
-            
+            guard self.validateInput(email: email, password: password) else {
+                return
+            }
             self.viewModel.login(email: email, password: password) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success:
                         self.showSuccessAndNavigate(with: email)
                     case .failure(let error):
-                        self.showError(error.localizedDescription)
+                        if let appError = error as? AppLoginError {
+                            self.showError(appError.userMessage)
+                        } else {
+                            self.showError(error.localizedDescription)
+                        }
                     }
                 }
             }
-        }
+        }        
         loginView.onForgotPasswordTapped = { [weak self] in
             self?.viewModel.forgotPasswordTapped()
         }
@@ -61,11 +67,5 @@ final class LoginViewController:UIViewController {
         coordinator.showHomePage()
     }
     
-    
-    private func showError(_ message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true)
-    }
 }
 

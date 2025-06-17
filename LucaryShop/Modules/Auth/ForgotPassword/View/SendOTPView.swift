@@ -23,9 +23,8 @@ final class SendOTPView :UIView{
     
     let emailTextField: CustomTextField = {
         let textField = CustomTextField().with(placeholder: "Enter email (e.g. you@example.com)")
-        textField.isSecureTextEntry = true
         textField.layer.cornerRadius = 20
-        textField.textContentType = .none
+        textField.keyboardType = .default 
         textField.setHeight(44)
         return textField
     }()

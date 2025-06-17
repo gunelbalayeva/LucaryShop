@@ -6,6 +6,23 @@
 //
 
 import Foundation
+enum AppLoginError: Error {
+    case invalidCredentials
+    case networkError
+    case unknown
+
+    var userMessage: String {
+        switch self {
+        case .invalidCredentials:
+            return "No such user found or the password is incorrect"
+        case .networkError:
+            return "A network error occurred.."
+        case .unknown:
+            return "An unknown error occurred"
+        }
+    }
+}
+
 final class LoginViewModel {
     private let coordinator: LoginCoordinator
     private let authService: AuthService
@@ -24,9 +41,9 @@ final class LoginViewModel {
                     self.coordinator.showHomePage()
                     completion(.success(()))
                 }
-            case .failure(let error):
+            case .failure(_):
                 DispatchQueue.main.async {
-                    completion(.failure(error))
+                    completion(.failure(AppLoginError.invalidCredentials))
                 }
             }
         }

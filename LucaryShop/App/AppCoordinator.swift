@@ -53,10 +53,12 @@ final class AppCoordinator: Coordinator {
                 self?.startHomeFlow()
             }
             loginCoordinator.start()
+            
         case .register:
             let registerCoordinator = RegisterCoordinator(
                 parentCoordinator:self, navigationController: navigationController, authService: authService)
             registerCoordinator.onFinish = { [weak self] in
+                print("Hello Home - men bosam deye cagirilmiram")
                 self?.startHomeFlow()
             }
             registerCoordinator.start()

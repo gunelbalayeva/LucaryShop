@@ -30,7 +30,6 @@ final class LoginView :UIView{
     private let passwordLabel = UILabel().withStyle(text: "Password", size: 16)
     let passwordTextField: CustomTextField = {
         let textField = CustomTextField().with(placeholder: "Enter your password")
-        textField.isSecureTextEntry = true
         textField.setHeight(44)
         return textField
     }()

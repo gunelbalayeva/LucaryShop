@@ -19,7 +19,6 @@ final class ForgotPasswordViewController :UIViewController{
         setupUI()
     }
     
-    
     init(viewModel: ForgotPasswordViewModel, coordinator: ForgotPasswordCoordinator, authService: AuthService) {
         self.viewModel = viewModel
         self.coordinator = coordinator
@@ -40,11 +39,11 @@ final class ForgotPasswordViewController :UIViewController{
             guard let self = self else { return }
             let email = self.forgotView.emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
             guard !email.isEmpty else {
-                self.showError("Email daxil edilməlidir.")
+                self.showError("Email must be entered.")
                 return
             }
             guard isValidEmail(email) else {
-                self.showError("Düzgün formatda email daxil edin.")
+                self.showError("Please enter an email in the correct format")
                 return
             }
             self.viewModel.sendOTP(email: email) { result in
@@ -53,24 +52,10 @@ final class ForgotPasswordViewController :UIViewController{
                     case .success(let verificationId):
                         self.coordinator.navigateToVerifyOTP(with: verificationId)
                     case .failure(_):
-                        self.showError("OTP göndərilə bilmədi.")
+                        self.showError("OTP could not be sent.")
                     }
                 }
             }
         }
-        
     }
-    
-    private func showError(_ message: String) {
-        let alert = UIAlertController(title: "Xəta", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
-    
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
-    
 }

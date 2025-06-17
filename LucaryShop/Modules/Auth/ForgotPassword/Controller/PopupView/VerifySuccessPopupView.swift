@@ -40,7 +40,6 @@ final class VerifySuccessPopupView: UIView {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(200)
         }
-        messageLabel.text = "Salam, \(userName)! Lucary-ə xoş gəlmisiniz!"
         messageLabel.setStyle(fontSize: 18, weight: .bold, textColor: UIColor(named: "logoColor") ?? .black, alignment: .center, numberOfLines: 0)
         containerView.addSubview(messageLabel)
         messageLabel.snp.makeConstraints {

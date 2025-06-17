@@ -41,16 +41,11 @@ final class VerifyOTPViewController :UIViewController{
     
     private func submitOTP() {
         let code = [
-            vertfyOtpView.oneTextField.text,
-            vertfyOtpView.twoTextField.text,
-            vertfyOtpView.threeTextField.text,
-            vertfyOtpView.fourTextField.text,
-            vertfyOtpView.fiveTextField.text,
             vertfyOtpView.sixTextField.text
         ].compactMap { $0 }.joined()
         
         guard code.count == 6 else {
-            showErrorAnimation(message: "Zəhmət olmasa 6 rəqəmli OTP kodunu daxil edin")
+            showErrorAnimation(message: "Please enter the 6-digit OTP code.")
             return
         }
         let verificationId = viewModel.verificationId
@@ -60,10 +55,10 @@ final class VerifyOTPViewController :UIViewController{
                 
                 if success {
                     print("OTP Verified")
-                    self.showSuccessAndNavigate(with: "istifadəçi")
+                    self.showSuccessAndNavigate(with: "Dear user,")
                 } else {
                     print("OTP Failed")
-                    self.showErrorAnimation(message: "OTP kodu düzgün daxil edilməyib")
+                    self.showErrorAnimation(message: "OTP code entered incorrectly")
                 }
             }
         }

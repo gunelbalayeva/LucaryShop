@@ -112,6 +112,7 @@ final class CustomTextField:UITextField {
                 .foregroundColor: UIColor(named: "baseButton") ?? UIColor.gray
             ]
         )
+        self.keyboardType = .default 
         return self
     }
 }

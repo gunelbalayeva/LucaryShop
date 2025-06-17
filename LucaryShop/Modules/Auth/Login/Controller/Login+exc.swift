@@ -5,4 +5,27 @@
 //  Created by User on 17.06.25.
 //
 
-import Foundation
+import UIKit
+
+extension LoginViewController {
+    
+    func validateInput(email: String, password: String) -> Bool {
+        guard !email.isEmpty && !password.isEmpty else {
+            showError("Enter your email and password")
+            return false
+        }
+        
+        guard isValidEmail(email) else {
+            showError("Enter a valid email address (for example: name@example.com)")
+            return false
+        }
+        
+        guard isValidPassword(password) else {
+            showError("The password must be at least 6 characters long and contain both letters and numbers.")
+            return false
+        }
+        
+        return true
+    }
+    
+}

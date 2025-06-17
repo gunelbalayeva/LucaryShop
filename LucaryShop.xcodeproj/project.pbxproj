@@ -125,6 +125,9 @@
 		CED1C38D2DFF09280064AC1F /* VerifyOTP.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C38C2DFF09280064AC1F /* VerifyOTP.json */; };
 		CED1C3902DFF37E40064AC1F /* ErrorPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C38F2DFF37E40064AC1F /* ErrorPopupView.swift */; };
 		CED1C3922DFF38960064AC1F /* VerifySuccessPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3912DFF38960064AC1F /* VerifySuccessPopupView.swift */; };
+		CED1C3942E004FC10064AC1F /* ChangePassword.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C3932E004FC10064AC1F /* ChangePassword.json */; };
+		CED1C3962E018D880064AC1F /* Login+exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3952E018D880064AC1F /* Login+exc.swift */; };
+		CED1C39A2E01924D0064AC1F /* ViewController+exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3992E01924D0064AC1F /* ViewController+exc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -241,6 +244,9 @@
 		CED1C38C2DFF09280064AC1F /* VerifyOTP.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VerifyOTP.json; sourceTree = "<group>"; };
 		CED1C38F2DFF37E40064AC1F /* ErrorPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopupView.swift; sourceTree = "<group>"; };
 		CED1C3912DFF38960064AC1F /* VerifySuccessPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifySuccessPopupView.swift; sourceTree = "<group>"; };
+		CED1C3932E004FC10064AC1F /* ChangePassword.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ChangePassword.json; sourceTree = "<group>"; };
+		CED1C3952E018D880064AC1F /* Login+exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+exc.swift"; sourceTree = "<group>"; };
+		CED1C3992E01924D0064AC1F /* ViewController+exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+exc.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +286,7 @@
 		CE1787E22DF46D3100A91620 /* LucaryShop */ = {
 			isa = PBXGroup;
 			children = (
+				CE1788042DF4722C00A91620 /* Extensions */,
 				CE1788192DF473FF00A91620 /* Components */,
 				CE17880D2DF472E000A91620 /* Modules */,
 				CE1788032DF4721900A91620 /* Core */,
@@ -319,7 +326,6 @@
 				CE17880B2DF472A800A91620 /* Services */,
 				CE17880A2DF4728C00A91620 /* Utilities */,
 				CE1788092DF4727B00A91620 /* Networking */,
-				CE1788042DF4722C00A91620 /* Extensions */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 				CE17881D2DF4862D00A91620 /* String+Localization.swift */,
 				CE17881F2DF4864000A91620 /* Combine+Extensions.swift */,
 				CE5E3CA32DF8D49E005B827B /* UIStackView.swift */,
+				CED1C3992E01924D0064AC1F /* ViewController+exc.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -404,9 +411,9 @@
 			isa = PBXGroup;
 			children = (
 				CE5E3C982DF88581005B827B /* Build */,
-				CE46264B2DF61BBD0026AFE6 /* Controller */,
 				CE5C6C3A2DF4AF6B00821985 /* ViewModel */,
 				CE5C6C392DF4AF6400821985 /* View */,
+				CE46264B2DF61BBD0026AFE6 /* Controller */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -414,11 +421,11 @@
 		CE17880F2DF4730700A91620 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				CE5E3C772DF82683005B827B /* Controller */,
 				CE5E3C762DF82659005B827B /* Root */,
 				CE5C6C472DF4B03200821985 /* Builder */,
 				CE5C6C462DF4B02A00821985 /* ViewModel */,
 				CE5C6C452DF4B02300821985 /* View */,
+				CE5E3C772DF82683005B827B /* Controller */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -436,10 +443,10 @@
 		CE1788112DF4733000A91620 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CEA1C3332DFADD8700E9B74B /* Controller */,
 				CE1788432DF48E4A00A91620 /* Coordinator */,
 				CE1788402DF48E2800A91620 /* Builder */,
 				CE17883D2DF48DD500A91620 /* ViewModel */,
+				CEA1C3332DFADD8700E9B74B /* Controller */,
 				CE17883A2DF48D8E00A91620 /* View */,
 			);
 			path = Login;
@@ -448,11 +455,11 @@
 		CE1788122DF4733E00A91620 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				CEA1C3302DFAC9D500E9B74B /* Controller */,
 				CE5C6BF82DF48FD400821985 /* Coordinator */,
 				CE5C6BF12DF48F4D00821985 /* Builder */,
 				CE1788472DF48E9500A91620 /* ViewModel */,
 				CE1788462DF48E8300A91620 /* View */,
+				CEA1C3302DFAC9D500E9B74B /* Controller */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -463,8 +470,8 @@
 				CE5C6C072DF491B100821985 /* Coordinator */,
 				CE5C6C002DF490B100821985 /* Builder */,
 				CE5C6BFF2DF490A600821985 /* ViewModel */,
-				CE5C6BFE2DF4909F00821985 /* View */,
 				CEA1C3362DFAE16200E9B74B /* Controller */,
+				CE5C6BFE2DF4909F00821985 /* View */,
 			);
 			path = ForgotPassword;
 			sourceTree = "<group>";
@@ -899,6 +906,7 @@
 			isa = PBXGroup;
 			children = (
 				CE17883B2DF48DA200A91620 /* LoginViewController.swift */,
+				CED1C3952E018D880064AC1F /* Login+exc.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -931,6 +939,7 @@
 		CEA1C3742DFE175200E9B74B /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C3932E004FC10064AC1F /* ChangePassword.json */,
 				CED1C38C2DFF09280064AC1F /* VerifyOTP.json */,
 				CED1C38A2DFEB9ED0064AC1F /* Error.json */,
 				CED1C3882DFEB6330064AC1F /* Success.json */,
@@ -1038,6 +1047,7 @@
 				CE5E3C702DF757BF005B827B /* MeaCulpa-Regular.ttf in Resources */,
 				CED1C3892DFEB6330064AC1F /* Success.json in Resources */,
 				CE5E3C912DF85C8A005B827B /* Oswald-VariableFont_wght.ttf in Resources */,
+				CED1C3942E004FC10064AC1F /* ChangePassword.json in Resources */,
 				CEA1C37A2DFE1BA400E9B74B /* fireworks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1081,6 +1091,7 @@
 				CE1788302DF486E900A91620 /* URLSession+Extensions.swift in Sources */,
 				CE5E3C8F2DF856BE005B827B /* GetStartedOnboardingBuilder.swift in Sources */,
 				CE1788282DF4868D00A91620 /* UserDefaultsManager.swift in Sources */,
+				CED1C3962E018D880064AC1F /* Login+exc.swift in Sources */,
 				CE5C6C042DF4916700821985 /* ForgotPasswordViewModel.swift in Sources */,
 				CE46264D2DF61BD80026AFE6 /* SplashView.swift in Sources */,
 				CE1788222DF4865500A91620 /* NotificationManager.swift in Sources */,
@@ -1092,6 +1103,7 @@
 				CE5E3C9A2DF885C1005B827B /* SplashBuild.swift in Sources */,
 				CE5C6C502DF4B0B200821985 /* OnboardingBuilder.swift in Sources */,
 				CE17883C2DF48DA200A91620 /* LoginViewController.swift in Sources */,
+				CED1C39A2E01924D0064AC1F /* ViewController+exc.swift in Sources */,
 				CEA1C3352DFADDA400E9B74B /* LoginView.swift in Sources */,
 				CE1788342DF4895B00A91620 /* CartViewController.swift in Sources */,
 				CE5C6C322DF4AF0200821985 /* User.swift in Sources */,
