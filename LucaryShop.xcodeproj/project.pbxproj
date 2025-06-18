@@ -14,7 +14,6 @@
 		CE1787F92DF46D4500A91620 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE1787F82DF46D4500A91620 /* SnapKit */; };
 		CE1787FB2DF46D4500A91620 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CE1787FA2DF46D4500A91620 /* SnapKit-Dynamic */; };
 		CE1787FE2DF4712900A91620 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1787FD2DF4712900A91620 /* AppCoordinator.swift */; };
-		CE1788022DF471A700A91620 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1788012DF471A700A91620 /* Localizable.strings */; };
 		CE1788062DF4724700A91620 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788052DF4724700A91620 /* UIView+Ext.swift */; };
 		CE1788082DF4725C00A91620 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788072DF4725C00A91620 /* UILabel+Ext.swift */; };
 		CE17881C2DF4861C00A91620 /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17881B2DF4861C00A91620 /* UIImageView+Kingfisher.swift */; };
@@ -145,7 +144,6 @@
 		CE1787EF2DF46D3700A91620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE1787F12DF46D3700A91620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1787FD2DF4712900A91620 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		CE1788012DF471A700A91620 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CE1788052DF4724700A91620 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		CE1788072DF4725C00A91620 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		CE17881B2DF4861C00A91620 /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
@@ -261,6 +259,7 @@
 		CED1C3AE2E01EA090064AC1F /* LanguageSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionCoordinator.swift; sourceTree = "<group>"; };
 		CED1C3B12E01EE660064AC1F /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
 		CED1C3B32E02AF7F0064AC1F /* InputSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSanitizer.swift; sourceTree = "<group>"; };
+		CED1C3C02E02F9B10064AC1F /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,8 +336,9 @@
 		CE1788032DF4721900A91620 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C3B62E02C5880064AC1F /* Endpoints */,
 				CE17880C2DF472C500A91620 /* Models */,
-				CE17880B2DF472A800A91620 /* Services */,
+				CE17880B2DF472A800A91620 /* MyServices */,
 				CE1788092DF4727B00A91620 /* Networking */,
 			);
 			path = Core;
@@ -362,9 +362,10 @@
 		CE1788092DF4727B00A91620 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				CEA1C3692DFC600500E9B74B /* URLSessionNetworkService.swift */,
+				CEA1C3512DFC1D5D00E9B74B /* NetworkService.swift */,
 				CE1788292DF486B700A91620 /* APIClient.swift */,
 				CE17882B2DF486C500A91620 /* RequestBuilder.swift */,
-				CE17882D2DF486D200A91620 /* AuthEndpoint.swift */,
 				CE1788312DF486FA00A91620 /* AlamofireNetworkService.swift */,
 				CEA1C3582DFC4C2200E9B74B /* NetworkError.swift */,
 			);
@@ -383,22 +384,20 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		CE17880B2DF472A800A91620 /* Services */ = {
+		CE17880B2DF472A800A91620 /* MyServices */ = {
 			isa = PBXGroup;
 			children = (
 				CE5C6C512DF4B16F00821985 /* ProductService.swift */,
-				CEA1C3512DFC1D5D00E9B74B /* NetworkService.swift */,
 				CEA1C3672DFC5C8800E9B74B /* AuthService.swift */,
-				CEA1C3692DFC600500E9B74B /* URLSessionNetworkService.swift */,
 			);
-			path = Services;
+			path = MyServices;
 			sourceTree = "<group>";
 		};
 		CE17880C2DF472C500A91620 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C3B72E02C5B20064AC1F /* Onboarding */,
 				CEA1C3662DFC52ED00E9B74B /* AuthModel */,
-				CE5E3C7A2DF826D5005B827B /* OnboardingModel.swift */,
 				CE5C6C312DF4AF0200821985 /* User.swift */,
 				CE5C6C332DF4AF1400821985 /* Product.swift */,
 				CE5C6C352DF4AF2300821985 /* Order.swift */,
@@ -410,7 +409,10 @@
 		CE17880D2DF472E000A91620 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C3B92E02F3BC0064AC1F /* Companies */,
+				CED1C3B82E02F3AA0064AC1F /* Categories */,
 				CED1C39F2E01E8310064AC1F /* Localization */,
+				CED1C3B52E02BE980064AC1F /* Favorites */,
 				CE1788182DF473E000A91620 /* Profile */,
 				CE1788172DF473D400A91620 /* Orders */,
 				CE1788162DF4739E00A91620 /* Cart */,
@@ -559,7 +561,6 @@
 		CE1788392DF48B7C00A91620 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				CE1788012DF471A700A91620 /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -1042,6 +1043,43 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		CED1C3B52E02BE980064AC1F /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		CED1C3B62E02C5880064AC1F /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				CE17882D2DF486D200A91620 /* AuthEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		CED1C3B72E02C5B20064AC1F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				CE5E3C7A2DF826D5005B827B /* OnboardingModel.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		CED1C3B82E02F3AA0064AC1F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		CED1C3B92E02F3BC0064AC1F /* Companies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Companies;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1093,6 +1131,7 @@
 			knownRegions = (
 				en,
 				Base,
+				az,
 			);
 			mainGroup = CE1787D72DF46D3100A91620;
 			packageReferences = (
@@ -1118,7 +1157,6 @@
 				CED1C38B2DFEB9ED0064AC1F /* Error.json in Resources */,
 				CE1787F02DF46D3700A91620 /* LaunchScreen.storyboard in Resources */,
 				CED1C38D2DFF09280064AC1F /* VerifyOTP.json in Resources */,
-				CE1788022DF471A700A91620 /* Localizable.strings in Resources */,
 				CE5E3C7D2DF84DA7005B827B /* Savate-VariableFont_wght.ttf in Resources */,
 				CE1787ED2DF46D3700A91620 /* Assets.xcassets in Resources */,
 				CE5E3C702DF757BF005B827B /* MeaCulpa-Regular.ttf in Resources */,
@@ -1256,6 +1294,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				CE1787EF2DF46D3700A91620 /* Base */,
+				CED1C3C02E02F9B10064AC1F /* az */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1268,6 +1307,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1331,6 +1371,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
