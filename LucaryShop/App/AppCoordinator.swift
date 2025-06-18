@@ -14,7 +14,7 @@ protocol Coordinator:AnyObject {
 
 enum AuthFlowType {
     case login
-    case register
+    case register 
     case forgotPassword
 }
 
@@ -23,6 +23,10 @@ enum TabbarFlowType {
     case order
     case favorites
     case profile
+}
+
+enum ProfileFlowType {
+    case language
 }
 
 final class AppCoordinator: Coordinator {
@@ -84,15 +88,24 @@ final class AppCoordinator: Coordinator {
     }
     
     func startHomeFlow(_ flow :TabbarFlowType) {
-//        switch flow{
-//        case .home :
-//            
-//        case .order :
-//            
-//        case .favorites:
-//
-//        case .profile :
-//            
-//        }
+        //        switch flow{
+        //        case .home :
+        //
+        //        case .order :
+        //
+        //        case .favorites:
+        //
+        //        case .profile :
+        //
+        //        }
+    }
+    
+    func startProfile(_ flow :ProfileFlowType){
+        switch flow {
+        case .language:
+            let languageCoordinator = LanguageSelectionCoordinator(
+                parentCoordinator: self, navigationController: navigationController)
+            languageCoordinator.startLanguage()
+        }
     }
 }

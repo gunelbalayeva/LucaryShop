@@ -10,7 +10,7 @@ enum AppLoginError: Error {
     case invalidCredentials
     case networkError
     case unknown
-
+    
     var userMessage: String {
         switch self {
         case .invalidCredentials:
@@ -31,6 +31,7 @@ final class LoginViewModel {
         self.coordinator = coordinator
         self.authService = authService
     }
+    
     
     func login(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let request = Login.LoginRequest(email: email, password: password)

@@ -38,13 +38,10 @@ final class LanguageCell: UITableViewCell{
         
         stackView.addArrangedSubview(iconImageView)
         stackView.addArrangedSubview(languageLabel)
-        
         contentView.addSubview(stackView)
-        
         iconImageView.snp.makeConstraints { make in
             make.width.height.equalTo(30)
         }
-        
         stackView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(16)
         }

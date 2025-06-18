@@ -40,6 +40,7 @@ final class LocalizationManager {
         set {
             UserDefaults.standard.setValue(newValue.rawValue, forKey: languageKey)
             UserDefaults.standard.synchronize()
+            NotificationCenter.default.post(name: .appLanguageDidChange, object: nil)
         }
     }
     

@@ -15,6 +15,4 @@ final class LanguageSelectionViewModel{
     init(coordinator: LanguageSelectionCoordinator) {
         self.coordinator = coordinator
     }
-    
-    
 }
