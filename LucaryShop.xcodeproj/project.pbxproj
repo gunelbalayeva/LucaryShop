@@ -128,6 +128,13 @@
 		CED1C3942E004FC10064AC1F /* ChangePassword.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C3932E004FC10064AC1F /* ChangePassword.json */; };
 		CED1C3962E018D880064AC1F /* Login+exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3952E018D880064AC1F /* Login+exc.swift */; };
 		CED1C39A2E01924D0064AC1F /* ViewController+exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3992E01924D0064AC1F /* ViewController+exc.swift */; };
+		CED1C3A12E01E9080064AC1F /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3A02E01E9080064AC1F /* LanguageSelectionViewController.swift */; };
+		CED1C3A62E01E98B0064AC1F /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3A52E01E98B0064AC1F /* LanguageSelectionView.swift */; };
+		CED1C3A92E01E9B90064AC1F /* LanguageSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3A82E01E9B90064AC1F /* LanguageSelectionViewModel.swift */; };
+		CED1C3AC2E01E9E30064AC1F /* LanguageSelectionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3AB2E01E9E30064AC1F /* LanguageSelectionBuilder.swift */; };
+		CED1C3AF2E01EA0A0064AC1F /* LanguageSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3AE2E01EA090064AC1F /* LanguageSelectionCoordinator.swift */; };
+		CED1C3B22E01EE660064AC1F /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3B12E01EE660064AC1F /* LanguageCell.swift */; };
+		CED1C3B42E02AF7F0064AC1F /* InputSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C3B32E02AF7F0064AC1F /* InputSanitizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -247,6 +254,13 @@
 		CED1C3932E004FC10064AC1F /* ChangePassword.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ChangePassword.json; sourceTree = "<group>"; };
 		CED1C3952E018D880064AC1F /* Login+exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+exc.swift"; sourceTree = "<group>"; };
 		CED1C3992E01924D0064AC1F /* ViewController+exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+exc.swift"; sourceTree = "<group>"; };
+		CED1C3A02E01E9080064AC1F /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
+		CED1C3A52E01E98B0064AC1F /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
+		CED1C3A82E01E9B90064AC1F /* LanguageSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewModel.swift; sourceTree = "<group>"; };
+		CED1C3AB2E01E9E30064AC1F /* LanguageSelectionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionBuilder.swift; sourceTree = "<group>"; };
+		CED1C3AE2E01EA090064AC1F /* LanguageSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionCoordinator.swift; sourceTree = "<group>"; };
+		CED1C3B12E01EE660064AC1F /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
+		CED1C3B32E02AF7F0064AC1F /* InputSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSanitizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +300,7 @@
 		CE1787E22DF46D3100A91620 /* LucaryShop */ = {
 			isa = PBXGroup;
 			children = (
+				CE17880A2DF4728C00A91620 /* Utilities */,
 				CE1788042DF4722C00A91620 /* Extensions */,
 				CE1788192DF473FF00A91620 /* Components */,
 				CE17880D2DF472E000A91620 /* Modules */,
@@ -324,7 +339,6 @@
 			children = (
 				CE17880C2DF472C500A91620 /* Models */,
 				CE17880B2DF472A800A91620 /* Services */,
-				CE17880A2DF4728C00A91620 /* Utilities */,
 				CE1788092DF4727B00A91620 /* Networking */,
 			);
 			path = Core;
@@ -364,6 +378,7 @@
 				CE1788232DF4866D00A91620 /* LocalizationManager.swift */,
 				CE1788252DF4867C00A91620 /* KeychainManager.swift */,
 				CE1788272DF4868D00A91620 /* UserDefaultsManager.swift */,
+				CED1C3B32E02AF7F0064AC1F /* InputSanitizer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -395,6 +410,7 @@
 		CE17880D2DF472E000A91620 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C39F2E01E8310064AC1F /* Localization */,
 				CE1788182DF473E000A91620 /* Profile */,
 				CE1788172DF473D400A91620 /* Orders */,
 				CE1788162DF4739E00A91620 /* Cart */,
@@ -965,6 +981,67 @@
 			path = PopupView;
 			sourceTree = "<group>";
 		};
+		CED1C39F2E01E8310064AC1F /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C3B02E01EE570064AC1F /* Cells */,
+				CED1C3AD2E01E9F40064AC1F /* Coordinator */,
+				CED1C3AA2E01E9CE0064AC1F /* Builder */,
+				CED1C3A72E01E9A80064AC1F /* ViewModel */,
+				CED1C3A22E01E90F0064AC1F /* Controller */,
+				CED1C3A32E01E9560064AC1F /* View */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		CED1C3A22E01E90F0064AC1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C3A02E01E9080064AC1F /* LanguageSelectionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CED1C3A32E01E9560064AC1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C3A52E01E98B0064AC1F /* LanguageSelectionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CED1C3A72E01E9A80064AC1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C3A82E01E9B90064AC1F /* LanguageSelectionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CED1C3AA2E01E9CE0064AC1F /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C3AB2E01E9E30064AC1F /* LanguageSelectionBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		CED1C3AD2E01E9F40064AC1F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C3AE2E01EA090064AC1F /* LanguageSelectionCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CED1C3B02E01EE570064AC1F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C3B12E01EE660064AC1F /* LanguageCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1059,6 +1136,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED1C3B22E01EE660064AC1F /* LanguageCell.swift in Sources */,
+				CED1C3A92E01E9B90064AC1F /* LanguageSelectionViewModel.swift in Sources */,
 				CE5C6C062DF4918500821985 /* ForgotPasswordViewController.swift in Sources */,
 				CE17883F2DF48E2000A91620 /* LoginViewModel.swift in Sources */,
 				CEA1C3522DFC1D5D00E9B74B /* NetworkService.swift in Sources */,
@@ -1081,6 +1160,7 @@
 				CE5E3C872DF855F7005B827B /* PermissionsOnboardingViewController.swift in Sources */,
 				CE5C6C522DF4B16F00821985 /* ProductService.swift in Sources */,
 				CE5C6C1D2DF4A12F00821985 /* ProductDetailViewModel.swift in Sources */,
+				CED1C3AC2E01E9E30064AC1F /* LanguageSelectionBuilder.swift in Sources */,
 				CE5E3C792DF826B3005B827B /* OnboardingPageView.swift in Sources */,
 				CE5E3CA02DF89F80005B827B /* PermissionsOnboardingBuilder.swift in Sources */,
 				CE1788382DF4897800A91620 /* CartBuilder.swift in Sources */,
@@ -1092,9 +1172,11 @@
 				CE5E3C8F2DF856BE005B827B /* GetStartedOnboardingBuilder.swift in Sources */,
 				CE1788282DF4868D00A91620 /* UserDefaultsManager.swift in Sources */,
 				CED1C3962E018D880064AC1F /* Login+exc.swift in Sources */,
+				CED1C3A12E01E9080064AC1F /* LanguageSelectionViewController.swift in Sources */,
 				CE5C6C042DF4916700821985 /* ForgotPasswordViewModel.swift in Sources */,
 				CE46264D2DF61BD80026AFE6 /* SplashView.swift in Sources */,
 				CE1788222DF4865500A91620 /* NotificationManager.swift in Sources */,
+				CED1C3B42E02AF7F0064AC1F /* InputSanitizer.swift in Sources */,
 				CEA1C34C2DFB0BAB00E9B74B /*  ChangePasswordView.swift in Sources */,
 				CEA1C3592DFC4C2200E9B74B /* NetworkError.swift in Sources */,
 				CE5C6C362DF4AF2300821985 /* Order.swift in Sources */,
@@ -1106,6 +1188,7 @@
 				CED1C39A2E01924D0064AC1F /* ViewController+exc.swift in Sources */,
 				CEA1C3352DFADDA400E9B74B /* LoginView.swift in Sources */,
 				CE1788342DF4895B00A91620 /* CartViewController.swift in Sources */,
+				CED1C3A62E01E98B0064AC1F /* LanguageSelectionView.swift in Sources */,
 				CE5C6C322DF4AF0200821985 /* User.swift in Sources */,
 				CE1788062DF4724700A91620 /* UIView+Ext.swift in Sources */,
 				CE5C6C232DF4A15D00821985 /* ProductDetailCoordinator.swift in Sources */,
@@ -1118,6 +1201,7 @@
 				CE5C6BF52DF48FB200821985 /* RegisterViewModel.swift in Sources */,
 				CED1C3922DFF38960064AC1F /* VerifySuccessPopupView.swift in Sources */,
 				CEA1C3482DFB0AAD00E9B74B /* VerifyOTPViewModel.swift in Sources */,
+				CED1C3AF2E01EA0A0064AC1F /* LanguageSelectionCoordinator.swift in Sources */,
 				CE5C6C2B2DF4A1A800821985 /* ProfileViewModel.swift in Sources */,
 				CEA1C3502DFB0C0800E9B74B /*  ChangePasswordBuilder.swift in Sources */,
 				CEA1C36C2DFC613900E9B74B /* EmptyResponse.swift in Sources */,

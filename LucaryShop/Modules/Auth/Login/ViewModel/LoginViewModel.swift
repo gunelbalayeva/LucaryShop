@@ -38,8 +38,8 @@ final class LoginViewModel {
             switch result {
             case .success(_):
                 DispatchQueue.main.async {
-                    self.coordinator.showHomePage()
                     completion(.success(()))
+                    self.coordinator.finish()
                 }
             case .failure(_):
                 DispatchQueue.main.async {

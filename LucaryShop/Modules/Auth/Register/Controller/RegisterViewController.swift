@@ -44,10 +44,10 @@ final class RegisterViewController :UIViewController {
     
     @objc
     private func registerButtonTapped() {
-        let name = registerView.nameTextField.text ?? ""
-        let surname = registerView.surnameTextField.text ?? ""
-        let email = registerView.emailTextField.text ?? ""
-        let password = registerView.passwordTextField.text ?? ""
+        let name = InputSanitizer.trimmed(registerView.nameTextField.text)
+            let surname = InputSanitizer.trimmed(registerView.surnameTextField.text)
+            let email = InputSanitizer.trimmed(registerView.emailTextField.text)
+            let password = InputSanitizer.trimmed(registerView.passwordTextField.text)
         
         guard !name.isEmpty, !surname.isEmpty, !email.isEmpty, !password.isEmpty else {
             showError(AppRegisterError.invalidInput.userMessage)

@@ -37,7 +37,9 @@ final class ForgotPasswordViewController :UIViewController{
         }
         forgotView.onSendCodeTapped = { [weak self] in
             guard let self = self else { return }
-            let email = self.forgotView.emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+            let rawEmail = forgotView.emailTextField.text
+            let email = InputSanitizer.trimmed(rawEmail)
+//            let email = self.forgotView.emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
             guard !email.isEmpty else {
                 self.showError("Email must be entered.")
                 return

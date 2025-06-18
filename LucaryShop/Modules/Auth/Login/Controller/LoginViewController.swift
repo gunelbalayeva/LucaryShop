@@ -37,8 +37,8 @@ final class LoginViewController:UIViewController {
     private func setupActions() {
         loginView.onLoginTapped = { [weak self] in
             guard let self = self else { return }
-            let email = self.loginView.emailTextField.text ?? ""
-            let password = self.loginView.passwordTextField.text ?? ""
+            let email = InputSanitizer.trimmed(self.loginView.emailTextField.text)
+            let password = InputSanitizer.trimmed(self.loginView.passwordTextField.text)
             guard self.validateInput(email: email, password: password) else {
                 return
             }
@@ -56,7 +56,7 @@ final class LoginViewController:UIViewController {
                     }
                 }
             }
-        }        
+        }
         loginView.onForgotPasswordTapped = { [weak self] in
             self?.viewModel.forgotPasswordTapped()
         }
@@ -64,7 +64,7 @@ final class LoginViewController:UIViewController {
     
     
     private func showSuccessAndNavigate(with name: String) {
-        coordinator.showHomePage()
+        coordinator.finish()
     }
     
 }

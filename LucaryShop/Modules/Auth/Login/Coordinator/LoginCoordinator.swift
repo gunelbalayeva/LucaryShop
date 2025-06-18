@@ -12,7 +12,7 @@ final class LoginCoordinator {
     var navigationController: UINavigationController
     private let authService: AuthService
     let verificationId: String
-
+    
     var onFinish: (() -> Void)?
     
     init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, authService: AuthService, verificationId: String, onFinish: ( () -> Void)? = nil) {
@@ -31,12 +31,6 @@ final class LoginCoordinator {
     func finish() {
         onFinish?()
     }
-    
-    func showHomePage() {
-        let homeVC = HomeViewController()
-        navigationController.pushViewController(homeVC, animated: true)
-    }
-    
     
     func showForgotPasswordPage() {
         let forgotCoordinator = ForgotPasswordCoordinator(

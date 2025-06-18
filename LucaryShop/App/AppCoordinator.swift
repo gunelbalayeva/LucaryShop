@@ -18,11 +18,18 @@ enum AuthFlowType {
     case forgotPassword
 }
 
+enum TabbarFlowType {
+    case home
+    case order
+    case favorites
+    case profile
+}
+
 final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     private let authService: AuthService
     let verificationId: String
-
+    
     init(navigationController: UINavigationController, authService: AuthService, verificationId: String) {
         self.navigationController = navigationController
         self.authService = authService
@@ -50,7 +57,7 @@ final class AppCoordinator: Coordinator {
             let loginCoordinator = LoginCoordinator(
                 parentCoordinator: self, navigationController: navigationController, authService: authService, verificationId: verificationId)
             loginCoordinator.onFinish = { [weak self] in
-                self?.startHomeFlow()
+                self?.startHomeFlow(.home)
             }
             loginCoordinator.start()
             
@@ -59,7 +66,7 @@ final class AppCoordinator: Coordinator {
                 parentCoordinator:self, navigationController: navigationController, authService: authService)
             registerCoordinator.onFinish = { [weak self] in
                 print("Hello Home - men bosam deye cagirilmiram")
-                self?.startHomeFlow()
+                self?.startHomeFlow(.home)
             }
             registerCoordinator.start()
             
@@ -70,8 +77,22 @@ final class AppCoordinator: Coordinator {
         }
     }
     
-    func startHomeFlow() {
-//        let mainCoordinator = HomeCoordinator(navigationController: navigationController)
-//        mainCoordinator.start()
+    func didFinishForgotPasswordFlow() {
+        if !(navigationController.topViewController is LoginViewController) {
+            startAuthFlow(.login)
+        }
+    }
+    
+    func startHomeFlow(_ flow :TabbarFlowType) {
+//        switch flow{
+//        case .home :
+//            
+//        case .order :
+//            
+//        case .favorites:
+//
+//        case .profile :
+//            
+//        }
     }
 }

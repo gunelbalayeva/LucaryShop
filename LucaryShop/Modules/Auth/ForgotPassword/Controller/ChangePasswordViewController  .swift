@@ -54,11 +54,7 @@ final class ChangePasswordViewController:UIViewController{
         .receive(on: RunLoop.main)
         .sink { [weak self] password, hasStartedTyping in
             guard let self = self else { return }
-            
-            let isPasswordValid = password.count >= 6 &&
-                password.rangeOfCharacter(from: .decimalDigits) != nil &&
-                password.rangeOfCharacter(from: .letters) != nil
-            
+            let isPasswordValid = InputSanitizer.isValidPassword(password)
             if hasStartedTyping {
                 self.changePasswordView.passwordTextField.layer.borderWidth = 1
                 self.changePasswordView.passwordTextField.layer.borderColor = isPasswordValid ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
@@ -83,7 +79,7 @@ final class ChangePasswordViewController:UIViewController{
   
     @objc
     private func passwordTextChanged(_ sender: UITextField) {
-        viewModel.password = sender.text ?? ""
+        viewModel.password = InputSanitizer.trimmed(sender.text)
     }
     
     @objc
@@ -93,19 +89,17 @@ final class ChangePasswordViewController:UIViewController{
     
     @objc
     private func passwordEditingDidEnd(_ sender: UITextField) {
-        let password = sender.text ?? ""
-        let isValid = password.count >= 6 &&
-        password.rangeOfCharacter(from: .decimalDigits) != nil &&
-        password.rangeOfCharacter(from: .letters) != nil
-        if !isValid {
-            let alert = UIAlertController(
-                title: "Weak password",
-                message: "The password must be at least 6 characters long and contain both letters and numbers.",
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
-        }
+        let text = sender.text
+           let isValid = InputSanitizer.isValidPassword(text)
+           if !isValid {
+               let alert = UIAlertController(
+                   title: "Weak password",
+                   message: "The password must be at least 6 characters long and contain both letters and numbers.",
+                   preferredStyle: .alert
+               )
+               alert.addAction(UIAlertAction(title: "OK", style: .default))
+               present(alert, animated: true)
+           }
     }
     
     @objc

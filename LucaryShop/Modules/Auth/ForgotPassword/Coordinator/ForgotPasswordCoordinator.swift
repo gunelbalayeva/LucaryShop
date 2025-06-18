@@ -26,7 +26,6 @@ final class ForgotPasswordCoordinator {
     func start() {
         let vc = ForgotPasswordBuilder(cordinator: self, authService: authService).build()
         navigationController.setViewControllers([vc], animated: true)
-        
     }
     
     func navigate(to step: ForgotPasswordStep) {
@@ -41,12 +40,11 @@ final class ForgotPasswordCoordinator {
     }
     
     func finish() {
-        parentCoordinator?.startAuthFlow(.login)
+        parentCoordinator?.didFinishForgotPasswordFlow()
     }
     
     func navigateToVerifyOTP(with verificationId: String) {
         let vc = VerifyOTPBuilder(cordinator: self, authService: authService, verificationId: verificationId).build()
         navigationController.pushViewController(vc, animated: true)
     }
-
 }
