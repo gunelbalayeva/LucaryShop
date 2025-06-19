@@ -10,15 +10,13 @@ import UIKit
 final class ProductDetailViewController:UIViewController {
     private let productDetailView = ProductDetailView()
     private let viewModel:ProductDetailViewModel
-    private let coordinator: ProductDetailCoordinator
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    init(viewModel: ProductDetailViewModel, coordinator: ProductDetailCoordinator) {
+    init(viewModel: ProductDetailViewModel) {
         self.viewModel = viewModel
-        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     

@@ -1,20 +1,21 @@
 //
-//  CartViewController.swift
+//  ProfileViewController.swift
 //  LucaryShop
 //
 //  Created by User on 07.06.25.
 //
 
 import UIKit
-final class CartViewController:UIViewController {
-    private let productDetailView = CartView()
-    private let viewModel:CartViewModel
+
+final class ProfileViewController:UIViewController{
+    private let profileView = ProfileView()
+    private let viewModel : ProfileViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    init(viewModel: CartViewModel) {
+    init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -22,5 +23,4 @@ final class CartViewController:UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

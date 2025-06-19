@@ -30,7 +30,7 @@ final class ProductDetailBuilder {
                                                favoritesService: favoritesService,
                                                cartService: cartService,
                                                coordinator: coordinator)
-        let vc  = ProductDetailViewController(viewModel: viewmodel, coordinator: coordinator)
+        let vc  = ProductDetailViewController(viewModel: viewmodel)
         return vc
     }
 }

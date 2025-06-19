@@ -18,7 +18,7 @@ final class CartBuilder {
     
     func build () -> UIViewController {
         let viewmodel = CartViewModel(cartService: cartService, coordinator: coordinator)
-        let vc  = CartViewController(viewModel: viewmodel, coordinator: coordinator)
+        let vc  = CartViewController(viewModel: viewmodel)
         return vc
     }
 }

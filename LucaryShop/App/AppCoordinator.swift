@@ -40,14 +40,19 @@ final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     private let authService: AuthService
     let verificationId: String
-    
-    
+    private var childCoordinators: [Coordinator] = []
+
+   
+
     init(navigationController: UINavigationController, authService: AuthService, verificationId: String) {
         self.navigationController = navigationController
         self.authService = authService
         self.verificationId = verificationId
     }
     
+    func childDidFinish(_ child: Coordinator) {
+        childCoordinators.removeAll { $0 === child }
+    }
     
     func start() {
         let vc = SplashBuild(cordinator: self).build()
@@ -120,6 +125,7 @@ final class AppCoordinator: Coordinator {
             let languageCoordinator = LanguageSelectionCoordinator(
                 parentCoordinator: self, navigationController: navigationController)
             languageCoordinator.startLanguage()
+            
         }
     }
 }

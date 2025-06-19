@@ -51,7 +51,7 @@ final class CartViewModel {
     }
     
     func checkout(address: String, paymentMethod: String) {
-        let request = CheckoutRequest(address: address, paymentMethod: paymentMethod)
+        _ = CheckoutRequest(address: address, paymentMethod: paymentMethod)
         cartService.checkout { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
