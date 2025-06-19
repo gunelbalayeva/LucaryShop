@@ -13,6 +13,7 @@ final class CategoryCoordinator {
     var navigationController: UINavigationController
     let categoryService: CategoryService
     let productService: ProductService
+    var onFinish: (() -> Void)?
 
     init(
         parentCoordinator: AppCoordinator? = nil,
@@ -34,5 +35,9 @@ final class CategoryCoordinator {
 //            categoryId: categoryId
 //        )
 //        coordinator.start()
+    }
+    
+    func finish() {
+        onFinish?()
     }
 }

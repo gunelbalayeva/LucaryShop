@@ -35,5 +35,8 @@ final class FavoritesCoordinator{
         )
         coordinator.start(with: productId)
     }
-
+    
+    func finish() {
+        onFinish?()
+    }
 }
