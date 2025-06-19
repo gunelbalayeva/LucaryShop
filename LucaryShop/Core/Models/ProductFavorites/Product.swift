@@ -13,6 +13,7 @@ struct Product: Codable {
     let price: Double
     let imageUrl: String
     let isFavorite: Bool
+    let company: Company?
 }
 
 struct ProductDetail: Codable {
