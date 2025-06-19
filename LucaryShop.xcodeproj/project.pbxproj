@@ -162,6 +162,7 @@
 		CED1C45A2E045B350064AC1F /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4592E045B350064AC1F /* CartView.swift */; };
 		CED1C45E2E045D2E0064AC1F /* CartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C45D2E045D2E0064AC1F /* CartCoordinator.swift */; };
 		CED1C4612E0460130064AC1F /* OrderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4602E0460130064AC1F /* OrderCoordinator.swift */; };
+		CED1C4642E046E0C0064AC1F /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4632E046E0C0064AC1F /* OrdersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -321,6 +322,7 @@
 		CED1C4592E045B350064AC1F /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		CED1C45D2E045D2E0064AC1F /* CartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCoordinator.swift; sourceTree = "<group>"; };
 		CED1C4602E0460130064AC1F /* OrderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCoordinator.swift; sourceTree = "<group>"; };
+		CED1C4632E046E0C0064AC1F /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +612,7 @@
 				CED1C45F2E0460040064AC1F /* Coordinator */,
 				CE5C6C5B2DF4B1FB00821985 /* Builder */,
 				CE5C6C5A2DF4B1F100821985 /* ViewModel */,
+				CED1C4622E046DC70064AC1F /* Controller */,
 				CE5C6C592DF4B1E200821985 /* View */,
 			);
 			path = Orders;
@@ -935,7 +938,7 @@
 		CE5C6C592DF4B1E200821985 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE5C6C5C2DF4B20400821985 /* OrdersViewController.swift */,
+				CED1C4632E046E0C0064AC1F /* OrdersView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1305,6 +1308,14 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		CED1C4622E046DC70064AC1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C6C5C2DF4B20400821985 /* OrdersViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1515,6 +1526,7 @@
 				CED1C4612E0460130064AC1F /* OrderCoordinator.swift in Sources */,
 				CE5E3CA42DF8D49E005B827B /* UIStackView.swift in Sources */,
 				CE1787E62DF46D3100A91620 /* SceneDelegate.swift in Sources */,
+				CED1C4642E046E0C0064AC1F /* OrdersView.swift in Sources */,
 				CE1788422DF48E3A00A91620 /* LoginBuilder.swift in Sources */,
 				CEA1C3322DFAC9F200E9B74B /* RegisterView.swift in Sources */,
 				CE5C6BF32DF48F9500821985 /* RegisterViewController.swift in Sources */,

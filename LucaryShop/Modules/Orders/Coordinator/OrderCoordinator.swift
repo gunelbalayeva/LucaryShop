@@ -10,11 +10,17 @@ import UIKit
 final class OrderCoordinator {
     weak var parentCoordinator: AppCoordinator?
     var navigationController: UINavigationController
-    let orderService:OrderService
-    
+    let orderService: OrderService
+    var onFinish: (() -> Void)?
+
     init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.orderService = orderService
+    }
+    
+
+    func finish() {
+        onFinish?()
     }
 }
