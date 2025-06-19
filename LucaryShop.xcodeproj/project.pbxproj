@@ -160,6 +160,8 @@
 		CED1C4542E044EBC0064AC1F /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4532E044EBC0064AC1F /* MainTabBarCoordinator.swift */; };
 		CED1C4572E0455BD0064AC1F /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4562E0455BD0064AC1F /* ProductDetailView.swift */; };
 		CED1C45A2E045B350064AC1F /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4592E045B350064AC1F /* CartView.swift */; };
+		CED1C45E2E045D2E0064AC1F /* CartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C45D2E045D2E0064AC1F /* CartCoordinator.swift */; };
+		CED1C4612E0460130064AC1F /* OrderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4602E0460130064AC1F /* OrderCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -317,6 +319,8 @@
 		CED1C4532E044EBC0064AC1F /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		CED1C4562E0455BD0064AC1F /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		CED1C4592E045B350064AC1F /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		CED1C45D2E045D2E0064AC1F /* CartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCoordinator.swift; sourceTree = "<group>"; };
+		CED1C4602E0460130064AC1F /* OrderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,6 +607,7 @@
 		CE1788172DF473D400A91620 /* Orders */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C45F2E0460040064AC1F /* Coordinator */,
 				CE5C6C5B2DF4B1FB00821985 /* Builder */,
 				CE5C6C5A2DF4B1F100821985 /* ViewModel */,
 				CE5C6C592DF4B1E200821985 /* View */,
@@ -1287,6 +1292,15 @@
 		CED1C45C2E045C5D0064AC1F /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C45D2E045D2E0064AC1F /* CartCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CED1C45F2E0460040064AC1F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4602E0460130064AC1F /* OrderCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -1498,6 +1512,7 @@
 				CE5E3C892DF85613005B827B /* GetStartedOnboardingViewController  .swift in Sources */,
 				CE5E3C832DF854C5005B827B /* WelcomeOnboardingViewController .swift in Sources */,
 				CEA1C36A2DFC600500E9B74B /* URLSessionNetworkService.swift in Sources */,
+				CED1C4612E0460130064AC1F /* OrderCoordinator.swift in Sources */,
 				CE5E3CA42DF8D49E005B827B /* UIStackView.swift in Sources */,
 				CE1787E62DF46D3100A91620 /* SceneDelegate.swift in Sources */,
 				CE1788422DF48E3A00A91620 /* LoginBuilder.swift in Sources */,
@@ -1506,6 +1521,7 @@
 				CE5C6C3F2DF4AFA100821985 /* SplashViewModel.swift in Sources */,
 				CE5C6C542DF4B18D00821985 /* CustomButton.swift in Sources */,
 				CE5C6C1A2DF4A11100821985 /* ProductDetailViewController.swift in Sources */,
+				CED1C45E2E045D2E0064AC1F /* CartCoordinator.swift in Sources */,
 				CED1C4292E0313AF0064AC1F /* CollectionView+Exc.swift in Sources */,
 				CEA1C3652DFC528700E9B74B /* MeResponse.swift in Sources */,
 				CE5C6C5D2DF4B20400821985 /* OrdersViewController.swift in Sources */,

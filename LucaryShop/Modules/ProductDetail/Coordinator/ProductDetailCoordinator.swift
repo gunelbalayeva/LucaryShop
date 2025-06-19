@@ -15,7 +15,9 @@ final class ProductDetailCoordinator {
     let cartService: CartService
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, favoritesService: FavoritesService, cartService: CartService, onFinish: ( () -> Void)? = nil) {
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController,
+         productService: ProductService, favoritesService: FavoritesService,
+         cartService: CartService, onFinish: ( () -> Void)? = nil) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.productService = productService
@@ -27,5 +29,4 @@ final class ProductDetailCoordinator {
     func finish() {
         onFinish?()
     }
-    
 }
