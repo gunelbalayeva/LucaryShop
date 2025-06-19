@@ -9,14 +9,16 @@ import Foundation
 enum ProductEndpoint {
     case getAll
     case getById(Int)
-    
+    case getByCategory(Int)
+
     var path: String {
         switch self {
         case .getAll:
             return "/products"
         case .getById(let id):
             return "/products/\(id)"
-        }
+        case .getByCategory(let categoryId):
+               return "/products?categoryId=\(categoryId)"        }
     }
 
     var method: String {

@@ -14,6 +14,7 @@ struct Product: Codable {
     let imageUrl: String
     let isFavorite: Bool
     let company: Company?
+    let categoryId: Int
 }
 
 struct ProductDetail: Codable {

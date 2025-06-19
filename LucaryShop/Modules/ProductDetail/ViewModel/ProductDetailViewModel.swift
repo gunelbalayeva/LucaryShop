@@ -74,7 +74,7 @@ final class ProductDetailViewModel {
             price: productDetail.price,
             imageUrl: productDetail.imageUrl,
             isFavorite: productDetail.isFavorite,
-            company: nil 
+            company: nil, categoryId: productId
         )
         cartService.addToCart(product: product) { [weak self] result in
             if case .failure(let error) = result {

@@ -13,7 +13,7 @@ final class ProductService {
     init(networkService: NetworkService = URLSessionNetworkService()) {
         self.networkService = networkService
     }
-
+    
     func fetchAllProducts(completion: @escaping (Result<[Product], Error>) -> Void) {
         networkService.request(ProductEndpoint.getAll.request, completion: completion)
     }
@@ -21,4 +21,9 @@ final class ProductService {
     func fetchProductDetail(id: Int, completion: @escaping (Result<ProductDetail, Error>) -> Void) {
         networkService.request(ProductEndpoint.getById(id).request, completion: completion)
     }
+    
+    func fetchProducts(by categoryId: Int, completion: @escaping (Result<[Product], Error>) -> Void) {
+        networkService.request(ProductEndpoint.getByCategory(categoryId).request, completion: completion)
+    }
+
 }
