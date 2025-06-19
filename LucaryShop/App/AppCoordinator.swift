@@ -25,7 +25,11 @@ enum TabbarFlowType {
     case favorites
     case profile
 }
-
+enum ProductFlowType{
+    case productDetail
+    case cart
+    
+}
 
 enum ProfileFlowType {
     case language

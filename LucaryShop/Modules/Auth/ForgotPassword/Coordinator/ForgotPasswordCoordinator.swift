@@ -16,7 +16,9 @@ final class ForgotPasswordCoordinator {
     private let authService: AuthService
     private let verificationId: String
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, authService: AuthService, verificationId: String) {
+    init(parentCoordinator: AppCoordinator? = nil,
+         navigationController: UINavigationController,
+         authService: AuthService, verificationId: String) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.authService = authService
@@ -44,7 +46,9 @@ final class ForgotPasswordCoordinator {
     }
     
     func navigateToVerifyOTP(with verificationId: String) {
-        let vc = VerifyOTPBuilder(cordinator: self, authService: authService, verificationId: verificationId).build()
+        let vc = VerifyOTPBuilder(cordinator: self,
+                                  authService: authService,
+                                  verificationId: verificationId).build()
         navigationController.pushViewController(vc, animated: true)
     }
 }

@@ -157,6 +157,9 @@
 		CED1C44D2E043AEC0064AC1F /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C44C2E043AEC0064AC1F /* Company.swift */; };
 		CED1C44F2E044A360064AC1F /* CompanyEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C44E2E044A360064AC1F /* CompanyEndpoint.swift */; };
 		CED1C4512E044A580064AC1F /* CompanyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4502E044A580064AC1F /* CompanyService.swift */; };
+		CED1C4542E044EBC0064AC1F /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4532E044EBC0064AC1F /* MainTabBarCoordinator.swift */; };
+		CED1C4572E0455BD0064AC1F /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4562E0455BD0064AC1F /* ProductDetailView.swift */; };
+		CED1C45A2E045B350064AC1F /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4592E045B350064AC1F /* CartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -311,6 +314,9 @@
 		CED1C44C2E043AEC0064AC1F /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		CED1C44E2E044A360064AC1F /* CompanyEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyEndpoint.swift; sourceTree = "<group>"; };
 		CED1C4502E044A580064AC1F /* CompanyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyService.swift; sourceTree = "<group>"; };
+		CED1C4532E044EBC0064AC1F /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
+		CED1C4562E0455BD0064AC1F /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+		CED1C4592E045B350064AC1F /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -560,6 +566,7 @@
 		CE1788142DF4736600A91620 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4522E044EA00064AC1F /* Tabbar */,
 				CE5C6C622DF4B25600821985 /* Cells */,
 				CE5C6C132DF4A0B400821985 /* Coordinator */,
 				CE5C6C102DF4A09400821985 /* Builder */,
@@ -575,6 +582,7 @@
 				CE5C6C212DF4A15000821985 /* Coordinator */,
 				CE5C6C1E2DF4A13A00821985 /* Builder */,
 				CE5C6C1B2DF4A11700821985 /* ViewModel */,
+				CED1C4552E0455980064AC1F /* Controller */,
 				CE5C6C182DF4A10300821985 /* View */,
 			);
 			path = ProductDetail;
@@ -585,6 +593,7 @@
 			children = (
 				CE5C6BFD2DF4906600821985 /* Builder */,
 				CE5C6BFC2DF4905C00821985 /* ViewModel */,
+				CED1C4582E045B0F0064AC1F /* Controller */,
 				CE5C6BFB2DF4905300821985 /* View */,
 			);
 			path = Cart;
@@ -716,7 +725,7 @@
 		CE5C6BFB2DF4905300821985 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE1788332DF4895B00A91620 /* CartViewController.swift */,
+				CED1C4592E045B350064AC1F /* CartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -810,7 +819,7 @@
 		CE5C6C182DF4A10300821985 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE5C6C192DF4A11100821985 /* ProductDetailViewController.swift */,
+				CED1C4562E0455BD0064AC1F /* ProductDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -987,8 +996,8 @@
 		CEA1C3332DFADD8700E9B74B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C45B2E045B730064AC1F /* Extension */,
 				CE17883B2DF48DA200A91620 /* LoginViewController.swift */,
-				CED1C3952E018D880064AC1F /* Login+exc.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1242,6 +1251,38 @@
 			path = Company;
 			sourceTree = "<group>";
 		};
+		CED1C4522E044EA00064AC1F /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4532E044EBC0064AC1F /* MainTabBarCoordinator.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		CED1C4552E0455980064AC1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C6C192DF4A11100821985 /* ProductDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CED1C4582E045B0F0064AC1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE1788332DF4895B00A91620 /* CartViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CED1C45B2E045B730064AC1F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C3952E018D880064AC1F /* Login+exc.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1386,6 +1427,7 @@
 				CE46264D2DF61BD80026AFE6 /* SplashView.swift in Sources */,
 				CE1788222DF4865500A91620 /* NotificationManager.swift in Sources */,
 				CED1C3B42E02AF7F0064AC1F /* InputSanitizer.swift in Sources */,
+				CED1C4572E0455BD0064AC1F /* ProductDetailView.swift in Sources */,
 				CED1C42F2E0411F50064AC1F /* ProfileService.swift in Sources */,
 				CEA1C34C2DFB0BAB00E9B74B /*  ChangePasswordView.swift in Sources */,
 				CEA1C3592DFC4C2200E9B74B /* NetworkError.swift in Sources */,
@@ -1428,6 +1470,7 @@
 				CEA1C3442DFB0A6F00E9B74B /* VerifyOTPView.swift in Sources */,
 				CE5C6C582DF4B1A700821985 /* ProductCardView.swift in Sources */,
 				CE5C6C122DF4A0A700821985 /* HomeBuilder.swift in Sources */,
+				CED1C45A2E045B350064AC1F /* CartView.swift in Sources */,
 				CE17882E2DF486D200A91620 /* AuthEndpoint.swift in Sources */,
 				CE5E3C9C2DF8897E005B827B /* GetStartedOnboardingViewModel.swift in Sources */,
 				CE1788452DF48E6100A91620 /* LoginCoordinator.swift in Sources */,
@@ -1460,6 +1503,7 @@
 				CE5C6C5D2DF4B20400821985 /* OrdersViewController.swift in Sources */,
 				CED1C4222E0310A40064AC1F /* LanguageController+Exc.swift in Sources */,
 				CEA1C34E2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift in Sources */,
+				CED1C4542E044EBC0064AC1F /* MainTabBarCoordinator.swift in Sources */,
 				CE17881C2DF4861C00A91620 /* UIImageView+Kingfisher.swift in Sources */,
 				CEA1C35B2DFC517800E9B74B /* Login.swift in Sources */,
 				CE5C6C302DF4A1CE00821985 /* ProfileCoordinator.swift in Sources */,
