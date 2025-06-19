@@ -591,6 +591,7 @@
 		CE1788162DF4739E00A91620 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C45C2E045C5D0064AC1F /* Coordinator */,
 				CE5C6BFD2DF4906600821985 /* Builder */,
 				CE5C6BFC2DF4905C00821985 /* ViewModel */,
 				CED1C4582E045B0F0064AC1F /* Controller */,
@@ -1281,6 +1282,13 @@
 				CED1C3952E018D880064AC1F /* Login+exc.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		CED1C45C2E045C5D0064AC1F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
