@@ -5,4 +5,20 @@
 //  Created by User on 07.06.25.
 //
 
-import Foundation
+import UIKit
+
+final class ProductService {
+    private let networkService: NetworkService
+
+    init(networkService: NetworkService = URLSessionNetworkService()) {
+        self.networkService = networkService
+    }
+
+    func fetchAllProducts(completion: @escaping (Result<[Product], Error>) -> Void) {
+        networkService.request(ProductEndpoint.getAll.request, completion: completion)
+    }
+
+    func fetchProductDetail(id: Int, completion: @escaping (Result<ProductDetail, Error>) -> Void) {
+        networkService.request(ProductEndpoint.getById(id).request, completion: completion)
+    }
+}
