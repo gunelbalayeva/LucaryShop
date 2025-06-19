@@ -164,6 +164,11 @@
 		CED1C4612E0460130064AC1F /* OrderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4602E0460130064AC1F /* OrderCoordinator.swift */; };
 		CED1C4642E046E0C0064AC1F /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4632E046E0C0064AC1F /* OrdersView.swift */; };
 		CED1C4672E0481430064AC1F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4662E0481430064AC1F /* ProfileView.swift */; };
+		CED1C46E2E048C130064AC1F /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C46D2E048C130064AC1F /* FavoritesView.swift */; };
+		CED1C4702E048C360064AC1F /* FavoritesViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C46F2E048C360064AC1F /* FavoritesViewViewController.swift */; };
+		CED1C4722E048C940064AC1F /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4712E048C940064AC1F /* FavoritesViewModel.swift */; };
+		CED1C4742E048CAC0064AC1F /* FavoritesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4732E048CAC0064AC1F /* FavoritesBuilder.swift */; };
+		CED1C4762E048CE00064AC1F /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4752E048CE00064AC1F /* FavoritesCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -325,6 +330,11 @@
 		CED1C4602E0460130064AC1F /* OrderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCoordinator.swift; sourceTree = "<group>"; };
 		CED1C4632E046E0C0064AC1F /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
 		CED1C4662E0481430064AC1F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		CED1C46D2E048C130064AC1F /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		CED1C46F2E048C360064AC1F /* FavoritesViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewViewController.swift; sourceTree = "<group>"; };
+		CED1C4712E048C940064AC1F /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		CED1C4732E048CAC0064AC1F /* FavoritesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesBuilder.swift; sourceTree = "<group>"; };
+		CED1C4752E048CE00064AC1F /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1129,6 +1139,11 @@
 		CED1C3B52E02BE980064AC1F /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C46C2E048BF70064AC1F /* Coordinator */,
+				CED1C46B2E048BEF0064AC1F /* Builder */,
+				CED1C46A2E048BCB0064AC1F /* ViewModel */,
+				CED1C4692E048BC10064AC1F /* Controller */,
+				CED1C4682E048BB80064AC1F /* View */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -1327,6 +1342,46 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		CED1C4682E048BB80064AC1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C46D2E048C130064AC1F /* FavoritesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CED1C4692E048BC10064AC1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C46F2E048C360064AC1F /* FavoritesViewViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CED1C46A2E048BCB0064AC1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4712E048C940064AC1F /* FavoritesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CED1C46B2E048BEF0064AC1F /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4732E048CAC0064AC1F /* FavoritesBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		CED1C46C2E048BF70064AC1F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4752E048CE00064AC1F /* FavoritesCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1434,6 +1489,7 @@
 				CEA1C3522DFC1D5D00E9B74B /* NetworkService.swift in Sources */,
 				CE5C6C092DF4995D00821985 /* ForgotPasswordCoordinator.swift in Sources */,
 				CE5C6C2D2DF4A1B500821985 /* ProfileBuilder.swift in Sources */,
+				CED1C4742E048CAC0064AC1F /* FavoritesBuilder.swift in Sources */,
 				CE5C6C0C2DF4A06F00821985 /* HomeViewController.swift in Sources */,
 				CEA1C35F2DFC51B300E9B74B /* OTPVerification.swift in Sources */,
 				CEA1C3682DFC5C8800E9B74B /* AuthService.swift in Sources */,
@@ -1480,10 +1536,12 @@
 				CED1C43E2E04147E0064AC1F /* OrderEndpoint.swift in Sources */,
 				CE5C6C292DF4A19900821985 /* ProfileViewController.swift in Sources */,
 				CEA1C35D2DFC519000E9B74B /* Register.swift in Sources */,
+				CED1C4722E048C940064AC1F /* FavoritesViewModel.swift in Sources */,
 				CED1C4202E030F0B0064AC1F /* Localizable+Exc.swift in Sources */,
 				CE5E3C9A2DF885C1005B827B /* SplashBuild.swift in Sources */,
 				CE5C6C502DF4B0B200821985 /* OnboardingBuilder.swift in Sources */,
 				CE17883C2DF48DA200A91620 /* LoginViewController.swift in Sources */,
+				CED1C46E2E048C130064AC1F /* FavoritesView.swift in Sources */,
 				CED1C39A2E01924D0064AC1F /* ViewController+exc.swift in Sources */,
 				CEA1C3352DFADDA400E9B74B /* LoginView.swift in Sources */,
 				CE1788342DF4895B00A91620 /* CartViewController.swift in Sources */,
@@ -1520,6 +1578,7 @@
 				CE1788452DF48E6100A91620 /* LoginCoordinator.swift in Sources */,
 				CE5C6C562DF4B19A00821985 /* CustomTextField.swift in Sources */,
 				CE1788262DF4867C00A91620 /* KeychainManager.swift in Sources */,
+				CED1C4702E048C360064AC1F /* FavoritesViewViewController.swift in Sources */,
 				CE1788082DF4725C00A91620 /* UILabel+Ext.swift in Sources */,
 				CED1C42D2E0411000064AC1F /* ProductEndpoint.swift in Sources */,
 				CE5E3C852DF855C0005B827B /* FeaturesOnboardingViewController.swift in Sources */,
@@ -1544,6 +1603,7 @@
 				CE5C6BF32DF48F9500821985 /* RegisterViewController.swift in Sources */,
 				CE5C6C3F2DF4AFA100821985 /* SplashViewModel.swift in Sources */,
 				CE5C6C542DF4B18D00821985 /* CustomButton.swift in Sources */,
+				CED1C4762E048CE00064AC1F /* FavoritesCoordinator.swift in Sources */,
 				CE5C6C1A2DF4A11100821985 /* ProductDetailViewController.swift in Sources */,
 				CED1C45E2E045D2E0064AC1F /* CartCoordinator.swift in Sources */,
 				CED1C4292E0313AF0064AC1F /* CollectionView+Exc.swift in Sources */,
