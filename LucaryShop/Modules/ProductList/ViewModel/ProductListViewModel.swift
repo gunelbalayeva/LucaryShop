@@ -9,8 +9,11 @@ import Foundation
 import Combine
 
 final class ProductListViewModel {
-    private let productService: ProductService
+    
     private weak var coordinator: ProductListCoordinator?
+    let productService: ProductService
+    let favoritesService: FavoritesService
+    let cartService: CartService
     
     @Published private(set) var allProducts: [Product] = []
     @Published var filteredProducts: [Product] = []
@@ -20,9 +23,11 @@ final class ProductListViewModel {
     private var currentCategoryId: Int?
     private var currentSearchText: String = ""
     
-    init(productService: ProductService, coordinator: ProductListCoordinator?) {
-        self.productService = productService
+    init(coordinator: ProductListCoordinator? = nil, productService: ProductService, favoritesService: FavoritesService, cartService: CartService) {
         self.coordinator = coordinator
+        self.productService = productService
+        self.favoritesService = favoritesService
+        self.cartService = cartService
     }
     
     func fetchProducts(categoryId: Int?) {
@@ -31,12 +36,10 @@ final class ProductListViewModel {
         currentCategoryId = categoryId
         
         if let categoryId = categoryId {
-            // Əgər server query dəstəkləyirsə:
             productService.fetchProducts(by: categoryId) { [weak self] result in
                 self?.handleFetchResult(result)
             }
         } else {
-            // Bütün məhsulları çək (home və ya search üçün)
             productService.fetchAllProducts { [weak self] result in
                 self?.handleFetchResult(result)
             }
@@ -62,24 +65,14 @@ final class ProductListViewModel {
     }
     
     private func applyFilters() {
-        var products = allProducts
-        
-        // Client-side category filter əgər server query yoxdursa
-        if let categoryId = currentCategoryId {
-            products = products.filter { $0.categoryId == categoryId }
+        filteredProducts = allProducts.filter { product in
+            let matchesCategory = currentCategoryId == nil || product.categoryId == currentCategoryId
+            let matchesSearch = currentSearchText.isEmpty || product.name.lowercased().contains(currentSearchText.lowercased())
+            return matchesCategory && matchesSearch
         }
-        
-        // Search bar filter
-        if !currentSearchText.isEmpty {
-            products = products.filter {
-                $0.name.lowercased().contains(currentSearchText.lowercased())
-            }
-        }
-        
-        filteredProducts = products
     }
     
     func selectProduct(_ product: Product) {
-//        coordinator?.navigateToProductDetail(productId: product.id)
+        coordinator?.navigateToProductDetail(productId: product.id)
     }
 }

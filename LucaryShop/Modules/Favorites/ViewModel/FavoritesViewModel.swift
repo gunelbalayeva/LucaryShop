@@ -13,7 +13,6 @@ final class FavoritesViewModel {
     private let productService: ProductService
     private let cartService: CartService?
     private weak var coordinator: FavoritesCoordinator?
-
     @Published var favorites: [Product] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?

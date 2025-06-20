@@ -24,7 +24,6 @@ final class FavoritesCoordinator{
     }
     
     
-    
     func navigateToProductDetail(with productId: Int) {
         let coordinator = ProductDetailCoordinator(
             parentCoordinator: parentCoordinator,
@@ -35,6 +34,7 @@ final class FavoritesCoordinator{
         )
         coordinator.start(with: productId)
     }
+    
     
     func finish() {
         onFinish?()

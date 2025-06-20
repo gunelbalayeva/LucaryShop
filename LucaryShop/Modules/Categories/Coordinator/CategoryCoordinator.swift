@@ -15,18 +15,13 @@ final class CategoryCoordinator {
     let productService: ProductService
     var onFinish: (() -> Void)?
 
-    init(
-        parentCoordinator: AppCoordinator? = nil,
-        navigationController: UINavigationController,
-        categoryService: CategoryService,
-        productService: ProductService
-    ) {
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, categoryService: CategoryService, productService: ProductService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.categoryService = categoryService
         self.productService = productService
     }
-
+    
     func navigateToProductList(for categoryId: Int) {
 //        let coordinator = ProductListCoordinator(
 //            parentCoordinator: parentCoordinator,
