@@ -190,6 +190,7 @@
 		CED1C4B42E0601AD0064AC1F /* CompanyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4B32E0601AD0064AC1F /* CompanyDetailViewModel.swift */; };
 		CED1C4B72E0603C10064AC1F /* CompanyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4B62E0603C10064AC1F /* CompanyDetail.swift */; };
 		CED1C4B92E0608B50064AC1F /* CompanyDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4B82E0608B50064AC1F /* CompanyDetailBuilder.swift */; };
+		CED1C4BD2E0614350064AC1F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4BC2E0614350064AC1F /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -377,6 +378,7 @@
 		CED1C4B32E0601AD0064AC1F /* CompanyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailViewModel.swift; sourceTree = "<group>"; };
 		CED1C4B62E0603C10064AC1F /* CompanyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetail.swift; sourceTree = "<group>"; };
 		CED1C4B82E0608B50064AC1F /* CompanyDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailBuilder.swift; sourceTree = "<group>"; };
+		CED1C4BC2E0614350064AC1F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -550,6 +552,7 @@
 				CE1788162DF4739E00A91620 /* Cart */,
 				CE1788152DF4738E00A91620 /* ProductDetail */,
 				CE1788142DF4736600A91620 /* Home */,
+				CED1C4BA2E0611180064AC1F /* AppTabbar */,
 				CE1788102DF4732100A91620 /* Auth */,
 				CE17880F2DF4730700A91620 /* Onboarding */,
 				CE17880E2DF472F800A91620 /* Splash */,
@@ -629,7 +632,7 @@
 		CE1788142DF4736600A91620 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				CED1C4522E044EA00064AC1F /* Tabbar */,
+				CED1C4BB2E0614100064AC1F /* Controller */,
 				CE5C6C622DF4B25600821985 /* Cells */,
 				CE5C6C132DF4A0B400821985 /* Coordinator */,
 				CE5C6C102DF4A09400821985 /* Builder */,
@@ -854,7 +857,7 @@
 		CE5C6C0A2DF4A06300821985 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE5C6C0B2DF4A06F00821985 /* HomeViewController.swift */,
+				CED1C4BC2E0614350064AC1F /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1333,14 +1336,6 @@
 			path = Company;
 			sourceTree = "<group>";
 		};
-		CED1C4522E044EA00064AC1F /* Tabbar */ = {
-			isa = PBXGroup;
-			children = (
-				CED1C4532E044EBC0064AC1F /* MainTabBarCoordinator.swift */,
-			);
-			path = Tabbar;
-			sourceTree = "<group>";
-		};
 		CED1C4552E0455980064AC1F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1629,6 +1624,22 @@
 			path = CompanyDetail;
 			sourceTree = "<group>";
 		};
+		CED1C4BA2E0611180064AC1F /* AppTabbar */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4532E044EBC0064AC1F /* MainTabBarCoordinator.swift */,
+			);
+			path = AppTabbar;
+			sourceTree = "<group>";
+		};
+		CED1C4BB2E0614100064AC1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C6C0B2DF4A06F00821985 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1803,6 +1814,7 @@
 				CED1C3A62E01E98B0064AC1F /* LanguageSelectionView.swift in Sources */,
 				CED1C44D2E043AEC0064AC1F /* Company.swift in Sources */,
 				CE5C6C322DF4AF0200821985 /* User.swift in Sources */,
+				CED1C4BD2E0614350064AC1F /* HomeView.swift in Sources */,
 				CE1788062DF4724700A91620 /* UIView+Ext.swift in Sources */,
 				CED1C4442E0414CD0064AC1F /* FavoritesService.swift in Sources */,
 				CED1C41C2E030A090064AC1F /* LocalizedStrings.swift in Sources */,

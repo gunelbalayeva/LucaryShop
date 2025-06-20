@@ -12,14 +12,29 @@ final class HomeCoordinator {
     var navigationController: UINavigationController
     let productService: ProductService
     let categoryService: CategoryService
+    let companyService: CompanyService
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, categoryService: CategoryService, onFinish: ( () -> Void)? = nil) {
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, categoryService: CategoryService, companyService: CompanyService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.productService = productService
         self.categoryService = categoryService
-        self.onFinish = onFinish
+        self.companyService = companyService
     }
     
+    func start() {
+            let viewModel = HomeViewModel(
+                coordinator: self,
+                productService: productService,
+                categoryService: categoryService,
+                companyService: companyService
+            )
+            let vc = HomeViewController(homeViewModel: viewModel)
+            navigationController.setViewControllers([vc], animated: true)
+        }
+    
+    func finish(){
+        onFinish?()
+    }
 }
