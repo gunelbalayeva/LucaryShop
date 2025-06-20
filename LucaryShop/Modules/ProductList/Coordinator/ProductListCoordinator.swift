@@ -35,6 +35,23 @@ final class ProductListCoordinator{
         detailCoordinator.start(with: productId)
     }
 
+    
+    func start(categoryId: Int? = nil) {
+        let builder = ProductListBuilder(
+            coordinator: self,
+            productService: productService,
+            favoritesService: favoritesService,
+            cartService: cartService
+        )
+        let vc = builder.build()
+        
+        if let viewModel = (vc as? ProductListViewController)?.viewModel {
+            viewModel.fetchProducts(categoryId: categoryId)
+        }
+        
+        navigationController.pushViewController(vc, animated: true)
+    }
+
     func finish() {
         onFinish?()
     }

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 final class ProductListViewController:UIViewController {
     private let productListVie = ProductListView()
-    private let viewModel: ProductListViewModel
+    let viewModel: ProductListViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
