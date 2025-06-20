@@ -34,6 +34,5 @@ final class CompanyBuilder{
                                          cartService: cartService)
         let vc  = CompanyViewController(viewModel: viewModel)
         return vc
-    }
-    
+    }    
 }

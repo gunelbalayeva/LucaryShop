@@ -6,6 +6,6 @@
 //
 
 import UIKit
-final class CompanyView:UIView{
+final class CompanyView: UIView{
     
 }

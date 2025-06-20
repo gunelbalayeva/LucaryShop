@@ -1,21 +1,22 @@
 //
-//  CompanyViewController.swift
+//  CompanyDetailViewController.swift
 //  LucaryShop
 //
-//  Created by User on 20.06.25.
+//  Created by User on 21.06.25.
 //
+
 import Foundation
 import UIKit
-final class CompanyViewController:UIViewController{
+final class CompanyDetailViewController:UIViewController {
+    private let companyDetailView = CompanyDetailView()
+    private let viewModel:CompanyDetailViewModel
     
-    private let companyView = CartView()
-    private let viewModel:CompanyViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    init(viewModel: CompanyViewModel) {
+    init(viewModel: CompanyDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -23,7 +24,4 @@ final class CompanyViewController:UIViewController{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
 }

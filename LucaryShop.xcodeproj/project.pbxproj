@@ -184,6 +184,12 @@
 		CED1C4A22E05DFCE0064AC1F /* CompanyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4A12E05DFCE0064AC1F /* CompanyViewModel.swift */; };
 		CED1C4A42E05DFEB0064AC1F /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4A32E05DFEB0064AC1F /* CompanyViewController.swift */; };
 		CED1C4A62E05E01E0064AC1F /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4A52E05E01E0064AC1F /* CompanyView.swift */; };
+		CED1C4AE2E0600230064AC1F /* CompanyDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4AD2E0600230064AC1F /* CompanyDetailCoordinator.swift */; };
+		CED1C4B02E06010D0064AC1F /* CompanyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4AF2E06010D0064AC1F /* CompanyDetailViewController.swift */; };
+		CED1C4B22E0601350064AC1F /* CompanyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4B12E0601350064AC1F /* CompanyDetailView.swift */; };
+		CED1C4B42E0601AD0064AC1F /* CompanyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4B32E0601AD0064AC1F /* CompanyDetailViewModel.swift */; };
+		CED1C4B72E0603C10064AC1F /* CompanyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4B62E0603C10064AC1F /* CompanyDetail.swift */; };
+		CED1C4B92E0608B50064AC1F /* CompanyDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4B82E0608B50064AC1F /* CompanyDetailBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -365,6 +371,12 @@
 		CED1C4A12E05DFCE0064AC1F /* CompanyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompanyViewModel.swift; path = LucaryShop/Modules/Companies/Builder/CompanyViewModel.swift; sourceTree = SOURCE_ROOT; };
 		CED1C4A32E05DFEB0064AC1F /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
 		CED1C4A52E05E01E0064AC1F /* CompanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
+		CED1C4AD2E0600230064AC1F /* CompanyDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailCoordinator.swift; sourceTree = "<group>"; };
+		CED1C4AF2E06010D0064AC1F /* CompanyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailViewController.swift; sourceTree = "<group>"; };
+		CED1C4B12E0601350064AC1F /* CompanyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailView.swift; sourceTree = "<group>"; };
+		CED1C4B32E0601AD0064AC1F /* CompanyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailViewModel.swift; sourceTree = "<group>"; };
+		CED1C4B62E0603C10064AC1F /* CompanyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetail.swift; sourceTree = "<group>"; };
+		CED1C4B82E0608B50064AC1F /* CompanyDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -512,6 +524,7 @@
 		CE17880C2DF472C500A91620 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4B52E0603A40064AC1F /* CompanyDetail */,
 				CED1C44B2E043AE10064AC1F /* Company */,
 				CED1C4372E0413430064AC1F /* Order */,
 				CED1C4342E0413020064AC1F /* Cart */,
@@ -1559,6 +1572,59 @@
 		CED1C4A72E05E68F0064AC1F /* CompanyDetail */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4AC2E05FD5D0064AC1F /* Coordinator */,
+				CED1C4AB2E05FD560064AC1F /* Builder */,
+				CED1C4AA2E05FD4E0064AC1F /* ViewModel */,
+				CED1C4A92E05FD440064AC1F /* Controller */,
+				CED1C4A82E05FD3C0064AC1F /* View */,
+			);
+			path = CompanyDetail;
+			sourceTree = "<group>";
+		};
+		CED1C4A82E05FD3C0064AC1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4B12E0601350064AC1F /* CompanyDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CED1C4A92E05FD440064AC1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4AF2E06010D0064AC1F /* CompanyDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CED1C4AA2E05FD4E0064AC1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4B32E0601AD0064AC1F /* CompanyDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CED1C4AB2E05FD560064AC1F /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4B82E0608B50064AC1F /* CompanyDetailBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		CED1C4AC2E05FD5D0064AC1F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4AD2E0600230064AC1F /* CompanyDetailCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CED1C4B52E0603A40064AC1F /* CompanyDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4B62E0603C10064AC1F /* CompanyDetail.swift */,
 			);
 			path = CompanyDetail;
 			sourceTree = "<group>";
@@ -1732,6 +1798,7 @@
 				CED1C46E2E048C130064AC1F /* FavoritesView.swift in Sources */,
 				CED1C39A2E01924D0064AC1F /* ViewController+exc.swift in Sources */,
 				CEA1C3352DFADDA400E9B74B /* LoginView.swift in Sources */,
+				CED1C4B72E0603C10064AC1F /* CompanyDetail.swift in Sources */,
 				CE1788342DF4895B00A91620 /* CartViewController.swift in Sources */,
 				CED1C3A62E01E98B0064AC1F /* LanguageSelectionView.swift in Sources */,
 				CED1C44D2E043AEC0064AC1F /* Company.swift in Sources */,
@@ -1763,6 +1830,7 @@
 				CE5C6C122DF4A0A700821985 /* HomeBuilder.swift in Sources */,
 				CED1C45A2E045B350064AC1F /* CartView.swift in Sources */,
 				CE17882E2DF486D200A91620 /* AuthEndpoint.swift in Sources */,
+				CED1C4AE2E0600230064AC1F /* CompanyDetailCoordinator.swift in Sources */,
 				CE5E3C9C2DF8897E005B827B /* GetStartedOnboardingViewModel.swift in Sources */,
 				CE1788452DF48E6100A91620 /* LoginCoordinator.swift in Sources */,
 				CE5C6C562DF4B19A00821985 /* CustomTextField.swift in Sources */,
@@ -1774,10 +1842,13 @@
 				CED1C44F2E044A360064AC1F /* CompanyEndpoint.swift in Sources */,
 				CED1C41E2E030CE70064AC1F /* Notification+Exc.swift in Sources */,
 				CE5C6C022DF4913600821985 /* ForgotPasswordBuilder.swift in Sources */,
+				CED1C4B22E0601350064AC1F /* CompanyDetailView.swift in Sources */,
 				CED1C47F2E04A2F60064AC1F /* CategoryViewController.swift in Sources */,
+				CED1C4B42E0601AD0064AC1F /* CompanyDetailViewModel.swift in Sources */,
 				CED1C4A42E05DFEB0064AC1F /* CompanyViewController.swift in Sources */,
 				CE1788362DF4896A00A91620 /* CartViewModel.swift in Sources */,
 				CE5E3C972DF8732A005B827B /* PageViewController.swift in Sources */,
+				CED1C4B02E06010D0064AC1F /* CompanyDetailViewController.swift in Sources */,
 				CEA1C3632DFC524600E9B74B /*  ResetPassword.swift in Sources */,
 				CED1C47D2E04A2CB0064AC1F /* CategoryView.swift in Sources */,
 				CED1C3902DFF37E40064AC1F /* ErrorPopupView.swift in Sources */,
@@ -1790,6 +1861,7 @@
 				CED1C4612E0460130064AC1F /* OrderCoordinator.swift in Sources */,
 				CED1C4672E0481430064AC1F /* ProfileView.swift in Sources */,
 				CE5E3CA42DF8D49E005B827B /* UIStackView.swift in Sources */,
+				CED1C4B92E0608B50064AC1F /* CompanyDetailBuilder.swift in Sources */,
 				CE1787E62DF46D3100A91620 /* SceneDelegate.swift in Sources */,
 				CED1C4642E046E0C0064AC1F /* OrdersView.swift in Sources */,
 				CE1788422DF48E3A00A91620 /* LoginBuilder.swift in Sources */,

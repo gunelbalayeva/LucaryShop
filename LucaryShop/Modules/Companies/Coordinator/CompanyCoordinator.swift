@@ -16,7 +16,12 @@ final class CompanyCoordinator: Coordinator{
     private let cartService: CartService
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, companyService: CompanyService, productService: ProductService, favoritesService: FavoritesService, cartService: CartService) {
+    init(parentCoordinator: AppCoordinator? = nil,
+         navigationController: UINavigationController,
+         companyService: CompanyService,
+         productService: ProductService,
+         favoritesService: FavoritesService,
+         cartService: CartService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.companyService = companyService
@@ -24,6 +29,7 @@ final class CompanyCoordinator: Coordinator{
         self.favoritesService = favoritesService
         self.cartService = cartService
     }
+    
     
     func start() {
         let builder = CompanyBuilder(
@@ -37,33 +43,34 @@ final class CompanyCoordinator: Coordinator{
         navigationController.pushViewController(vc, animated: true)
     }
     
+    
     func navigateToCompanyDetail(companyId: Int) {
-        //        let detailCoordinator = CompanyDetailCoordinator(
-        //            parentCoordinator: self,
-        //            navigationController: navigationController,
-        //            companyService: companyService,
-        //            productService: productService,
-        //            favoritesService: favoritesService,
-        //            cartService: cartService
-        //        )
-        //        detailCoordinator.start(with: companyId)
-        //    }
-        
-        func navigateToProductDetail(productId: Int) {
-            //        let detailCoordinator = ProductDetailCoordinator(
-            //            parentCoordinator: self,
-            //            navigationController: navigationController,
-            //            productService: productService,
-            //            favoritesService: favoritesService,
-            //            cartService: cartService
-            //        )
-            //        detailCoordinator.start(with: productId)
-        }
-        
-        func finish() {
-            onFinish?()
-            parentCoordinator?.childDidFinish(self)
-        }
+        let detailCoordinator = CompanyDetailCoordinator(parentCoordinator: parentCoordinator,
+                                                         navigationController: navigationController,
+                                                         companyService: companyService,
+                                                         productService: productService,
+                                                         favoritesService: favoritesService,
+                                                         cartService: cartService)
+        detailCoordinator.start(with: companyId)
+    }
+    
+    
+    func navigateToProductDetail(productId: Int) {
+        let detailCoordinator = ProductDetailCoordinator(navigationController: navigationController,
+                                                         productService: productService,
+                                                         favoritesService: favoritesService,
+                                                         cartService: cartService)
+        detailCoordinator.start(with: productId)
+    }
+    
+    
+    func finish() {
+        onFinish?()
+        parentCoordinator?.childDidFinish(self)
     }
 }
+
+
+
+
 
