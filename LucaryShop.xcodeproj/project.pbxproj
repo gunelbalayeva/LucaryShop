@@ -179,6 +179,11 @@
 		CED1C4962E054B000064AC1F /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4952E054AFF0064AC1F /* ProductListView.swift */; };
 		CED1C4982E054B250064AC1F /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4972E054B250064AC1F /* ProductListViewController.swift */; };
 		CED1C49C2E054E510064AC1F /* ProductListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C49B2E054E510064AC1F /* ProductListBuilder.swift */; };
+		CED1C49E2E05DF980064AC1F /* CompanyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C49D2E05DF980064AC1F /* CompanyCoordinator.swift */; };
+		CED1C4A02E05DFAF0064AC1F /* CompanyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C49F2E05DFAF0064AC1F /* CompanyBuilder.swift */; };
+		CED1C4A22E05DFCE0064AC1F /* CompanyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4A12E05DFCE0064AC1F /* CompanyViewModel.swift */; };
+		CED1C4A42E05DFEB0064AC1F /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4A32E05DFEB0064AC1F /* CompanyViewController.swift */; };
+		CED1C4A62E05E01E0064AC1F /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4A52E05E01E0064AC1F /* CompanyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -355,6 +360,11 @@
 		CED1C4952E054AFF0064AC1F /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		CED1C4972E054B250064AC1F /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
 		CED1C49B2E054E510064AC1F /* ProductListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListBuilder.swift; sourceTree = "<group>"; };
+		CED1C49D2E05DF980064AC1F /* CompanyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCoordinator.swift; sourceTree = "<group>"; };
+		CED1C49F2E05DFAF0064AC1F /* CompanyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyBuilder.swift; sourceTree = "<group>"; };
+		CED1C4A12E05DFCE0064AC1F /* CompanyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompanyViewModel.swift; path = LucaryShop/Modules/Companies/Builder/CompanyViewModel.swift; sourceTree = SOURCE_ROOT; };
+		CED1C4A32E05DFEB0064AC1F /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
+		CED1C4A52E05E01E0064AC1F /* CompanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -517,6 +527,7 @@
 		CE17880D2DF472E000A91620 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4A72E05E68F0064AC1F /* CompanyDetail */,
 				CED1C3B92E02F3BC0064AC1F /* Companies */,
 				CED1C4862E04AC5B0064AC1F /* ProductList */,
 				CED1C3B82E02F3AA0064AC1F /* Categories */,
@@ -1508,6 +1519,7 @@
 		CED1C4902E04B2D30064AC1F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4A52E05E01E0064AC1F /* CompanyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1515,6 +1527,7 @@
 		CED1C4912E04B2F30064AC1F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4A32E05DFEB0064AC1F /* CompanyViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1522,6 +1535,7 @@
 		CED1C4922E04B2FE0064AC1F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4A12E05DFCE0064AC1F /* CompanyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1529,6 +1543,7 @@
 		CED1C4932E04B30A0064AC1F /* Builder */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C49F2E05DFAF0064AC1F /* CompanyBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -1536,8 +1551,16 @@
 		CED1C4942E04B3180064AC1F /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C49D2E05DF980064AC1F /* CompanyCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CED1C4A72E05E68F0064AC1F /* CompanyDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CompanyDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1647,9 +1670,11 @@
 				CED1C43C2E04145C0064AC1F /* OrderService.swift in Sources */,
 				CEA1C3522DFC1D5D00E9B74B /* NetworkService.swift in Sources */,
 				CE5C6C092DF4995D00821985 /* ForgotPasswordCoordinator.swift in Sources */,
+				CED1C49E2E05DF980064AC1F /* CompanyCoordinator.swift in Sources */,
 				CED1C4832E04A3A60064AC1F /* CategoryBuilder.swift in Sources */,
 				CE5C6C2D2DF4A1B500821985 /* ProfileBuilder.swift in Sources */,
 				CED1C4742E048CAC0064AC1F /* FavoritesBuilder.swift in Sources */,
+				CED1C4A62E05E01E0064AC1F /* CompanyView.swift in Sources */,
 				CE5C6C0C2DF4A06F00821985 /* HomeViewController.swift in Sources */,
 				CEA1C35F2DFC51B300E9B74B /* OTPVerification.swift in Sources */,
 				CEA1C3682DFC5C8800E9B74B /* AuthService.swift in Sources */,
@@ -1678,6 +1703,7 @@
 				CE1788382DF4897800A91620 /* CartBuilder.swift in Sources */,
 				CE1787FE2DF4712900A91620 /* AppCoordinator.swift in Sources */,
 				CE5C6C642DF4B26200821985 /* ProductCell.swift in Sources */,
+				CED1C4A02E05DFAF0064AC1F /* CompanyBuilder.swift in Sources */,
 				CE5E3C9E2DF89F46005B827B /* PermissionsOnboardingViewModel.swift in Sources */,
 				CE1788202DF4864000A91620 /* Combine+Extensions.swift in Sources */,
 				CE1788302DF486E900A91620 /* URLSession+Extensions.swift in Sources */,
@@ -1749,12 +1775,14 @@
 				CED1C41E2E030CE70064AC1F /* Notification+Exc.swift in Sources */,
 				CE5C6C022DF4913600821985 /* ForgotPasswordBuilder.swift in Sources */,
 				CED1C47F2E04A2F60064AC1F /* CategoryViewController.swift in Sources */,
+				CED1C4A42E05DFEB0064AC1F /* CompanyViewController.swift in Sources */,
 				CE1788362DF4896A00A91620 /* CartViewModel.swift in Sources */,
 				CE5E3C972DF8732A005B827B /* PageViewController.swift in Sources */,
 				CEA1C3632DFC524600E9B74B /*  ResetPassword.swift in Sources */,
 				CED1C47D2E04A2CB0064AC1F /* CategoryView.swift in Sources */,
 				CED1C3902DFF37E40064AC1F /* ErrorPopupView.swift in Sources */,
 				CED1C4812E04A37A0064AC1F /* CategoryViewModel.swift in Sources */,
+				CED1C4A22E05DFCE0064AC1F /* CompanyViewModel.swift in Sources */,
 				CEA1C3462DFB0A9300E9B74B /* VerifyOTPBuilder.swift in Sources */,
 				CE5E3C892DF85613005B827B /* GetStartedOnboardingViewController  .swift in Sources */,
 				CE5E3C832DF854C5005B827B /* WelcomeOnboardingViewController .swift in Sources */,
