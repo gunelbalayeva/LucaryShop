@@ -24,13 +24,11 @@ final class CartCoordinator{
         onFinish?()
     }
     func navigateToOrders() {
-        //           guard let orderService = orderService else { return }
-        //           let orderCoordinator = OrderCoordinator(
-        //               parentCoordinator: self,
-        //               navigationController: navigationController,
-        //               orderService: orderService
-        //           )
-        //           orderCoordinator.start()
+        guard let orderService = orderService else { return }
+        let orderCoordinator = OrderCoordinator(parentCoordinator: parentCoordinator,
+                                                navigationController: navigationController,
+                                                orderService: orderService)
+        orderCoordinator.start()
     }
     
     func dismiss() {

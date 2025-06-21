@@ -18,7 +18,14 @@ final class OrderCoordinator {
         self.navigationController = navigationController
         self.orderService = orderService
     }
-    
+    func start() {
+        let viewModel = OrdersViewModel(coordinator: self,
+                                        orderService: orderService)
+        let vc = OrdersViewController(viewModel: viewModel,
+                                      coordinator: self)
+        navigationController.pushViewController(vc, animated: true)
+    }
+
 
     func finish() {
         onFinish?()
