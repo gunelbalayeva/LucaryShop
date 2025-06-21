@@ -445,6 +445,7 @@
 		CE1787FF2DF4714A00A91620 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4BE2E06B0D40064AC1F /* Media */,
 				CEA1C3742DFE175200E9B74B /* Animations */,
 				CE46264E2DF620990026AFE6 /* Fonts */,
 				CE1788392DF48B7C00A91620 /* Localization */,
@@ -632,11 +633,11 @@
 		CE1788142DF4736600A91620 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				CED1C4BB2E0614100064AC1F /* Controller */,
 				CE5C6C622DF4B25600821985 /* Cells */,
 				CE5C6C132DF4A0B400821985 /* Coordinator */,
 				CE5C6C102DF4A09400821985 /* Builder */,
 				CE5C6C0D2DF4A07400821985 /* ViewModel */,
+				CED1C4BB2E0614100064AC1F /* Controller */,
 				CE5C6C0A2DF4A06300821985 /* View */,
 			);
 			path = Home;
@@ -1638,6 +1639,13 @@
 				CE5C6C0B2DF4A06F00821985 /* HomeViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		CED1C4BE2E06B0D40064AC1F /* Media */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Media;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

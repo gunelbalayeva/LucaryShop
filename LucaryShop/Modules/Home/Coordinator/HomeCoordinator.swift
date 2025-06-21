@@ -15,7 +15,12 @@ final class HomeCoordinator {
     let companyService: CompanyService
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, categoryService: CategoryService, companyService: CompanyService) {
+    
+    init(parentCoordinator: AppCoordinator? = nil,
+         navigationController: UINavigationController,
+         productService: ProductService,
+         categoryService: CategoryService,
+         companyService: CompanyService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.productService = productService
@@ -23,16 +28,25 @@ final class HomeCoordinator {
         self.companyService = companyService
     }
     
+    
     func start() {
-            let viewModel = HomeViewModel(
-                coordinator: self,
-                productService: productService,
-                categoryService: categoryService,
-                companyService: companyService
-            )
-            let vc = HomeViewController(homeViewModel: viewModel)
-            navigationController.setViewControllers([vc], animated: true)
-        }
+        let viewModel = HomeViewModel(coordinator: self,
+                                      productService: productService,
+                                      categoryService: categoryService,
+                                      companyService: companyService)
+        let vc = HomeViewController(homeViewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func startAndReturnViewController() -> UIViewController {
+        let vc = HomeBuilder(coordinator: self,
+                             productService: productService,
+                             categoryService: categoryService,
+                             companyService: companyService).build()
+            
+        return UINavigationController(rootViewController: vc)
+    }
+
     
     func finish(){
         onFinish?()

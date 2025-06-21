@@ -15,6 +15,7 @@ final class FavoritesViewViewController:UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .red
     }
     
     init(viewModel: FavoritesViewModel) {

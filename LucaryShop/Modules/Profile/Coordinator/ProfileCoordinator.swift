@@ -14,12 +14,11 @@ final class ProfileCoordinator: Coordinator {
     private let authService: AuthService
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, profileService: ProfileService, authService: AuthService, onFinish: ( () -> Void)? = nil) {
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, profileService: ProfileService, authService: AuthService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.profileService = profileService
         self.authService = authService
-        self.onFinish = onFinish
     }
     
     func start() {
@@ -27,7 +26,13 @@ final class ProfileCoordinator: Coordinator {
         let viewController = ProfileViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
-
+    
+    func startAndReturnViewController() -> UIViewController {
+        let vc = ProfileBuilder(profileService: profileService,
+                                authService: authService,
+                                coordinator: self).build()
+        return UINavigationController(rootViewController: vc)
+    }
     
     func finish() {
         onFinish?()

@@ -41,9 +41,9 @@ final class AppCoordinator: Coordinator {
     private let authService: AuthService
     let verificationId: String
     private var childCoordinators: [Coordinator] = []
-
-   
-
+    
+    
+    
     init(navigationController: UINavigationController, authService: AuthService, verificationId: String) {
         self.navigationController = navigationController
         self.authService = authService
@@ -55,8 +55,11 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = SplashBuild(cordinator: self).build()
-        navigationController.setViewControllers([vc], animated: true)
+        
+        startHomeFlow(.home)
+
+        //        let vc = SplashBuild(cordinator: self).build()
+        //        navigationController.setViewControllers([vc], animated: true)
     }
     
     
@@ -106,26 +109,49 @@ final class AppCoordinator: Coordinator {
     
     
     func startHomeFlow(_ flow :TabbarFlowType) {
-        //        switch flow{
-        //        case .home :
-        //
-        //        case .order :
-        //
-        //        case .favorites:
-        //
-        //        case .profile :
-        //
-        //        }
-    }
-  
-    
-    func startProfile(_ flow :ProfileFlowType){
-        switch flow {
-        case .language:
-            let languageCoordinator = LanguageSelectionCoordinator(
-                parentCoordinator: self, navigationController: navigationController)
-            languageCoordinator.startLanguage()
-            
+            let productService = ProductService()
+            let categoryService = CategoryService()
+            let companyService = CompanyService()
+            let orderService = OrderService()
+            let favoriteService = FavoritesService()
+            let profileService = ProfileService()
+            let cartService = CartService()
+            let tabBarController = UITabBarController()
+            let mainTabBarCoordinator = MainTabBarCoordinator(
+                parentCoordinator: self,
+                navigationController: navigationController,
+                tabBarController: tabBarController,
+                productService: productService,
+                categoryService: categoryService,
+                companyService: companyService,
+                orderService: orderService,
+                favoriteService: favoriteService,
+                authService: authService,
+                profileService: profileService,
+                cartService: cartService
+            )
+            childCoordinators.append(mainTabBarCoordinator)
+            mainTabBarCoordinator.start()
+            switch flow {
+            case .home:
+                tabBarController.selectedIndex = 0
+            case .order:
+                tabBarController.selectedIndex = 1
+            case .favorites:
+                tabBarController.selectedIndex = 2
+            case .profile:
+                tabBarController.selectedIndex = 3
+            }
+        }
+        
+        
+        func startProfile(_ flow :ProfileFlowType){
+            switch flow {
+            case .language:
+                let languageCoordinator = LanguageSelectionCoordinator(
+                    parentCoordinator: self, navigationController: navigationController)
+                languageCoordinator.startLanguage()
+            }
         }
     }
-}
+

@@ -13,16 +13,22 @@ final class FavoritesCoordinator{
     private let profileService: ProfileService
     private let favoriteService: FavoritesService
     private let productService: ProductService
+    private let cartService: CartService?
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, profileService: ProfileService, favoriteService: FavoritesService, productService: ProductService) {
+    init(parentCoordinator: AppCoordinator? = nil,
+         navigationController: UINavigationController,
+         profileService: ProfileService,
+         favoriteService: FavoritesService,
+         productService: ProductService,
+         cartService: CartService?) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.profileService = profileService
         self.favoriteService = favoriteService
         self.productService = productService
+        self.cartService = cartService
     }
-    
     
     func navigateToProductDetail(with productId: Int) {
         let coordinator = ProductDetailCoordinator(
@@ -35,6 +41,21 @@ final class FavoritesCoordinator{
         coordinator.start(with: productId)
     }
     
+    func start() {
+        let viewModel = FavoritesViewModel(favoritesService: favoriteService,
+                                           productService: productService,
+                                           cartService: cartService)
+        let vc = FavoritesViewViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func startAndReturnViewController() -> UIViewController {
+        let vc = FavoritesBuilder(favoritesService: favoriteService,
+                                 productService: productService,
+                                 cartService: cartService,
+                                 coordinator: self).build()
+        return UINavigationController(rootViewController: vc)
+    }
     
     func finish() {
         onFinish?()

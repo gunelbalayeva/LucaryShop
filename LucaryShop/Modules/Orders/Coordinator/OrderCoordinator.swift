@@ -18,6 +18,7 @@ final class OrderCoordinator {
         self.navigationController = navigationController
         self.orderService = orderService
     }
+    
     func start() {
         let viewModel = OrdersViewModel(coordinator: self,
                                         orderService: orderService)
@@ -26,7 +27,14 @@ final class OrderCoordinator {
         navigationController.pushViewController(vc, animated: true)
     }
 
-
+    
+    func startAndReturnViewController() -> UIViewController {
+        let vc = OrdersBuilder(coordinator: self,
+                               orderService: orderService).build()
+        return UINavigationController(rootViewController: vc)
+    }
+    
+    
     func finish() {
         onFinish?()
     }
