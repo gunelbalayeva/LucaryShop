@@ -7,6 +7,6 @@
 
 import UIKit
 
-final class ProductCell{
+final class ProductCell:UICollectionViewCell{
     
 }

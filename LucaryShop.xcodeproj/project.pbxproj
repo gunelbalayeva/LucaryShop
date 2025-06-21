@@ -191,6 +191,8 @@
 		CED1C4B72E0603C10064AC1F /* CompanyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4B62E0603C10064AC1F /* CompanyDetail.swift */; };
 		CED1C4B92E0608B50064AC1F /* CompanyDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4B82E0608B50064AC1F /* CompanyDetailBuilder.swift */; };
 		CED1C4BD2E0614350064AC1F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4BC2E0614350064AC1F /* HomeView.swift */; };
+		CED1C4C12E06ED070064AC1F /* HomeViewController+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4C02E06ED060064AC1F /* HomeViewController+Exc.swift */; };
+		CED1C4C32E06ED6A0064AC1F /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4C22E06ED6A0064AC1F /* CompanyCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -379,6 +381,8 @@
 		CED1C4B62E0603C10064AC1F /* CompanyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetail.swift; sourceTree = "<group>"; };
 		CED1C4B82E0608B50064AC1F /* CompanyDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailBuilder.swift; sourceTree = "<group>"; };
 		CED1C4BC2E0614350064AC1F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CED1C4C02E06ED060064AC1F /* HomeViewController+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Exc.swift"; sourceTree = "<group>"; };
+		CED1C4C22E06ED6A0064AC1F /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -638,6 +642,7 @@
 				CE5C6C102DF4A09400821985 /* Builder */,
 				CE5C6C0D2DF4A07400821985 /* ViewModel */,
 				CED1C4BB2E0614100064AC1F /* Controller */,
+				CED1C4BF2E06ECE20064AC1F /* Extension */,
 				CE5C6C0A2DF4A06300821985 /* View */,
 			);
 			path = Home;
@@ -1025,6 +1030,7 @@
 			isa = PBXGroup;
 			children = (
 				CE5C6C632DF4B26200821985 /* ProductCell.swift */,
+				CED1C4C22E06ED6A0064AC1F /* CompanyCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1648,6 +1654,14 @@
 			path = Media;
 			sourceTree = "<group>";
 		};
+		CED1C4BF2E06ECE20064AC1F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4C02E06ED060064AC1F /* HomeViewController+Exc.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1780,6 +1794,7 @@
 				CE5C6C202DF4A14500821985 /* ProductDetailBuilder.swift in Sources */,
 				CE5E3C872DF855F7005B827B /* PermissionsOnboardingViewController.swift in Sources */,
 				CE5C6C522DF4B16F00821985 /* ProductService.swift in Sources */,
+				CED1C4C12E06ED070064AC1F /* HomeViewController+Exc.swift in Sources */,
 				CE5C6C1D2DF4A12F00821985 /* ProductDetailViewModel.swift in Sources */,
 				CED1C3AC2E01E9E30064AC1F /* LanguageSelectionBuilder.swift in Sources */,
 				CE5E3C792DF826B3005B827B /* OnboardingPageView.swift in Sources */,
@@ -1859,6 +1874,7 @@
 				CE1788082DF4725C00A91620 /* UILabel+Ext.swift in Sources */,
 				CED1C42D2E0411000064AC1F /* ProductEndpoint.swift in Sources */,
 				CE5E3C852DF855C0005B827B /* FeaturesOnboardingViewController.swift in Sources */,
+				CED1C4C32E06ED6A0064AC1F /* CompanyCell.swift in Sources */,
 				CED1C44F2E044A360064AC1F /* CompanyEndpoint.swift in Sources */,
 				CED1C41E2E030CE70064AC1F /* Notification+Exc.swift in Sources */,
 				CE5C6C022DF4913600821985 /* ForgotPasswordBuilder.swift in Sources */,
