@@ -7,9 +7,11 @@
 
 import UIKit
 
-extension HomeViewController :UICollectionViewDataSource , UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+extension HomeViewController :UICollectionViewDataSource,
+                              UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 40
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -23,5 +25,13 @@ extension HomeViewController :UICollectionViewDataSource , UICollectionViewDeleg
             cell.backgroundColor = .systemOrange
             return cell
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView == productList else { return }
+        let offsetY = scrollView.contentOffset.y
+        let threshold: CGFloat = 10
+        let shouldHideHeader = offsetY > threshold
+        homeView.updateProductListTopConstraint(hideHeader: shouldHideHeader)
     }
 }

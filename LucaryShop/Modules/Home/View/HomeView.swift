@@ -21,7 +21,7 @@ final class HomeView: UIView {
         let button = CustomButton(style: .plain)
         let image = UIImage(systemName: "square.grid.2x2")
         button.setImage(image, for: .normal)
-        button.tintColor = .black
+        button.tintColor = .onboardingLabel
         return button
     }()
     
@@ -71,7 +71,7 @@ final class HomeView: UIView {
     
     private var underlineLeadingConstraint: Constraint?
     
-    private let bannerImage: UIImageView = {
+    let bannerImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "banner")
         iv.layer.cornerRadius = 18
@@ -80,8 +80,17 @@ final class HomeView: UIView {
         return iv
     }()
     
-    private let headLabel = UILabel().withStyle(text: "Məhsullar", size: 16)
-    private let companyHeadLabel = UILabel().withStyle(text: "Partnyorlarımız", size: 16)
+    let headLabel:UILabel = {
+        let label = UILabel().withStyle(text: "Məhsullar", size: 16)
+        label.font =  UIFont.systemFont(ofSize: 20, weight: .bold)
+        return label
+    }()
+    
+    private let companyHeadLabel: UILabel = {
+      let label =  UILabel().withStyle(text: "Partnyorlarımız", size: 16)
+        label.font =  UIFont.systemFont(ofSize: 20, weight: .bold)
+        return label
+    }()
     
     private let companySeeAllButton: CustomButton = {
         let button = CustomButton(style: .plain)
@@ -91,7 +100,7 @@ final class HomeView: UIView {
         return button
     }()
     
-    private lazy var companyStackView: UIStackView = {
+    lazy var companyStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [companyHeadLabel, companySeeAllButton])
         stack.axis = .horizontal
         stack.distribution = .fill
@@ -99,15 +108,16 @@ final class HomeView: UIView {
         return stack
     }()
     
-    private lazy var headerStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [headerLogoName, UIView(), menyuButton])
+    lazy var headerStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [headerLogoName, menyuButton])
         stack.axis = .horizontal
         stack.alignment = .center
         return stack
     }()
-    
-    private let companiesCollectionView: UICollectionView
+
+    let companiesCollectionView: UICollectionView
     private let productList: UICollectionView
+    private var productListTopConstraint: Constraint?
     
     
     init(companiesCollectionView: UICollectionView, productList: UICollectionView) {
@@ -123,7 +133,6 @@ final class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Setup
     
     private func setupUI() {
         backgroundColor = .white
@@ -138,7 +147,7 @@ final class HomeView: UIView {
             make.left.right.equalToSuperview().inset(16)
         }
         
-        menyuButton.setSize(width: 44, height: 44)
+        menyuButton.setSize(width: 55, height: 50)
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(headerStackView.snp.bottom).offset(16)
             make.left.right.equalToSuperview().inset(16)
@@ -181,21 +190,22 @@ final class HomeView: UIView {
         }
         
         productList.snp.makeConstraints { make in
-            make.top.equalTo(headLabel.snp.bottom).offset(16)
+            productListTopConstraint = make.top.equalTo(headLabel.snp.bottom).offset(16).constraint
             make.left.right.bottom.equalToSuperview().inset(16)
         }
     }
     
     private func setupActions() {
+        menyuButton.addTarget(self, action: #selector(menyuButtonTapped), for: .touchUpInside)
+        categoryButton.addTarget(self, action: #selector(categoryButtonTapped), for: .touchUpInside)
         homeButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         categoryButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         companySeeAllButton.addTarget(self, action: #selector(companySeeAllTapped), for: .touchUpInside)
     }
     
     
-    // MARK: - Actions
-    
-    @objc private func buttonTapped(_ sender: UIButton) {
+    @objc
+    private func buttonTapped(_ sender: UIButton) {
         let isHome = sender == homeButton
         underlineLeadingConstraint?.deactivate()
         underlineView.snp.makeConstraints { make in
@@ -204,18 +214,69 @@ final class HomeView: UIView {
             make.height.equalTo(2)
             make.width.equalTo(buttonStackView.snp.width).dividedBy(2)
         }
-        
         homeButton.alpha = isHome ? 1.0 : 0.5
         categoryButton.alpha = isHome ? 0.5 : 1.0
-        
         UIView.animate(withDuration: 0.3) {
             self.layoutIfNeeded()
         }
     }
     
-    @objc private func companySeeAllTapped() {
-        print("Company See All tapped — navigate to companies page")
+    @objc
+    private func companySeeAllTapped() {
+        print("Sirketlere bax")
         // Coordinator və ya ViewController vasitəsilə səhifəyə keçid buraya əlavə olunacaq
     }
     
+    @objc
+    private func menyuButtonTapped(){
+        print("Menyu gosterilir")
+    }
+    
+    @objc
+    private func categoryButtonTapped(){
+        print("Category sehifesi gosterilir")
+    }
+    
+    func updateProductListTopConstraint(hideHeader: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            [self.bannerImage, self.companyStackView, self.companiesCollectionView, self.headLabel].forEach { view in
+                view.alpha = hideHeader ? 0 : 1
+            }
+            self.productListTopConstraint?.deactivate()
+            self.productList.snp.makeConstraints { make in
+                if hideHeader {
+                    self.productListTopConstraint = make.top.equalTo(self.buttonStackView.snp.bottom).constraint
+                } else {
+                    self.productListTopConstraint = make.top.equalTo(self.headLabel.snp.bottom).offset(16).constraint
+                }
+            }
+            self.layoutIfNeeded()
+        }
+    }
+    
+}
+extension HomeView: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView == productList else { return }
+        
+        let offsetY = scrollView.contentOffset.y
+        let threshold: CGFloat = 10
+        let shouldHide = offsetY > threshold
+        
+        [bannerImage, companyStackView, companiesCollectionView, headLabel].forEach { view in
+            view.isHidden = shouldHide
+        }
+        productListTopConstraint?.deactivate()
+        productList.snp.updateConstraints { make in
+            if shouldHide {
+                productListTopConstraint = make.top.equalTo(buttonStackView.snp.bottom).constraint
+            } else {
+                productListTopConstraint = make.top.equalTo(headLabel.snp.bottom).offset(16).constraint
+            }
+        }
+        UIView.animate(withDuration: 0.3) {
+            self.layoutIfNeeded()
+        }
+    }
 }

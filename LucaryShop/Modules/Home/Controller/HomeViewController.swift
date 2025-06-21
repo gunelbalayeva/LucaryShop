@@ -18,7 +18,7 @@ final class HomeViewController:UIViewController {
             return collectionView
         }()
         
-        private let productList: UICollectionView = {
+         let productList: UICollectionView = {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
             layout.minimumLineSpacing = 8
@@ -28,12 +28,12 @@ final class HomeViewController:UIViewController {
             return collectionView
         }()
         
-        private lazy var homeView = HomeView(
+         lazy var homeView = HomeView(
             companiesCollectionView: companiesCollectionView,
             productList: productList
         )
     
-    private let homeViewModel:HomeViewModel
+     let homeViewModel:HomeViewModel
     
     override func loadView() {
             self.view = homeView
