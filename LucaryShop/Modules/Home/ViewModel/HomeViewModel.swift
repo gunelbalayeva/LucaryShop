@@ -7,11 +7,10 @@
 
 import Foundation
 final class HomeViewModel {
-    private weak var coordinator: HomeCoordinator?
+     weak var coordinator: HomeCoordinator?
     private let productService: ProductService
     private let categoryService: CategoryService
     private let companyService :CompanyService
-    
     @Published var newArrivals: [Product] = []
     @Published var categories: [Category] = []
     @Published var isLoading = false
@@ -67,5 +66,9 @@ final class HomeViewModel {
                 self?.errorMessage = error.localizedDescription
             }
         }
+    }
+    
+    func navigateToCompanies() {
+        coordinator?.navigateToCategory()
     }
 }

@@ -13,21 +13,22 @@ final class HomeCoordinator {
     let productService: ProductService
     let categoryService: CategoryService
     let companyService: CompanyService
+    let cartService: CartService
+    let favoritesService: FavoritesService
+    var categoryCoordinator: CategoryCoordinator?
     var onFinish: (() -> Void)?
     
     
-    init(parentCoordinator: AppCoordinator? = nil,
-         navigationController: UINavigationController,
-         productService: ProductService,
-         categoryService: CategoryService,
-         companyService: CompanyService) {
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, categoryService: CategoryService, companyService: CompanyService, cartService: CartService, favoritesService: FavoritesService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.productService = productService
         self.categoryService = categoryService
         self.companyService = companyService
+        self.cartService = cartService
+        self.favoritesService = favoritesService
+        
     }
-    
     
     func start() {
         let viewModel = HomeViewModel(coordinator: self,
@@ -37,17 +38,31 @@ final class HomeCoordinator {
         let vc = HomeViewController(homeViewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
-    
-    func startAndReturnViewController() -> UIViewController {
-        let vc = HomeBuilder(coordinator: self,
-                             productService: productService,
-                             categoryService: categoryService,
-                             companyService: companyService).build()
-            
-        return UINavigationController(rootViewController: vc)
+
+    func navigateToCategory() {
+        print("navigateToCategory çağırıldı")
+        DispatchQueue.main.async {
+            let coordinator = CategoryCoordinator(navigationController: self.navigationController,
+                                                  categoryService: self.categoryService,
+                                                  productService: self.productService,
+                                                  favoritesService: self.favoritesService,
+                                                  cartService: self.cartService)
+            self.categoryCoordinator = coordinator
+            coordinator.start()
+            print("Coordinator start çağırıldı")
+        }
     }
 
-    
+
+    func startAndReturnViewController() -> UIViewController {
+        let viewModel = HomeViewModel(coordinator: self,
+                                      productService: productService,
+                                      categoryService: categoryService,
+                                      companyService: companyService)
+        let vc = HomeViewController(homeViewModel: viewModel)
+        return vc
+    }
+
     func finish(){
         onFinish?()
     }

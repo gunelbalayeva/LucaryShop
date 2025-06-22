@@ -31,6 +31,13 @@ final class CategoryCoordinator {
         self.cartService = cartService
     }
     
+    func start() {
+            let viewModel = CategoryViewModel(categoryService: categoryService,
+                                              productService: productService)
+            let vc = CategoryViewController(ViewModel: viewModel)
+            navigationController.pushViewController(vc, animated: true)
+        }
+    
     func navigateToProductList(for categoryId: Int) {
         let coordinator = ProductListCoordinator(
             parentCoordinator: parentCoordinator,
@@ -41,7 +48,6 @@ final class CategoryCoordinator {
         )
         coordinator.start(categoryId: categoryId)
     }
-    
     
     func finish() {
         onFinish?()

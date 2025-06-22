@@ -11,7 +11,6 @@ protocol Coordinator:AnyObject {
     func start()
 }
 
-
 enum AuthFlowType {
     case login
     case register
@@ -25,6 +24,12 @@ enum TabbarFlowType {
     case favorites
     case profile
 }
+
+enum HomeCategoryFlowType{
+    case home
+    case category
+}
+
 enum ProductFlowType{
     case productDetail
     case cart
@@ -41,13 +46,14 @@ final class AppCoordinator: Coordinator {
     private let authService: AuthService
     let verificationId: String
     private var childCoordinators: [Coordinator] = []
-    
+   
     
     
     init(navigationController: UINavigationController, authService: AuthService, verificationId: String) {
         self.navigationController = navigationController
         self.authService = authService
         self.verificationId = verificationId
+    
     }
     
     func childDidFinish(_ child: Coordinator) {
@@ -55,8 +61,8 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        
         startHomeFlow(.home)
+        print("🏁 AppCoordinator startHomeFlow çağırıldı")
 
         //        let vc = SplashBuild(cordinator: self).build()
         //        navigationController.setViewControllers([vc], animated: true)
@@ -79,7 +85,10 @@ final class AppCoordinator: Coordinator {
         switch flow {
         case .login:
             let loginCoordinator = LoginCoordinator(
-                parentCoordinator: self, navigationController: navigationController, authService: authService, verificationId: verificationId)
+                parentCoordinator: self,
+                navigationController: navigationController,
+                authService: authService,
+                verificationId: verificationId)
             loginCoordinator.onFinish = { [weak self] in
                 self?.startHomeFlow(.home)
             }
@@ -87,7 +96,9 @@ final class AppCoordinator: Coordinator {
             
         case .register:
             let registerCoordinator = RegisterCoordinator(
-                parentCoordinator:self, navigationController: navigationController, authService: authService)
+                parentCoordinator:self, 
+                navigationController: navigationController,
+                authService: authService)
             registerCoordinator.onFinish = { [weak self] in
                 print("Hello Home - men bosam deye cagirilmiram")
                 self?.startHomeFlow(.home)
@@ -95,7 +106,10 @@ final class AppCoordinator: Coordinator {
             registerCoordinator.start()
         case .forgotPassword:
             let forgotCoordinator = ForgotPasswordCoordinator(
-                parentCoordinator:self, navigationController: navigationController, authService: authService, verificationId: verificationId)
+                parentCoordinator:self,
+                navigationController: navigationController,
+                authService: authService,
+                verificationId: verificationId)
             forgotCoordinator.start()
         }
     }
@@ -109,6 +123,8 @@ final class AppCoordinator: Coordinator {
     
     
     func startHomeFlow(_ flow :TabbarFlowType) {
+        print("🏁 MainTabBarCoordinator start çağırıldı")
+        
             let productService = ProductService()
             let categoryService = CategoryService()
             let companyService = CompanyService()
@@ -144,12 +160,13 @@ final class AppCoordinator: Coordinator {
             }
         }
         
-        
+   
         func startProfile(_ flow :ProfileFlowType){
             switch flow {
             case .language:
                 let languageCoordinator = LanguageSelectionCoordinator(
-                    parentCoordinator: self, navigationController: navigationController)
+                    parentCoordinator: self,
+                    navigationController: navigationController)
                 languageCoordinator.startLanguage()
             }
         }
