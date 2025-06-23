@@ -8,7 +8,6 @@
 import UIKit
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == companiesCollectionView {
             return homeViewModel.companies.count
@@ -17,21 +16,35 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         return 0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == companiesCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompanyCell.identifier, for: indexPath) as! CompanyCell
-            let company = homeViewModel.companies[indexPath.item]
-//            cell.configure(with: company)
+            // cell.configure(...)
             return cell
-        } else if collectionView == productList {
+        } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
             let product = homeViewModel.newArrivals[indexPath.item]
             cell.configure(with: product)
             return cell
         }
-        
-        return UICollectionViewCell()
     }
-
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == productList {
+            let offsetY = scrollView.contentOffset.y
+            let contentHeight = scrollView.contentSize.height
+            let frameHeight = scrollView.frame.size.height
+            
+            if offsetY > contentHeight - frameHeight * 1.5 {
+                if let lastIndexPath = productList.indexPathsForVisibleItems.max() {
+                    homeViewModel.loadNextPageIfNeeded(currentIndex: lastIndexPath.item)
+                }
+            }
+            
+            // Header gizlətmək
+            let shouldHide = offsetY > 10
+            homeView.updateProductListTopConstraint(hideHeader: shouldHide)
+        }
+    }
 }

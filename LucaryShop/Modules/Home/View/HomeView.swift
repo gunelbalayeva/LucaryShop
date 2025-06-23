@@ -280,28 +280,3 @@ final class HomeView: UIView {
     }
     
 }
-
-extension HomeView: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard scrollView == productList else { return }
-        let offsetY = scrollView.contentOffset.y
-        let threshold: CGFloat = 10
-        let shouldHide = offsetY > threshold
-        
-        [bannerImage, companyStackView, companiesCollectionView, headLabel].forEach { view in
-            view.isHidden = shouldHide
-        }
-        productListTopConstraint?.deactivate()
-        productList.snp.updateConstraints { make in
-            if shouldHide {
-                productListTopConstraint = make.top.equalTo(buttonStackView.snp.bottom).constraint
-            } else {
-                productListTopConstraint = make.top.equalTo(headLabel.snp.bottom).offset(16).constraint
-            }
-        }
-        UIView.animate(withDuration: 0.3) {
-            self.layoutIfNeeded()
-        }
-    }
-}

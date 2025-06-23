@@ -64,9 +64,9 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-//        startHomeFlow(.home)
+      startHomeFlow(.home)
 //        print("🏁 AppCoordinator startHomeFlow çağırıldı")
-
+//
 //                let vc = SplashBuild(cordinator: self).build()
 //                navigationController.setViewControllers([vc], animated: true)
     }

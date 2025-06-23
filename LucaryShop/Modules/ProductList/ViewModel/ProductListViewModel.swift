@@ -30,39 +30,39 @@ final class ProductListViewModel {
         self.cartService = cartService
     }
     
-    func fetchProducts(categoryId: Int?) {
-        isLoading = true
-        errorMessage = nil
-        currentCategoryId = categoryId
-        
-        if let categoryId = categoryId {
-            productService.fetchProducts(by: categoryId) { [weak self] result in
-                self?.handleFetchResult(result)
-            }
-        } else {
-            productService.fetchAllProducts(page: 1, size: 20) { [weak self] result in
-                self?.handleFetchResult(result)
-            }
-        }
-    }
-    
-    private func handleFetchResult(_ result: Result<[Product], Error>) {
-        DispatchQueue.main.async {
-            self.isLoading = false
-            switch result {
-            case .success(let products):
-                self.allProducts = products
-//                self.applyFilters()
-            case .failure(let error):
-                self.errorMessage = error.localizedDescription
-            }
-        }
-    }
-    
-    func updateSearchText(_ text: String) {
-        currentSearchText = text
-//        applyFilters()
-    }
+//    func fetchProducts(categoryId: Int?) {
+//        isLoading = true
+//        errorMessage = nil
+//        currentCategoryId = categoryId
+//        
+//        if let categoryId = categoryId {
+//            productService.fetchProducts(by: categoryId) { [weak self] result in
+//                self?.handleFetchResult(result)
+//            }
+//        } else {
+//            productService.fetchAllProducts(page: 1, size: 20) { [weak self] result in
+//                self?.handleFetchResult(result)
+//            }
+//        }
+//    }
+//    
+//    private func handleFetchResult(_ result: Result<[Product], Error>) {
+//        DispatchQueue.main.async {
+//            self.isLoading = false
+//            switch result {
+//            case .success(let products):
+//                self.allProducts = products
+////                self.applyFilters()
+//            case .failure(let error):
+//                self.errorMessage = error.localizedDescription
+//            }
+//        }
+//    }
+//    
+//    func updateSearchText(_ text: String) {
+//        currentSearchText = text
+////        applyFilters()
+//    }
     
 //    private func applyFilters() {
 //        if let intId = String(product.id) {

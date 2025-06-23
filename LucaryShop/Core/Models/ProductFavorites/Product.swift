@@ -6,22 +6,11 @@
 //
 
 import Foundation
-
 struct Product: Codable {
     let id: String
     let name: String
-    let description: String
+    let description: String?
     let price: Double
-    let imgUrls: [String]
+    let imgUrl: String?       
     let favorite: Bool
 }
-
-struct ProductDetail: Codable {
-    let id: String
-    let name: String
-    let description: String
-    let price: Double
-    let imageUrl: String
-    let isFavorite: Bool
-}
-

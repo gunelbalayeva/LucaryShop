@@ -46,7 +46,7 @@ final class ProductListCoordinator{
         let vc = builder.build()
         
         if let viewModel = (vc as? ProductListViewController)?.viewModel {
-            viewModel.fetchProducts(categoryId: categoryId)
+//            viewModel.fetchProducts(categoryId: categoryId)
         }
         
         navigationController.pushViewController(vc, animated: true)

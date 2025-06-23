@@ -24,44 +24,6 @@ final class FavoritesViewModel {
         self.coordinator = coordinator
     }
     
-    func loadFavorites() {
-        isLoading = true
-        favoritesService.getFavorites { [weak self] result in
-            DispatchQueue.main.async {
-                self?.isLoading = false
-                switch result {
-                case .success(let products):
-                    self?.favorites = products
-                case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
-                }
-            }
-        }
-    }
-//
-//    func removeFavorite(productId: Int) {
-//        favoritesService.removeFavorite(productId: productId) { [weak self] result in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success:
-//                    self?.favorites.removeAll { $0.id == productId }
-//                case .failure(let error):
-//                    self?.errorMessage = error.localizedDescription
-//                }
-//            }
-//        }
-//    }
-
-    func addToCart(product: Product) {
-        guard let cartService = cartService else { return }
-        cartService.addToCart(product: product) { [weak self] result in
-            DispatchQueue.main.async {
-                if case .failure(let error) = result {
-                    self?.errorMessage = error.localizedDescription
-                }
-            }
-        }
-    }
 
     func goToProductDetail(productId: Int) {
         coordinator?.navigateToProductDetail(with: productId)

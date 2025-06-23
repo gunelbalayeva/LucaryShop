@@ -6,22 +6,13 @@
 //
 
 import Foundation
+import Foundation
+
 enum ProductEndpoint {
     case getAll(page: Int, size: Int)
     case getById(String)
     case getByCategory(Int)
-    case addToFavorites(productId: String)
-    case addToCart(productId: String)
-    
-    var method: String {
-        switch self {
-        case .getAll, .getById, .getByCategory:
-            return "GET"
-        case .addToFavorites, .addToCart:
-            return "POST"
-        }
-    }
-    
+
     var path: String {
         switch self {
         case .getAll:
@@ -29,14 +20,18 @@ enum ProductEndpoint {
         case .getById(let id):
             return "/products/\(id)"
         case .getByCategory:
-            return "/products"
-        case .addToFavorites(let id):
-            return "/favorites/\(id)"
-        case .addToCart(let id):
-            return "/cart/\(id)"
+            return "/products/category"
         }
     }
-    
+
+    var method: String {
+        return "GET"
+    }
+
+    var headers: [String: String] {
+        return ["Content-Type": "application/json"]
+    }
+
     var queryItems: [URLQueryItem]? {
         switch self {
         case .getAll(let page, let size):
@@ -48,18 +43,14 @@ enum ProductEndpoint {
             return [
                 URLQueryItem(name: "categoryId", value: "\(categoryId)")
             ]
-        default:
+        case .getById:
             return nil
         }
     }
-    
+
     var url: URL {
         var components = URLComponents(string: "https://e-commerce-app-150649679863.europe-west1.run.app\(path)")!
         components.queryItems = queryItems
         return components.url!
-    }
-    
-    var headers: [String: String] {
-        ["Content-Type": "application/json"]
     }
 }

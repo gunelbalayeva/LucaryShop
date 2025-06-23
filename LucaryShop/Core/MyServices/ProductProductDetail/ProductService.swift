@@ -18,8 +18,10 @@ final class ProductService {
         let endpoint = ProductEndpoint.getAll(page: page, size: size)
         request(with: endpoint, completion: completion)
     }
+    
+    
 
-    func fetchProductDetail(id: Int, completion: @escaping (Result<ProductDetail, Error>) -> Void) {
+    func fetchProductDetail(id: Int, completion: @escaping (Result<Product, Error>) -> Void) {
         let endpoint = ProductEndpoint.getById(String(id))
         request(with: endpoint, completion: completion)
     }
@@ -41,7 +43,6 @@ final class ProductService {
             headers: headers,
             body: nil
         )
-
         networkService.request(apiRequest, completion: completion)
     }
 }

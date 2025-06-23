@@ -20,20 +20,7 @@ final class OrdersViewModel{
         self.orderService = orderService
     }
     
-    func fetchOrders() {
-            isLoading = true
-            orderService.getOrders { [weak self] result in
-                DispatchQueue.main.async {
-                    self?.isLoading = false
-                    switch result {
-                    case .success(let orders):
-                        self?.orders = orders
-                    case .failure(let error):
-                        self?.errorMessage = error.localizedDescription
-                    }
-                }
-            }
-        }
+
 
 //        func selectOrder(_ order: Order) {
 //            coordinator?.navigateToOrderDetail(order: order)

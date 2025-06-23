@@ -48,6 +48,7 @@ final class CategoryViewController:UIViewController {
           tableView.register(CategoryCell.self, forCellReuseIdentifier: CategoryCell.identifier)
       }
 
+    
       private func setupActions() {
           categoryView.onHomeTapped = { [weak self] in
               self?.navigateToHome()

@@ -26,23 +26,6 @@ final class CategoryViewModel {
         self.errorMessage = errorMessage
     }
     
-    func fetchCategories() {
-        isLoading = true
-        categoryService.fetchCategories { [weak self] result in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.isLoading = false
-                switch result {
-                case .success(let categories):
-                    self.categories = categories
-                    self.errorMessage = nil
-                case .failure(let error):
-                    self.errorMessage = error.localizedDescription
-                    self.categories = []
-                }
-            }
-        }
-    }
     
     
     func selectCategory(_ category: Category) {

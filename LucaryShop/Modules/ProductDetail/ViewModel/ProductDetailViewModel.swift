@@ -14,7 +14,7 @@ final class ProductDetailViewModel {
     private let cartService: CartService
     private weak var coordinator: ProductDetailCoordinator?
     
-    @Published var product: ProductDetail?
+    @Published var product: Product?
     @Published var isFavorite: Bool = false
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
@@ -39,7 +39,7 @@ final class ProductDetailViewModel {
                 switch result {
                 case .success(let product):
                     self?.product = product
-                    self?.isFavorite = product.isFavorite
+                    self?.isFavorite = product.favorite
                 case .failure(let error):
                     self?.errorMessage = error.localizedDescription
                 }
@@ -47,39 +47,41 @@ final class ProductDetailViewModel {
         }
     }
     
-//    func toggleFavorite() {
-//        guard let product = product else { return }
-//        isFavorite.toggle()
-//        if isFavorite {
-//            favoritesService.addFavorite(productId: product.id) { [weak self] result in
-//                if case .failure(let error) = result {
-//                    self?.errorMessage = error.localizedDescription
-//                }
-//            }
-//        } else {
-//            favoritesService.removeFavorite(productId: product.id) { [weak self] result in
-//                if case .failure(let error) = result {
-//                    self?.errorMessage = error.localizedDescription
-//                }
+    
+    func toggleFavorite() {
+        guard let product = product else { return }
+        isFavorite.toggle()
+        if isFavorite {
+            favoritesService.addFavorite(productId: productId) { [weak self] result in
+                if case .failure(let error) = result {
+                    self?.errorMessage = error.localizedDescription
+                }
+            }
+        } else {
+            favoritesService.removeFavorite(productId: productId) { [weak self] result in
+                if case .failure(let error) = result {
+                    self?.errorMessage = error.localizedDescription
+                }
+            }
+        }
+    }
+    
+    
+    
+//    func addToCart() {
+//        guard let productDetail = product else { return }
+//        let product = Product(id: productDetail.id,
+//                              name: productDetail.name,
+//                              description: productDetail.description,
+//                              price: productDetail.price,
+//                              imgUrls: [productDetail.description?],
+//                              favorite: productDetail.favorite)
+//        
+//        cartService.addToCart(product: product) { [weak self] result in
+//            if case .failure(let error) = result {
+//                self?.errorMessage = error.localizedDescription
 //            }
 //        }
 //    }
     
-    func addToCart() {
-        guard let productDetail = product else { return }
-
-        let product = Product(id: productDetail.id,
-                              name: productDetail.name,
-                              description: productDetail.description,
-                              price: productDetail.price,
-                              imgUrls: [productDetail.imageUrl],
-                              favorite: productDetail.isFavorite)
-
-        cartService.addToCart(product: product) { [weak self] result in
-            if case .failure(let error) = result {
-                self?.errorMessage = error.localizedDescription
-            }
-        }
-    }
-
 }

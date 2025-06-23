@@ -522,9 +522,9 @@
 		CE17880B2DF472A800A91620 /* MyServices */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4D22E0976F10064AC1F /* ProductProductDetail */,
 				CED1C4D02E0972650064AC1F /* Auth */,
 				CED1C43B2E04145C0064AC1F /* OrderService.swift */,
-				CE5C6C512DF4B16F00821985 /* ProductService.swift */,
 				CED1C42E2E0411F50064AC1F /* ProfileService.swift */,
 				CED1C43F2E0414940064AC1F /* CartService.swift */,
 				CED1C4432E0414CD0064AC1F /* FavoritesService.swift */,
@@ -1213,8 +1213,8 @@
 		CED1C3B62E02C5880064AC1F /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4D32E0977910064AC1F /* Products */,
 				CED1C4D12E09727E0064AC1F /* Auth */,
-				CED1C42C2E0411000064AC1F /* ProductEndpoint.swift */,
 				CED1C4302E0412150064AC1F /* ProfileEndpoint.swift */,
 				CED1C43D2E04147E0064AC1F /* OrderEndpoint.swift */,
 				CED1C4412E0414AF0064AC1F /* CartEndpoint.swift */,
@@ -1709,6 +1709,22 @@
 				CE17882D2DF486D200A91620 /* AuthEndpoint.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		CED1C4D22E0976F10064AC1F /* ProductProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C6C512DF4B16F00821985 /* ProductService.swift */,
+			);
+			path = ProductProductDetail;
+			sourceTree = "<group>";
+		};
+		CED1C4D32E0977910064AC1F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C42C2E0411000064AC1F /* ProductEndpoint.swift */,
+			);
+			path = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
