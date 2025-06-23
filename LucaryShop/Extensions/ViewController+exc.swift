@@ -24,4 +24,23 @@ extension UIViewController {
             password.rangeOfCharacter(from: .letters) != nil
     }
 
+    
+    func showBlurLoading() {
+            let blurEffect = UIBlurEffect(style: .regular)
+            let blurView = UIVisualEffectView(effect: blurEffect)
+            blurView.frame = view.bounds
+            blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            blurView.tag = 777
+
+            let indicator = UIActivityIndicatorView(style: .large)
+            indicator.center = blurView.contentView.center
+            indicator.startAnimating()
+            blurView.contentView.addSubview(indicator)
+
+            view.addSubview(blurView)
+        }
+
+        func hideBlurLoading() {
+            view.viewWithTag(777)?.removeFromSuperview()
+        }
 }

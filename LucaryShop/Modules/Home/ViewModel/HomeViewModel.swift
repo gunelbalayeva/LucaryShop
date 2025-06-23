@@ -35,7 +35,6 @@ final class HomeViewModel {
         isLoading = true
         currentPage = 1
         newArrivals.removeAll()
-        
         productService.fetchAllProducts(page: currentPage, size: pageSize) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {

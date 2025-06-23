@@ -47,15 +47,17 @@ final class HomeViewController:UIViewController {
     
     
     override func viewDidLoad() {
-           super.viewDidLoad()
-           view.backgroundColor = .systemBackground
-           setupCollectionViews()
-           setupActions()
-           observeViewModel()
-           
-           homeViewModel.fetchHomeData()
-       }
-    
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        setupCollectionViews()
+        setupActions()
+        observeViewModel()
+        showBlurLoading()
+        homeViewModel.fetchHomeData()
+        hideBlurLoading()
+
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         homeView.selectedIndex = 0
@@ -85,7 +87,6 @@ final class HomeViewController:UIViewController {
        }
     
     
-   
     func updateSelectedIndex(_ index: Int) {
         homeView.selectedIndex = index
         homeView.updateUnderlinePosition()
