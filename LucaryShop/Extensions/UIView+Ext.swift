@@ -99,40 +99,41 @@ extension UIView {
     }
     
     func setWidth(equalTo view: UIView, multiplier: CGFloat = 1.0) {
-           self.snp.makeConstraints { make in
-               make.width.equalTo(view.snp.width).multipliedBy(multiplier)
-           }
-       }
+        self.snp.makeConstraints { make in
+            make.width.equalTo(view.snp.width).multipliedBy(multiplier)
+        }
+    }
     
     @discardableResult
-       func addStackView(
-           subviews: [UIView],
-           axis: NSLayoutConstraint.Axis = .vertical,
-           alignment: UIStackView.Alignment = .fill,
-           spacing: CGFloat = 16,
-           insets: UIEdgeInsets = .init(top: 32, left: 24, bottom: 32, right: 24)
-       ) -> UIStackView {
-           let stackView = UIStackView(arrangedSubviews: subviews)
-           stackView.configure(axis: axis, alignment: alignment, spacing: spacing)
-           self.addSubview(stackView)
-           stackView.snp.makeConstraints {
-               $0.top.equalToSuperview().inset(insets.top)
-               $0.leading.equalToSuperview().inset(insets.left)
-               $0.trailing.equalToSuperview().inset(insets.right)
-               $0.bottom.equalToSuperview().inset(insets.bottom)
-           }
-           return stackView
-       }
+    func addStackView(
+        subviews: [UIView],
+        axis: NSLayoutConstraint.Axis = .vertical,
+        alignment: UIStackView.Alignment = .fill,
+        spacing: CGFloat = 16,
+        insets: UIEdgeInsets = .init(top: 32, left: 24, bottom: 32, right: 24)
+    ) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: subviews)
+        stackView.configure(axis: axis, alignment: alignment, spacing: spacing)
+        self.addSubview(stackView)
+        stackView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(insets.top)
+            $0.leading.equalToSuperview().inset(insets.left)
+            $0.trailing.equalToSuperview().inset(insets.right)
+            $0.bottom.equalToSuperview().inset(insets.bottom)
+        }
+        return stackView
+    }
     
     func makeCircular() {
-           self.layer.cornerRadius = min(self.frame.size.width, self.frame.size.height) / 2
-           self.layer.masksToBounds = true
-           self.clipsToBounds = true
-       }
+        self.layer.cornerRadius = min(self.frame.size.width, self.frame.size.height) / 2
+        self.layer.masksToBounds = true
+        self.clipsToBounds = true
+    }
     
     func makeCardStyle(cornerRadius: CGFloat = 16, backgroundColor: UIColor = .white) {
-           self.backgroundColor = backgroundColor
-           self.layer.cornerRadius = cornerRadius
-           self.clipsToBounds = true
-       }
+        self.backgroundColor = backgroundColor
+        self.layer.cornerRadius = cornerRadius
+        self.clipsToBounds = true
+    }
+    
 }

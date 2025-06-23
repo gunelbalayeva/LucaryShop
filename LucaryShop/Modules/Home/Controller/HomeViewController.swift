@@ -28,7 +28,7 @@ final class HomeViewController:UIViewController {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
             layout.minimumLineSpacing = 8
-            layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: 200)
+            layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: 250)
             let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
             collectionView.backgroundColor = .clear
             return collectionView
@@ -47,17 +47,15 @@ final class HomeViewController:UIViewController {
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        setupCollectionViews()
-        setupActions()
-        observeViewModel()
-        showBlurLoading()
-        homeViewModel.fetchHomeData()
-        hideBlurLoading()
-
-    }
-
+           super.viewDidLoad()
+           view.backgroundColor = .systemBackground
+           setupCollectionViews()
+           setupActions()
+           observeViewModel()
+           
+           homeViewModel.fetchHomeData()
+       }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         homeView.selectedIndex = 0
@@ -85,7 +83,6 @@ final class HomeViewController:UIViewController {
            productList.delegate = self
            productList.register(ProductCell.self, forCellWithReuseIdentifier: ProductCell.identifier)
        }
-    
     
     func updateSelectedIndex(_ index: Int) {
         homeView.selectedIndex = index

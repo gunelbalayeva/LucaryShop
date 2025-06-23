@@ -31,27 +31,37 @@ final class HomeViewModel {
         self.companyService = companyService
     }
     
+    private var hasLoadedHomeData = false
+
     func fetchHomeData() {
+        guard !hasLoadedHomeData else {
+            print("⚠️ Artıq yüklənib, təkrar request atılmır.")
+            return
+        }
+
+        hasLoadedHomeData = true
         isLoading = true
         currentPage = 1
         newArrivals.removeAll()
+
         productService.fetchAllProducts(page: currentPage, size: pageSize) { [weak self] result in
             DispatchQueue.main.async {
+                print("Yeni sorgu atıldı: \(self!.currentPage)")
                 switch result {
                 case .success(let products):
-                    print(" Gələn məhsullar: \(products.count)")
+                    print("Gələn məhsullar: \(products.count)")
                     self?.newArrivals = products
                 case .failure(let error):
                     print(" API xətası: \(error)")
                     self?.errorMessage = error.localizedDescription
+                    self?.hasLoadedHomeData = false
                 }
             }
         }
-
         companyService.getAllCompanies { _ in }
         categoryService.fetchCategories { _ in }
     }
-    
+
     func loadNextPageIfNeeded(currentIndex: Int) {
         guard !isLoadingMore, currentIndex >= newArrivals.count - 4 else { return }
         

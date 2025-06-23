@@ -7,7 +7,8 @@
 
 import UIKit
 
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, ProductCellDelegate {
+ 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == companiesCollectionView {
             return homeViewModel.companies.count
@@ -25,6 +26,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
             let product = homeViewModel.newArrivals[indexPath.item]
+            cell.delegate = self
             cell.configure(with: product)
             return cell
         }
@@ -42,9 +44,30 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 }
             }
             
-            // Header gizlətmək
             let shouldHide = offsetY > 10
             homeView.updateProductListTopConstraint(hideHeader: shouldHide)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == productList {
+            let selectedProduct = homeViewModel.newArrivals[indexPath.item]
+            print("Seçilmiş məhsul: \(selectedProduct.name)")
+
+            // Məhsul detalları səhifəsinə keçid
+//            let detailVC = ProductDetailViewController()
+//            detailVC.product = selectedProduct
+//            navigationController?.pushViewController(detailVC, animated: true)
+        } else if collectionView == companiesCollectionView {
+            print("Şirkət seçildi")
+            // Şirkət üçün uyğun əməliyyatlar
+        }
+    }
+    func productCell(_ cell: ProductCell, didToggleFavoriteFor product: Product) {
+        
+    }
+    
+    func productCell(_ cell: ProductCell, didSelect product: Product) {
+        
     }
 }
