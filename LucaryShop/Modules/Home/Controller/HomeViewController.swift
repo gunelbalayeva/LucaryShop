@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 final class HomeViewController:UIViewController {
     
     let homeViewModel:HomeViewModel
+    private var cancellables = Set<AnyCancellable>()
+    
     let companiesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -19,6 +22,7 @@ final class HomeViewController:UIViewController {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
+    
     
     let productList: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -30,6 +34,7 @@ final class HomeViewController:UIViewController {
         return collectionView
     }()
     
+    
     lazy var homeView = HomeView(
         companiesCollectionView: companiesCollectionView,
         productList: productList
@@ -40,17 +45,29 @@ final class HomeViewController:UIViewController {
         self.view = homeView
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupCollectionViews()
-        
+        setupActions()
+        homeViewModel.fetchHomeData()
+        observeViewModel()
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        homeView.selectedIndex = 0
+        homeView.updateUnderlinePosition()
+    }
+    
     
     init(homeViewModel: HomeViewModel) {
         self.homeViewModel = homeViewModel
         super.init(nibName: nil, bundle: nil)
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -60,29 +77,43 @@ final class HomeViewController:UIViewController {
     private func setupCollectionViews() {
         companiesCollectionView.dataSource = self
         companiesCollectionView.delegate = self
-        companiesCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier:CompanyCell.identifier)
+        companiesCollectionView.register(UICollectionViewCell.self,
+                                         forCellWithReuseIdentifier: CompanyCell.identifier)
         
         productList.dataSource = self
         productList.delegate = self
-        productList.register(UICollectionViewCell.self, forCellWithReuseIdentifier: ProductCell.identifier)
-        
+        productList.register(UICollectionViewCell.self,
+                             forCellWithReuseIdentifier: ProductCell.identifier)
+    }
+    
+    
+    private func setupActions() {
         homeView.onCategoriesTapped = { [weak self] in
-            print("onCategoriesTapped çağırıldı")
-            guard let self = self else {
-                print("self nil oldu closure daxilində!")
-                return
-            }
-            print("self mövcuddur, navigateToCategory çağırılır 1")
-            
-            if let coordinator = self.homeViewModel.coordinator {
-                print("✅ Coordinator mövcuddur: \(coordinator)")
-                coordinator.navigateToCategory()
-            } else {
-                print("❌ Coordinator NIL'dir!!!")
-            }
-            
-            print("self mövcuddur, navigateToCategory çağırılır 2")
+            guard let self = self else { return }
+            self.homeViewModel.coordinator?.navigateToCategory()
         }
-
+    }
+    
+    
+    func updateSelectedIndex(_ index: Int) {
+        homeView.selectedIndex = index
+        homeView.updateUnderlinePosition()
+    }
+    
+    
+    private func observeViewModel() {
+        homeViewModel.$newArrivals
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.productList.reloadData()
+            }
+            .store(in: &cancellables)
+        
+        homeViewModel.$companies
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.companiesCollectionView.reloadData()
+            }
+            .store(in: &cancellables)
     }
 }

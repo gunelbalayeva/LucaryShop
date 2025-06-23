@@ -13,17 +13,36 @@ final class ProductService {
     init(networkService: NetworkService = URLSessionNetworkService()) {
         self.networkService = networkService
     }
-    
-    func fetchAllProducts(completion: @escaping (Result<[Product], Error>) -> Void) {
-        networkService.request(ProductEndpoint.getAll.request, completion: completion)
+
+    func fetchAllProducts(page: Int, size: Int, completion: @escaping (Result<[Product], Error>) -> Void) {
+        let endpoint = ProductEndpoint.getAll(page: page, size: size)
+        request(with: endpoint, completion: completion)
     }
 
     func fetchProductDetail(id: Int, completion: @escaping (Result<ProductDetail, Error>) -> Void) {
-        networkService.request(ProductEndpoint.getById(id).request, completion: completion)
-    }
-    
-    func fetchProducts(by categoryId: Int, completion: @escaping (Result<[Product], Error>) -> Void) {
-        networkService.request(ProductEndpoint.getByCategory(categoryId).request, completion: completion)
+        let endpoint = ProductEndpoint.getById(String(id))
+        request(with: endpoint, completion: completion)
     }
 
+    func fetchProducts(by categoryId: Int, completion: @escaping (Result<[Product], Error>) -> Void) {
+        let endpoint = ProductEndpoint.getByCategory(categoryId)
+        request(with: endpoint, completion: completion)
+    }
+
+    private func request<T: Decodable>(with endpoint: ProductEndpoint, completion: @escaping (Result<T, Error>) -> Void) {
+        var headers = endpoint.headers
+        if let token = KeychainManager.shared.getToken() {
+            headers["Authorization"] = "Bearer \(token)"
+        }
+
+        let apiRequest = APIRequest(
+            url: endpoint.url,
+            method: endpoint.method,
+            headers: headers,
+            body: nil
+        )
+
+        networkService.request(apiRequest, completion: completion)
+    }
 }
+

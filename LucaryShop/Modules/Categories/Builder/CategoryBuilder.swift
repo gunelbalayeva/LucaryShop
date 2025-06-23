@@ -23,7 +23,7 @@ final class CategoryBuilder{
         let viewModel = CategoryViewModel(coordinator: coordinator,
                                           categoryService: categoryService,
                                           productService: productService)
-        let vc  = CategoryViewController(ViewModel: viewModel)
+        let vc  = CategoryViewController(viewModel: viewModel)
         return vc
     }
 }

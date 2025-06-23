@@ -7,31 +7,31 @@
 
 import UIKit
 
-extension HomeViewController :UICollectionViewDataSource,
-                              UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 40
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if collectionView == companiesCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompanyCell.identifier, for: indexPath)
-            cell.backgroundColor = .systemGreen
+            return homeViewModel.companies.count
+        } else if collectionView == productList {
+            return homeViewModel.newArrivals.count
+        }
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == companiesCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompanyCell.identifier, for: indexPath) as! CompanyCell
+            let company = homeViewModel.companies[indexPath.item]
+//            cell.configure(with: company)
             return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath)
-            cell.backgroundColor = .systemOrange
+        } else if collectionView == productList {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
+            let product = homeViewModel.newArrivals[indexPath.item]
+            cell.configure(with: product)
             return cell
         }
+        
+        return UICollectionViewCell()
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard scrollView == productList else { return }
-        let offsetY = scrollView.contentOffset.y
-        let threshold: CGFloat = 10
-        let shouldHideHeader = offsetY > threshold
-        homeView.updateProductListTopConstraint(hideHeader: shouldHideHeader)
-    }
+
 }

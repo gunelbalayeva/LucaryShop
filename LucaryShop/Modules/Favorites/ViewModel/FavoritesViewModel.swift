@@ -38,19 +38,19 @@ final class FavoritesViewModel {
             }
         }
     }
-
-    func removeFavorite(productId: Int) {
-        favoritesService.removeFavorite(productId: productId) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self?.favorites.removeAll { $0.id == productId }
-                case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
-                }
-            }
-        }
-    }
+//
+//    func removeFavorite(productId: Int) {
+//        favoritesService.removeFavorite(productId: productId) { [weak self] result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success:
+//                    self?.favorites.removeAll { $0.id == productId }
+//                case .failure(let error):
+//                    self?.errorMessage = error.localizedDescription
+//                }
+//            }
+//        }
+//    }
 
     func addToCart(product: Product) {
         guard let cartService = cartService else { return }

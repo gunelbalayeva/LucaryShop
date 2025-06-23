@@ -193,6 +193,9 @@
 		CED1C4BD2E0614350064AC1F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4BC2E0614350064AC1F /* HomeView.swift */; };
 		CED1C4C12E06ED070064AC1F /* HomeViewController+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4C02E06ED060064AC1F /* HomeViewController+Exc.swift */; };
 		CED1C4C32E06ED6A0064AC1F /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4C22E06ED6A0064AC1F /* CompanyCell.swift */; };
+		CED1C4C72E08366B0064AC1F /* CategoryView+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4C62E08366B0064AC1F /* CategoryView+Exc.swift */; };
+		CED1C4C92E0839AC0064AC1F /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4C82E0839AC0064AC1F /* CategoryCell.swift */; };
+		CED1C4CC2E0853C70064AC1F /* BaseTabSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4CB2E0853C70064AC1F /* BaseTabSwitcherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -383,6 +386,9 @@
 		CED1C4BC2E0614350064AC1F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CED1C4C02E06ED060064AC1F /* HomeViewController+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Exc.swift"; sourceTree = "<group>"; };
 		CED1C4C22E06ED6A0064AC1F /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
+		CED1C4C62E08366B0064AC1F /* CategoryView+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryView+Exc.swift"; sourceTree = "<group>"; };
+		CED1C4C82E0839AC0064AC1F /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		CED1C4CB2E0853C70064AC1F /* BaseTabSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabSwitcherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,9 +522,9 @@
 		CE17880B2DF472A800A91620 /* MyServices */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4D02E0972650064AC1F /* Auth */,
 				CED1C43B2E04145C0064AC1F /* OrderService.swift */,
 				CE5C6C512DF4B16F00821985 /* ProductService.swift */,
-				CEA1C3672DFC5C8800E9B74B /* AuthService.swift */,
 				CED1C42E2E0411F50064AC1F /* ProfileService.swift */,
 				CED1C43F2E0414940064AC1F /* CartService.swift */,
 				CED1C4432E0414CD0064AC1F /* FavoritesService.swift */,
@@ -547,6 +553,7 @@
 		CE17880D2DF472E000A91620 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4CA2E0853B60064AC1F /* Base */,
 				CED1C4A72E05E68F0064AC1F /* CompanyDetail */,
 				CED1C3B92E02F3BC0064AC1F /* Companies */,
 				CED1C4862E04AC5B0064AC1F /* ProductList */,
@@ -1206,7 +1213,7 @@
 		CED1C3B62E02C5880064AC1F /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
-				CE17882D2DF486D200A91620 /* AuthEndpoint.swift */,
+				CED1C4D12E09727E0064AC1F /* Auth */,
 				CED1C42C2E0411000064AC1F /* ProductEndpoint.swift */,
 				CED1C4302E0412150064AC1F /* ProfileEndpoint.swift */,
 				CED1C43D2E04147E0064AC1F /* OrderEndpoint.swift */,
@@ -1229,6 +1236,8 @@
 		CED1C3B82E02F3AA0064AC1F /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4C52E0836430064AC1F /* Extensions */,
+				CED1C4C42E0836370064AC1F /* Cells */,
 				CED1C4782E04A22A0064AC1F /* Coordinator */,
 				CED1C4792E04A2350064AC1F /* Builder */,
 				CED1C47A2E04A23F0064AC1F /* ViewModel */,
@@ -1662,6 +1671,46 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		CED1C4C42E0836370064AC1F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4C82E0839AC0064AC1F /* CategoryCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CED1C4C52E0836430064AC1F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4C62E08366B0064AC1F /* CategoryView+Exc.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CED1C4CA2E0853B60064AC1F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4CB2E0853C70064AC1F /* BaseTabSwitcherView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CED1C4D02E0972650064AC1F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CEA1C3672DFC5C8800E9B74B /* AuthService.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		CED1C4D12E09727E0064AC1F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CE17882D2DF486D200A91620 /* AuthEndpoint.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1785,6 +1834,7 @@
 				CED1C4362E0413170064AC1F /* Cart.swift in Sources */,
 				CE1788242DF4866D00A91620 /* LocalizationManager.swift in Sources */,
 				CED1C48F2E04ACCD0064AC1F /* ProductListCoordinator.swift in Sources */,
+				CED1C4C72E08366B0064AC1F /* CategoryView+Exc.swift in Sources */,
 				CE5C6C3D2DF4AF9200821985 /* SplashViewController.swift in Sources */,
 				CED1C4402E0414940064AC1F /* CartService.swift in Sources */,
 				CE17882A2DF486B700A91620 /* APIClient.swift in Sources */,
@@ -1848,6 +1898,7 @@
 				CE5C6C612DF4B22200821985 /* OrdersBuilder.swift in Sources */,
 				CE1787E42DF46D3100A91620 /* AppDelegate.swift in Sources */,
 				CE5C6BF72DF48FC900821985 /* RegisterBuilder.swift in Sources */,
+				CED1C4CC2E0853C70064AC1F /* BaseTabSwitcherView.swift in Sources */,
 				CE5C6BF52DF48FB200821985 /* RegisterViewModel.swift in Sources */,
 				CED1C4852E04A3CA0064AC1F /* CategoryCoordinator.swift in Sources */,
 				CED1C3922DFF38960064AC1F /* VerifySuccessPopupView.swift in Sources */,
@@ -1877,6 +1928,7 @@
 				CED1C4C32E06ED6A0064AC1F /* CompanyCell.swift in Sources */,
 				CED1C44F2E044A360064AC1F /* CompanyEndpoint.swift in Sources */,
 				CED1C41E2E030CE70064AC1F /* Notification+Exc.swift in Sources */,
+				CED1C4C92E0839AC0064AC1F /* CategoryCell.swift in Sources */,
 				CE5C6C022DF4913600821985 /* ForgotPasswordBuilder.swift in Sources */,
 				CED1C4B22E0601350064AC1F /* CompanyDetailView.swift in Sources */,
 				CED1C47F2E04A2F60064AC1F /* CategoryViewController.swift in Sources */,

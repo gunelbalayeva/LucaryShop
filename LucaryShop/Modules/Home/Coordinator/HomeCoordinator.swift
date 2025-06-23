@@ -19,7 +19,13 @@ final class HomeCoordinator {
     var onFinish: (() -> Void)?
     
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, categoryService: CategoryService, companyService: CompanyService, cartService: CartService, favoritesService: FavoritesService) {
+    init(parentCoordinator: AppCoordinator? = nil,
+         navigationController: UINavigationController,
+         productService: ProductService,
+         categoryService: CategoryService,
+         companyService: CompanyService,
+         cartService: CartService,
+         favoritesService: FavoritesService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.productService = productService
@@ -30,6 +36,7 @@ final class HomeCoordinator {
         
     }
     
+    
     func start() {
         let viewModel = HomeViewModel(coordinator: self,
                                       productService: productService,
@@ -39,21 +46,27 @@ final class HomeCoordinator {
         navigationController.pushViewController(vc, animated: true)
     }
 
+
     func navigateToCategory() {
-        print("navigateToCategory çağırıldı")
-        DispatchQueue.main.async {
-            let coordinator = CategoryCoordinator(navigationController: self.navigationController,
-                                                  categoryService: self.categoryService,
-                                                  productService: self.productService,
-                                                  favoritesService: self.favoritesService,
-                                                  cartService: self.cartService)
-            self.categoryCoordinator = coordinator
-            coordinator.start()
-            print("Coordinator start çağırıldı")
+            if categoryCoordinator == nil {
+                let coordinator = CategoryCoordinator(
+                    parentCoordinator: self.parentCoordinator,
+                    navigationController: navigationController,
+                    categoryService: categoryService,
+                    productService: productService,
+                    favoritesService: favoritesService,
+                    cartService: cartService,
+                    companyService: companyService
+                )
+                self.categoryCoordinator = coordinator
+                coordinator.onFinish = { [weak self] in
+                    self?.categoryCoordinator = nil
+                }
+                coordinator.start()
+            }
         }
-    }
 
-
+    
     func startAndReturnViewController() -> UIViewController {
         let viewModel = HomeViewModel(coordinator: self,
                                       productService: productService,
@@ -62,8 +75,14 @@ final class HomeCoordinator {
         let vc = HomeViewController(homeViewModel: viewModel)
         return vc
     }
+    
+    func updateHomeSelectedIndex(_ index: Int) {
+        if let homeVC = navigationController.viewControllers.last as? HomeViewController {
+            homeVC.updateSelectedIndex(index)
+        }
+    }
 
-    func finish(){
+    func finish() {
         onFinish?()
     }
 }

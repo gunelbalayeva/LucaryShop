@@ -14,6 +14,7 @@ struct APIRequest {
     var authToken: String? = nil
 }
 
+
 final class RequestBuilder {
     static func build(_ request: APIRequest) -> URLRequest {
         var urlRequest = URLRequest(url: request.url)

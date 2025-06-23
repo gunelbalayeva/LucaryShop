@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Combine
 final class CategoryViewModel {
-    private weak var coordinator: CategoryCoordinator?
+     weak var coordinator: CategoryCoordinator?
     private let categoryService: CategoryService
     private let productService: ProductService?
     @Published var categories: [Category] = []

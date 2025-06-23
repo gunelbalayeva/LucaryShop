@@ -44,21 +44,21 @@ final class CompanyViewModel {
         }
     }
 
-    func fetchProducts(for companyId: Int) {
-        isLoading = true
-        errorMessage = nil
-        productService.fetchAllProducts { [weak self] result in
-            DispatchQueue.main.async {
-                self?.isLoading = false
-                switch result {
-                case .success(let allProducts):
-                    self?.products = allProducts.filter { $0.company?.id == companyId }
-                case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
-                }
-            }
-        }
-    }
+//    func fetchProducts(for companyId: Int) {
+//        isLoading = true
+//        errorMessage = nil
+//        productService.fetchAllProducts { [weak self] result in
+//            DispatchQueue.main.async {
+//                self?.isLoading = false
+//                switch result {
+//                case .success(let allProducts):
+//                    self?.products = allProducts.filter { $0.company?.id == companyId }
+//                case .failure(let error):
+//                    self?.errorMessage = error.localizedDescription
+//                }
+//            }
+//        }
+//    }
 
     func addFavorite(productId: Int) {
         favoritesService.addFavorite(productId: productId) { [weak self] result in

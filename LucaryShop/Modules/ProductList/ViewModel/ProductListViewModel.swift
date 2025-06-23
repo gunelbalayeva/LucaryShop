@@ -40,7 +40,7 @@ final class ProductListViewModel {
                 self?.handleFetchResult(result)
             }
         } else {
-            productService.fetchAllProducts { [weak self] result in
+            productService.fetchAllProducts(page: 1, size: 20) { [weak self] result in
                 self?.handleFetchResult(result)
             }
         }
@@ -52,7 +52,7 @@ final class ProductListViewModel {
             switch result {
             case .success(let products):
                 self.allProducts = products
-                self.applyFilters()
+//                self.applyFilters()
             case .failure(let error):
                 self.errorMessage = error.localizedDescription
             }
@@ -61,18 +61,19 @@ final class ProductListViewModel {
     
     func updateSearchText(_ text: String) {
         currentSearchText = text
-        applyFilters()
+//        applyFilters()
     }
     
-    private func applyFilters() {
-        filteredProducts = allProducts.filter { product in
-            let matchesCategory = currentCategoryId == nil || product.categoryId == currentCategoryId
-            let matchesSearch = currentSearchText.isEmpty || product.name.lowercased().contains(currentSearchText.lowercased())
-            return matchesCategory && matchesSearch
-        }
-    }
+//    private func applyFilters() {
+//        if let intId = String(product.id) {
+//            coordinator?.navigateToProductDetail(productId: intId)
+//        } else {
+//            errorMessage = "Product ID is invalid"
+//        }
+//
+//    }
     
-    func selectProduct(_ product: Product) {
-        coordinator?.navigateToProductDetail(productId: product.id)
-    }
+//    func selectProduct(_ product: Product) {
+//        coordinator?.navigateToProductDetail(productId: product.id)
+//    }
 }

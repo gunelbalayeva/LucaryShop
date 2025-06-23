@@ -138,6 +138,7 @@ final class HomeView: UIView {
     
     private func setupUI() {
         backgroundColor = .white
+        updateUnderlinePosition()
         addSubviews(views: headerStackView, searchBar, buttonStackView, underlineView, bannerImage, companyStackView, companiesCollectionView, headLabel, productList)
         companyHeadLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         companyHeadLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -161,13 +162,14 @@ final class HomeView: UIView {
             make.left.right.equalToSuperview().inset(16)
             make.height.equalTo(44)
         }
-        
         underlineView.snp.makeConstraints { make in
             make.top.equalTo(buttonStackView.snp.bottom)
             make.height.equalTo(2)
             make.width.equalTo(buttonStackView.snp.width).dividedBy(2)
             underlineLeadingConstraint = make.left.equalTo(buttonStackView.snp.left).constraint
         }
+
+
         
         bannerImage.snp.makeConstraints { make in
             make.top.equalTo(underlineView.snp.bottom).offset(8)
@@ -181,9 +183,9 @@ final class HomeView: UIView {
         }
         
         companiesCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(companyStackView.snp.bottom).offset(8)
-            make.left.right.equalToSuperview().inset(16)
-            make.height.equalTo(100)
+            make.top.equalTo(companyStackView.snp.bottom).offset(0)
+            make.left.right.equalToSuperview().inset(0)
+            make.height.equalTo(120)
         }
         
         headLabel.snp.makeConstraints { make in
@@ -205,29 +207,48 @@ final class HomeView: UIView {
         companySeeAllButton.addTarget(self, action: #selector(companySeeAllTapped), for: .touchUpInside)
     }
     
+     var selectedIndex: Int = 0
     
     @objc
     private func buttonTapped(_ sender: UIButton) {
         let isHome = sender == homeButton
-        underlineLeadingConstraint?.deactivate()
-        underlineView.snp.makeConstraints { make in
-            underlineLeadingConstraint = make.left.equalTo(isHome ? buttonStackView.snp.left : buttonStackView.snp.centerX).constraint
-            make.top.equalTo(buttonStackView.snp.bottom)
-            make.height.equalTo(2)
-            make.width.equalTo(buttonStackView.snp.width).dividedBy(2)
-        }
-        homeButton.alpha = isHome ? 1.0 : 0.5
-        categoryButton.alpha = isHome ? 0.5 : 1.0
-        UIView.animate(withDuration: 0.3) {
-            self.layoutIfNeeded()
+        selectedIndex = isHome ? 0 : 1
+        
+        if !isHome {
+            onCategoriesTapped?()
         }
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        updateUnderlinePosition()
+    }
+
+    func updateUnderlinePosition(animated: Bool = true) {
+        let targetX = selectedIndex == 0 ? 0 : buttonStackView.frame.width / 2
+        underlineLeadingConstraint?.update(offset: targetX)
+        
+        homeButton.alpha = selectedIndex == 0 ? 1.0 : 0.5
+        categoryButton.alpha = selectedIndex == 0 ? 0.5 : 1.0
+        
+        let animations = {
+            self.layoutIfNeeded()
+        }
+        
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: animations)
+        } else {
+            animations()
+        }
+    }
+
+
+
     
     @objc
     private func companySeeAllTapped() {
         print("Sirketlere bax")
         // Delegate pattern ile
-      
     }
     
     @objc
@@ -259,11 +280,11 @@ final class HomeView: UIView {
     }
     
 }
+
 extension HomeView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView == productList else { return }
-        
         let offsetY = scrollView.contentOffset.y
         let threshold: CGFloat = 10
         let shouldHide = offsetY > threshold

@@ -5,6 +5,9 @@
 //  Created by User on 07.06.25.
 //
 
+// gunelbalayeva97@gmail.com
+// gunel12345
+
 import Foundation
 import UIKit
 protocol Coordinator:AnyObject {
@@ -61,11 +64,11 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        startHomeFlow(.home)
-        print("🏁 AppCoordinator startHomeFlow çağırıldı")
+//        startHomeFlow(.home)
+//        print("🏁 AppCoordinator startHomeFlow çağırıldı")
 
-        //        let vc = SplashBuild(cordinator: self).build()
-        //        navigationController.setViewControllers([vc], animated: true)
+//                let vc = SplashBuild(cordinator: self).build()
+//                navigationController.setViewControllers([vc], animated: true)
     }
     
     

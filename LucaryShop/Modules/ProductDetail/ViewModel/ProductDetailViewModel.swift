@@ -47,39 +47,39 @@ final class ProductDetailViewModel {
         }
     }
     
-    func toggleFavorite() {
-        guard let product = product else { return }
-        isFavorite.toggle()
-        if isFavorite {
-            favoritesService.addFavorite(productId: product.id) { [weak self] result in
-                if case .failure(let error) = result {
-                    self?.errorMessage = error.localizedDescription
-                }
-            }
-        } else {
-            favoritesService.removeFavorite(productId: product.id) { [weak self] result in
-                if case .failure(let error) = result {
-                    self?.errorMessage = error.localizedDescription
-                }
-            }
-        }
-    }
+//    func toggleFavorite() {
+//        guard let product = product else { return }
+//        isFavorite.toggle()
+//        if isFavorite {
+//            favoritesService.addFavorite(productId: product.id) { [weak self] result in
+//                if case .failure(let error) = result {
+//                    self?.errorMessage = error.localizedDescription
+//                }
+//            }
+//        } else {
+//            favoritesService.removeFavorite(productId: product.id) { [weak self] result in
+//                if case .failure(let error) = result {
+//                    self?.errorMessage = error.localizedDescription
+//                }
+//            }
+//        }
+//    }
     
     func addToCart() {
         guard let productDetail = product else { return }
 
-        let product = Product(
-            id: productDetail.id,
-            name: productDetail.name,
-            price: productDetail.price,
-            imageUrl: productDetail.imageUrl,
-            isFavorite: productDetail.isFavorite,
-            company: nil, categoryId: productId
-        )
+        let product = Product(id: productDetail.id,
+                              name: productDetail.name,
+                              description: productDetail.description,
+                              price: productDetail.price,
+                              imgUrls: [productDetail.imageUrl],
+                              favorite: productDetail.isFavorite)
+
         cartService.addToCart(product: product) { [weak self] result in
             if case .failure(let error) = result {
                 self?.errorMessage = error.localizedDescription
             }
         }
     }
+
 }

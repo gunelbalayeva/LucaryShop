@@ -8,20 +8,20 @@
 import Foundation
 
 struct Product: Codable {
-    let id: Int
+    let id: String
     let name: String
+    let description: String
     let price: Double
-    let imageUrl: String
-    let isFavorite: Bool
-    let company: Company?
-    let categoryId: Int
+    let imgUrls: [String]
+    let favorite: Bool
 }
 
 struct ProductDetail: Codable {
-    let id: Int
+    let id: String
     let name: String
     let description: String
     let price: Double
     let imageUrl: String
     let isFavorite: Bool
 }
+
