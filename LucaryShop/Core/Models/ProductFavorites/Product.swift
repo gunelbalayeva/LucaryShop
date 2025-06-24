@@ -11,6 +11,9 @@ struct Product: Codable {
     let name: String
     let description: String?
     let price: Double
-    let imgUrl: String?       
+    let imgUrl: String?
+    let imgUrls: [String]?
     var favorite: Bool
 }
+
+

@@ -48,40 +48,17 @@ final class ProductDetailViewModel {
     }
     
     
-    func toggleFavorite() {
+    func addToCart() {
         guard let product = product else { return }
-        isFavorite.toggle()
-        if isFavorite {
-            favoritesService.addFavorite(productId: productId) { [weak self] result in
-                if case .failure(let error) = result {
-                    self?.errorMessage = error.localizedDescription
-                }
-            }
-        } else {
-            favoritesService.removeFavorite(productId: productId) { [weak self] result in
-                if case .failure(let error) = result {
+        cartService.addToCart(product: product) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    print("Məhsul səbətə əlavə edildi")
+                case .failure(let error):
                     self?.errorMessage = error.localizedDescription
                 }
             }
         }
     }
-    
-    
-    
-//    func addToCart() {
-//        guard let productDetail = product else { return }
-//        let product = Product(id: productDetail.id,
-//                              name: productDetail.name,
-//                              description: productDetail.description,
-//                              price: productDetail.price,
-//                              imgUrls: [productDetail.description?],
-//                              favorite: productDetail.favorite)
-//        
-//        cartService.addToCart(product: product) { [weak self] result in
-//            if case .failure(let error) = result {
-//                self?.errorMessage = error.localizedDescription
-//            }
-//        }
-//    }
-    
 }

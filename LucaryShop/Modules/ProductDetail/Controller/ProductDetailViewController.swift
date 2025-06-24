@@ -6,9 +6,10 @@
 //
 
 import UIKit
-
+import Combine
 final class ProductDetailViewController:UIViewController {
     
+    private var cancellables = Set<AnyCancellable>()
     private let productDetailView = ProductDetailView()
     private let viewModel:ProductDetailViewModel
     var product: Product?
@@ -17,9 +18,9 @@ final class ProductDetailViewController:UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupNavigationBar()
+        viewModel.fetchProductDetail()
+        bindViewModel()
     }
-    
-    
     
     override func loadView() {
         self.view = productDetailView
@@ -36,8 +37,6 @@ final class ProductDetailViewController:UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     private func setupNavigationBar() {
         let config = UIImage.SymbolConfiguration(weight: .heavy)
         let image = UIImage(systemName: "chevron.backward", withConfiguration: config)
@@ -45,6 +44,18 @@ final class ProductDetailViewController:UIViewController {
         backButton.tintColor = .darkGray
         navigationItem.leftBarButtonItem = backButton
     }
+    
+    
+    private func bindViewModel() {
+        viewModel.$product
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] product in
+                guard let product = product else { return }
+                self?.productDetailView.configure(with: product)
+            }
+            .store(in: &cancellables)
+    }
+
     
     @objc
     private func backButtonTapped() {

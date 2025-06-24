@@ -19,10 +19,9 @@ final class ProductService {
         request(with: endpoint, completion: completion)
     }
     
-    
 
     func fetchProductDetail(id: String, completion: @escaping (Result<Product, Error>) -> Void) {
-        let endpoint = ProductEndpoint.getById(String(id))
+        let endpoint = ProductEndpoint.getById(id)
         request(with: endpoint, completion: completion)
     }
 
@@ -31,6 +30,7 @@ final class ProductService {
         request(with: endpoint, completion: completion)
     }
 
+    
     private func request<T: Decodable>(with endpoint: ProductEndpoint, completion: @escaping (Result<T, Error>) -> Void) {
         var headers = endpoint.headers
         if let token = KeychainManager.shared.getToken() {

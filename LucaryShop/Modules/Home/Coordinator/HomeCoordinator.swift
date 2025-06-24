@@ -41,7 +41,8 @@ final class HomeCoordinator {
         let viewModel = HomeViewModel(coordinator: self,
                                       productService: productService,
                                       categoryService: categoryService,
-                                      companyService: companyService)
+                                      companyService: companyService, 
+                                      favoritesService: favoritesService)
         let vc = HomeViewController(homeViewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -71,7 +72,8 @@ final class HomeCoordinator {
         let viewModel = HomeViewModel(coordinator: self,
                                       productService: productService,
                                       categoryService: categoryService,
-                                      companyService: companyService)
+                                      companyService: companyService, 
+                                      favoritesService: favoritesService)
         let vc = HomeViewController(homeViewModel: viewModel)
         return vc
     }

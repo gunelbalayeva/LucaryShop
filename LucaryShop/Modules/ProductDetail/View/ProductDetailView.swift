@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 final class ProductDetailView: UIView {
-    
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -70,50 +69,64 @@ final class ProductDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
   
+    private let scrollView = UIScrollView()
+    private let contentStack = UIStackView()
+
     private func setupUI() {
         addSubview(imageView)
-        let namePriceStack = UIStackView(arrangedSubviews: [nameLabel, priceLabel])
-        namePriceStack.axis = .vertical
-        namePriceStack.spacing = 4
-        let topInfoStack = UIStackView(arrangedSubviews: [namePriceStack, favoriteButton])
-        topInfoStack.axis = .horizontal
-        topInfoStack.alignment = .center
-        topInfoStack.spacing = 8
-        addSubview(topInfoStack)
-        addSubview(descriptionLabel)
-        
-        let buttonStack = UIStackView(arrangedSubviews: [addToCartButton, goToCartButton])
-        buttonStack.axis = .horizontal
-        buttonStack.spacing = 12
-        buttonStack.distribution = .fillEqually
-        addSubview(buttonStack)
-        
+        addSubview(scrollView)
+        scrollView.addSubview(contentStack)
+
+        // imageView sabit yuxarıda
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.right.equalToSuperview()
             make.height.equalTo(460)
         }
-        
-        topInfoStack.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(16)
-            make.left.right.equalToSuperview().inset(16)
+
+        // scrollView imageView-un altından başlasın
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
         }
-        
+
+        // contentStack scrollView-un içində
+        contentStack.axis = .vertical
+        contentStack.spacing = 16
+        contentStack.alignment = .fill
+
+        contentStack.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
+            make.width.equalTo(scrollView.snp.width).offset(-32)
+        }
+
+        let namePriceStack = UIStackView(arrangedSubviews: [nameLabel, priceLabel])
+        namePriceStack.axis = .vertical
+        namePriceStack.spacing = 4
+
+        let topInfoStack = UIStackView(arrangedSubviews: [namePriceStack, favoriteButton])
+        topInfoStack.axis = .horizontal
+        topInfoStack.alignment = .center
+        topInfoStack.spacing = 8
+
+        contentStack.addArrangedSubview(topInfoStack)
+
         favoriteButton.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
+            make.width.height.equalTo(40)
         }
-        
-        descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(topInfoStack.snp.bottom).offset(8)
-            make.left.right.equalToSuperview().inset(16)
-        }
-        
+
+        contentStack.addArrangedSubview(descriptionLabel)
+
+        let buttonStack = UIStackView(arrangedSubviews: [addToCartButton, goToCartButton])
+        buttonStack.axis = .horizontal
+        buttonStack.spacing = 12
+        buttonStack.distribution = .fillEqually
+
+        contentStack.addArrangedSubview(buttonStack)
         buttonStack.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(24)
-            make.left.right.equalToSuperview().inset(16)
             make.height.equalTo(50)
         }
-        
+
         favoriteButton.addTarget(self, action: #selector(favoriteTapped), for: .touchUpInside)
         addToCartButton.addTarget(self, action: #selector(addToCartTapped), for: .touchUpInside)
         goToCartButton.addTarget(self, action: #selector(goToCartTapped), for: .touchUpInside)
@@ -121,22 +134,21 @@ final class ProductDetailView: UIView {
 
     
     
-    
-    
     func configure(with product: Product) {
         nameLabel.text = product.name
         priceLabel.text = "\(product.price) ₼"
+        descriptionLabel.text = product.description ?? ""
         isFavorite = product.favorite
         updateFavoriteIcon()
         
-        if let imageUrlString = product.imgUrl,
+        if let imageUrlString = product.imgUrls?.first,
            let url = URL(string: imageUrlString) {
             imageView.kf.setImage(with: url, placeholder: UIImage(named: "selectPhoto"))
         } else {
             imageView.image = UIImage(named: "selectPhoto")
         }
     }
-    
+
     private func updateFavoriteIcon() {
         let imageName = isFavorite ? "heart.fill" : "heart.fill"
         if let image = UIImage(systemName: imageName) {
@@ -151,8 +163,6 @@ final class ProductDetailView: UIView {
     private func favoriteTapped() {
         isFavorite.toggle()
         updateFavoriteIcon()
-        print("Favori statusu: \(isFavorite)")
-        // Burada istəsən delegate/closure vasitəsilə məlumat ötür
     }
     
     @objc private func addToCartTapped() {

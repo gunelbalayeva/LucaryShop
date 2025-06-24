@@ -52,6 +52,8 @@ final class ProductCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
     private func setupUI() {
         addSubviews(views: imageView, nameLabel, priceLabel, favoriteButton)
 
@@ -80,6 +82,8 @@ final class ProductCell: UICollectionViewCell {
     }
 
     
+    var onFavoriteTapped: (() -> Void)?
+
     func configure(with product: Product) {
         nameLabel.text = product.name
         priceLabel.text = "\(product.price) ₼"
@@ -117,5 +121,7 @@ final class ProductCell: UICollectionViewCell {
         favoriteButton.setImage(UIImage(systemName: imageName), for: .normal)
         favoriteButton.tintColor = tintColor
         print("Favori statusu: \(isFavorite)")
+        onFavoriteTapped?()
+
     }
 }
