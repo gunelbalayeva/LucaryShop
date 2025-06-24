@@ -24,7 +24,7 @@ final class ProductListCoordinator{
         self.cartService = cartService
     }
     
-    func navigateToProductDetail(productId: Int) {
+    func navigateToProductDetail(productId: String) {
         let detailCoordinator = ProductDetailCoordinator(
             parentCoordinator: parentCoordinator,
             navigationController: navigationController,

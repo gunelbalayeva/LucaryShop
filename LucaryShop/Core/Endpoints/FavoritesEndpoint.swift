@@ -8,8 +8,8 @@
 import Foundation
 enum FavoritesEndpoint {
     case get
-    case add(Int)
-    case remove(Int)
+    case add(String)
+    case remove(String)
 
     var path: String {
         switch self {

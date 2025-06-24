@@ -43,7 +43,7 @@ final class CompanyDetailCoordinator {
         navigationController.pushViewController(vc, animated: true)
     }
 
-    func navigateToProductDetail(productId: Int) {
+    func navigateToProductDetail(productId: String) {
         let detailCoordinator = ProductDetailCoordinator(
             parentCoordinator: parentCoordinator,
             navigationController: navigationController,

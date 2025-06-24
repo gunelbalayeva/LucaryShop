@@ -55,7 +55,7 @@ final class CompanyCoordinator: Coordinator{
     }
     
     
-    func navigateToProductDetail(productId: Int) {
+    func navigateToProductDetail(productId: String) {
         let detailCoordinator = ProductDetailCoordinator(navigationController: navigationController,
                                                          productService: productService,
                                                          favoritesService: favoritesService,

@@ -26,18 +26,19 @@ final class ProductDetailCoordinator {
         self.onFinish = onFinish
     }
     
-    func start(with productId: Int) {
-            let viewModel = ProductDetailViewModel(
-                productId: productId,
-                productService: productService,
-                favoritesService: favoritesService,
-                cartService: cartService,
-                coordinator: self
-            )
-            let vc = ProductDetailViewController(viewModel: viewModel)
-            navigationController.pushViewController(vc, animated: true)
-        }
-    
+    func start(with productId: String) {  
+        let viewModel = ProductDetailViewModel(
+            productId: productId,
+            productService: productService,
+            favoritesService: favoritesService,
+            cartService: cartService,
+            coordinator: self
+        )
+        let vc = ProductDetailViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+
+
     func finish() {
         onFinish?()
     }

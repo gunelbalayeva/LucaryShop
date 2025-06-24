@@ -30,7 +30,7 @@ final class FavoritesCoordinator{
         self.cartService = cartService
     }
     
-    func navigateToProductDetail(with productId: Int) {
+    func navigateToProductDetail(with productId: String) {
         let coordinator = ProductDetailCoordinator(
             parentCoordinator: parentCoordinator,
             navigationController: navigationController,

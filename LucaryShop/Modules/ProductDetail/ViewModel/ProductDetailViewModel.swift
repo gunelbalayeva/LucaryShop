@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 final class ProductDetailViewModel {
-    private let productId: Int
+    private let productId: String
     private let productService: ProductService
     private let favoritesService: FavoritesService
     private let cartService: CartService
@@ -19,7 +19,7 @@ final class ProductDetailViewModel {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
-    init(productId: Int,
+    init(productId: String,
          productService: ProductService,
          favoritesService: FavoritesService,
          cartService: CartService,

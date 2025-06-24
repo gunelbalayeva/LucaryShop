@@ -25,14 +25,14 @@ final class HomeViewController:UIViewController {
     
     
     let productList: UICollectionView = {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .vertical
-            layout.minimumLineSpacing = 8
-            layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: 250)
-            let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-            collectionView.backgroundColor = .clear
-            return collectionView
-        }()
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 8
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: 240)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
     
     
     lazy var homeView = HomeView(
@@ -47,14 +47,14 @@ final class HomeViewController:UIViewController {
     
     
     override func viewDidLoad() {
-           super.viewDidLoad()
-           view.backgroundColor = .systemBackground
-           setupCollectionViews()
-           setupActions()
-           observeViewModel()
-           
-           homeViewModel.fetchHomeData()
-       }
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        setupCollectionViews()
+        setupActions()
+        observeViewModel()
+        
+        homeViewModel.fetchHomeData()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -75,14 +75,14 @@ final class HomeViewController:UIViewController {
     
     
     private func setupCollectionViews() {
-           companiesCollectionView.dataSource = self
-           companiesCollectionView.delegate = self
-           companiesCollectionView.register(CompanyCell.self, forCellWithReuseIdentifier: CompanyCell.identifier)
-           
-           productList.dataSource = self
-           productList.delegate = self
-           productList.register(ProductCell.self, forCellWithReuseIdentifier: ProductCell.identifier)
-       }
+        companiesCollectionView.dataSource = self
+        companiesCollectionView.delegate = self
+        companiesCollectionView.register(CompanyCell.self, forCellWithReuseIdentifier: CompanyCell.identifier)
+        
+        productList.dataSource = self
+        productList.delegate = self
+        productList.register(ProductCell.self, forCellWithReuseIdentifier: ProductCell.identifier)
+    }
     
     func updateSelectedIndex(_ index: Int) {
         homeView.selectedIndex = index
@@ -91,24 +91,24 @@ final class HomeViewController:UIViewController {
     
     
     private func setupActions() {
-           homeView.onCategoriesTapped = { [weak self] in
-               self?.homeViewModel.navigateToCompanies()
-           }
-       }
-       
-       private func observeViewModel() {
-           homeViewModel.$newArrivals
-               .receive(on: DispatchQueue.main)
-               .sink { [weak self] _ in
-                   self?.productList.reloadData()
-               }
-               .store(in: &cancellables)
-           
-           homeViewModel.$companies
-               .receive(on: DispatchQueue.main)
-               .sink { [weak self] _ in
-                   self?.companiesCollectionView.reloadData()
-               }
-               .store(in: &cancellables)
-       }
+        homeView.onCategoriesTapped = { [weak self] in
+            self?.homeViewModel.navigateToCompanies()
+        }
+    }
+    
+    private func observeViewModel() {
+        homeViewModel.$newArrivals
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.productList.reloadData()
+            }
+            .store(in: &cancellables)
+        
+        homeViewModel.$companies
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.companiesCollectionView.reloadData()
+            }
+            .store(in: &cancellables)
+    }
 }

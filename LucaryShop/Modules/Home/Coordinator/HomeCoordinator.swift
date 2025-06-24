@@ -17,7 +17,7 @@ final class HomeCoordinator {
     let favoritesService: FavoritesService
     var categoryCoordinator: CategoryCoordinator?
     var onFinish: (() -> Void)?
-    
+    var productDetailCoordinator: ProductDetailCoordinator?
     
     init(parentCoordinator: AppCoordinator? = nil,
          navigationController: UINavigationController,
@@ -82,6 +82,21 @@ final class HomeCoordinator {
         }
     }
 
+    func navigateToProductDetail(productId: String) {
+            let detailCoordinator = ProductDetailCoordinator(
+                parentCoordinator: self.parentCoordinator,
+                navigationController: navigationController,
+                productService: productService,
+                favoritesService: favoritesService,
+                cartService: cartService
+            )
+            detailCoordinator.onFinish = { [weak self] in
+                // Əgər istəsən, detallı təmizləmə və ya geri dönüş əməliyyatlarını burda yaza bilərsən
+                print("ProductDetailCoordinator bitdi")
+            }
+            detailCoordinator.start(with: productId)
+        }
+    
     func finish() {
         onFinish?()
     }

@@ -25,7 +25,7 @@ final class FavoritesViewModel {
     }
     
 
-    func goToProductDetail(productId: Int) {
+    func goToProductDetail(productId: String) {
         coordinator?.navigateToProductDetail(with: productId)
     }
 }

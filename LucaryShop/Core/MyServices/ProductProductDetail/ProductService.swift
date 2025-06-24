@@ -21,7 +21,7 @@ final class ProductService {
     
     
 
-    func fetchProductDetail(id: Int, completion: @escaping (Result<Product, Error>) -> Void) {
+    func fetchProductDetail(id: String, completion: @escaping (Result<Product, Error>) -> Void) {
         let endpoint = ProductEndpoint.getById(String(id))
         request(with: endpoint, completion: completion)
     }

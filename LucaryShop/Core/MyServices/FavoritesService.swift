@@ -17,13 +17,13 @@ final class FavoritesService {
         networkService.request(FavoritesEndpoint.get.request, completion: completion)
     }
 
-    func addFavorite(productId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
+    func addFavorite(productId: String, completion: @escaping (Result<Void, Error>) -> Void) {
         networkService.request(FavoritesEndpoint.add(productId).request) { (result: Result<EmptyResponse, Error>) in
             completion(result.map { _ in () })
         }
     }
 
-    func removeFavorite(productId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
+    func removeFavorite(productId: String, completion: @escaping (Result<Void, Error>) -> Void) {
         networkService.request(FavoritesEndpoint.remove(productId).request) { (result: Result<EmptyResponse, Error>) in
             completion(result.map { _ in () })
         }

@@ -35,7 +35,7 @@ final class HomeViewModel {
 
     func fetchHomeData() {
         guard !hasLoadedHomeData else {
-            print("⚠️ Artıq yüklənib, təkrar request atılmır.")
+            print("Artıq yüklənib, təkrar request atılmır.")
             return
         }
 

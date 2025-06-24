@@ -8,13 +8,13 @@
 import UIKit
 
 final class ProductDetailBuilder {
-    private let productId: Int
+    private let productId: String
     private let productService: ProductService
     private let favoritesService: FavoritesService
     private let cartService: CartService
     private var coordinator: ProductDetailCoordinator
    
-    init(productId: Int, productService: ProductService,
+    init(productId: String, productService: ProductService,
          favoritesService: FavoritesService, cartService: CartService,
          coordinator: ProductDetailCoordinator) {
         self.productId = productId

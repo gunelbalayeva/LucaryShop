@@ -7,18 +7,8 @@
 
 import UIKit
 import Kingfisher
-protocol ProductCellDelegate: AnyObject {
-    func productCell(_ cell: ProductCell, didToggleFavoriteFor product: Product)
-    func productCell(_ cell: ProductCell, didSelect product: Product)
-}
-
-
 final class ProductCell: UICollectionViewCell {
-    
-    weak var delegate: ProductCellDelegate?
-    private var currentProduct: Product?
-       private var isFavorite: Bool = false
-    
+        
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -46,6 +36,8 @@ final class ProductCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         return button
     }()
+    
+    private var isFavorite: Bool = false
 
     
     override init(frame: CGRect) {
@@ -85,22 +77,13 @@ final class ProductCell: UICollectionViewCell {
         }
 
         favoriteButton.addTarget(self, action: #selector(favoriteTapped), for: .touchUpInside)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
-        contentView.addGestureRecognizer(tapGesture)
     }
 
-    @objc private func cellTapped() {
-        if let product = currentProduct {
-            delegate?.productCell(self, didSelect: product)
-        }
-    }
     
     func configure(with product: Product) {
-        currentProduct = product
-        isFavorite = product.favorite
         nameLabel.text = product.name
         priceLabel.text = "\(product.price) ₼"
+        isFavorite = product.favorite
         updateFavoriteIcon(isFavorite: product.favorite)
 
         if let imageUrlString = product.imgUrl,
@@ -117,7 +100,6 @@ final class ProductCell: UICollectionViewCell {
         }
     }
 
-
     private func updateFavoriteIcon(isFavorite: Bool) {
         let imageName = isFavorite ? "heart.fill" : "heart.fill"
         let tintColor = isFavorite ? .favoriteButton : UIColor.white
@@ -128,16 +110,12 @@ final class ProductCell: UICollectionViewCell {
     @objc
     private func favoriteTapped() {
         isFavorite.toggle()
-        updateFavoriteIcon(isFavorite: isFavorite)
-
-        if var product = currentProduct {
-            product.favorite = isFavorite
-            delegate?.productCell(self, didToggleFavoriteFor: product)
-        }
-
+        
+        let imageName = isFavorite ? "heart.fill" : "heart.fill"
+        let tintColor = isFavorite ? .favoriteButton : UIColor.white
+        
+        favoriteButton.setImage(UIImage(systemName: imageName), for: .normal)
+        favoriteButton.tintColor = tintColor
         print("Favori statusu: \(isFavorite)")
     }
-
-    
-
 }
