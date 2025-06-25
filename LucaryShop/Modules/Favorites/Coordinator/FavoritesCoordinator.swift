@@ -13,15 +13,16 @@ final class FavoritesCoordinator{
     private let profileService: ProfileService
     private let favoriteService: FavoritesService
     private let productService: ProductService
-    private let cartService: CartService?
+    private let cartService: CartService
     var onFinish: (() -> Void)?
-    
+    private var childCoordinator: ProductDetailCoordinator?
+
     init(parentCoordinator: AppCoordinator? = nil,
          navigationController: UINavigationController,
          profileService: ProfileService,
          favoriteService: FavoritesService,
          productService: ProductService,
-         cartService: CartService?) {
+         cartService: CartService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.profileService = profileService
@@ -30,21 +31,28 @@ final class FavoritesCoordinator{
         self.cartService = cartService
     }
     
+
     func navigateToProductDetail(with productId: String) {
         let coordinator = ProductDetailCoordinator(
             parentCoordinator: parentCoordinator,
             navigationController: navigationController,
             productService: productService,
             favoritesService: favoriteService,
-            cartService: CartService()
+            cartService: cartService
         )
+        self.childCoordinator = coordinator
+        coordinator.onFinish = { [weak self] in
+            self?.childCoordinator = nil
+        }
         coordinator.start(with: productId)
     }
+
     
     func start() {
         let viewModel = FavoritesViewModel(favoritesService: favoriteService,
                                            productService: productService,
-                                           cartService: cartService)
+                                           cartService: cartService,
+                                           coordinator: self)
         let vc = FavoritesViewViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

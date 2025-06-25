@@ -11,18 +11,21 @@ final class HomeViewModel {
     private let productService: ProductService
     private let categoryService: CategoryService
     private let companyService: CompanyService
-    private let favoritesService: FavoritesService
-    
+     let favoritesService: FavoritesService
     @Published var newArrivals: [Product] = []
     @Published var companies: [Company] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
-    
+    @Published var updatedFavoriteProductIds: Set<String> = []
+
     private var currentPage = 1
     private let pageSize = 20
     private var isLoadingMore = false
-    
-    init(coordinator: HomeCoordinator? = nil, productService: ProductService, categoryService: CategoryService, companyService: CompanyService, favoritesService: FavoritesService) {
+    init(coordinator: HomeCoordinator? = nil,
+         productService: ProductService,
+         categoryService: CategoryService,
+         companyService: CompanyService,
+         favoritesService: FavoritesService) {
         self.coordinator = coordinator
         self.productService = productService
         self.categoryService = categoryService
@@ -89,30 +92,32 @@ final class HomeViewModel {
             return
         }
 
-        let isCurrentlyFavorite = newArrivals[index].favorite
+        let isCurrentlyFav = newArrivals[index].favorite
+        newArrivals[index].favorite.toggle()
+        let newIsFav = newArrivals[index].favorite
 
-        if !isCurrentlyFavorite {
-            // Favoritə əlavə et
+        if newIsFav {
             favoritesService.addFavorite(productId: productId) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success:
-                        self.newArrivals[index].favorite = true
+                        self.updatedFavoriteProductIds.insert(productId)
                         completion(true)
                     case .failure:
+                        self.newArrivals[index].favorite = isCurrentlyFav
                         completion(false)
                     }
                 }
             }
         } else {
-            // Favoritdən çıxar
             favoritesService.removeFavorite(productId: productId) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success:
-                        self.newArrivals[index].favorite = false
+                        self.updatedFavoriteProductIds.remove(productId)
                         completion(true)
                     case .failure:
+                        self.newArrivals[index].favorite = isCurrentlyFav
                         completion(false)
                     }
                 }
@@ -120,7 +125,46 @@ final class HomeViewModel {
         }
     }
 
+    private var favoriteProductIds: Set<String> = []
+
+    func fetchFavorites() {
+        favoritesService.getFavorites { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let products):
+                    self?.favoriteProductIds = Set(products.map { $0.id })
+                    self?.updateFavoritesInNewArrivals()
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                }
+            }
+        }
+    }
     
+    func removeFavorite(productId: String, completion: @escaping () -> Void) {
+            favoritesService.removeFavorite(productId: productId) { [weak self] result in
+                DispatchQueue.main.async {
+                    if case .success = result {
+                        self?.updateFavoriteStatus(for: productId, isFavorite: false)
+                    }
+                    completion()
+                }
+            }
+        }
+
+    private func updateFavoritesInNewArrivals() {
+        for i in 0..<newArrivals.count {
+            newArrivals[i].favorite = favoriteProductIds.contains(newArrivals[i].id)
+        }
+    }
+    
+    func updateFavoriteStatus(for productId: String, isFavorite: Bool) {
+        if let index = newArrivals.firstIndex(where: { $0.id == productId }) {
+            newArrivals[index].favorite = isFavorite
+        }
+    }
+
+
     func navigateToCompanies() {
         coordinator?.navigateToCategory()
     }

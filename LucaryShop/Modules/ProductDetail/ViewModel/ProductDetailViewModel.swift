@@ -12,23 +12,22 @@ final class ProductDetailViewModel {
     private let productService: ProductService
     private let favoritesService: FavoritesService
     private let cartService: CartService
-    private weak var coordinator: ProductDetailCoordinator?
+    weak var coordinator: ProductDetailCoordinator?
+    private weak var homeViewModel: HomeViewModel?
+
     
     @Published var product: Product?
     @Published var isFavorite: Bool = false
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
-    init(productId: String,
-         productService: ProductService,
-         favoritesService: FavoritesService,
-         cartService: CartService,
-         coordinator: ProductDetailCoordinator?) {
+    init(productId: String, productService: ProductService, favoritesService: FavoritesService, cartService: CartService, coordinator: ProductDetailCoordinator? = nil, homeViewModel: HomeViewModel? = nil) {
         self.productId = productId
         self.productService = productService
         self.favoritesService = favoritesService
         self.cartService = cartService
         self.coordinator = coordinator
+        self.homeViewModel = homeViewModel
     }
     
     func fetchProductDetail() {
@@ -47,6 +46,42 @@ final class ProductDetailViewModel {
         }
     }
     
+    func toggleFavorite() {
+        guard let product = product else { return }
+        let wasFavorite = product.favorite
+        let newFavorite = !wasFavorite
+
+        self.product?.favorite = newFavorite
+        self.isFavorite = newFavorite
+
+        let request = newFavorite
+            ? favoritesService.addFavorite
+            : favoritesService.removeFavorite
+
+        request(productId) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    print("Favori status serverdə yeniləndi")
+                    self?.homeViewModel?.updateFavoriteStatus(for: product.id, isFavorite: newFavorite)
+                case .failure:
+                    print("Server favori statusunu dəyişə bilmədi")
+                    self?.product?.favorite = wasFavorite
+                    self?.isFavorite = wasFavorite
+                    self?.errorMessage = "Server favori statusunu dəyişə bilmədi"
+                }
+            }
+        }
+    }
+
+
+
+    
+    private func revertFavoriteState(wasFavorite: Bool) {
+        product?.favorite = wasFavorite
+        isFavorite = wasFavorite
+        errorMessage = "Server xətası: Favori status dəyişmədi"
+    }
     
     func addToCart() {
         guard let product = product else { return }

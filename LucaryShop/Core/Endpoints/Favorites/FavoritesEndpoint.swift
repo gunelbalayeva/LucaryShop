@@ -14,12 +14,11 @@ enum FavoritesEndpoint {
     var path: String {
         switch self {
         case .get:
-            return "/favorites"
+            return "/products/favorites"
         case .add(let id), .remove(let id):
-            return "/favorites/\(id)"
+            return "/products/favorites/\(id)"
         }
     }
-
     var method: String {
         switch self {
         case .get:

@@ -168,9 +168,6 @@ final class HomeView: UIView {
             make.width.equalTo(buttonStackView.snp.width).dividedBy(2)
             underlineLeadingConstraint = make.left.equalTo(buttonStackView.snp.left).constraint
         }
-
-
-        
         bannerImage.snp.makeConstraints { make in
             make.top.equalTo(underlineView.snp.bottom).offset(8)
             make.left.right.equalToSuperview().inset(16)

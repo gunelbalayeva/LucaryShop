@@ -13,8 +13,11 @@ final class HomeBuilder{
     private let categoryService: CategoryService
     private let companyService :CompanyService
     private let favoritesService: FavoritesService
-   
-    init(coordinator: HomeCoordinator? = nil, productService: ProductService, categoryService: CategoryService, companyService: CompanyService, favoritesService: FavoritesService) {
+    init(coordinator: HomeCoordinator? = nil,
+         productService: ProductService,
+         categoryService: CategoryService,
+         companyService: CompanyService,
+         favoritesService: FavoritesService) {
         self.coordinator = coordinator
         self.productService = productService
         self.categoryService = categoryService

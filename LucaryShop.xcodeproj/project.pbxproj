@@ -196,6 +196,8 @@
 		CED1C4C72E08366B0064AC1F /* CategoryView+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4C62E08366B0064AC1F /* CategoryView+Exc.swift */; };
 		CED1C4C92E0839AC0064AC1F /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4C82E0839AC0064AC1F /* CategoryCell.swift */; };
 		CED1C4CC2E0853C70064AC1F /* BaseTabSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4CB2E0853C70064AC1F /* BaseTabSwitcherView.swift */; };
+		CED1C4D92E0BE3090064AC1F /* Favorites+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4D82E0BE3090064AC1F /* Favorites+Exc.swift */; };
+		CED1C4DB2E0BE3750064AC1F /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4DA2E0BE3750064AC1F /* FavoriteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -389,6 +391,8 @@
 		CED1C4C62E08366B0064AC1F /* CategoryView+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryView+Exc.swift"; sourceTree = "<group>"; };
 		CED1C4C82E0839AC0064AC1F /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		CED1C4CB2E0853C70064AC1F /* BaseTabSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabSwitcherView.swift; sourceTree = "<group>"; };
+		CED1C4D82E0BE3090064AC1F /* Favorites+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+Exc.swift"; sourceTree = "<group>"; };
+		CED1C4DA2E0BE3750064AC1F /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1201,6 +1205,8 @@
 		CED1C3B52E02BE980064AC1F /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4D72E0BE2E00064AC1F /* Cells */,
+				CED1C4D62E0BE2D70064AC1F /* Extension */,
 				CED1C46C2E048BF70064AC1F /* Coordinator */,
 				CED1C46B2E048BEF0064AC1F /* Builder */,
 				CED1C46A2E048BCB0064AC1F /* ViewModel */,
@@ -1743,6 +1749,22 @@
 			path = Favorites;
 			sourceTree = "<group>";
 		};
+		CED1C4D62E0BE2D70064AC1F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4D82E0BE3090064AC1F /* Favorites+Exc.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CED1C4D72E0BE2E00064AC1F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4DA2E0BE3750064AC1F /* FavoriteCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1864,6 +1886,7 @@
 				CEA1C33E2DFB0A0A00E9B74B /* SendOTPView.swift in Sources */,
 				CE5C6BFA2DF48FE900821985 /* RegisterCoordinator.swift in Sources */,
 				CED1C4362E0413170064AC1F /* Cart.swift in Sources */,
+				CED1C4DB2E0BE3750064AC1F /* FavoriteCell.swift in Sources */,
 				CE1788242DF4866D00A91620 /* LocalizationManager.swift in Sources */,
 				CED1C48F2E04ACCD0064AC1F /* ProductListCoordinator.swift in Sources */,
 				CED1C4C72E08366B0064AC1F /* CategoryView+Exc.swift in Sources */,
@@ -1920,6 +1943,7 @@
 				CED1C44D2E043AEC0064AC1F /* Company.swift in Sources */,
 				CE5C6C322DF4AF0200821985 /* User.swift in Sources */,
 				CED1C4BD2E0614350064AC1F /* HomeView.swift in Sources */,
+				CED1C4D92E0BE3090064AC1F /* Favorites+Exc.swift in Sources */,
 				CE1788062DF4724700A91620 /* UIView+Ext.swift in Sources */,
 				CED1C4442E0414CD0064AC1F /* FavoritesService.swift in Sources */,
 				CED1C41C2E030A090064AC1F /* LocalizedStrings.swift in Sources */,

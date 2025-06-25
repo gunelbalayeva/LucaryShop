@@ -14,7 +14,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             let offsetY = scrollView.contentOffset.y
             let contentHeight = scrollView.contentSize.height
             let frameHeight = scrollView.frame.size.height
-            
             if offsetY > contentHeight - frameHeight * 1.5 {
                 if let lastIndexPath = productList.indexPathsForVisibleItems.max() {
                     homeViewModel.loadNextPageIfNeeded(currentIndex: lastIndexPath.item)
@@ -39,13 +38,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == companiesCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompanyCell.identifier, for: indexPath) as! CompanyCell
-            // cell.configure(...)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
             let product = homeViewModel.newArrivals[indexPath.item]
             cell.configure(with: product)
-
             cell.onFavoriteTapped = { [weak self] in
                 guard let self = self else { return }
                 self.homeViewModel.toggleFavorite(for: product.id) { success in
@@ -53,7 +50,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                         if success {
                             self.productList.reloadItems(at: [indexPath])
                         } else {
-                            print("Xetaaa")
+                            print("Favori statusunu dəyişmək mümkün olmadı")
                         }
                     }
                 }
@@ -61,8 +58,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cell
         }
     }
-
-
+    
+    
     
     // didSelectItemAt
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

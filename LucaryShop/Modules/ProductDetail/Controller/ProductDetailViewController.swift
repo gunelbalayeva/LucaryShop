@@ -20,6 +20,7 @@ final class ProductDetailViewController:UIViewController {
         setupNavigationBar()
         viewModel.fetchProductDetail()
         bindViewModel()
+        setupActions()
     }
     
     override func loadView() {
@@ -47,19 +48,48 @@ final class ProductDetailViewController:UIViewController {
     
     
     private func bindViewModel() {
-        viewModel.$product
+           viewModel.$product
+               .receive(on: DispatchQueue.main)
+               .sink { [weak self] product in
+                   guard let product = product else { return }
+                   self?.productDetailView.configure(with: product)
+               }
+               .store(in: &cancellables)
+
+        viewModel.$isFavorite
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] product in
-                guard let product = product else { return }
-                self?.productDetailView.configure(with: product)
+            .sink { [weak self] isFav in
+                self?.productDetailView.setFavorite(isFav)
             }
             .store(in: &cancellables)
-    }
 
+
+           viewModel.$errorMessage
+               .compactMap { $0 }
+               .receive(on: DispatchQueue.main)
+               .sink { error in
+                   print("Error: \(error)")
+               }
+               .store(in: &cancellables)
+       }
+
+    
+       private func setupActions() {
+           productDetailView.onFavoriteTapped = { [weak self] in
+               self?.viewModel.toggleFavorite()
+           }
+
+           productDetailView.onAddToCartTapped = { [weak self] in
+               self?.viewModel.addToCart()
+           }
+       }
+    
     
     @objc
     private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
+    
+
 }
 
