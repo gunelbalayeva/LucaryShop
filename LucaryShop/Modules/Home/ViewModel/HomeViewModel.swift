@@ -13,7 +13,7 @@ final class HomeViewModel {
     private let companyService: CompanyService
      let favoritesService: FavoritesService
     @Published var newArrivals: [Product] = []
-    @Published var companies: [Company] = []
+    @Published var categories: [Category] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
     @Published var updatedFavoriteProductIds: Set<String> = []
@@ -60,8 +60,18 @@ final class HomeViewModel {
                 }
             }
         }
-        companyService.getAllCompanies { _ in }
-        categoryService.fetchCategories { _ in }
+        categoryService.fetchCategories { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let categories):
+                    print("Gələn kategoriyalar: \(categories.count)")
+                    self?.categories = categories
+                case .failure(let error):
+                    print("Kategori xətası: \(error)")
+                    self?.errorMessage = error.localizedDescription
+                }
+            }
+        }
     }
     
     

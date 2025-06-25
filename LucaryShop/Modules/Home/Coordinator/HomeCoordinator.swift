@@ -67,6 +67,9 @@ final class HomeCoordinator {
     }
     
     
+    
+    
+    
     func startAndReturnViewController() -> UIViewController {
         let viewModel = HomeViewModel(coordinator: self,
                                       productService: productService,
@@ -93,7 +96,7 @@ final class HomeCoordinator {
             favoritesService: favoritesService,
             cartService: cartService
         )
-        detailCoordinator.onFinish = { [weak self] in
+        detailCoordinator.onFinish = { [] in
             print("ProductDetailCoordinator bitdi")
         }
         detailCoordinator.start(with: productId)
@@ -102,4 +105,6 @@ final class HomeCoordinator {
     func finish() {
         onFinish?()
     }
+    
+    
 }

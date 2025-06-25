@@ -24,11 +24,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
     }
     
+    
     // numberOfItemsInSection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == companiesCollectionView {
-            return homeViewModel.companies.count
-        } else if collectionView == productList {
+        if collectionView == categoriesCollectionView {
+            return homeViewModel.categories.count
+        }
+        // ______Product____________________________________________________________________________
+        else if collectionView == productList {
             return homeViewModel.newArrivals.count
         }
         return 0
@@ -36,10 +39,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     // cellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == companiesCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompanyCell.identifier, for: indexPath) as! CompanyCell
+        // Categories
+        if collectionView == categoriesCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
+            let category = homeViewModel.categories[indexPath.item]
+            cell.configure(with: category)
             return cell
-        } else {
+        }
+// ___________Products_______________________________________________________________________________________________
+        else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
             let product = homeViewModel.newArrivals[indexPath.item]
             cell.configure(with: product)
@@ -59,16 +67,19 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
     }
     
-    
-    
     // didSelectItemAt
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == productList {
             let selectedProduct = homeViewModel.newArrivals[indexPath.item]
             homeViewModel.coordinator?.navigateToProductDetail(productId: selectedProduct.id)
             
-        } else if collectionView == companiesCollectionView {
-            print("Şirkət seçildi")
+        }
+// _______________________________________________________________________________________________________________
+        else if collectionView == categoriesCollectionView {
+            print("Category seçildi")
+            
+            
+            
         }
     }
     

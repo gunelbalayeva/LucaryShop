@@ -12,11 +12,12 @@ final class HomeViewController:UIViewController {
     
     let homeViewModel:HomeViewModel
     private var cancellables = Set<AnyCancellable>()
-    let companiesCollectionView: UICollectionView = {
+    
+    let categoriesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 8
-        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.itemSize = CGSize(width: 100, height: 120)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         return collectionView
@@ -35,7 +36,7 @@ final class HomeViewController:UIViewController {
     
     
     lazy var homeView = HomeView(
-        companiesCollectionView: companiesCollectionView,
+        categoriesCollectionView: categoriesCollectionView,
         productList: productList
     )
     
@@ -52,14 +53,14 @@ final class HomeViewController:UIViewController {
         setupActions()
         observeViewModel()
         setupFavoriteSubscriptions()
-     homeViewModel.fetchHomeData()
+        homeViewModel.fetchHomeData()
         setupFavoriteNotifications()
         if let token = KeychainManager.shared.getToken() {
             print("Token home: \(token)")
         } else {
             print("Token tapılmadı")
         }
-
+        
         
     }
     
@@ -82,9 +83,9 @@ final class HomeViewController:UIViewController {
     
     
     private func setupCollectionViews() {
-        companiesCollectionView.dataSource = self
-        companiesCollectionView.delegate = self
-        companiesCollectionView.register(CompanyCell.self, forCellWithReuseIdentifier: CompanyCell.identifier)
+        categoriesCollectionView.dataSource = self
+        categoriesCollectionView.delegate = self
+        categoriesCollectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
         productList.dataSource = self
         productList.delegate = self
         productList.register(ProductCell.self, forCellWithReuseIdentifier: ProductCell.identifier)
@@ -109,12 +110,15 @@ final class HomeViewController:UIViewController {
                 self?.productList.reloadData()
             }
             .store(in: &cancellables)
-        homeViewModel.$companies
+        
+        
+        homeViewModel.$categories
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
-                self?.companiesCollectionView.reloadData()
+                self?.categoriesCollectionView.reloadData()
             }
             .store(in: &cancellables)
+        
     }
     
     func updateFavoriteStatus(for productId: String, isFavorite: Bool) {
@@ -122,32 +126,33 @@ final class HomeViewController:UIViewController {
     }
     
     private func setupFavoriteNotifications() {
-            NotificationCenter.default.addObserver(
-                self,
-                selector: #selector(handleFavoriteChange(_:)),
-                name: FavoritesService.favoritesDidChangeNotification,
-                object: nil
-            )
-        }
-        
-    private func setupFavoriteSubscriptions() {
-            homeViewModel.favoritesService.favoritesChangePublisher
-                .sink { [weak self] (productId, isFavorite) in
-                    self?.homeViewModel.updateFavoriteStatus(for: productId, isFavorite: isFavorite)
-                }
-                .store(in: &cancellables)
-        }
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleFavoriteChange(_:)),
+            name: FavoritesService.favoritesDidChangeNotification,
+            object: nil
+        )
+    }
     
-        @objc
-    private func handleFavoriteChange(_ notification: Notification) {
-            if let userInfo = notification.userInfo,
-               let productId = userInfo["productId"] as? String,
-               let isFavorite = userInfo["isFavorite"] as? Bool {
-                homeViewModel.updateFavoriteStatus(for: productId, isFavorite: isFavorite)
+    private func setupFavoriteSubscriptions() {
+        homeViewModel.favoritesService.favoritesChangePublisher
+            .sink { [weak self] (productId, isFavorite) in
+                self?.homeViewModel.updateFavoriteStatus(for: productId, isFavorite: isFavorite)
             }
+            .store(in: &cancellables)
+    }
+    
+    
+    @objc
+    private func handleFavoriteChange(_ notification: Notification) {
+        if let userInfo = notification.userInfo,
+           let productId = userInfo["productId"] as? String,
+           let isFavorite = userInfo["isFavorite"] as? Bool {
+            homeViewModel.updateFavoriteStatus(for: productId, isFavorite: isFavorite)
         }
-        
-        deinit {
-            NotificationCenter.default.removeObserver(self)
-        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }

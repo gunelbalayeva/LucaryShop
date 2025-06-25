@@ -42,7 +42,7 @@ final class ProductCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .secondarySystemBackground
+        contentView.backgroundColor = .verifyBg
         contentView.layer.cornerRadius = 12
         contentView.clipsToBounds = true
         setupUI()

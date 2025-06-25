@@ -53,7 +53,7 @@ final class BaseTabSwitcherView: UIView {
     
     private let categoryButton: CustomButton = {
         let button = CustomButton(style: .plain)
-        button.setTitle("Category", for: .normal)
+        button.setTitle("Partnyorlar", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.contentHorizontalAlignment = .center
         button.alpha = 0.5

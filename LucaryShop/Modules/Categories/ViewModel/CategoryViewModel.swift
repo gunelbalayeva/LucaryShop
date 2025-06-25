@@ -29,6 +29,6 @@ final class CategoryViewModel {
     
     
     func selectCategory(_ category: Category) {
-        coordinator?.navigateToProductList(for: category.id)
+//        coordinator?.navigateToProductList(for: category.id)
     }
 }

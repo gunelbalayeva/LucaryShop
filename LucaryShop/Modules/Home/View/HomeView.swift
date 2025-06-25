@@ -50,7 +50,7 @@ final class HomeView: UIView {
     
     private let categoryButton: CustomButton = {
         let button = CustomButton(style: .plain)
-        button.setTitle("Category", for: .normal)
+        button.setTitle("Partnyorlar", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.contentHorizontalAlignment = .center
         button.alpha = 0.5
@@ -89,14 +89,14 @@ final class HomeView: UIView {
     }()
     
     private let companyHeadLabel: UILabel = {
-      let label =  UILabel().withStyle(text: "Partnyorlarımız", size: 16)
+      let label =  UILabel().withStyle(text: "Kategoriyalar", size: 16)
         label.font =  UIFont.systemFont(ofSize: 20, weight: .bold)
         return label
     }()
     
     private let companySeeAllButton: CustomButton = {
         let button = CustomButton(style: .plain)
-        button.setTitle("See All", for: .normal)
+        button.setTitle("", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.contentHorizontalAlignment = .right
         return button
@@ -117,13 +117,13 @@ final class HomeView: UIView {
         return stack
     }()
 
-    let companiesCollectionView: UICollectionView
+    let categoriesCollectionView: UICollectionView
     private let productList: UICollectionView
     private var productListTopConstraint: Constraint?
     
     
-    init(companiesCollectionView: UICollectionView, productList: UICollectionView) {
-        self.companiesCollectionView = companiesCollectionView
+    init(categoriesCollectionView: UICollectionView, productList: UICollectionView) {
+        self.categoriesCollectionView = categoriesCollectionView
         self.productList = productList
         super.init(frame: .zero)
         setupUI()
@@ -139,7 +139,7 @@ final class HomeView: UIView {
     private func setupUI() {
         backgroundColor = .white
         updateUnderlinePosition()
-        addSubviews(views: headerStackView, searchBar, buttonStackView, underlineView, bannerImage, companyStackView, companiesCollectionView, headLabel, productList)
+        addSubviews(views: headerStackView, searchBar, buttonStackView, underlineView, bannerImage, companyStackView, categoriesCollectionView, headLabel, productList)
         companyHeadLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         companyHeadLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
@@ -179,14 +179,14 @@ final class HomeView: UIView {
             make.left.right.equalToSuperview().inset(16)
         }
         
-        companiesCollectionView.snp.makeConstraints { make in
+        categoriesCollectionView.snp.makeConstraints { make in
             make.top.equalTo(companyStackView.snp.bottom).offset(0)
             make.left.right.equalToSuperview().inset(0)
             make.height.equalTo(120)
         }
         
         headLabel.snp.makeConstraints { make in
-            make.top.equalTo(companiesCollectionView.snp.bottom).offset(8)
+            make.top.equalTo(categoriesCollectionView.snp.bottom).offset(8)
             make.left.right.equalToSuperview().inset(16)
         }
         
@@ -261,7 +261,7 @@ final class HomeView: UIView {
     
     func updateProductListTopConstraint(hideHeader: Bool) {
         UIView.animate(withDuration: 0.3) {
-            [self.bannerImage, self.companyStackView, self.companiesCollectionView, self.headLabel].forEach { view in
+            [self.bannerImage, self.companyStackView, self.categoriesCollectionView, self.headLabel].forEach { view in
                 view.alpha = hideHeader ? 0 : 1
             }
             self.productListTopConstraint?.deactivate()

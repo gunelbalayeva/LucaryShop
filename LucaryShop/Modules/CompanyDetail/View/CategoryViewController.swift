@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 final class CategoryViewController:UIViewController {
-    private let tableView = UITableView()
-      private lazy var categoryView = CategoryView(tableView: tableView)
+      private let tableView = UITableView()
+      private lazy var categoryView = CompanyView(tableView: tableView)
       private let viewModel: CategoryViewModel
 
       init(viewModel: CategoryViewModel) {
@@ -36,18 +36,13 @@ final class CategoryViewController:UIViewController {
           super.viewDidLoad()
           view.backgroundColor = .systemBackground
           navigationItem.hidesBackButton = true
-          setupTableView()
+
           setupActions()
       }
 
      
 
-      private func setupTableView() {
-          tableView.dataSource = self
-          tableView.delegate = self
-          tableView.register(CategoryCell.self, forCellReuseIdentifier: CategoryCell.identifier)
-      }
-
+    
     
       private func setupActions() {
           categoryView.onHomeTapped = { [weak self] in
