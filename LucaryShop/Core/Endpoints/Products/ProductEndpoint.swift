@@ -11,7 +11,7 @@ import Foundation
 enum ProductEndpoint {
     case getAll(page: Int, size: Int)
     case getById(String)
-    case getByCategory(Int)
+    case getByCategory(categoryId: String, pageNumber: Int, pageSize: Int)
 
     var path: String {
         switch self {
@@ -39,9 +39,11 @@ enum ProductEndpoint {
                 URLQueryItem(name: "pageNumber", value: "\(page)"),
                 URLQueryItem(name: "pageSize", value: "\(size)")
             ]
-        case .getByCategory(let categoryId):
+        case .getByCategory(let categoryId, let pageNumber, let pageSize):
             return [
-                URLQueryItem(name: "categoryId", value: "\(categoryId)")
+                URLQueryItem(name: "categoryId", value: categoryId),
+                URLQueryItem(name: "pageNumber", value: "\(pageNumber)"),
+                URLQueryItem(name: "pageSize", value: "\(pageSize)")
             ]
         case .getById:
             return nil

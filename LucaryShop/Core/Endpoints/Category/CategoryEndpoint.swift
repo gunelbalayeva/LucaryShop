@@ -7,16 +7,14 @@
 
 import Foundation
 enum CategoryEndpoint {
+    
     case getAll
-
     var path: String { "/categories" }
-
     var method: String { "GET" }
-
     var headers: [String: String] {
         ["Content-Type": "application/json"]
     }
-
+    
     var request: APIRequest {
         APIRequest(
             url: URL(string: "https://e-commerce-app-150649679863.europe-west1.run.app\(path)")!,

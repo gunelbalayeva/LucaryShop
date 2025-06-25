@@ -18,19 +18,17 @@ final class ProductService {
         let endpoint = ProductEndpoint.getAll(page: page, size: size)
         request(with: endpoint, completion: completion)
     }
-    
 
     func fetchProductDetail(id: String, completion: @escaping (Result<Product, Error>) -> Void) {
         let endpoint = ProductEndpoint.getById(id)
         request(with: endpoint, completion: completion)
     }
 
-    func fetchProducts(by categoryId: Int, completion: @escaping (Result<[Product], Error>) -> Void) {
-        let endpoint = ProductEndpoint.getByCategory(categoryId)
+    func fetchProducts(by categoryId: String, pageNumber: Int, pageSize: Int, completion: @escaping (Result<[Product], Error>) -> Void) {
+        let endpoint = ProductEndpoint.getByCategory(categoryId: categoryId, pageNumber: pageNumber, pageSize: pageSize)
         request(with: endpoint, completion: completion)
     }
 
-    
     private func request<T: Decodable>(with endpoint: ProductEndpoint, completion: @escaping (Result<T, Error>) -> Void) {
         var headers = endpoint.headers
         if let token = KeychainManager.shared.getToken() {
@@ -46,4 +44,3 @@ final class ProductService {
         networkService.request(apiRequest, completion: completion)
     }
 }
-

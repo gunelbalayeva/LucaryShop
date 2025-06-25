@@ -526,13 +526,13 @@
 		CE17880B2DF472A800A91620 /* MyServices */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4DE2E0C6A940064AC1F /* Category */,
 				CED1C4D42E0B1DAE0064AC1F /* Favorites */,
 				CED1C4D22E0976F10064AC1F /* ProductProductDetail */,
 				CED1C4D02E0972650064AC1F /* Auth */,
 				CED1C43B2E04145C0064AC1F /* OrderService.swift */,
 				CED1C42E2E0411F50064AC1F /* ProfileService.swift */,
 				CED1C43F2E0414940064AC1F /* CartService.swift */,
-				CED1C4472E0415090064AC1F /* CategoryService.swift */,
 				CED1C4502E044A580064AC1F /* CompanyService.swift */,
 			);
 			path = MyServices;
@@ -1219,13 +1219,13 @@
 		CED1C3B62E02C5880064AC1F /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C4DD2E0C6A7D0064AC1F /* Category */,
 				CED1C4D52E0B1E1A0064AC1F /* Favorites */,
 				CED1C4D32E0977910064AC1F /* Products */,
 				CED1C4D12E09727E0064AC1F /* Auth */,
 				CED1C4302E0412150064AC1F /* ProfileEndpoint.swift */,
 				CED1C43D2E04147E0064AC1F /* OrderEndpoint.swift */,
 				CED1C4412E0414AF0064AC1F /* CartEndpoint.swift */,
-				CED1C4492E04152C0064AC1F /* CategoryEndpoint.swift */,
 				CED1C44E2E044A360064AC1F /* CompanyEndpoint.swift */,
 			);
 			path = Endpoints;
@@ -1763,6 +1763,22 @@
 				CED1C4DA2E0BE3750064AC1F /* FavoriteCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		CED1C4DD2E0C6A7D0064AC1F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4492E04152C0064AC1F /* CategoryEndpoint.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		CED1C4DE2E0C6A940064AC1F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4472E0415090064AC1F /* CategoryService.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
