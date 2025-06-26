@@ -27,14 +27,18 @@ final class ProductDetailCoordinator {
     }
     
     func start(with productId: String) {
-           let viewModel = ProductDetailViewModel(productId: productId,
-                                                  productService: productService,
-                                                  favoritesService: favoritesService,
-                                                  cartService: cartService,
-                                                  coordinator: self)
-           let vc = ProductDetailViewController(viewModel: viewModel)
-           navigationController.pushViewController(vc, animated: true)
-       }
+        print("✅ ProductDetailCoordinator start called with: \(productId)")
+        let viewModel = ProductDetailViewModel(productId: productId,
+                                               productService: productService,
+                                               favoritesService: favoritesService,
+                                               cartService: cartService,
+                                               coordinator: self)
+        let vc = ProductDetailViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+        print("✅ pushViewController called")
+        print("✅ Navigation stack count: \(navigationController.viewControllers.count)")
+    }
+
        
        func finish() {
            onFinish?()

@@ -20,7 +20,7 @@ final class CategoriesDetailCell:UICollectionViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
         label.textColor = UIColor(named: "priceColor")
         label.textAlignment = .center
         label.numberOfLines = 0

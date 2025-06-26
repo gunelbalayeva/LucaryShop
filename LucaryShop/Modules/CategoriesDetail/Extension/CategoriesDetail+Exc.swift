@@ -22,6 +22,8 @@ extension CategoriesDetailViewController:UICollectionViewDelegate,UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let selectedProduct = viewModel.products[indexPath.item]
+        print("selectedProductId: \(selectedProduct.id)")
+        viewModel.coordinator?.navigateToProductDetail(productId: selectedProduct.id)
     }
 }

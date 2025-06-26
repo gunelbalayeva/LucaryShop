@@ -10,8 +10,7 @@ final class CategoriesDetailViewModel{
     private let categoryId: String
     private let categoryService: CategoryService
     private let productService: ProductService
-    weak var coordinator: CategoriesDetailCoordinator?
-    
+    var coordinator: CategoriesDetailCoordinator?
     @Published private(set) var products: [Product] = []
     @Published private(set) var categoryInfo: Category?
     
@@ -37,6 +36,4 @@ final class CategoriesDetailViewModel{
             }
         }
     }
-
-    
 }

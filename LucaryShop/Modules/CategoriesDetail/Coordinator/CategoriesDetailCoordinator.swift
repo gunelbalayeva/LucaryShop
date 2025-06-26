@@ -14,6 +14,7 @@ final class CategoriesDetailCoordinator{
     private let productService: ProductService
     private let favoritesService: FavoritesService
     private let cartService: CartService
+    var productDetailCoordinator: ProductDetailCoordinator?
     var onFinish: (() -> Void)?
     
     init(parentCoordinator: AppCoordinator? = nil,
@@ -50,8 +51,11 @@ final class CategoriesDetailCoordinator{
             favoritesService: favoritesService,
             cartService: cartService
         )
+        self.productDetailCoordinator = detailCoordinator
         detailCoordinator.start(with: productId)
     }
+
+
     
     func finish() {
         onFinish?()
