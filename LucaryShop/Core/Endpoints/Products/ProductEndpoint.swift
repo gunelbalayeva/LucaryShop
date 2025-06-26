@@ -10,6 +10,7 @@ enum ProductEndpoint {
     case getAll(page: Int, size: Int)
     case getById(String)
     case getByCategory(categoryId: String, pageNumber: Int, pageSize: Int)
+    case getByCompany(companyId: String)
 
     var path: String {
         switch self {
@@ -19,6 +20,8 @@ enum ProductEndpoint {
             return "/products/\(id)"
         case .getByCategory:
             return "/products/category"
+        case .getByCompany(let companyId):
+            return "/products/by-company/\(companyId)"
         }
     }
 
@@ -38,12 +41,12 @@ enum ProductEndpoint {
                 URLQueryItem(name: "pageSize", value: "\(size)")
             ]
         case .getByCategory(let categoryId, let pageNumber, let pageSize):
-            var items = [URLQueryItem(name: "categoryId", value: categoryId)]
-            items.append(URLQueryItem(name: "pageNumber", value: "\(pageNumber)"))
-            items.append(URLQueryItem(name: "pageSize", value: "\(pageSize)"))
-            return items
-
-        case .getById:
+            return [
+                URLQueryItem(name: "categoryId", value: categoryId),
+                URLQueryItem(name: "pageNumber", value: "\(pageNumber)"),
+                URLQueryItem(name: "pageSize", value: "\(pageSize)")
+            ]
+        case .getById, .getByCompany:
             return nil
         }
     }
@@ -54,3 +57,4 @@ enum ProductEndpoint {
         return components.url!
     }
 }
+

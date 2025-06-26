@@ -29,6 +29,12 @@ final class ProductService {
         request(with: endpoint, completion: completion)
     }
 
+    func fetchProductsByCompany(companyId: String, completion: @escaping (Result<CompanyDetails, Error>) -> Void) {
+        let endpoint = ProductEndpoint.getByCompany(companyId: companyId)
+        request(with: endpoint, completion: completion)
+    }
+
+    
     private func request<T: Decodable>(with endpoint: ProductEndpoint, completion: @escaping (Result<T, Error>) -> Void) {
         var headers = endpoint.headers
         if let token = KeychainManager.shared.getToken() {

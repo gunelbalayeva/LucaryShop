@@ -47,14 +47,4 @@ final class CompanyViewModel {
             }
         }
     }
-
-     
-
-    func selectCompany(_ company: Company) {
-//        coordinator?.navigateToCompanyDetail(companyId: company.id)
-    }
-
-    func selectProduct(_ product: Product) {
-       coordinator?.navigateToProductDetail(productId: product.id)
-    }
 }

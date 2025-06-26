@@ -13,11 +13,11 @@ final class CompanyDetailViewModel {
     private let favoritesService: FavoritesService
     private let cartService: CartService
     private let companyId: String
-    @Published var companyDetail: CompanyDetail?
+    @Published var companyDetail: CompanyDetails?
     @Published var products: [Product] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
-
+    
     init(coordinator: CompanyDetailCoordinator?,
          companyService: CompanyService,
          productService: ProductService,
@@ -31,6 +31,26 @@ final class CompanyDetailViewModel {
         self.cartService = cartService
         self.companyId = companyId
     }
-
+    
+    func fetchCompanyDetail() {
+        isLoading = true
+        productService.fetchProductsByCompany(companyId: companyId) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                switch result {
+                case .success(let detail):
+                    self?.companyDetail = detail
+                    self?.products = detail.products
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                    print("Error fetching company detail: \(error)")
+                }
+            }
+        }
+    }
+    
+    func selectProduct(_ product: Product) {
+       coordinator?.navigateToProductDetail(productId: product.id)
+    }
 }
 
