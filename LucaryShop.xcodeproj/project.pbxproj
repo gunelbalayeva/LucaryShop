@@ -199,6 +199,7 @@
 		CED1C4F42E0D42D40064AC1F /* CategoriesDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4F32E0D42D40064AC1F /* CategoriesDetailCoordinator.swift */; };
 		CED1C4F62E0D6B050064AC1F /* CategoriesDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4F52E0D6B050064AC1F /* CategoriesDetailCell.swift */; };
 		CED1C4F82E0D6E0A0064AC1F /* CategoriesDetail+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4F72E0D6E0A0064AC1F /* CategoriesDetail+Exc.swift */; };
+		CED1C4FA2E0D89C10064AC1F /* UIColloctionViewCell+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4F92E0D89C10064AC1F /* UIColloctionViewCell+Exc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -395,6 +396,7 @@
 		CED1C4F32E0D42D40064AC1F /* CategoriesDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCoordinator.swift; sourceTree = "<group>"; };
 		CED1C4F52E0D6B050064AC1F /* CategoriesDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCell.swift; sourceTree = "<group>"; };
 		CED1C4F72E0D6E0A0064AC1F /* CategoriesDetail+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoriesDetail+Exc.swift"; sourceTree = "<group>"; };
+		CED1C4F92E0D89C10064AC1F /* UIColloctionViewCell+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColloctionViewCell+Exc.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -496,6 +498,7 @@
 				CED1C4242E0313580064AC1F /* Tableview+exc.swift */,
 				CED1C4262E0313830064AC1F /* Controller+Exc.swift */,
 				CED1C4282E0313AF0064AC1F /* CollectionView+Exc.swift */,
+				CED1C4F92E0D89C10064AC1F /* UIColloctionViewCell+Exc.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -558,11 +561,11 @@
 		CE17880D2DF472E000A91620 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CED1C4A72E05E68F0064AC1F /* CompanyDetail */,
-				CED1C3B92E02F3BC0064AC1F /* Companies */,
 				CE1788182DF473E000A91620 /* Profile */,
 				CE1788172DF473D400A91620 /* Orders */,
 				CE1788162DF4739E00A91620 /* Cart */,
+				CED1C4A72E05E68F0064AC1F /* CompanyDetail */,
+				CED1C3B92E02F3BC0064AC1F /* Companies */,
 				CED1C4E32E0C90D30064AC1F /* CategoriesDetail */,
 				CED1C3B52E02BE980064AC1F /* Favorites */,
 				CE1788152DF4738E00A91620 /* ProductDetail */,
@@ -1923,6 +1926,7 @@
 				CED1C4A02E05DFAF0064AC1F /* CompanyBuilder.swift in Sources */,
 				CE5E3C9E2DF89F46005B827B /* PermissionsOnboardingViewModel.swift in Sources */,
 				CE1788202DF4864000A91620 /* Combine+Extensions.swift in Sources */,
+				CED1C4FA2E0D89C10064AC1F /* UIColloctionViewCell+Exc.swift in Sources */,
 				CE1788302DF486E900A91620 /* URLSession+Extensions.swift in Sources */,
 				CE5E3C8F2DF856BE005B827B /* GetStartedOnboardingBuilder.swift in Sources */,
 				CE1788282DF4868D00A91620 /* UserDefaultsManager.swift in Sources */,

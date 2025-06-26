@@ -7,13 +7,15 @@
 
 import Foundation
 import UIKit
-
-extension UICollectionViewCell {
-    static var identifier:String {
-        String(describing: self)
-    }
-    
-    static var nib :UINib {
-        return UINib(nibName: self.identifier, bundle: .main)
+extension UICollectionView {
+    func configureScrolling(hidesIndicators: Bool = true, enablesScroll: Bool = true) {
+        self.isScrollEnabled = enablesScroll
+        if hidesIndicators {
+            self.showsVerticalScrollIndicator = false
+            self.showsHorizontalScrollIndicator = false
+        } else {
+            self.showsVerticalScrollIndicator = true
+            self.showsHorizontalScrollIndicator = true
+        }
     }
 }

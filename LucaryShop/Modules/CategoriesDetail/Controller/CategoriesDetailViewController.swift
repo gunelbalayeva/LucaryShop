@@ -16,14 +16,7 @@ final class CategoriesDetailViewController:UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        title = "Kateqoriya məhsulları"
-        categoriesDetailView.categoriesCollectionView.dataSource = self
-        categoriesDetailView.categoriesCollectionView.delegate = self
-        categoriesDetailView.categoriesCollectionView.register(
-            CategoriesDetailCell.self,
-            forCellWithReuseIdentifier: CategoriesDetailCell.identifier
-        )
+        setupCollectionViews()
         setupNavigationBar()
         binding()
     }
@@ -41,6 +34,20 @@ final class CategoriesDetailViewController:UIViewController{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupCollectionViews() {
+        view.backgroundColor = .systemBackground
+        title = "Kateqoriya məhsulları"
+        let collectionView = categoriesDetailView.categoriesCollectionView
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(
+            CategoriesDetailCell.self,
+            forCellWithReuseIdentifier: CategoriesDetailCell.identifier
+        )
+        collectionView.configureScrolling(hidesIndicators: true, enablesScroll: true)
+    }
+
     
     func binding() {
         viewModel.$products

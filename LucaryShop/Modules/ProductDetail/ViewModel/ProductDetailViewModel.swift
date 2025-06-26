@@ -14,14 +14,17 @@ final class ProductDetailViewModel {
     private let cartService: CartService
     weak var coordinator: ProductDetailCoordinator?
     private weak var homeViewModel: HomeViewModel?
-
-    
     @Published var product: Product?
     @Published var isFavorite: Bool = false
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
-    init(productId: String, productService: ProductService, favoritesService: FavoritesService, cartService: CartService, coordinator: ProductDetailCoordinator? = nil, homeViewModel: HomeViewModel? = nil) {
+    init(productId: String,
+         productService: ProductService,
+         favoritesService: FavoritesService,
+         cartService: CartService,
+         coordinator: ProductDetailCoordinator? = nil,
+         homeViewModel: HomeViewModel? = nil) {
         self.productId = productId
         self.productService = productService
         self.favoritesService = favoritesService
@@ -50,14 +53,11 @@ final class ProductDetailViewModel {
         guard let product = product else { return }
         let wasFavorite = product.favorite
         let newFavorite = !wasFavorite
-
         self.product?.favorite = newFavorite
         self.isFavorite = newFavorite
-
         let request = newFavorite
             ? favoritesService.addFavorite
             : favoritesService.removeFavorite
-
         request(productId) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -74,14 +74,12 @@ final class ProductDetailViewModel {
         }
     }
 
-
-
-    
     private func revertFavoriteState(wasFavorite: Bool) {
         product?.favorite = wasFavorite
         isFavorite = wasFavorite
         errorMessage = "Server xətası: Favori status dəyişmədi"
     }
+    
     
     func addToCart() {
         guard let product = product else { return }

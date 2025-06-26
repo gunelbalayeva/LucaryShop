@@ -89,7 +89,10 @@ final class HomeViewController:UIViewController {
         productList.dataSource = self
         productList.delegate = self
         productList.register(ProductCell.self, forCellWithReuseIdentifier: ProductCell.identifier)
+        categoriesCollectionView.configureScrolling(hidesIndicators: true, enablesScroll: true)
+        productList.configureScrolling(hidesIndicators: true, enablesScroll: true)
     }
+
     
     func updateSelectedIndex(_ index: Int) {
         homeView.selectedIndex = index
