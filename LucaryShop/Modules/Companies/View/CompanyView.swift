@@ -7,15 +7,23 @@
 
 import UIKit
 final class CompanyView: UIView{
-    
     var onHomeTapped: (() -> Void)?
     var onCategoryTapped: (() -> Void)?
-    let tableView: UITableView
     let tabSwitcher = BaseTabSwitcherView()
+    private var didSetInitialTab = false
     
-    init(tableView: UITableView) {
-        self.tableView = tableView
-        super.init(frame: .zero)
+    let companiesCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 8
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: 140)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemBackground
+        return collectionView
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupUI()
         setupConstraints()
         setupActions()
@@ -26,28 +34,39 @@ final class CompanyView: UIView{
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if !didSetInitialTab {
+            tabSwitcher.selectedIndex = 1
+            didSetInitialTab = true
+        }
+    }
+    
     private func setupUI() {
         backgroundColor = .white
-        addSubviews(views: tabSwitcher, tableView)
+        addSubviews(views: tabSwitcher)
+        addSubviews(views: tabSwitcher, companiesCollectionView)
     }
     
     private func setupConstraints() {
         tabSwitcher.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(4)
             make.left.right.equalToSuperview().inset(16)
         }
         
-        tableView.snp.makeConstraints { make in
+        companiesCollectionView.snp.makeConstraints { make in
             make.top.equalTo(tabSwitcher.snp.bottom).offset(16)
-            make.left.right.bottom.equalToSuperview()
+            make.left.right.bottom.equalToSuperview().inset(16)
         }
     }
+    
     
     private func setupActions() {
         tabSwitcher.onHomeTapped = { [weak self] in
             self?.onHomeTapped?()
         }
-        tabSwitcher.onCategoryTapped = { [weak self] in
+        tabSwitcher.onCompanyTapped = { [weak self] in
             self?.onCategoryTapped?()
         }
     }

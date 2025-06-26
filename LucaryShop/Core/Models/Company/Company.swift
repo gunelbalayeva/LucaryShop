@@ -7,14 +7,8 @@
 
 import Foundation
 struct Company: Codable {
-    let id: Int
+    let id: String
     let name: String
-    let logoUrl: String?
-    let description: String?
-}
-
-struct CompanyRequest: Codable {
-    let name: String
-    let logoUrl: String?
-    let description: String?
+    let profileImage: String
+    let productCount: Int
 }

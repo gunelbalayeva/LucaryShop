@@ -45,7 +45,6 @@ final class HomeViewModel {
         isLoading = true
         currentPage = 1
         newArrivals.removeAll()
-        
         productService.fetchAllProducts(page: currentPage, size: pageSize) { [weak self] result in
             DispatchQueue.main.async {
                 print("Yeni sorgu atıldı: \(self!.currentPage)")
@@ -77,7 +76,6 @@ final class HomeViewModel {
     
     func loadNextPageIfNeeded(currentIndex: Int) {
         guard !isLoadingMore, currentIndex >= newArrivals.count - 4 else { return }
-        
         isLoadingMore = true
         productService.fetchAllProducts(page: currentPage + 1, size: pageSize) { [weak self] result in
             DispatchQueue.main.async {
@@ -176,6 +174,6 @@ final class HomeViewModel {
 
 
     func navigateToCompanies() {
-        coordinator?.navigateToCategory()
+        coordinator?.navigateToCompany()
     }
 }

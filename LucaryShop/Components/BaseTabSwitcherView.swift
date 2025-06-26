@@ -12,7 +12,7 @@ import SnapKit
 final class BaseTabSwitcherView: UIView {
     
     var onHomeTapped: (() -> Void)?
-    var onCategoryTapped: (() -> Void)?
+    var onCompanyTapped: (() -> Void)?
     
     private let headerLogoName: UILabel = {
         let label = UILabel()
@@ -88,6 +88,7 @@ final class BaseTabSwitcherView: UIView {
         }
     }
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -100,6 +101,11 @@ final class BaseTabSwitcherView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        updateUnderlinePosition(animated: false)
+    }
+
     private func setupViews() {
        addSubviews(views: headerStackView, searchBar,buttonStackView,underlineView)
     
@@ -142,14 +148,16 @@ final class BaseTabSwitcherView: UIView {
         categoryButton.addTarget(self, action: #selector(categoryTapped), for: .touchUpInside)
     }
     
-    @objc private func homeTapped() {
+    @objc
+    private func homeTapped() {
         selectedIndex = 0
         onHomeTapped?()
     }
     
-    @objc private func categoryTapped() {
+    @objc
+    private func categoryTapped() {
         selectedIndex = 1
-        onCategoryTapped?()
+        onCompanyTapped?()
     }
     
     func updateUnderlinePosition(animated: Bool = true) {

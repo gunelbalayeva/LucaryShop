@@ -13,7 +13,6 @@ final class CompanyBuilder{
     private let productService: ProductService
     private let favoritesService: FavoritesService
     private let cartService: CartService
-    
     init(coordinator: CompanyCoordinator,
          companyService: CompanyService,
          productService: ProductService,

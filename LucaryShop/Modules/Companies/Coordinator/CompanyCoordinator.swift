@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-final class CompanyCoordinator: Coordinator{
+final class CompanyCoordinator{
     weak var parentCoordinator: AppCoordinator?
     var navigationController: UINavigationController
     private let companyService: CompanyService
@@ -15,6 +15,8 @@ final class CompanyCoordinator: Coordinator{
     private let favoritesService: FavoritesService
     private let cartService: CartService
     var onFinish: (() -> Void)?
+    var productDetailCoordinator: ProductDetailCoordinator?
+    var companyDetailCoordinator:CompanyDetailCoordinator?
     
     init(parentCoordinator: AppCoordinator? = nil,
          navigationController: UINavigationController,
@@ -44,33 +46,32 @@ final class CompanyCoordinator: Coordinator{
     }
     
     
-    func navigateToCompanyDetail(companyId: Int) {
-        let detailCoordinator = CompanyDetailCoordinator(parentCoordinator: parentCoordinator,
-                                                         navigationController: navigationController,
-                                                         companyService: companyService,
-                                                         productService: productService,
-                                                         favoritesService: favoritesService,
-                                                         cartService: cartService)
-        detailCoordinator.start(with: companyId)
+    func navigateToProductDetail(productId: String) {
+        let detailCoordinator = ProductDetailCoordinator(
+            parentCoordinator: parentCoordinator,
+            navigationController: navigationController,
+            productService: productService,
+            favoritesService: favoritesService,
+            cartService: cartService
+        )
+        self.productDetailCoordinator = detailCoordinator
+        detailCoordinator.start(with: productId)
     }
     
     
-    func navigateToProductDetail(productId: String) {
-        let detailCoordinator = ProductDetailCoordinator(navigationController: navigationController,
-                                                         productService: productService,
-                                                         favoritesService: favoritesService,
-                                                         cartService: cartService)
-        detailCoordinator.start(with: productId)
+    func navigateToCompaniesDetail(companyId: String){
+        let companiesCoordinator = CompanyDetailCoordinator(navigationController: navigationController,
+                                                            companyService: companyService,
+                                                            productService: productService,
+                                                            favoritesService: favoritesService,
+                                                            cartService: cartService
+        )
+        self.companyDetailCoordinator = companiesCoordinator
+        companiesCoordinator.start(with: companyId)
     }
     
     
     func finish() {
         onFinish?()
-        parentCoordinator?.childDidFinish(self)
     }
 }
-
-
-
-
-

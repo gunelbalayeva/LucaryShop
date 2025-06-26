@@ -53,15 +53,8 @@ final class HomeViewController:UIViewController {
         setupActions()
         observeViewModel()
         setupFavoriteSubscriptions()
-        homeViewModel.fetchHomeData()
+        //        homeViewModel.fetchHomeData()
         setupFavoriteNotifications()
-        if let token = KeychainManager.shared.getToken() {
-            print("Token home: \(token)")
-        } else {
-            print("Token tapılmadı")
-        }
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,7 +85,7 @@ final class HomeViewController:UIViewController {
         categoriesCollectionView.configureScrolling(hidesIndicators: true, enablesScroll: true)
         productList.configureScrolling(hidesIndicators: true, enablesScroll: true)
     }
-
+    
     
     func updateSelectedIndex(_ index: Int) {
         homeView.selectedIndex = index
@@ -101,10 +94,11 @@ final class HomeViewController:UIViewController {
     
     
     private func setupActions() {
-        homeView.onCategoriesTapped = { [weak self] in
+        homeView.onCompaniesTapped = { [weak self] in
             self?.homeViewModel.navigateToCompanies()
         }
     }
+    
     
     private func observeViewModel() {
         homeViewModel.$newArrivals
@@ -113,15 +107,17 @@ final class HomeViewController:UIViewController {
                 self?.productList.reloadData()
             }
             .store(in: &cancellables)
-        
-        
         homeViewModel.$categories
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.categoriesCollectionView.reloadData()
             }
             .store(in: &cancellables)
-        
+        if let token = KeychainManager.shared.getToken() {
+            print("Token home: \(token)")
+        } else {
+            print("Token tapılmadı")
+        }
     }
     
     func updateFavoriteStatus(for productId: String, isFavorite: Bool) {

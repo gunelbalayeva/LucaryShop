@@ -12,7 +12,7 @@ final class CompanyDetailViewModel {
     private let productService: ProductService
     private let favoritesService: FavoritesService
     private let cartService: CartService
-    private let companyId: Int
+    private let companyId: String
     @Published var companyDetail: CompanyDetail?
     @Published var products: [Product] = []
     @Published var isLoading: Bool = false
@@ -23,7 +23,7 @@ final class CompanyDetailViewModel {
          productService: ProductService,
          favoritesService: FavoritesService,
          cartService: CartService,
-         companyId: Int) {
+         companyId: String) {
         self.coordinator = coordinator
         self.companyService = companyService
         self.productService = productService

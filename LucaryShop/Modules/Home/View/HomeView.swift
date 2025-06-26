@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class HomeView: UIView {
-    var onCategoriesTapped: (() -> Void)?
+    var onCompaniesTapped: (() -> Void)?
     
     private let headerLogoName: UILabel = {
         let label = UILabel()
@@ -212,7 +212,7 @@ final class HomeView: UIView {
         selectedIndex = isHome ? 0 : 1
         
         if !isHome {
-            onCategoriesTapped?()
+            onCompaniesTapped?()
         }
     }
     
@@ -239,13 +239,9 @@ final class HomeView: UIView {
         }
     }
 
-
-
-    
     @objc
     private func companySeeAllTapped() {
         print("Sirketlere bax")
-        // Delegate pattern ile
     }
     
     @objc
@@ -255,8 +251,8 @@ final class HomeView: UIView {
     
     @objc
     private func categoryButtonTapped(){
-        onCategoriesTapped?()
-        print("Category sehifesi gosterilir")
+        onCompaniesTapped?()
+        print("Compaany sehifesi gosterilir")
     }
     
     func updateProductListTopConstraint(hideHeader: Bool) {

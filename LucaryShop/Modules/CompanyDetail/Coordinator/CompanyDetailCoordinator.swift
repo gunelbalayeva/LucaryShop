@@ -30,7 +30,7 @@ final class CompanyDetailCoordinator {
         self.cartService = cartService
     }
 
-    func start(with companyId: Int) {
+    func start(with companyId: String) {
         let viewModel = CompanyDetailViewModel(
             coordinator: self,
             companyService: companyService,

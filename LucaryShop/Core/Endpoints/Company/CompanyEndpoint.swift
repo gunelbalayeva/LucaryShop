@@ -8,21 +8,14 @@
 import Foundation
 enum CompanyEndpoint {
     case getAll
-    case getById(Int)
-    case create(CompanyRequest)
-    case update(id: Int, CompanyRequest)
-    case delete(id: Int)
+    case getById(String)
 
     var path: String {
         switch self {
         case .getAll:
             return "/companies"
-        case .getById(let id),
-             .update(let id, _),
-             .delete(let id):
-            return "/companies/\(id)"
-        case .create:
-            return "/companies"
+        case .getById(let id):
+            return "/companies/\(id)" 
         }
     }
 
@@ -30,12 +23,6 @@ enum CompanyEndpoint {
         switch self {
         case .getAll, .getById:
             return "GET"
-        case .create:
-            return "POST"
-        case .update:
-            return "PUT"
-        case .delete:
-            return "DELETE"
         }
     }
 
@@ -48,13 +35,7 @@ enum CompanyEndpoint {
     }
 
     var body: Data? {
-        switch self {
-        case .create(let request),
-             .update(_, let request):
-            return try? JSONEncoder().encode(request)
-        default:
-            return nil
-        }
+        return nil
     }
 
     var request: APIRequest {

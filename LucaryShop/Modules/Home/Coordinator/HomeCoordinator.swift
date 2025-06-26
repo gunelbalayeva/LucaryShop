@@ -15,10 +15,10 @@ final class HomeCoordinator {
     let companyService: CompanyService
     let cartService: CartService
     let favoritesService: FavoritesService
+    var companyCoordinator: CompanyCoordinator?
     
-    var categoryCoordinator: CompanyCoordinator?
     var onFinish: (() -> Void)?
-    var productDetailCoordinator: ProductDetailCoordinator?    
+    var productDetailCoordinator: ProductDetailCoordinator?
     init(parentCoordinator: AppCoordinator? = nil,
          navigationController: UINavigationController,
          productService: ProductService,
@@ -48,23 +48,31 @@ final class HomeCoordinator {
     }
     
     
-    func navigateToCategory() {
-        if categoryCoordinator == nil {
-            let coordinator = CompanyCoordinator(
-                parentCoordinator: self.parentCoordinator,
-                navigationController: navigationController,
-                companyService: companyService,
-                productService: productService,
-                favoritesService: favoritesService,
-                cartService: cartService
-            )
-            self.categoryCoordinator = coordinator
-            coordinator.onFinish = { [weak self] in
-                self?.categoryCoordinator = nil
-            }
-            coordinator.start()
+    func navigateToCompany() {
+        if let companyVC = navigationController.viewControllers.first(where: { $0 is CompanyViewController }) {
+            navigationController.popToViewController(companyVC, animated: true)
+            print("Mövcud Company səhifəsinə qayıdıldı")
+            return
         }
+        let coordinator = CompanyCoordinator(
+            parentCoordinator: parentCoordinator,
+            navigationController: navigationController,
+            companyService: companyService,
+            productService: productService,
+            favoritesService: favoritesService,
+            cartService: cartService
+        )
+        self.companyCoordinator = coordinator
+        coordinator.onFinish = { [weak self] in
+            self?.companyCoordinator = nil
+            print("CompanyCoordinator finish oldu və təmizləndi")
+        }
+        print("CompanyCoordinator yaradılır və səhifə açılır")
+        coordinator.start()
     }
+
+
+
     
     func navigateToCategoriesDetail(categoryId: String) {
         let coordinator = CategoriesDetailCoordinator(
@@ -80,7 +88,7 @@ final class HomeCoordinator {
         }
         coordinator.start(with: categoryId)
     }
-
+    
     
     
     func startAndReturnViewController() -> UIViewController {

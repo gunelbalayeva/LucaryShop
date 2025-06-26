@@ -47,7 +47,6 @@ final class CategoriesDetailViewController:UIViewController{
         )
         collectionView.configureScrolling(hidesIndicators: true, enablesScroll: true)
     }
-
     
     func binding() {
         viewModel.$products

@@ -6,16 +6,7 @@
 //
 
 import Foundation
-struct CompanyDetail {
-    let id: Int
+struct CompanyDetails: Codable {
     let name: String
-    let description: String
     let products: [Product]
-
-    init(id: Int, name: String, description: String, products: [Product]) {
-        self.id = id
-        self.name = name
-        self.description = description
-        self.products = products
-    }
 }

@@ -8,20 +8,32 @@
 import Foundation
 import UIKit
 final class CompanyDetailViewController:UIViewController {
-    private let companyDetailView = CompanyDetailView()
-    private let viewModel:CompanyDetailViewModel
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+    private lazy var categoryView = CompanyDetailView()
+    private let viewModel: CompanyDetailViewModel
+
     init(viewModel: CompanyDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+  
+    override func loadView() {
+        self.view = categoryView
+    }
+  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .verifyBg
+        navigationItem.hidesBackButton = true
+
+    }
+
+   
+
+  
+  
 }
