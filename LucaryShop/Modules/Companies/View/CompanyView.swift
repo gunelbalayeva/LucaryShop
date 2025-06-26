@@ -16,7 +16,7 @@ final class CompanyView: UIView{
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 8
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: 140)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: 150)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
         return collectionView

@@ -201,6 +201,8 @@
 		CED1C4FA2E0D89C10064AC1F /* UIColloctionViewCell+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C4F92E0D89C10064AC1F /* UIColloctionViewCell+Exc.swift */; };
 		CED1C5012E0DD8D60064AC1F /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5002E0DD8D60064AC1F /* CompanyCell.swift */; };
 		CED1C5042E0DD9760064AC1F /* CompanyViewController+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5032E0DD9760064AC1F /* CompanyViewController+Exc.swift */; };
+		CED1C5072E0DF0780064AC1F /* CompanyDetails+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5062E0DF0780064AC1F /* CompanyDetails+Exc.swift */; };
+		CED1C50A2E0DF1B20064AC1F /* CompanyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5092E0DF1B20064AC1F /* CompanyDetailsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -399,6 +401,8 @@
 		CED1C4F92E0D89C10064AC1F /* UIColloctionViewCell+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColloctionViewCell+Exc.swift"; sourceTree = "<group>"; };
 		CED1C5002E0DD8D60064AC1F /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 		CED1C5032E0DD9760064AC1F /* CompanyViewController+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompanyViewController+Exc.swift"; sourceTree = "<group>"; };
+		CED1C5062E0DF0780064AC1F /* CompanyDetails+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompanyDetails+Exc.swift"; sourceTree = "<group>"; };
+		CED1C5092E0DF1B20064AC1F /* CompanyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1536,6 +1540,8 @@
 		CED1C4A72E05E68F0064AC1F /* CompanyDetail */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C5082E0DF1940064AC1F /* Cell */,
+				CED1C5052E0DF04F0064AC1F /* Extension */,
 				CED1C4AC2E05FD5D0064AC1F /* Coordinator */,
 				CED1C4AB2E05FD560064AC1F /* Builder */,
 				CED1C4AA2E05FD4E0064AC1F /* ViewModel */,
@@ -1815,6 +1821,22 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		CED1C5052E0DF04F0064AC1F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5062E0DF0780064AC1F /* CompanyDetails+Exc.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CED1C5082E0DF1940064AC1F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5092E0DF1B20064AC1F /* CompanyDetailsCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1970,6 +1992,7 @@
 				CED1C3A12E01E9080064AC1F /* LanguageSelectionViewController.swift in Sources */,
 				CE5C6C042DF4916700821985 /* ForgotPasswordViewModel.swift in Sources */,
 				CE46264D2DF61BD80026AFE6 /* SplashView.swift in Sources */,
+				CED1C50A2E0DF1B20064AC1F /* CompanyDetailsCell.swift in Sources */,
 				CE1788222DF4865500A91620 /* NotificationManager.swift in Sources */,
 				CED1C3B42E02AF7F0064AC1F /* InputSanitizer.swift in Sources */,
 				CED1C4572E0455BD0064AC1F /* ProductDetailView.swift in Sources */,
@@ -2009,6 +2032,7 @@
 				CE1787E42DF46D3100A91620 /* AppDelegate.swift in Sources */,
 				CE5C6BF72DF48FC900821985 /* RegisterBuilder.swift in Sources */,
 				CED1C4CC2E0853C70064AC1F /* BaseTabSwitcherView.swift in Sources */,
+				CED1C5072E0DF0780064AC1F /* CompanyDetails+Exc.swift in Sources */,
 				CE5C6BF52DF48FB200821985 /* RegisterViewModel.swift in Sources */,
 				CED1C3922DFF38960064AC1F /* VerifySuccessPopupView.swift in Sources */,
 				CEA1C3482DFB0AAD00E9B74B /* VerifyOTPViewModel.swift in Sources */,

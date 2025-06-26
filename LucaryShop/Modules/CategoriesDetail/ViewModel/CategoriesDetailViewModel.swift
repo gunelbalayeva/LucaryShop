@@ -13,7 +13,8 @@ final class CategoriesDetailViewModel{
     var coordinator: CategoriesDetailCoordinator?
     @Published private(set) var products: [Product] = []
     @Published private(set) var categoryInfo: Category?
-    
+    @Published var categoryName: String?
+
     init(categoryId: String,
          categoryService: CategoryService,
          productService: ProductService,
@@ -24,16 +25,19 @@ final class CategoriesDetailViewModel{
         self.coordinator = coordinator
     }
     
+
     func fetchProducts() {
-        productService.fetchProducts(by: String(categoryId), pageNumber: 0, pageSize: 20) { [weak self] result in
+        productService.fetchProducts(by: categoryId, pageNumber: 0, pageSize: 20) { [weak self] result in
             switch result {
-            case .success(let products):
+            case .success(let response):
                 DispatchQueue.main.async {
-                    self?.products = products
+                    self?.products = response.products
+                    self?.categoryName = response.name
                 }
             case .failure(let error):
                 print("Error fetching products: \(error)")
             }
         }
     }
+
 }

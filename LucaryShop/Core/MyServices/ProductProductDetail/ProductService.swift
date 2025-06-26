@@ -24,10 +24,11 @@ final class ProductService {
         request(with: endpoint, completion: completion)
     }
 
-    func fetchProducts(by categoryId: String, pageNumber: Int, pageSize: Int, completion: @escaping (Result<[Product], Error>) -> Void) {
+    func fetchProducts(by categoryId: String, pageNumber: Int, pageSize: Int, completion: @escaping (Result<CategoryWithProductsResponse, Error>) -> Void) {
         let endpoint = ProductEndpoint.getByCategory(categoryId: categoryId, pageNumber: pageNumber, pageSize: pageSize)
         request(with: endpoint, completion: completion)
     }
+
 
     func fetchProductsByCompany(companyId: String, completion: @escaping (Result<CompanyDetails, Error>) -> Void) {
         let endpoint = ProductEndpoint.getByCompany(companyId: companyId)

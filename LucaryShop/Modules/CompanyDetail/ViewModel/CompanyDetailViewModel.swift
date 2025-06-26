@@ -7,7 +7,7 @@
 
 import Foundation
 final class CompanyDetailViewModel {
-    private weak var coordinator: CompanyDetailCoordinator?
+    var coordinator: CompanyDetailCoordinator?
     private let companyService: CompanyService
     private let productService: ProductService
     private let favoritesService: FavoritesService

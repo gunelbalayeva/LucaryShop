@@ -18,7 +18,7 @@ final class CategoriesDetailViewController:UIViewController{
         super.viewDidLoad()
         setupCollectionViews()
         setupNavigationBar()
-        binding()
+//        binding()
     }
     
     override func loadView() {
@@ -37,7 +37,6 @@ final class CategoriesDetailViewController:UIViewController{
     
     private func setupCollectionViews() {
         view.backgroundColor = .systemBackground
-        title = "Kateqoriya məhsulları"
         let collectionView = categoriesDetailView.categoriesCollectionView
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -53,6 +52,13 @@ final class CategoriesDetailViewController:UIViewController{
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.categoriesDetailView.categoriesCollectionView.reloadData()
+            }
+            .store(in: &cancellables)
+        viewModel.$categoryName
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] name in
+                guard let name = name else { return }
+                self?.categoriesDetailView.configure(with: name)
             }
             .store(in: &cancellables)
         viewModel.fetchProducts()

@@ -12,3 +12,8 @@ struct Category: Codable {
     let imgUrl: String
 }
 
+struct CategoryWithProductsResponse: Codable {
+    let name: String
+    let products: [Product]
+}
+
