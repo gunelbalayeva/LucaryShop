@@ -38,5 +38,5 @@ final class ProductDetailCoordinator {
        
        func finish() {
            onFinish?()
-       }
+    }
 }

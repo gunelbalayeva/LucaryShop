@@ -46,7 +46,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.configure(with: category)
             return cell
         }
-// ___________Products_______________________________________________________________________________________________
+        // ___________Products_______________________________________________________________________________________________
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
             let product = homeViewModel.newArrivals[indexPath.item]
@@ -74,12 +74,10 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             homeViewModel.coordinator?.navigateToProductDetail(productId: selectedProduct.id)
             
         }
-// _______________________________________________________________________________________________________________
+        // ___________________________________________________________________________________________________________
         else if collectionView == categoriesCollectionView {
-            print("Category seçildi")
-            
-            
-            
+            let selectedCategory = homeViewModel.categories[indexPath.item]
+            homeViewModel.coordinator?.navigateToCategoriesDetail(categoryId: selectedCategory.id)
         }
     }
     

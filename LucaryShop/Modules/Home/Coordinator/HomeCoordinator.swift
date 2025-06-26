@@ -15,6 +15,7 @@ final class HomeCoordinator {
     let companyService: CompanyService
     let cartService: CartService
     let favoritesService: FavoritesService
+    
     var categoryCoordinator: CompanyCoordinator?
     var onFinish: (() -> Void)?
     var productDetailCoordinator: ProductDetailCoordinator?    
@@ -65,8 +66,21 @@ final class HomeCoordinator {
         }
     }
     
-    
-    
+    func navigateToCategoriesDetail(categoryId: String) {
+        let coordinator = CategoriesDetailCoordinator(
+            parentCoordinator: parentCoordinator,
+            navigationController: navigationController,
+            categoryService: categoryService,
+            productService: productService,
+            favoritesService: favoritesService,
+            cartService: cartService
+        )
+        coordinator.onFinish = { [] in
+            print("CategoriesDetailCoordinator bitdi")
+        }
+        coordinator.start(with: categoryId)
+    }
+
     
     
     func startAndReturnViewController() -> UIViewController {

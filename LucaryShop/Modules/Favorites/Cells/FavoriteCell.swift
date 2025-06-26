@@ -10,7 +10,6 @@ final class FavoriteCell:UICollectionViewCell {
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
-        iv.image = UIImage(named: "GetStartedOnboarding")
         iv.clipsToBounds = true
         iv.isUserInteractionEnabled = true
         iv.layer.cornerRadius = 20
@@ -20,7 +19,6 @@ final class FavoriteCell:UICollectionViewCell {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        label.text = "GetStartedOnboarding"
         label.numberOfLines = 0
         return label
     }()
@@ -28,7 +26,6 @@ final class FavoriteCell:UICollectionViewCell {
     private let priceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
-        label.textColor = UIColor(named: "priceColor")
         label.text = "35 AZN"
         return label
     }()

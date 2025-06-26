@@ -60,6 +60,7 @@ final class CategoryCell: UICollectionViewCell {
 }
 
 private extension CategoryCell {
+    
     func setupViews() {
         [imageView, nameLabel].forEach {
             contentView.addSubview($0)

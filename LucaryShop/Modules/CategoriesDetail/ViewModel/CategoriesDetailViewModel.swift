@@ -7,7 +7,7 @@
 
 import Foundation
 final class CategoriesDetailViewModel{
-    private let categoryId: Int
+    private let categoryId: String
     private let categoryService: CategoryService
     private let productService: ProductService
     weak var coordinator: CategoriesDetailCoordinator?
@@ -15,7 +15,7 @@ final class CategoriesDetailViewModel{
     @Published private(set) var products: [Product] = []
     @Published private(set) var categoryInfo: Category?
     
-    init(categoryId: Int,
+    init(categoryId: String,
          categoryService: CategoryService,
          productService: ProductService,
          coordinator: CategoriesDetailCoordinator?) {

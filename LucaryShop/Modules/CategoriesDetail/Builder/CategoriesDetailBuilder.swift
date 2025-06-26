@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 final class CategoriesDetailBuilder{
     
-    private let categoryId: Int
+    private let categoryId: String
     private let categoryService: CategoryService
     private let productService: ProductService
     weak var coordinator: CategoriesDetailCoordinator?
     
-    init(categoryId: Int,
+    init(categoryId: String,
          categoryService: CategoryService,
          productService: ProductService,
          coordinator: CategoriesDetailCoordinator? = nil) {

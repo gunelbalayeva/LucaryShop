@@ -31,7 +31,7 @@ final class CategoriesDetailCoordinator{
     }
     
     
-    func start(with categoryId: Int) {
+    func start(with categoryId: String) {
         let viewModel = CategoriesDetailViewModel(categoryId:categoryId ,
                                                   categoryService: categoryService,
                                                   productService: productService,
