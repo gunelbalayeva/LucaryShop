@@ -15,7 +15,7 @@ final class HomeCoordinator {
     let companyService: CompanyService
     let cartService: CartService
     let favoritesService: FavoritesService
-    var categoryCoordinator: CategoryCoordinator?
+    var categoryCoordinator: CompanyCoordinator?
     var onFinish: (() -> Void)?
     var productDetailCoordinator: ProductDetailCoordinator?    
     init(parentCoordinator: AppCoordinator? = nil,
@@ -49,14 +49,13 @@ final class HomeCoordinator {
     
     func navigateToCategory() {
         if categoryCoordinator == nil {
-            let coordinator = CategoryCoordinator(
+            let coordinator = CompanyCoordinator(
                 parentCoordinator: self.parentCoordinator,
                 navigationController: navigationController,
-                categoryService: categoryService,
+                companyService: companyService,
                 productService: productService,
                 favoritesService: favoritesService,
-                cartService: cartService,
-                companyService: companyService
+                cartService: cartService
             )
             self.categoryCoordinator = coordinator
             coordinator.onFinish = { [weak self] in
@@ -105,6 +104,4 @@ final class HomeCoordinator {
     func finish() {
         onFinish?()
     }
-    
-    
 }

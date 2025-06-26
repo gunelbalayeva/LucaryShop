@@ -10,9 +10,9 @@ import UIKit
 final class CategoryViewController:UIViewController {
       private let tableView = UITableView()
       private lazy var categoryView = CompanyView(tableView: tableView)
-      private let viewModel: CategoryViewModel
+      private let viewModel: CompanyViewModel
 
-      init(viewModel: CategoryViewModel) {
+      init(viewModel: CompanyViewModel) {
           self.viewModel = viewModel
           super.init(nibName: nil, bundle: nil)
       }
@@ -54,10 +54,10 @@ final class CategoryViewController:UIViewController {
       }
 
       private func navigateToHome() {
-          if let coordinator = viewModel.coordinator {
-              coordinator.navigateToHome()
-          } else {
-              print("Coordinator tapılmadı")
-          }
+//          if let coordinator = viewModel.coordinator {
+//              coordinator.navigateToHome()
+//          } else {
+//              print("Coordinator tapılmadı")
+//          }
       }
 }

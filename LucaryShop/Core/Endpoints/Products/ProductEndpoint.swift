@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import Foundation
-
 enum ProductEndpoint {
     case getAll(page: Int, size: Int)
     case getById(String)
@@ -40,11 +38,11 @@ enum ProductEndpoint {
                 URLQueryItem(name: "pageSize", value: "\(size)")
             ]
         case .getByCategory(let categoryId, let pageNumber, let pageSize):
-            return [
-                URLQueryItem(name: "categoryId", value: categoryId),
-                URLQueryItem(name: "pageNumber", value: "\(pageNumber)"),
-                URLQueryItem(name: "pageSize", value: "\(pageSize)")
-            ]
+            var items = [URLQueryItem(name: "categoryId", value: categoryId)]
+            items.append(URLQueryItem(name: "pageNumber", value: "\(pageNumber)"))
+            items.append(URLQueryItem(name: "pageSize", value: "\(pageSize)"))
+            return items
+
         case .getById:
             return nil
         }

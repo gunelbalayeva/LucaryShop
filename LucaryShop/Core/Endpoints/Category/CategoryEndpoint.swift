@@ -11,7 +11,6 @@ enum CategoryEndpoint {
 
     var path: String { "/categories" }
     var method: String { "GET" }
-    
     var headers: [String: String] {
         var headers = ["Accept": "application/json"]
         if let token = KeychainManager.shared.getToken() {
