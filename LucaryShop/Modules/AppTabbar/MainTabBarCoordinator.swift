@@ -97,13 +97,13 @@ final class MainTabBarCoordinator: Coordinator {
         tabBarController.tabBar.backgroundColor = .systemBackground
         tabBarController.tabBar.tintColor = UIColor(named: "logoColor")
         tabBarController.tabBar.unselectedItemTintColor = UIColor(named: "unSelectedTabbar")
-        tabBarController.viewControllers?[0].tabBarItem = UITabBarItem(title: "Home",
+        tabBarController.viewControllers?[0].tabBarItem = UITabBarItem(title: "Əsas Səhifə",
                                                                        image: UIImage(systemName: "house"), tag: 0)
-        tabBarController.viewControllers?[1].tabBarItem = UITabBarItem(title: "Orders",
+        tabBarController.viewControllers?[1].tabBarItem = UITabBarItem(title: "Səbət",
                                                                        image: UIImage(named: "sebet"), tag: 1)
-        tabBarController.viewControllers?[2].tabBarItem = UITabBarItem(title: "Favorites",
+        tabBarController.viewControllers?[2].tabBarItem = UITabBarItem(title: "Sevimlilər",
                                                                        image: UIImage(systemName: "heart"), tag: 2)
-        tabBarController.viewControllers?[3].tabBarItem = UITabBarItem(title: "Profile", 
+        tabBarController.viewControllers?[3].tabBarItem = UITabBarItem(title: "Profil",
                                                                        image: UIImage(systemName: "person.circle"), tag: 3)
     }
     
