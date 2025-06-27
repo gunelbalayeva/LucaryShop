@@ -14,23 +14,19 @@ final class CategoriesDetailCoordinator{
     private let productService: ProductService
     private let favoritesService: FavoritesService
     private let cartService: CartService
+    private let orderService: OrderService
     var productDetailCoordinator: ProductDetailCoordinator?
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil,
-         navigationController: UINavigationController,
-         categoryService: CategoryService,
-         productService: ProductService,
-         favoritesService: FavoritesService,
-         cartService: CartService) {
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, categoryService: CategoryService, productService: ProductService, favoritesService: FavoritesService, cartService: CartService, orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.categoryService = categoryService
         self.productService = productService
         self.favoritesService = favoritesService
         self.cartService = cartService
+        self.orderService = orderService
     }
-    
     
     func start(with categoryId: String) {
         let viewModel = CategoriesDetailViewModel(categoryId:categoryId ,
@@ -49,7 +45,8 @@ final class CategoriesDetailCoordinator{
             navigationController: navigationController,
             productService: productService,
             favoritesService: favoritesService,
-            cartService: cartService
+            cartService: cartService,
+            orderService: orderService
         )
         self.productDetailCoordinator = detailCoordinator
         detailCoordinator.start(with: productId)

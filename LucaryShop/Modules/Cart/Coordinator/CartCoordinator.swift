@@ -20,9 +20,21 @@ final class CartCoordinator{
         self.onFinish = onFinish
     }
     
+    
+    func start() {
+        let builder = CartBuilder(cartService: cartService,
+                                  coordinator: self)
+        let vc = builder.build()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    
+    
     func finish() {
         onFinish?()
     }
+    
+    
     func navigateToOrders() {
         guard let orderService = orderService else { return }
         let orderCoordinator = OrderCoordinator(parentCoordinator: parentCoordinator,
@@ -30,6 +42,8 @@ final class CartCoordinator{
                                                 orderService: orderService)
         orderCoordinator.start()
     }
+    
+    
     
     func dismiss() {
         navigationController.popViewController(animated: true)

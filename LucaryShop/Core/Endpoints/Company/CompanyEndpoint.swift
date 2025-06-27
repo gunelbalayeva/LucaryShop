@@ -30,6 +30,8 @@ enum CompanyEndpoint {
         var headers = ["Content-Type": "application/json"]
         if let token = KeychainManager.shared.getToken() {
             headers["Authorization"] = "Bearer \(token)"
+        }else {
+            print("Token tapılmadı!")
         }
         return headers
     }

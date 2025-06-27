@@ -13,15 +13,17 @@ final class ProductListCoordinator{
     let productService: ProductService
     let favoritesService: FavoritesService
     let cartService: CartService
+    private var orderService:OrderService
     var onFinish: (() -> Void)?
     
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, favoritesService: FavoritesService, cartService: CartService) {
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, favoritesService: FavoritesService, cartService: CartService, orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.productService = productService
         self.favoritesService = favoritesService
         self.cartService = cartService
+        self.orderService = orderService
     }
     
     func navigateToProductDetail(productId: String) {
@@ -30,7 +32,8 @@ final class ProductListCoordinator{
             navigationController: navigationController,
             productService: productService,
             favoritesService: favoritesService,
-            cartService: cartService
+            cartService: cartService,
+            orderService: orderService
         )
         detailCoordinator.start(with: productId)
     }

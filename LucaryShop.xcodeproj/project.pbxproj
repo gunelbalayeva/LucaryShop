@@ -536,6 +536,7 @@
 		CE17880B2DF472A800A91620 /* MyServices */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C50C2E0ED4210064AC1F /* Cart */,
 				CED1C4FD2E0DAD690064AC1F /* Company */,
 				CED1C4DE2E0C6A940064AC1F /* Category */,
 				CED1C4D42E0B1DAE0064AC1F /* Favorites */,
@@ -543,7 +544,6 @@
 				CED1C4D02E0972650064AC1F /* Auth */,
 				CED1C43B2E04145C0064AC1F /* OrderService.swift */,
 				CED1C42E2E0411F50064AC1F /* ProfileService.swift */,
-				CED1C43F2E0414940064AC1F /* CartService.swift */,
 			);
 			path = MyServices;
 			sourceTree = "<group>";
@@ -567,10 +567,10 @@
 		CE17880D2DF472E000A91620 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CED1C4A72E05E68F0064AC1F /* CompanyDetail */,
 				CE1788182DF473E000A91620 /* Profile */,
 				CE1788172DF473D400A91620 /* Orders */,
 				CE1788162DF4739E00A91620 /* Cart */,
+				CED1C4A72E05E68F0064AC1F /* CompanyDetail */,
 				CED1C3B92E02F3BC0064AC1F /* Companies */,
 				CED1C4E32E0C90D30064AC1F /* CategoriesDetail */,
 				CED1C3B52E02BE980064AC1F /* Favorites */,
@@ -1230,6 +1230,7 @@
 		CED1C3B62E02C5880064AC1F /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C50B2E0ED4000064AC1F /* Cart */,
 				CED1C4FC2E0DAD4E0064AC1F /* Company */,
 				CED1C4DD2E0C6A7D0064AC1F /* Category */,
 				CED1C4D52E0B1E1A0064AC1F /* Favorites */,
@@ -1237,7 +1238,6 @@
 				CED1C4D12E09727E0064AC1F /* Auth */,
 				CED1C4302E0412150064AC1F /* ProfileEndpoint.swift */,
 				CED1C43D2E04147E0064AC1F /* OrderEndpoint.swift */,
-				CED1C4412E0414AF0064AC1F /* CartEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -1835,6 +1835,22 @@
 				CED1C5092E0DF1B20064AC1F /* CompanyDetailsCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		CED1C50B2E0ED4000064AC1F /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4412E0414AF0064AC1F /* CartEndpoint.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		CED1C50C2E0ED4210064AC1F /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C43F2E0414940064AC1F /* CartService.swift */,
+			);
+			path = Cart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

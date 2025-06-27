@@ -18,8 +18,8 @@ final class CompanyDetailsCell:UICollectionViewCell {
        
        private let nameLabel: UILabel = {
            let label = UILabel()
-           label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-           label.textColor = UIColor(named: "priceColor") ?? .label
+           label.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
+           label.textColor = .baseButton
            label.textAlignment = .center
            label.numberOfLines = 2
            return label
@@ -27,8 +27,8 @@ final class CompanyDetailsCell:UICollectionViewCell {
        
        private let priceLabel: UILabel = {
            let label = UILabel()
-           label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-           label.textColor = .systemGray
+           label.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
+           label.textColor =  UIColor(named: "priceColor") ?? .label
            label.textAlignment = .center
            return label
        }()
@@ -49,7 +49,7 @@ final class CompanyDetailsCell:UICollectionViewCell {
            [imageView, nameLabel, priceLabel].forEach { contentView.addSubview($0) }
            
            imageView.snp.makeConstraints { make in
-               make.top.equalToSuperview().offset(8)
+               make.top.equalToSuperview().offset(20)
                make.centerX.equalToSuperview()
                make.width.height.equalTo(100)
            }

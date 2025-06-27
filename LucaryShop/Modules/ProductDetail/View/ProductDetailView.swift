@@ -154,6 +154,4 @@ final class ProductDetailView: UIView {
         favoriteButton.setImage(UIImage(systemName: imageName), for: .normal)
         favoriteButton.tintColor = isFavorite ? .red : .gray
     }
-    
-    
 }

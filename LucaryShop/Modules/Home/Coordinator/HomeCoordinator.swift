@@ -16,16 +16,11 @@ final class HomeCoordinator {
     let cartService: CartService
     let favoritesService: FavoritesService
     var companyCoordinator: CompanyCoordinator?
-    
+    private var orderService:OrderService
     var onFinish: (() -> Void)?
     var productDetailCoordinator: ProductDetailCoordinator?
-    init(parentCoordinator: AppCoordinator? = nil,
-         navigationController: UINavigationController,
-         productService: ProductService,
-         categoryService: CategoryService,
-         companyService: CompanyService,
-         cartService: CartService,
-         favoritesService: FavoritesService) {
+    
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, categoryService: CategoryService, companyService: CompanyService, cartService: CartService, favoritesService: FavoritesService, companyCoordinator: CompanyCoordinator? = nil, orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.productService = productService
@@ -33,7 +28,8 @@ final class HomeCoordinator {
         self.companyService = companyService
         self.cartService = cartService
         self.favoritesService = favoritesService
-        
+        self.companyCoordinator = companyCoordinator
+        self.orderService = orderService
     }
     
     
@@ -60,7 +56,8 @@ final class HomeCoordinator {
             companyService: companyService,
             productService: productService,
             favoritesService: favoritesService,
-            cartService: cartService
+            cartService: cartService, 
+            orderService: orderService
         )
         self.companyCoordinator = coordinator
         coordinator.onFinish = { [weak self] in
@@ -81,7 +78,8 @@ final class HomeCoordinator {
             categoryService: categoryService,
             productService: productService,
             favoritesService: favoritesService,
-            cartService: cartService
+            cartService: cartService,
+            orderService: orderService
         )
         coordinator.onFinish = { [] in
             print("CategoriesDetailCoordinator bitdi")
@@ -115,13 +113,17 @@ final class HomeCoordinator {
             navigationController: navigationController,
             productService: productService,
             favoritesService: favoritesService,
-            cartService: cartService
+            cartService: cartService,
+            orderService: orderService
         )
-        detailCoordinator.onFinish = { [] in
+        self.productDetailCoordinator = detailCoordinator
+        detailCoordinator.onFinish = { [weak self] in
             print("ProductDetailCoordinator bitdi")
+            self?.productDetailCoordinator = nil
         }
         detailCoordinator.start(with: productId)
     }
+
     
     func finish() {
         onFinish?()

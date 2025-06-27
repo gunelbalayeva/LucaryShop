@@ -14,21 +14,18 @@ final class FavoritesCoordinator{
     private let favoriteService: FavoritesService
     private let productService: ProductService
     private let cartService: CartService
+    private var orderService:OrderService
     var onFinish: (() -> Void)?
     private var childCoordinator: ProductDetailCoordinator?
 
-    init(parentCoordinator: AppCoordinator? = nil,
-         navigationController: UINavigationController,
-         profileService: ProfileService,
-         favoriteService: FavoritesService,
-         productService: ProductService,
-         cartService: CartService) {
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, profileService: ProfileService, favoriteService: FavoritesService, productService: ProductService, cartService: CartService, orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.profileService = profileService
         self.favoriteService = favoriteService
         self.productService = productService
         self.cartService = cartService
+        self.orderService = orderService
     }
     
 
@@ -38,7 +35,8 @@ final class FavoritesCoordinator{
             navigationController: navigationController,
             productService: productService,
             favoritesService: favoriteService,
-            cartService: cartService
+            cartService: cartService,
+            orderService: orderService
         )
         self.childCoordinator = coordinator
         coordinator.onFinish = { [weak self] in

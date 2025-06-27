@@ -8,20 +8,20 @@
 import Foundation
 enum CartEndpoint {
     case get
-    case add(Product)
-    case remove(Int)
-    case checkout
+    case update(productId: String, quantity: Int)
+    case remove(productId: String)
+    case confirm
 
     var path: String {
         switch self {
         case .get:
-            return "/cart"
-        case .add:
-            return "/cart"
+            return "/carts"
+        case .update(let id, _):
+            return "/carts/update/\(id)"
         case .remove(let id):
-            return "/cart/\(id)"
-        case .checkout:
-            return "/checkout"
+            return "/carts/remove/\(id)"
+        case .confirm:
+            return "/carts/confirm"
         }
     }
 
@@ -29,10 +29,8 @@ enum CartEndpoint {
         switch self {
         case .get:
             return "GET"
-        case .add, .checkout:
-            return "POST"
-        case .remove:
-            return "DELETE"
+        case .update, .remove, .confirm:
+            return "PUT"
         }
     }
 
@@ -44,18 +42,25 @@ enum CartEndpoint {
         return headers
     }
 
-    var body: Data? {
+    var queryItems: [URLQueryItem]? {
         switch self {
-        case .add(let product):
-            return try? JSONEncoder().encode(product)
+        case .update(_, let quantity):
+            return [URLQueryItem(name: "quantity", value: "\(quantity)")]
         default:
             return nil
         }
     }
 
+    var body: Data? {
+        return nil 
+    }
+
     var request: APIRequest {
-        APIRequest(
-            url: URL(string: "https://e-commerce-app-150649679863.europe-west1.run.app\(path)")!,
+        var components = URLComponents(string: "https://e-commerce-app-150649679863.europe-west1.run.app\(path)")!
+        components.queryItems = queryItems
+
+        return APIRequest(
+            url: components.url!,
             method: method,
             headers: headers,
             body: body

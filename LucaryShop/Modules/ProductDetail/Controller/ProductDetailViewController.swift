@@ -8,7 +8,6 @@
 import UIKit
 import Combine
 final class ProductDetailViewController:UIViewController {
-    
     private var cancellables = Set<AnyCancellable>()
     private let productDetailView = ProductDetailView()
     private let viewModel:ProductDetailViewModel

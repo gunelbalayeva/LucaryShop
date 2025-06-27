@@ -12,6 +12,8 @@ final class CartViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        print("CartViewController açıldı")
     }
     
     init(viewModel: CartViewModel) {
@@ -19,6 +21,10 @@ final class CartViewController:UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    override func loadView() {
+        self.view = productDetailView
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

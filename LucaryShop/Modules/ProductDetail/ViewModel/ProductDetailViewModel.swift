@@ -12,8 +12,8 @@ final class ProductDetailViewModel {
     private let productService: ProductService
     private let favoritesService: FavoritesService
     private let cartService: CartService
-    weak var coordinator: ProductDetailCoordinator?
-    private weak var homeViewModel: HomeViewModel?
+    var coordinator: ProductDetailCoordinator?
+    private var homeViewModel: HomeViewModel?
     @Published var product: Product?
     @Published var isFavorite: Bool = false
     @Published var isLoading: Bool = false
@@ -83,11 +83,12 @@ final class ProductDetailViewModel {
     
     func addToCart() {
         guard let product = product else { return }
-        cartService.addToCart(product: product) { [weak self] result in
+        cartService.addToCart(productId: product.id, quantity: 1) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    print("Məhsul səbətə əlavə edildi")
+                    self?.coordinator?.goToCart()
+                    print("Mehsul sebete oturuldu")
                 case .failure(let error):
                     self?.errorMessage = error.localizedDescription
                 }

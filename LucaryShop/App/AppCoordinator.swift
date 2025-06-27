@@ -49,7 +49,8 @@ final class AppCoordinator: Coordinator {
     private let authService: AuthService
     let verificationId: String
     private var childCoordinators: [Coordinator] = []
-   
+    var productDetailCoordinator: ProductDetailCoordinator?
+
     
     
     init(navigationController: UINavigationController, authService: AuthService, verificationId: String) {
@@ -71,6 +72,29 @@ final class AppCoordinator: Coordinator {
 //                navigationController.setViewControllers([vc], animated: true)
     }
     
+    func goToProductDetail(productId: String) {
+        let productService = ProductService()
+        let favoriteService = FavoritesService()
+        let cartService = CartService()
+        let orderService = OrderService()
+
+        let coordinator = ProductDetailCoordinator(
+            parentCoordinator: self,
+            navigationController: navigationController,
+            productService: productService,
+            favoritesService: favoriteService,
+            cartService: cartService,
+            orderService: orderService
+        )
+        
+        self.productDetailCoordinator = coordinator
+        coordinator.onFinish = { [weak self] in
+            self?.productDetailCoordinator = nil
+        }
+        
+        coordinator.start(with: productId)
+    }
+
     
     func goToPermissionsOnboarding() {
         let vc = PermissionsOnboardingBuilder(coordinator: self).build()

@@ -6,15 +6,15 @@
 //
 
 import Foundation
-struct CartItem: Codable {
-    let productId: Int
+struct CartItem: Decodable {
+    let id: String
     let name: String
-    let quantity: Int
     let price: Double
-    let imageUrl: String
+    let imgUrl: String
+    let quantity: Int
 }
 
-struct CheckoutRequest: Codable {
-    let address: String
-    let paymentMethod: String
+struct CartResponse: Decodable {
+    let totalPrice: Double
+    let products: [CartItem]
 }

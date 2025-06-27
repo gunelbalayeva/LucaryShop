@@ -14,6 +14,7 @@ final class CompanyCoordinator{
     private let productService: ProductService
     private let favoritesService: FavoritesService
     private let cartService: CartService
+    private let orderService:OrderService
     var onFinish: (() -> Void)?
     var productDetailCoordinator: ProductDetailCoordinator?
     var companyDetailCoordinator:CompanyDetailCoordinator?
@@ -23,13 +24,14 @@ final class CompanyCoordinator{
          companyService: CompanyService,
          productService: ProductService,
          favoritesService: FavoritesService,
-         cartService: CartService) {
+         cartService: CartService,orderService:OrderService ) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.companyService = companyService
         self.productService = productService
         self.favoritesService = favoritesService
         self.cartService = cartService
+        self.orderService = orderService
     }
     
     
@@ -52,7 +54,7 @@ final class CompanyCoordinator{
             navigationController: navigationController,
             productService: productService,
             favoritesService: favoritesService,
-            cartService: cartService
+            cartService: cartService, orderService: orderService
         )
         self.productDetailCoordinator = detailCoordinator
         detailCoordinator.start(with: productId)
@@ -64,7 +66,8 @@ final class CompanyCoordinator{
                                                             companyService: companyService,
                                                             productService: productService,
                                                             favoritesService: favoritesService,
-                                                            cartService: cartService
+                                                            cartService: cartService, 
+                                                            orderService: orderService
         )
         self.companyDetailCoordinator = companiesCoordinator
         companiesCoordinator.start(with: companyId)

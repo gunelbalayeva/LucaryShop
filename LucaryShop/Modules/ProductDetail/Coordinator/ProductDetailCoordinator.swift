@@ -13,21 +13,21 @@ final class ProductDetailCoordinator {
     let productService: ProductService
     let favoritesService: FavoritesService
     let cartService: CartService
+    let orderService:OrderService
+    var cartCoordinator: CartCoordinator?
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController,
-         productService: ProductService, favoritesService: FavoritesService,
-         cartService: CartService, onFinish: ( () -> Void)? = nil) {
+    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, favoritesService: FavoritesService, cartService: CartService, orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.productService = productService
         self.favoritesService = favoritesService
         self.cartService = cartService
-        self.onFinish = onFinish
+        self.orderService = orderService
     }
     
+    
     func start(with productId: String) {
-        print("✅ ProductDetailCoordinator start called with: \(productId)")
         let viewModel = ProductDetailViewModel(productId: productId,
                                                productService: productService,
                                                favoritesService: favoritesService,
@@ -35,11 +35,21 @@ final class ProductDetailCoordinator {
                                                coordinator: self)
         let vc = ProductDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
-        print("✅ pushViewController called")
-        print("✅ Navigation stack count: \(navigationController.viewControllers.count)")
+        print(" Navigation stack count: \(navigationController.viewControllers.count)")
     }
 
-       
+    func goToCart() {
+        let cartCoordinator = CartCoordinator(
+            parentCoordinator: parentCoordinator,
+            navigationController: navigationController,
+            cartService: cartService,
+            orderService: orderService
+        )
+        self.cartCoordinator = cartCoordinator
+        cartCoordinator.start()
+    }
+
+
        func finish() {
            onFinish?()
     }

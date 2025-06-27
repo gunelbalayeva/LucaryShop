@@ -59,7 +59,8 @@ final class MainTabBarCoordinator: Coordinator {
                                               categoryService: categoryService,
                                               companyService: companyService,
                                               cartService: cartService,
-                                              favoritesService: favoriteService)
+                                              favoritesService: favoriteService, 
+                                              orderService: orderService)
         self.homeCoordinator = homeCoordinator
         homeCoordinator.start()
         // 2.Order
@@ -77,7 +78,8 @@ final class MainTabBarCoordinator: Coordinator {
                                                        profileService: profileService,
                                                        favoriteService: favoriteService,
                                                        productService: productService,
-                                                       cartService: cartService)
+                                                       cartService: cartService,
+                                                       orderService: orderService)
         self.favoriteCoordinator = favoriteCoordinator
         favoriteCoordinator.start()
         
