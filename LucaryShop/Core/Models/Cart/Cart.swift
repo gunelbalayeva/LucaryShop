@@ -11,7 +11,7 @@ struct CartItem: Decodable {
     let name: String
     let price: Double
     let imgUrl: String
-    let quantity: Int
+    var quantity: Int
 }
 
 struct CartResponse: Decodable {
