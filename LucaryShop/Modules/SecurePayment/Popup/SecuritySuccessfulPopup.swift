@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import Lottie
 final class SecuritySuccessfulPopup: UIView {
-// SecurityError
     private let containerView = UIView()
     private let messageLabel = UILabel()
     private let animationView = LottieAnimationView(name: "SecurityPaymentSuccessful")
@@ -28,11 +27,9 @@ final class SecuritySuccessfulPopup: UIView {
     
     private func setupUI() {
         backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        
         containerView.makeCardStyle()
         addSubview(containerView)
         containerView.centerInSuperview(size: CGSize(width: 300, height: 350))
-        
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .playOnce
         containerView.addSubview(animationView)

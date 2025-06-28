@@ -16,10 +16,10 @@ final class SecurePaymentView: UIView, UITextFieldDelegate {
     let cardNumberField = CustomTextField().with(placeholder: "0000 0000 0000 0000")
     
     let expiryDateLabel = UILabel().withStyle(text: "Son istifadə tarixi", size: 14)
-    let expiryDateField = CustomTextField().with(placeholder: "MM/YY")
+    let expiryDateField = CustomTextField().with(placeholder: "mm/dd")
     
     let cvvLabel = UILabel().withStyle(text: "CVV", size: 14)
-    let cvvField = CustomTextField().with(placeholder: "CVV")
+    let cvvField = CustomTextField().with(placeholder: "cvv")
     
     let cardHolderLabel = UILabel().withStyle(text: "Kart sahibinin adı", size: 14)
     let cardHolderField = CustomTextField().with(placeholder: "Ad Soyad")

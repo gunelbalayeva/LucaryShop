@@ -112,18 +112,18 @@ final class CartCell: UITableViewCell {
         
         productNameLabel.snp.makeConstraints { make in
             make.top.equalTo(sellerNameLabel.snp.bottom).offset(4)
-            make.left.equalTo(productImageView.snp.right).offset(12)
-            make.right.equalToSuperview().offset(-12)
+            make.left.equalTo(productImageView.snp.right).offset(8)
+            make.right.equalToSuperview().offset(-8)
         }
         
         priceLabel.snp.makeConstraints { make in
             make.top.equalTo(productNameLabel.snp.bottom).offset(4)
-            make.left.equalTo(productImageView.snp.right).offset(12)
+            make.left.equalTo(productImageView.snp.right).offset(8)
         }
         
         deleteButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
-            make.right.equalToSuperview().offset(-12)
+            make.right.equalToSuperview().offset(-8)
             make.width.height.equalTo(24)
         }
         

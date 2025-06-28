@@ -63,10 +63,9 @@ final class CartViewController:UIViewController {
         viewModel.$totalPrice
             .receive(on: DispatchQueue.main)
             .sink { [weak self] total in
-                self?.cartView.setTotalPriceText("\(total) AZN")
+                self?.cartView.setTotalPriceText(total)
             }
             .store(in: &cancellables)
-
         viewModel.$errorMessage
             .receive(on: DispatchQueue.main)
             .sink { [weak self] errorMessage in

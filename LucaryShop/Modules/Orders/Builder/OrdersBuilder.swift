@@ -17,8 +17,11 @@ final class OrdersBuilder {
     }
     
     func build () -> UIViewController {
-        let viewmodel = OrdersViewModel(coordinator: coordinator, orderService: orderService)
-        let vc  = OrdersViewController(viewModel: viewmodel, coordinator: coordinator)
+        let viewmodel = OrdersViewModel(coordinator: coordinator,
+                                        orderService: orderService)
+        let vc  = OrdersViewController(viewModel: viewmodel)
         return vc
     }
+    
+    
 }

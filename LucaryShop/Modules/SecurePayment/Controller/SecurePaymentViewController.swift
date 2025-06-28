@@ -24,12 +24,10 @@ final class SecurePaymentViewController:UIViewController{
         self.view = securePaymentView
     }
     
-    
     init(securePaymentViewModel: SecurePaymentViewModel) {
         self.securePaymentViewModel = securePaymentViewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -42,6 +40,7 @@ final class SecurePaymentViewController:UIViewController{
                 isLoading ? self?.showLoading() : self?.hideLoading()
             }
             .store(in: &cancellables)
+        
         securePaymentViewModel.$errorMessage
             .receive(on: DispatchQueue.main)
             .sink { [weak self] message in
@@ -50,11 +49,14 @@ final class SecurePaymentViewController:UIViewController{
                 }
             }
             .store(in: &cancellables)
+        
         securePaymentView.confirmButtonAction = { [weak self] in
             self?.securePaymentViewModel.confirmOrder { success in
                 guard let self = self else { return }
                 if success {
-                    self.showSuccessfulAnimation(message: "Ödəniş uğurla tamamlandı")
+                    self.showSuccessfulAnimation(message: "Ödəniş uğurla tamamlandı") {
+                        self.securePaymentViewModel.coordinator.goToOrder()
+                    }
                 } else {
                     self.showErrorAnimation(message: "Ödənişdə xəta oldu")
                 }
@@ -68,13 +70,13 @@ final class SecurePaymentViewController:UIViewController{
         popup.dismiss(after: 3.0)
     }
     
-    private func showSuccessfulAnimation(message: String){
+    private func showSuccessfulAnimation(message: String, completion: @escaping () -> Void) {
         let popup = SecuritySuccessfulPopup(frame: view.bounds, message: message)
         view.addSubview(popup)
-        popup.dismiss(after: 3.0)
+        popup.dismiss(after: 3.0) {
+            completion()
+        }
     }
-    
-    
     
     private func setupNavigationBar() {
         let config = UIImage.SymbolConfiguration(weight: .heavy)

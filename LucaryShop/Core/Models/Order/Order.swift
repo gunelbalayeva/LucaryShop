@@ -6,16 +6,13 @@
 //
 
 import Foundation
-struct Order: Codable {
-    let id: Int
+struct Order: Decodable {
     let date: String
-    let totalPrice: Double
     let status: String
-    let items: [OrderItem]
+    let totalPrice: Double
+    let products: [CartItem]
 }
 
-struct OrderItem: Codable {
-    let productName: String
-    let quantity: Int
-    let price: Double
+struct OrdersResponse: Decodable {
+    let orders: [Order]
 }

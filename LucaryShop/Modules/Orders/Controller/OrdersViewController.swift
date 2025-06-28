@@ -6,21 +6,23 @@
 //
 
 import UIKit
-
+import Combine
 final class OrdersViewController:UIViewController {
-    private let productDetailView = OrdersView()
-    private let viewModel: OrdersViewModel
-    private let coordinator: OrderCoordinator
-    
-    
+    let ordersView = OrdersView()
+    let viewModel: OrdersViewModel
+    private var cancellables = Set<AnyCancellable>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        view.backgroundColor = .systemBackground
+        navigationItem.hidesBackButton = true
+        title = "Sifarişlərim"
+        setupTableView()
+        binding()
     }
     
-    init(viewModel: OrdersViewModel, coordinator: OrderCoordinator) {
+    init(viewModel: OrdersViewModel) {
         self.viewModel = viewModel
-        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,4 +30,38 @@ final class OrdersViewController:UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        self.view = ordersView
+    }
+    
+    private func setupTableView() {
+        ordersView.tableView.dataSource = self
+        ordersView.tableView.delegate = self
+    }
+    
+    func binding() {
+        viewModel.$orders
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.ordersView.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$errorMessage
+            .compactMap { $0 }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] message in
+                self?.showErrorAlert(message: message)
+            }
+            .store(in: &cancellables)
+        
+        viewModel.fetchOrders()
+    }
+
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Xəta", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+      
 }

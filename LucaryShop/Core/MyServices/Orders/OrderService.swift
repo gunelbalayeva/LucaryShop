@@ -14,6 +14,13 @@ final class OrderService {
     }
 
     func getOrders(completion: @escaping (Result<[Order], Error>) -> Void) {
-        networkService.request(OrderEndpoint.getOrders.request, completion: completion)
+        networkService.request(OrderEndpoint.getOrders.request) { (result: Result<OrdersResponse, Error>) in
+            switch result {
+            case .success(let response):
+                completion(.success(response.orders))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

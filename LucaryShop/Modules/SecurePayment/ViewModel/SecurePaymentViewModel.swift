@@ -8,8 +8,7 @@
 import Foundation
 final class SecurePaymentViewModel {
     private let cartService: CartService
-    private let coordinator: SecurePaymentCoordinator
-
+     let coordinator: SecurePaymentCoordinator
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
 

@@ -56,7 +56,7 @@ final class ProductDetailView: UIView {
     
     private let goToCartButton: CustomButton = {
         let button = CustomButton(style: .outlined)
-        button.setTitle("Səbətə bax", for: .normal)
+        button.setTitle("Səbətdən çıxar", for: .normal)
         return button
     }()
     

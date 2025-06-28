@@ -58,18 +58,18 @@ final class CartView: UIView {
         return stack
     }()
     
-  
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+      
     override init(frame: CGRect) {
         super.init(frame: frame)
         confirmCartButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
         setupUI()
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 66, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
     }
-        
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setupUI() {
         addSubviews(views: tableView, bottomStackView)
         tableView.snp.makeConstraints { make in
@@ -93,7 +93,8 @@ final class CartView: UIView {
         onConfirmTapped?()
     }
     
-    func setTotalPriceText(_ text: String) {
-        sumPriceLabel.text = text
+    func setTotalPriceText(_ value: Double) {
+        let formatted = String(format: "%.2f AZN", value)
+        sumPriceLabel.text = formatted
     }
 }
