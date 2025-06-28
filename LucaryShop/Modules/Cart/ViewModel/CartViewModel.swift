@@ -9,7 +9,7 @@ import Combine
 
 final class CartViewModel {
     private let cartService: CartService
-    private var coordinator: CartCoordinator
+     var coordinator: CartCoordinator
     @Published var cartItems: [CartItem] = []
     @Published var totalPrice: Double = 0.0
     @Published var isLoading: Bool = false
@@ -37,12 +37,9 @@ final class CartViewModel {
            }
        }
     
-    func increaseQuantity(for productId: String) {
-        guard let item = cartItems.first(where: { $0.id == productId }) else { return }
-        let newQuantity = item.quantity + 1
-
+    func updateCart(productId: String, quantity: Int, completion: (() -> Void)? = nil) {
         isLoading = true
-        cartService.addToCart(productId: productId, quantity: newQuantity) { [weak self] result in
+        cartService.addToCart(productId: productId, quantity: quantity) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 switch result {
@@ -52,28 +49,22 @@ final class CartViewModel {
                 case .failure(let error):
                     self?.errorMessage = error.localizedDescription
                 }
+                completion?()
             }
         }
+    }
+
+    
+    func increaseQuantity(for productId: String) {
+        guard let item = cartItems.first(where: { $0.id == productId }) else { return }
+        updateCart(productId: productId, quantity: item.quantity + 1)
     }
 
     func decreaseQuantity(for productId: String) {
         guard let item = cartItems.first(where: { $0.id == productId }), item.quantity > 1 else { return }
-        let newQuantity = item.quantity - 1
-
-        isLoading = true
-        cartService.addToCart(productId: productId, quantity: newQuantity) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.isLoading = false
-                switch result {
-                case .success(let response):
-                    self?.cartItems = response.products
-                    self?.totalPrice = response.totalPrice
-                case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
-                }
-            }
-        }
+        updateCart(productId: productId, quantity: item.quantity - 1)
     }
+
 
     func removeItemFromCart(with productId: String) {
         isLoading = true
@@ -91,7 +82,25 @@ final class CartViewModel {
         }
     }
 
-    
+    func prepareCartForCheckout(completion: @escaping () -> Void) {
+        isLoading = true
+        let group = DispatchGroup()
+
+        for item in cartItems {
+            group.enter()
+            updateCart(productId: item.id, quantity: item.quantity) {
+                group.leave()
+            }
+        }
+
+        group.notify(queue: .main) { [weak self] in
+            self?.isLoading = false
+            completion()
+        }
+    }
+
+
+
     private func calculateTotalPrice() {
         totalPrice = cartItems.reduce(0) { result, item in
             result + (item.price * Double(item.quantity))

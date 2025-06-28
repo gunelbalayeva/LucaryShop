@@ -9,15 +9,14 @@ final class CartCoordinator{
     weak var parentCoordinator: AppCoordinator?
     var navigationController: UINavigationController
     let cartService: CartService
-    let orderService: OrderService?
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, cartService: CartService, orderService: OrderService?, onFinish: ( () -> Void)? = nil) {
+    init(parentCoordinator: AppCoordinator? = nil, 
+         navigationController: UINavigationController,
+         cartService: CartService){
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.cartService = cartService
-        self.orderService = orderService
-        self.onFinish = onFinish
     }
     
     
@@ -28,25 +27,18 @@ final class CartCoordinator{
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToSecurePayment(){
+        let secureCoordinator = SecurePaymentCoordinator(parentCoordinator: parentCoordinator,
+                                                         navigationController: navigationController,
+                                                         cartService: cartService
+        )
+        secureCoordinator.start()
+        
+    }
     
+  
     
     func finish() {
         onFinish?()
-    }
-    
-    
-    func navigateToOrders() {
-        guard let orderService = orderService else { return }
-        let orderCoordinator = OrderCoordinator(parentCoordinator: parentCoordinator,
-                                                navigationController: navigationController,
-                                                orderService: orderService)
-        orderCoordinator.start()
-    }
-    
-    
-    
-    func dismiss() {
-        navigationController.popViewController(animated: true)
-        finish()
     }
 }

@@ -42,8 +42,7 @@ final class ProductDetailCoordinator {
         let cartCoordinator = CartCoordinator(
             parentCoordinator: parentCoordinator,
             navigationController: navigationController,
-            cartService: cartService,
-            orderService: orderService
+            cartService: cartService
         )
         self.cartCoordinator = cartCoordinator
         cartCoordinator.start()

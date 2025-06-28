@@ -201,7 +201,6 @@ final class HomeView: UIView {
         categoryButton.addTarget(self, action: #selector(categoryButtonTapped), for: .touchUpInside)
         homeButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         categoryButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-        companySeeAllButton.addTarget(self, action: #selector(companySeeAllTapped), for: .touchUpInside)
     }
     
      var selectedIndex: Int = 0
@@ -224,10 +223,8 @@ final class HomeView: UIView {
     func updateUnderlinePosition(animated: Bool = true) {
         let targetX = selectedIndex == 0 ? 0 : buttonStackView.frame.width / 2
         underlineLeadingConstraint?.update(offset: targetX)
-        
         homeButton.alpha = selectedIndex == 0 ? 1.0 : 0.5
         categoryButton.alpha = selectedIndex == 0 ? 0.5 : 1.0
-        
         let animations = {
             self.layoutIfNeeded()
         }
@@ -238,12 +235,7 @@ final class HomeView: UIView {
             animations()
         }
     }
-
-    @objc
-    private func companySeeAllTapped() {
-        print("Sirketlere bax")
-    }
-    
+   
     @objc
     private func menyuButtonTapped(){
         print("Menyu gosterilir")
@@ -271,6 +263,4 @@ final class HomeView: UIView {
             self.layoutIfNeeded()
         }
     }
-    
-    
 }

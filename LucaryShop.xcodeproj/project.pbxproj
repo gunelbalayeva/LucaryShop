@@ -205,6 +205,11 @@
 		CED1C50A2E0DF1B20064AC1F /* CompanyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5092E0DF1B20064AC1F /* CompanyDetailsCell.swift */; };
 		CED1C50F2E0F0EDE0064AC1F /* CartViewController+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C50E2E0F0EDE0064AC1F /* CartViewController+Exc.swift */; };
 		CED1C5122E0F0F2C0064AC1F /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5112E0F0F2C0064AC1F /* CartCell.swift */; };
+		CED1C5152E0FE4EB0064AC1F /* SecurePaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5142E0FE4EB0064AC1F /* SecurePaymentView.swift */; };
+		CED1C51C2E0FE53E0064AC1F /* SecurePaymentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C51B2E0FE53E0064AC1F /* SecurePaymentCoordinator.swift */; };
+		CED1C51E2E0FE5570064AC1F /* SecurePaymentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C51D2E0FE5570064AC1F /* SecurePaymentBuilder.swift */; };
+		CED1C5202E0FE56D0064AC1F /* SecurePaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C51F2E0FE56D0064AC1F /* SecurePaymentViewModel.swift */; };
+		CED1C5222E0FE5830064AC1F /* SecurePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5212E0FE5830064AC1F /* SecurePaymentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -407,6 +412,11 @@
 		CED1C5092E0DF1B20064AC1F /* CompanyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsCell.swift; sourceTree = "<group>"; };
 		CED1C50E2E0F0EDE0064AC1F /* CartViewController+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartViewController+Exc.swift"; sourceTree = "<group>"; };
 		CED1C5112E0F0F2C0064AC1F /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		CED1C5142E0FE4EB0064AC1F /* SecurePaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurePaymentView.swift; sourceTree = "<group>"; };
+		CED1C51B2E0FE53E0064AC1F /* SecurePaymentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurePaymentCoordinator.swift; sourceTree = "<group>"; };
+		CED1C51D2E0FE5570064AC1F /* SecurePaymentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurePaymentBuilder.swift; sourceTree = "<group>"; };
+		CED1C51F2E0FE56D0064AC1F /* SecurePaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurePaymentViewModel.swift; sourceTree = "<group>"; };
+		CED1C5212E0FE5830064AC1F /* SecurePaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurePaymentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -571,6 +581,7 @@
 		CE17880D2DF472E000A91620 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C5132E0FE4D90064AC1F /* SecurePayment */,
 				CE1788182DF473E000A91620 /* Profile */,
 				CE1788172DF473D400A91620 /* Orders */,
 				CE1788162DF4739E00A91620 /* Cart */,
@@ -1875,6 +1886,58 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		CED1C5132E0FE4D90064AC1F /* SecurePayment */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C51A2E0FE51B0064AC1F /* Coordinator */,
+				CED1C5192E0FE5140064AC1F /* Builder */,
+				CED1C5182E0FE50B0064AC1F /* ViewModel */,
+				CED1C5172E0FE4FC0064AC1F /* Controller */,
+				CED1C5162E0FE4F00064AC1F /* View */,
+			);
+			path = SecurePayment;
+			sourceTree = "<group>";
+		};
+		CED1C5162E0FE4F00064AC1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5142E0FE4EB0064AC1F /* SecurePaymentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CED1C5172E0FE4FC0064AC1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5212E0FE5830064AC1F /* SecurePaymentViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CED1C5182E0FE50B0064AC1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C51F2E0FE56D0064AC1F /* SecurePaymentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CED1C5192E0FE5140064AC1F /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C51D2E0FE5570064AC1F /* SecurePaymentBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		CED1C51A2E0FE51B0064AC1F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C51B2E0FE53E0064AC1F /* SecurePaymentCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2036,6 +2099,7 @@
 				CED1C3B42E02AF7F0064AC1F /* InputSanitizer.swift in Sources */,
 				CED1C4572E0455BD0064AC1F /* ProductDetailView.swift in Sources */,
 				CED1C42F2E0411F50064AC1F /* ProfileService.swift in Sources */,
+				CED1C5152E0FE4EB0064AC1F /* SecurePaymentView.swift in Sources */,
 				CEA1C34C2DFB0BAB00E9B74B /*  ChangePasswordView.swift in Sources */,
 				CEA1C3592DFC4C2200E9B74B /* NetworkError.swift in Sources */,
 				CE5C6C362DF4AF2300821985 /* Order.swift in Sources */,
@@ -2050,7 +2114,9 @@
 				CED1C4F22E0D42BF0064AC1F /* CategoriesDetailBuilder.swift in Sources */,
 				CE17883C2DF48DA200A91620 /* LoginViewController.swift in Sources */,
 				CED1C46E2E048C130064AC1F /* FavoritesView.swift in Sources */,
+				CED1C5222E0FE5830064AC1F /* SecurePaymentViewController.swift in Sources */,
 				CED1C39A2E01924D0064AC1F /* ViewController+exc.swift in Sources */,
+				CED1C5202E0FE56D0064AC1F /* SecurePaymentViewModel.swift in Sources */,
 				CEA1C3352DFADDA400E9B74B /* LoginView.swift in Sources */,
 				CED1C4B72E0603C10064AC1F /* CompanyDetail.swift in Sources */,
 				CE1788342DF4895B00A91620 /* CartViewController.swift in Sources */,
@@ -2105,6 +2171,7 @@
 				CE5C6C022DF4913600821985 /* ForgotPasswordBuilder.swift in Sources */,
 				CED1C4B22E0601350064AC1F /* CompanyDetailView.swift in Sources */,
 				CED1C4B42E0601AD0064AC1F /* CompanyDetailViewModel.swift in Sources */,
+				CED1C51C2E0FE53E0064AC1F /* SecurePaymentCoordinator.swift in Sources */,
 				CED1C4A42E05DFEB0064AC1F /* CompanyViewController.swift in Sources */,
 				CE1788362DF4896A00A91620 /* CartViewModel.swift in Sources */,
 				CE5E3C972DF8732A005B827B /* PageViewController.swift in Sources */,
@@ -2120,6 +2187,7 @@
 				CED1C4612E0460130064AC1F /* OrderCoordinator.swift in Sources */,
 				CED1C4672E0481430064AC1F /* ProfileView.swift in Sources */,
 				CE5E3CA42DF8D49E005B827B /* UIStackView.swift in Sources */,
+				CED1C51E2E0FE5570064AC1F /* SecurePaymentBuilder.swift in Sources */,
 				CED1C4B92E0608B50064AC1F /* CompanyDetailBuilder.swift in Sources */,
 				CE1787E62DF46D3100A91620 /* SceneDelegate.swift in Sources */,
 				CED1C4F82E0D6E0A0064AC1F /* CategoriesDetail+Exc.swift in Sources */,

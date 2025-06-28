@@ -29,8 +29,8 @@ final class CartViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .verifyBg
-        title = "Səbətim"
+        view.backgroundColor = .systemBackground
+        title = "Sifarişlərim"
         setupNavigationBar()
         setupTableView()
         showLoading()
@@ -45,6 +45,7 @@ final class CartViewController:UIViewController {
     
     private var currentItemIDs: [String] = []
     
+    
     private func bindViewModel() {
         viewModel.$isLoading
             .receive(on: DispatchQueue.main)
@@ -52,12 +53,14 @@ final class CartViewController:UIViewController {
                 isLoading ? self?.showLoading() : self?.hideLoading()
             }
             .store(in: &cancellables)
+        
         viewModel.$cartItems
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.cartView.tableView.reloadData()
             }
             .store(in: &cancellables)
+        
         viewModel.$errorMessage
             .receive(on: DispatchQueue.main)
             .sink { [weak self] errorMessage in
@@ -65,6 +68,13 @@ final class CartViewController:UIViewController {
                 self?.showErrorAlert(message: message)
             }
             .store(in: &cancellables)
+        
+        cartView.onConfirmTapped = { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.prepareCartForCheckout {
+                self.viewModel.coordinator.goToSecurePayment()
+            }
+        }
     }
     
     

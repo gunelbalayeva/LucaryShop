@@ -29,7 +29,6 @@ extension CartViewController:UITableViewDataSource, UITableViewDelegate {
         cell.onDeleteTapped = { [weak self] in
             self?.viewModel.removeItemFromCart(with: item.id)
         }
-        
         return cell
     }
     
