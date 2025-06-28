@@ -33,7 +33,6 @@ final class ChangePasswordViewController:UIViewController{
         }
     }
     
-    
     init(viewModel: ChangePasswordViewModel, coordinator: ForgotPasswordCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
@@ -49,7 +48,6 @@ final class ChangePasswordViewController:UIViewController{
             viewModel.$password,
             viewModel.$hasStartedTyping
         )
-
         .dropFirst()
         .receive(on: RunLoop.main)
         .sink { [weak self] password, hasStartedTyping in

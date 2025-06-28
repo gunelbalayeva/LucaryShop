@@ -1,0 +1,68 @@
+//
+//  SecurityErrorPopup.swift
+//  LucaryShop
+//
+//  Created by User on 28.06.25.
+//
+
+import Foundation
+import UIKit
+import Lottie
+final class SecurityErrorPopup: UIView {
+    private let containerView = UIView()
+    private let messageLabel = UILabel()
+    private let animationView = LottieAnimationView(name: "SecurityError")
+    private let message :String
+    
+    init(frame: CGRect, message: String) {
+        self.message = message
+        super.init(frame: frame)
+        setupUI()
+        playAnimation()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI() {
+        backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
+        containerView.makeCardStyle()
+        addSubview(containerView)
+        containerView.centerInSuperview(size: CGSize(width: 300, height: 350))
+        
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .playOnce
+        containerView.addSubview(animationView)
+        animationView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(200)
+        }
+        messageLabel.text = message
+        messageLabel.setStyle(fontSize: 18, weight: .bold, textColor: UIColor(named: "logoColor") ?? .black, alignment: .center, numberOfLines: 0)
+        containerView.addSubview(messageLabel)
+        messageLabel.snp.makeConstraints {
+            $0.top.equalTo(animationView.snp.bottom).offset(20)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+    }
+    
+    private func playAnimation() {
+        animationView.play()
+    }
+    
+    func dismiss(after seconds: Double = 3.0, completion: (() -> Void)? = nil) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.alpha = 0
+            }) { _ in
+                self.removeFromSuperview()
+                completion?()
+            }
+        }
+    }
+}
+
+

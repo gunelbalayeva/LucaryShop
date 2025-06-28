@@ -42,10 +42,6 @@ final class VerifyOTPViewController :UIViewController{
     private func submitOTP() {
         let rawCode = vertfyOtpView.sixTextField.text
         let code = InputSanitizer.trimmed(rawCode)
-//        let code = [
-//            vertfyOtpView.sixTextField.text
-//        ].compactMap { $0 }.joined()
-//        
         guard code.count == 6 else {
             showErrorAnimation(message: "Please enter the 6-digit OTP code.")
             return

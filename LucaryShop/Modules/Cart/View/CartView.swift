@@ -92,4 +92,8 @@ final class CartView: UIView {
     private func confirmButtonTapped() {
         onConfirmTapped?()
     }
+    
+    func setTotalPriceText(_ text: String) {
+        sumPriceLabel.text = text
+    }
 }

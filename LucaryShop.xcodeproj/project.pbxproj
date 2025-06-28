@@ -210,6 +210,10 @@
 		CED1C51E2E0FE5570064AC1F /* SecurePaymentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C51D2E0FE5570064AC1F /* SecurePaymentBuilder.swift */; };
 		CED1C5202E0FE56D0064AC1F /* SecurePaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C51F2E0FE56D0064AC1F /* SecurePaymentViewModel.swift */; };
 		CED1C5222E0FE5830064AC1F /* SecurePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5212E0FE5830064AC1F /* SecurePaymentViewController.swift */; };
+		CED1C5252E1030590064AC1F /* SecuritySuccessfulPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5242E1030590064AC1F /* SecuritySuccessfulPopup.swift */; };
+		CED1C5282E1034160064AC1F /* SecurityError.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C5262E1034150064AC1F /* SecurityError.json */; };
+		CED1C5292E1034160064AC1F /* SecurityPaymentSuccessful.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C5272E1034160064AC1F /* SecurityPaymentSuccessful.json */; };
+		CED1C52B2E10348A0064AC1F /* SecurityErrorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C52A2E10348A0064AC1F /* SecurityErrorPopup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -417,6 +421,10 @@
 		CED1C51D2E0FE5570064AC1F /* SecurePaymentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurePaymentBuilder.swift; sourceTree = "<group>"; };
 		CED1C51F2E0FE56D0064AC1F /* SecurePaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurePaymentViewModel.swift; sourceTree = "<group>"; };
 		CED1C5212E0FE5830064AC1F /* SecurePaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurePaymentViewController.swift; sourceTree = "<group>"; };
+		CED1C5242E1030590064AC1F /* SecuritySuccessfulPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuritySuccessfulPopup.swift; sourceTree = "<group>"; };
+		CED1C5262E1034150064AC1F /* SecurityError.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SecurityError.json; sourceTree = "<group>"; };
+		CED1C5272E1034160064AC1F /* SecurityPaymentSuccessful.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SecurityPaymentSuccessful.json; sourceTree = "<group>"; };
+		CED1C52A2E10348A0064AC1F /* SecurityErrorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityErrorPopup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1142,6 +1150,8 @@
 		CEA1C3742DFE175200E9B74B /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C5262E1034150064AC1F /* SecurityError.json */,
+				CED1C5272E1034160064AC1F /* SecurityPaymentSuccessful.json */,
 				CED1C3932E004FC10064AC1F /* ChangePassword.json */,
 				CED1C38C2DFF09280064AC1F /* VerifyOTP.json */,
 				CED1C38A2DFEB9ED0064AC1F /* Error.json */,
@@ -1889,6 +1899,7 @@
 		CED1C5132E0FE4D90064AC1F /* SecurePayment */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C5232E10302B0064AC1F /* Popup */,
 				CED1C51A2E0FE51B0064AC1F /* Coordinator */,
 				CED1C5192E0FE5140064AC1F /* Builder */,
 				CED1C5182E0FE50B0064AC1F /* ViewModel */,
@@ -1936,6 +1947,15 @@
 				CED1C51B2E0FE53E0064AC1F /* SecurePaymentCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CED1C5232E10302B0064AC1F /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5242E1030590064AC1F /* SecuritySuccessfulPopup.swift */,
+				CED1C52A2E10348A0064AC1F /* SecurityErrorPopup.swift */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2016,12 +2036,14 @@
 			files = (
 				CED1C38B2DFEB9ED0064AC1F /* Error.json in Resources */,
 				CE1787F02DF46D3700A91620 /* LaunchScreen.storyboard in Resources */,
+				CED1C5292E1034160064AC1F /* SecurityPaymentSuccessful.json in Resources */,
 				CED1C4122E0305AB0064AC1F /* Localizable.strings in Resources */,
 				CED1C38D2DFF09280064AC1F /* VerifyOTP.json in Resources */,
 				CE5E3C7D2DF84DA7005B827B /* Savate-VariableFont_wght.ttf in Resources */,
 				CE1787ED2DF46D3700A91620 /* Assets.xcassets in Resources */,
 				CE5E3C702DF757BF005B827B /* MeaCulpa-Regular.ttf in Resources */,
 				CED1C3892DFEB6330064AC1F /* Success.json in Resources */,
+				CED1C5282E1034160064AC1F /* SecurityError.json in Resources */,
 				CE5E3C912DF85C8A005B827B /* Oswald-VariableFont_wght.ttf in Resources */,
 				CED1C3942E004FC10064AC1F /* ChangePassword.json in Resources */,
 				CEA1C37A2DFE1BA400E9B74B /* fireworks.json in Resources */,
@@ -2069,6 +2091,7 @@
 				CED1C4402E0414940064AC1F /* CartService.swift in Sources */,
 				CE17882A2DF486B700A91620 /* APIClient.swift in Sources */,
 				CE5E3C7B2DF826D5005B827B /* OnboardingModel.swift in Sources */,
+				CED1C5252E1030590064AC1F /* SecuritySuccessfulPopup.swift in Sources */,
 				CED1C4882E04AC790064AC1F /* ProductListViewModel.swift in Sources */,
 				CE5E3C932DF861F4005B827B /* PermissionsOnboardingView.swift in Sources */,
 				CE5C6C202DF4A14500821985 /* ProductDetailBuilder.swift in Sources */,
@@ -2094,6 +2117,7 @@
 				CED1C3A12E01E9080064AC1F /* LanguageSelectionViewController.swift in Sources */,
 				CE5C6C042DF4916700821985 /* ForgotPasswordViewModel.swift in Sources */,
 				CE46264D2DF61BD80026AFE6 /* SplashView.swift in Sources */,
+				CED1C52B2E10348A0064AC1F /* SecurityErrorPopup.swift in Sources */,
 				CED1C50A2E0DF1B20064AC1F /* CompanyDetailsCell.swift in Sources */,
 				CE1788222DF4865500A91620 /* NotificationManager.swift in Sources */,
 				CED1C3B42E02AF7F0064AC1F /* InputSanitizer.swift in Sources */,

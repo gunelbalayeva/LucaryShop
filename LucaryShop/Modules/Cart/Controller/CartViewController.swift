@@ -60,7 +60,13 @@ final class CartViewController:UIViewController {
                 self?.cartView.tableView.reloadData()
             }
             .store(in: &cancellables)
-        
+        viewModel.$totalPrice
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] total in
+                self?.cartView.setTotalPriceText("\(total) AZN")
+            }
+            .store(in: &cancellables)
+
         viewModel.$errorMessage
             .receive(on: DispatchQueue.main)
             .sink { [weak self] errorMessage in
@@ -76,7 +82,6 @@ final class CartViewController:UIViewController {
             }
         }
     }
-    
     
     private func showErrorAlert(message: String) {
         let alert = UIAlertController(title: "Xəta", message: message, preferredStyle: .alert)
@@ -96,19 +101,6 @@ final class CartViewController:UIViewController {
         }
     }
     
-    private func setupNavigationBar() {
-        let config = UIImage.SymbolConfiguration(weight: .heavy)
-        let image = UIImage(systemName: "chevron.backward", withConfiguration: config)
-        let backButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(backButtonTapped))
-        backButton.tintColor = .darkGray
-        navigationItem.leftBarButtonItem = backButton
-    }
-    
-    @objc
-    private func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     private func showLoading() {
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.startAnimating()
@@ -125,5 +117,18 @@ final class CartViewController:UIViewController {
     private func hideLoading() {
         view.viewWithTag(1000)?.removeFromSuperview()
         view.viewWithTag(999)?.removeFromSuperview()
+    }
+    
+    private func setupNavigationBar() {
+        let config = UIImage.SymbolConfiguration(weight: .heavy)
+        let image = UIImage(systemName: "chevron.backward", withConfiguration: config)
+        let backButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = .darkGray
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc
+    private func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
 }

@@ -29,7 +29,7 @@ final class CartViewModel {
                    switch result {
                    case .success(let response):
                        self?.cartItems = response.products
-                       self?.calculateTotalPrice()
+                       self?.totalPrice = response.totalPrice
                    case .failure(let error):
                        self?.errorMessage = error.localizedDescription
                    }
@@ -96,14 +96,6 @@ final class CartViewModel {
         group.notify(queue: .main) { [weak self] in
             self?.isLoading = false
             completion()
-        }
-    }
-
-
-
-    private func calculateTotalPrice() {
-        totalPrice = cartItems.reduce(0) { result, item in
-            result + (item.price * Double(item.quantity))
         }
     }
 }
