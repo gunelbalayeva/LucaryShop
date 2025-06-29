@@ -212,6 +212,11 @@
 		CED1C5302E106B240064AC1F /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C52F2E106B240064AC1F /* OrderCell.swift */; };
 		CED1C5332E106E680064AC1F /* Order+Exc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5322E106E680064AC1F /* Order+Exc.swift */; };
 		CED1C5352E1081CF0064AC1F /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5342E1081CF0064AC1F /* ProductItemView.swift */; };
+		CED1C53F2E1146A30064AC1F /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C53E2E1146A30064AC1F /* TermsViewModel.swift */; };
+		CED1C5412E1146D40064AC1F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5402E1146D40064AC1F /* TermsViewController.swift */; };
+		CED1C5432E1146F40064AC1F /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5422E1146F40064AC1F /* TermsView.swift */; };
+		CED1C5452E1147310064AC1F /* TermsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5442E1147310064AC1F /* TermsBuilder.swift */; };
+		CED1C5482E11478C0064AC1F /* TermsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5472E11478C0064AC1F /* TermsCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -421,6 +426,11 @@
 		CED1C52F2E106B240064AC1F /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		CED1C5322E106E680064AC1F /* Order+Exc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+Exc.swift"; sourceTree = "<group>"; };
 		CED1C5342E1081CF0064AC1F /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
+		CED1C53E2E1146A30064AC1F /* TermsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
+		CED1C5402E1146D40064AC1F /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		CED1C5422E1146F40064AC1F /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
+		CED1C5442E1147310064AC1F /* TermsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsBuilder.swift; sourceTree = "<group>"; };
+		CED1C5472E11478C0064AC1F /* TermsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -585,6 +595,8 @@
 		CE17880D2DF472E000A91620 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C5492E1149710064AC1F /* AboutUs */,
+				CED1C5382E1146530064AC1F /* Terms */,
 				CE1788182DF473E000A91620 /* Profile */,
 				CE1788172DF473D400A91620 /* Orders */,
 				CED1C5132E0FE4D90064AC1F /* SecurePayment */,
@@ -1936,6 +1948,65 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		CED1C5382E1146530064AC1F /* Terms */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5462E11477A0064AC1F /* Coordinator */,
+				CED1C53C2E1146810064AC1F /* Builder */,
+				CED1C53A2E11466D0064AC1F /* ViewModel */,
+				CED1C53B2E1146760064AC1F /* Controller */,
+				CED1C5392E1146640064AC1F /* View */,
+			);
+			path = Terms;
+			sourceTree = "<group>";
+		};
+		CED1C5392E1146640064AC1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5422E1146F40064AC1F /* TermsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CED1C53A2E11466D0064AC1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C53E2E1146A30064AC1F /* TermsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CED1C53B2E1146760064AC1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5402E1146D40064AC1F /* TermsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CED1C53C2E1146810064AC1F /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5442E1147310064AC1F /* TermsBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		CED1C5462E11477A0064AC1F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5472E11478C0064AC1F /* TermsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CED1C5492E1149710064AC1F /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AboutUs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2055,6 +2126,7 @@
 				CEA1C35F2DFC51B300E9B74B /* OTPVerification.swift in Sources */,
 				CEA1C3682DFC5C8800E9B74B /* AuthService.swift in Sources */,
 				CE5E3C952DF86896005B827B /* GetStartedOnboardingView.swift in Sources */,
+				CED1C5452E1147310064AC1F /* TermsBuilder.swift in Sources */,
 				CE17882C2DF486C500A91620 /* RequestBuilder.swift in Sources */,
 				CED1C50F2E0F0EDE0064AC1F /* CartViewController+Exc.swift in Sources */,
 				CE5C6C382DF4AF3000821985 /* Category.swift in Sources */,
@@ -2115,6 +2187,7 @@
 				CE17883C2DF48DA200A91620 /* LoginViewController.swift in Sources */,
 				CED1C46E2E048C130064AC1F /* FavoritesView.swift in Sources */,
 				CED1C5222E0FE5830064AC1F /* SecurePaymentViewController.swift in Sources */,
+				CED1C53F2E1146A30064AC1F /* TermsViewModel.swift in Sources */,
 				CED1C39A2E01924D0064AC1F /* ViewController+exc.swift in Sources */,
 				CED1C5202E0FE56D0064AC1F /* SecurePaymentViewModel.swift in Sources */,
 				CEA1C3352DFADDA400E9B74B /* LoginView.swift in Sources */,
@@ -2126,6 +2199,7 @@
 				CED1C4BD2E0614350064AC1F /* HomeView.swift in Sources */,
 				CED1C4D92E0BE3090064AC1F /* Favorites+Exc.swift in Sources */,
 				CE1788062DF4724700A91620 /* UIView+Ext.swift in Sources */,
+				CED1C5432E1146F40064AC1F /* TermsView.swift in Sources */,
 				CED1C4442E0414CD0064AC1F /* FavoritesService.swift in Sources */,
 				CED1C41C2E030A090064AC1F /* LocalizedStrings.swift in Sources */,
 				CE5C6C232DF4A15D00821985 /* ProductDetailCoordinator.swift in Sources */,
@@ -2166,6 +2240,7 @@
 				CED1C44F2E044A360064AC1F /* CompanyEndpoint.swift in Sources */,
 				CED1C41E2E030CE70064AC1F /* Notification+Exc.swift in Sources */,
 				CED1C4C92E0839AC0064AC1F /* CategoryCell.swift in Sources */,
+				CED1C5412E1146D40064AC1F /* TermsViewController.swift in Sources */,
 				CED1C4F02E0D42A20064AC1F /* CategoriesDetailViewModel.swift in Sources */,
 				CED1C4EE2E0D42850064AC1F /* CategoriesDetailViewController.swift in Sources */,
 				CE5C6C022DF4913600821985 /* ForgotPasswordBuilder.swift in Sources */,
@@ -2183,6 +2258,7 @@
 				CEA1C3462DFB0A9300E9B74B /* VerifyOTPBuilder.swift in Sources */,
 				CE5E3C892DF85613005B827B /* GetStartedOnboardingViewController  .swift in Sources */,
 				CED1C5042E0DD9760064AC1F /* CompanyViewController+Exc.swift in Sources */,
+				CED1C5482E11478C0064AC1F /* TermsCoordinator.swift in Sources */,
 				CE5E3C832DF854C5005B827B /* WelcomeOnboardingViewController .swift in Sources */,
 				CEA1C36A2DFC600500E9B74B /* URLSessionNetworkService.swift in Sources */,
 				CED1C4612E0460130064AC1F /* OrderCoordinator.swift in Sources */,
