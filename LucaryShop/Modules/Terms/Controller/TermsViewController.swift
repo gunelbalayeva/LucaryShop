@@ -21,7 +21,7 @@ final class TermsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = viewModel.title
+        title = "Qaydalar və Şərtlər"
         contentView.textView.text = viewModel.termsText
     }
 

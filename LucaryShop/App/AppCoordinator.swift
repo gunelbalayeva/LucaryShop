@@ -50,8 +50,8 @@ final class AppCoordinator: Coordinator {
     let verificationId: String
     private var childCoordinators: [Coordinator] = []
     var productDetailCoordinator: ProductDetailCoordinator?
-
-    
+    var aboutCoordinator:AboutCoordinator?
+    var termsCoordinator:TermsCoordinator?
     
     init(navigationController: UINavigationController, authService: AuthService, verificationId: String) {
         self.navigationController = navigationController
@@ -65,34 +65,20 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        startHomeFlow(.home)
+        startAbout()
+//        startHomeFlow(.home)
 //        print("🏁 AppCoordinator startHomeFlow çağırıldı")
 ////
 //                let vc = SplashBuild(cordinator: self).build()
 //                navigationController.setViewControllers([vc], animated: true)
     }
     
-    func goToProductDetail(productId: String) {
-        let productService = ProductService()
-        let favoriteService = FavoritesService()
-        let cartService = CartService()
-        let orderService = OrderService()
-
-        let coordinator = ProductDetailCoordinator(
-            parentCoordinator: self,
-            navigationController: navigationController,
-            productService: productService,
-            favoritesService: favoriteService,
-            cartService: cartService,
-            orderService: orderService
-        )
-        
-        self.productDetailCoordinator = coordinator
-        coordinator.onFinish = { [weak self] in
-            self?.productDetailCoordinator = nil
-        }
-        
-        coordinator.start(with: productId)
+    func startAbout() {
+        let aboutCoordinator = TermsCoordinator(navigationController: navigationController)
+        self.termsCoordinator = aboutCoordinator
+        let builder = TermsBuilder(coordinator: aboutCoordinator)
+        let vc = builder.build()
+        navigationController.pushViewController(vc, animated: true)
     }
 
     
@@ -150,7 +136,7 @@ final class AppCoordinator: Coordinator {
     
     
     func startHomeFlow(_ flow :TabbarFlowType) {
-        print("🏁 MainTabBarCoordinator start çağırıldı")
+        print(" MainTabBarCoordinator start çağırıldı")
         
             let productService = ProductService()
             let categoryService = CategoryService()

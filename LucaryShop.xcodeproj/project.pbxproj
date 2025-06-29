@@ -217,6 +217,13 @@
 		CED1C5432E1146F40064AC1F /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5422E1146F40064AC1F /* TermsView.swift */; };
 		CED1C5452E1147310064AC1F /* TermsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5442E1147310064AC1F /* TermsBuilder.swift */; };
 		CED1C5482E11478C0064AC1F /* TermsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5472E11478C0064AC1F /* TermsCoordinator.swift */; };
+		CED1C5532E114E2D0064AC1F /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5522E114E2C0064AC1F /* AboutView.swift */; };
+		CED1C5552E114E500064AC1F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5542E114E500064AC1F /* AboutViewController.swift */; };
+		CED1C5572E114E6E0064AC1F /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5562E114E6E0064AC1F /* AboutViewModel.swift */; };
+		CED1C5592E114F280064AC1F /* AboutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5582E114F280064AC1F /* AboutCoordinator.swift */; };
+		CED1C55B2E114F6E0064AC1F /* AboutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C55A2E114F6E0064AC1F /* AboutBuilder.swift */; };
+		CED1C55D2E1150260064AC1F /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C55C2E1150260064AC1F /* VideoPlayerView.swift */; };
+		CED1C55F2E1154700064AC1F /* About.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CED1C55E2E1154700064AC1F /* About.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -431,6 +438,13 @@
 		CED1C5422E1146F40064AC1F /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		CED1C5442E1147310064AC1F /* TermsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsBuilder.swift; sourceTree = "<group>"; };
 		CED1C5472E11478C0064AC1F /* TermsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCoordinator.swift; sourceTree = "<group>"; };
+		CED1C5522E114E2C0064AC1F /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		CED1C5542E114E500064AC1F /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		CED1C5562E114E6E0064AC1F /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
+		CED1C5582E114F280064AC1F /* AboutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCoordinator.swift; sourceTree = "<group>"; };
+		CED1C55A2E114F6E0064AC1F /* AboutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBuilder.swift; sourceTree = "<group>"; };
+		CED1C55C2E1150260064AC1F /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		CED1C55E2E1154700064AC1F /* About.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = About.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -595,7 +609,7 @@
 		CE17880D2DF472E000A91620 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CED1C5492E1149710064AC1F /* AboutUs */,
+				CED1C5502E114DF90064AC1F /* AboutUs */,
 				CED1C5382E1146530064AC1F /* Terms */,
 				CE1788182DF473E000A91620 /* Profile */,
 				CE1788172DF473D400A91620 /* Orders */,
@@ -1603,6 +1617,7 @@
 		CED1C4BE2E06B0D40064AC1F /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C55E2E1154700064AC1F /* About.mp4 */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -2000,11 +2015,57 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		CED1C5492E1149710064AC1F /* AboutUs */ = {
+		CED1C54C2E114DC10064AC1F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C5542E114E500064AC1F /* AboutViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CED1C54D2E114DCB0064AC1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5562E114E6E0064AC1F /* AboutViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CED1C54E2E114DD70064AC1F /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C55A2E114F6E0064AC1F /* AboutBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		CED1C54F2E114DE00064AC1F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5582E114F280064AC1F /* AboutCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CED1C5502E114DF90064AC1F /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C54F2E114DE00064AC1F /* Coordinator */,
+				CED1C54E2E114DD70064AC1F /* Builder */,
+				CED1C54D2E114DCB0064AC1F /* ViewModel */,
+				CED1C54C2E114DC10064AC1F /* Controller */,
+				CED1C5512E114E130064AC1F /* View */,
 			);
 			path = AboutUs;
+			sourceTree = "<group>";
+		};
+		CED1C5512E114E130064AC1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5522E114E2C0064AC1F /* AboutView.swift */,
+				CED1C55C2E1150260064AC1F /* VideoPlayerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2084,6 +2145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED1C38B2DFEB9ED0064AC1F /* Error.json in Resources */,
+				CED1C55F2E1154700064AC1F /* About.mp4 in Resources */,
 				CE1787F02DF46D3700A91620 /* LaunchScreen.storyboard in Resources */,
 				CED1C5292E1034160064AC1F /* SecurityPaymentSuccessful.json in Resources */,
 				CED1C4122E0305AB0064AC1F /* Localizable.strings in Resources */,
@@ -2117,6 +2179,7 @@
 				CEA1C3522DFC1D5D00E9B74B /* NetworkService.swift in Sources */,
 				CED1C5012E0DD8D60064AC1F /* CompanyCell.swift in Sources */,
 				CE5C6C092DF4995D00821985 /* ForgotPasswordCoordinator.swift in Sources */,
+				CED1C5572E114E6E0064AC1F /* AboutViewModel.swift in Sources */,
 				CED1C49E2E05DF980064AC1F /* CompanyCoordinator.swift in Sources */,
 				CE5C6C2D2DF4A1B500821985 /* ProfileBuilder.swift in Sources */,
 				CED1C4742E048CAC0064AC1F /* FavoritesBuilder.swift in Sources */,
@@ -2228,6 +2291,7 @@
 				CE5C6C122DF4A0A700821985 /* HomeBuilder.swift in Sources */,
 				CED1C45A2E045B350064AC1F /* CartView.swift in Sources */,
 				CE17882E2DF486D200A91620 /* AuthEndpoint.swift in Sources */,
+				CED1C55B2E114F6E0064AC1F /* AboutBuilder.swift in Sources */,
 				CED1C4AE2E0600230064AC1F /* CompanyDetailCoordinator.swift in Sources */,
 				CE5E3C9C2DF8897E005B827B /* GetStartedOnboardingViewModel.swift in Sources */,
 				CE1788452DF48E6100A91620 /* LoginCoordinator.swift in Sources */,
@@ -2253,6 +2317,7 @@
 				CE5E3C972DF8732A005B827B /* PageViewController.swift in Sources */,
 				CED1C4B02E06010D0064AC1F /* CompanyDetailViewController.swift in Sources */,
 				CEA1C3632DFC524600E9B74B /*  ResetPassword.swift in Sources */,
+				CED1C5592E114F280064AC1F /* AboutCoordinator.swift in Sources */,
 				CED1C3902DFF37E40064AC1F /* ErrorPopupView.swift in Sources */,
 				CED1C4A22E05DFCE0064AC1F /* CompanyViewModel.swift in Sources */,
 				CEA1C3462DFB0A9300E9B74B /* VerifyOTPBuilder.swift in Sources */,
@@ -2277,8 +2342,10 @@
 				CE5C6C542DF4B18D00821985 /* CustomButton.swift in Sources */,
 				CED1C4762E048CE00064AC1F /* FavoritesCoordinator.swift in Sources */,
 				CE5C6C1A2DF4A11100821985 /* ProductDetailViewController.swift in Sources */,
+				CED1C5532E114E2D0064AC1F /* AboutView.swift in Sources */,
 				CED1C45E2E045D2E0064AC1F /* CartCoordinator.swift in Sources */,
 				CED1C4292E0313AF0064AC1F /* CollectionView+Exc.swift in Sources */,
+				CED1C5552E114E500064AC1F /* AboutViewController.swift in Sources */,
 				CEA1C3652DFC528700E9B74B /* MeResponse.swift in Sources */,
 				CE5C6C5D2DF4B20400821985 /* OrdersViewController.swift in Sources */,
 				CED1C4222E0310A40064AC1F /* LanguageController+Exc.swift in Sources */,
@@ -2296,6 +2363,7 @@
 				CED1C4272E0313830064AC1F /* Controller+Exc.swift in Sources */,
 				CE5C6C342DF4AF1400821985 /* Product.swift in Sources */,
 				CED1C4482E0415090064AC1F /* CategoryService.swift in Sources */,
+				CED1C55D2E1150260064AC1F /* VideoPlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,10 +13,8 @@ final class TermsViewModel {
         self.coordinator = coordinator
     }
     
-    let title: String = "Qaydalar və Şərtlər"
     var termsText: String {
         return """
-Lucary - Qaydalar, Şərtlər və Lisenziyalar
 Son yeniləmə: 9 Mart 2025
 
 1. İstifadə Şərtləri
