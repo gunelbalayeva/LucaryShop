@@ -18,7 +18,7 @@ final class CategoriesDetailViewController:UIViewController{
         super.viewDidLoad()
         setupCollectionViews()
         setupNavigationBar()
-//        binding()
+        binding()
     }
     
     override func loadView() {

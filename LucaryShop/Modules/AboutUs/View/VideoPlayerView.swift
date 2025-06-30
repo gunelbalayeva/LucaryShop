@@ -11,7 +11,6 @@ import AVFoundation
 final class VideoPlayerView: UIView {
     private var player: AVPlayer?
     private var playerLayer: AVPlayerLayer?
-    
     private let playerContainerView = UIView()
 
     override init(frame: CGRect) {
@@ -29,15 +28,21 @@ final class VideoPlayerView: UIView {
         playerContainerView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
 
+    
     func configure(with url: URL, autoplay: Bool = false) {
         player = AVPlayer(url: url)
         playerLayer = AVPlayerLayer(player: player)
         guard let playerLayer = playerLayer else { return }
-
         playerLayer.videoGravity = .resizeAspectFill
         playerLayer.frame = bounds
         playerContainerView.layer.addSublayer(playerLayer)
-        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(videoDidEnd),
+            name: .AVPlayerItemDidPlayToEndTime,
+            object: player?.currentItem
+        )
+
         if autoplay {
             player?.play()
         }
@@ -59,5 +64,12 @@ final class VideoPlayerView: UIView {
     func isPlaying() -> Bool {
         return player?.timeControlStatus == .playing
     }
-}
 
+    @objc private func videoDidEnd() {
+        player?.seek(to: .zero)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+}

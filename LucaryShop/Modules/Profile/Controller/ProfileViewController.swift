@@ -13,7 +13,8 @@ final class ProfileViewController:UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
+        view.backgroundColor = .systemBackground
+        setupBindings()
     }
     
     init(viewModel: ProfileViewModel) {
@@ -24,4 +25,34 @@ final class ProfileViewController:UIViewController{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func loadView() {
+        self.view = profileView
+    }
+    
+    private func setupBindings() {
+        profileView.onTappedEdited = { [weak self] in
+            self?.viewModel.openEditProfile()
+        }
+        
+        profileView.onTappedLanguaceScreenButton = { [weak self] in
+            self?.viewModel.openLanguageScreen()
+        }
+
+        profileView.onOrdersButton = { [weak self] in
+            self?.viewModel.openOrders()
+        }
+
+        profileView.onTappedAboutUs = { [weak self] in
+            self?.viewModel.openAboutUs()
+        }
+
+        profileView.onTappedTermsScreen = { [weak self] in
+            self?.viewModel.openTerms()
+        }
+
+        profileView.onTappedLogout = { [weak self] in
+            self?.viewModel.logout()
+        }
+    }
+
 }

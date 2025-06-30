@@ -19,8 +19,6 @@ final class ChangePasswordView: UIView {
         return animation
     }()
     
-   
-
     private let passwordLabel = UILabel().withStyle(text: "New password", size: 16)
     let passwordTextField: CustomTextField = {
         let textField = CustomTextField().with(placeholder: "Enter new password")

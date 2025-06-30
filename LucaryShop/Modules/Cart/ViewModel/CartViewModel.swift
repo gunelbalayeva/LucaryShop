@@ -21,6 +21,7 @@ final class CartViewModel {
         self.coordinator = coordinator
     }
     
+    
     func fetchCart() {
            isLoading = true
            cartService.getCart { [weak self] result in
@@ -97,5 +98,10 @@ final class CartViewModel {
             self?.isLoading = false
             completion()
         }
+    }
+    
+    func clearCart() {
+        cartItems = []
+        totalPrice = 0.0
     }
 }

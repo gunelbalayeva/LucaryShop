@@ -40,7 +40,12 @@ final class CartCoordinator{
         
     }
     
-  
+    
+    func startAndReturnViewController() -> UIViewController {
+        let vc = CartBuilder(cartService: cartService,
+                             coordinator: self).build()
+        return UINavigationController(rootViewController: vc)
+    }
     
     func finish() {
         onFinish?()

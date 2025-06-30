@@ -27,6 +27,7 @@ final class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        setupNavigationBar()
         configure()
     }
 
@@ -38,5 +39,18 @@ final class AboutViewController: UIViewController {
         aboutView.setImage(named: viewModel.imageName)
         aboutView.setMap(coordinate: viewModel.location)
         aboutView.setContactInfo(text: viewModel.contactInfoText)
+    }
+    
+    private func setupNavigationBar() {
+        let config = UIImage.SymbolConfiguration(weight: .heavy)
+        let image = UIImage(systemName: "chevron.backward", withConfiguration: config)
+        let backButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = .darkGray
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc
+    private func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
 }

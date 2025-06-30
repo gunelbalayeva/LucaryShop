@@ -22,6 +22,8 @@ final class MainTabBarCoordinator: Coordinator {
     private var orderCoordinator: OrderCoordinator?
     private var favoriteCoordinator: FavoritesCoordinator?
     private var profileCoordinator: ProfileCoordinator?
+    private var cartCoordinator:CartCoordinator?
+    
     init(parentCoordinator: AppCoordinator? = nil,
          navigationController: UINavigationController,
          tabBarController: UITabBarController,
@@ -63,13 +65,15 @@ final class MainTabBarCoordinator: Coordinator {
                                               orderService: orderService)
         self.homeCoordinator = homeCoordinator
         homeCoordinator.start()
-        // 2.Order
-        let orderNav = UINavigationController()
-        let orderCoordinator = OrderCoordinator(parentCoordinator: parentCoordinator,
-                                                navigationController: orderNav,
-                                                orderService: orderService)
-        self.orderCoordinator = orderCoordinator
-        orderCoordinator.start()
+        // 2.Cart
+        
+        let cartNav = UINavigationController()
+        let cartCoordinator = CartCoordinator(navigationController: cartNav,
+                                              cartService: cartService,
+                                              orderService: orderService)
+        self.cartCoordinator = cartCoordinator
+        cartCoordinator.start()
+        
         
         // 3.Favorite
         let favoriteNav = UINavigationController()
@@ -87,10 +91,11 @@ final class MainTabBarCoordinator: Coordinator {
         let profileNav = UINavigationController()
         let profileCoordinator = ProfileCoordinator(navigationController: profileNav,
                                                     profileService: profileService,
-                                                    authService: authService)
+                                                    authService: authService,
+                                                    orderService: orderService)
         self.profileCoordinator = profileCoordinator
         profileCoordinator.start()
-        tabBarController.viewControllers = [homeNav, orderNav, favoriteNav, profileNav]
+        tabBarController.viewControllers = [homeNav, cartNav, favoriteNav, profileNav]
         configureTabBarItems()
         navigationController.setViewControllers([tabBarController], animated: true)
     }
@@ -108,5 +113,4 @@ final class MainTabBarCoordinator: Coordinator {
         tabBarController.viewControllers?[3].tabBarItem = UITabBarItem(title: "Profil",
                                                                        image: UIImage(systemName: "person.circle"), tag: 3)
     }
-    
 }

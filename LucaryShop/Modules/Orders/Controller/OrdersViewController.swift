@@ -17,6 +17,7 @@ final class OrdersViewController:UIViewController {
         view.backgroundColor = .systemBackground
         navigationItem.hidesBackButton = true
         title = "Sifarişlərim"
+        setupNavigationBar()
         setupTableView()
         binding()
     }
@@ -64,4 +65,16 @@ final class OrdersViewController:UIViewController {
         present(alert, animated: true)
     }
       
+    private func setupNavigationBar() {
+        let config = UIImage.SymbolConfiguration(weight: .heavy)
+        let image = UIImage(systemName: "chevron.backward", withConfiguration: config)
+        let backButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = .darkGray
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc
+    private func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
 }

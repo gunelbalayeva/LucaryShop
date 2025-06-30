@@ -23,7 +23,7 @@ enum AuthFlowType {
 
 enum TabbarFlowType {
     case home
-    case order
+    case cart
     case favorites
     case profile
 }
@@ -52,6 +52,7 @@ final class AppCoordinator: Coordinator {
     var productDetailCoordinator: ProductDetailCoordinator?
     var aboutCoordinator:AboutCoordinator?
     var termsCoordinator:TermsCoordinator?
+    var profilecoordinator:ProfileCoordinator?
     
     init(navigationController: UINavigationController, authService: AuthService, verificationId: String) {
         self.navigationController = navigationController
@@ -65,21 +66,14 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        startAbout()
-//        startHomeFlow(.home)
+        startHomeFlow(.home)
 //        print("🏁 AppCoordinator startHomeFlow çağırıldı")
 ////
 //                let vc = SplashBuild(cordinator: self).build()
 //                navigationController.setViewControllers([vc], animated: true)
     }
     
-    func startAbout() {
-        let aboutCoordinator = TermsCoordinator(navigationController: navigationController)
-        self.termsCoordinator = aboutCoordinator
-        let builder = TermsBuilder(coordinator: aboutCoordinator)
-        let vc = builder.build()
-        navigationController.pushViewController(vc, animated: true)
-    }
+  
 
     
     func goToPermissionsOnboarding() {
@@ -137,7 +131,6 @@ final class AppCoordinator: Coordinator {
     
     func startHomeFlow(_ flow :TabbarFlowType) {
         print(" MainTabBarCoordinator start çağırıldı")
-        
             let productService = ProductService()
             let categoryService = CategoryService()
             let companyService = CompanyService()
@@ -164,7 +157,7 @@ final class AppCoordinator: Coordinator {
             switch flow {
             case .home:
                 tabBarController.selectedIndex = 0
-            case .order:
+            case .cart:
                 tabBarController.selectedIndex = 1
             case .favorites:
                 tabBarController.selectedIndex = 2

@@ -30,7 +30,14 @@ final class CartViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Sifarişlərim"
+        title = "Səbətim"
+        NotificationCenter.default.addObserver(
+               self,
+               selector: #selector(handleCartChange(_:)),
+               name: CartService.cartDidChangeNotification,
+               object: nil
+           )
+
         setupNavigationBar()
         setupTableView()
         showLoading()
@@ -129,5 +136,23 @@ final class CartViewController:UIViewController {
     @objc
     private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func handleCartChange(_ notification: Notification) {
+        let cleared = notification.userInfo?["cleared"] as? Bool ?? false
+        DispatchQueue.main.async {
+            if cleared {
+                self.viewModel.clearCart()
+                self.cartView.tableView.reloadData()
+                self.cartView.setTotalPriceText(0.0)
+            } else {
+                self.viewModel.fetchCart()
+            }
+        }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }

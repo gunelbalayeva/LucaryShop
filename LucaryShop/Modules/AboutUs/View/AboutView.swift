@@ -130,7 +130,7 @@ final class AboutView: UIView {
         }
         
         imageView.snp.makeConstraints { $0.height.equalTo(100) }
-        playerView.snp.makeConstraints { $0.height.equalTo(340) }
+        playerView.snp.makeConstraints { $0.height.equalTo(250) }
         mapView.snp.makeConstraints { $0.height.equalTo(240) }
         playPauseButton.snp.makeConstraints { $0.center.equalToSuperview() }
         contactTextView.snp.makeConstraints { $0.height.greaterThanOrEqualTo(100) }

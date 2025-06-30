@@ -26,14 +26,6 @@ final class OrderCoordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    
-    func startAndReturnViewController() -> UIViewController {
-        let vc = OrdersBuilder(coordinator: self,
-                               orderService: orderService).build()
-        return UINavigationController(rootViewController: vc)
-    }
-    
-    
     func finish() {
         onFinish?()
     }

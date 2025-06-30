@@ -47,7 +47,6 @@ final class HomeCoordinator {
     func navigateToCompany() {
         if let companyVC = navigationController.viewControllers.first(where: { $0 is CompanyViewController }) {
             navigationController.popToViewController(companyVC, animated: true)
-            print("Mövcud Company səhifəsinə qayıdıldı")
             return
         }
         let coordinator = CompanyCoordinator(

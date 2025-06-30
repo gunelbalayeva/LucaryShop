@@ -7,6 +7,7 @@
 import Foundation
 final class CartService {
     private let networkService: NetworkService
+    static let cartDidChangeNotification = Notification.Name("CartDidChange")
 
     init(networkService: NetworkService = URLSessionNetworkService()) {
         self.networkService = networkService
@@ -17,14 +18,33 @@ final class CartService {
     }
 
     func addToCart(productId: String, quantity: Int = 1, completion: @escaping (Result<CartResponse, Error>) -> Void) {
-        networkService.request(CartEndpoint.update(productId: productId, quantity: quantity).request, completion: completion)
+        networkService.request(CartEndpoint.update(productId: productId, quantity: quantity).request) { result in
+            completion(result)
+            if case .success = result {
+                NotificationCenter.default.post(
+                    name: Self.cartDidChangeNotification,
+                    object: nil,
+                    userInfo: ["productId": productId, "quantity": quantity]
+                )
+            }
+        }
     }
-
+    
     func removeFromCart(productId: String, completion: @escaping (Result<CartResponse, Error>) -> Void) {
         networkService.request(CartEndpoint.remove(productId: productId).request, completion: completion)
     }
 
     func confirmCart(completion: @escaping (Result<CartResponse, Error>) -> Void) {
-        networkService.request(CartEndpoint.confirm.request, completion: completion)
+        networkService.request(CartEndpoint.confirm.request) { [] result in
+            completion(result)
+            if case .success = result {
+                NotificationCenter.default.post(
+                    name: Self.cartDidChangeNotification,
+                    object: nil,
+                    userInfo: ["cleared": true]
+                )
+            }
+        }
     }
+
 }

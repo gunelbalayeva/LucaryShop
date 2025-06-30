@@ -53,7 +53,7 @@ final class HomeViewController:UIViewController {
         setupActions()
         observeViewModel()
         setupFavoriteSubscriptions()
-//        homeViewModel.fetchHomeData()
+        homeViewModel.fetchHomeData()
         setupFavoriteNotifications()
     }
     

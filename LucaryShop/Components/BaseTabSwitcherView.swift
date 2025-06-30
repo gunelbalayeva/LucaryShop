@@ -24,9 +24,9 @@ final class BaseTabSwitcherView: UIView {
     
     private let menyuButton: CustomButton = {
         let button = CustomButton(style: .plain)
-        let image = UIImage(systemName: "square.grid.2x2")
-        button.setImage(image, for: .normal)
-        button.tintColor = .onboardingLabel
+        //        let image = UIImage(systemName: "square.grid.2x2")
+        //        button.setImage(image, for: .normal)
+        //        button.tintColor = .onboardingLabel
         return button
     }()
     
