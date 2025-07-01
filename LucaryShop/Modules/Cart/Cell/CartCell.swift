@@ -32,16 +32,16 @@ final class CartCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textColor = UIColor(named: "priceColor")
         label.textAlignment = .left
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
     
     private let productDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = .gray
         label.textAlignment = .left
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
     
@@ -49,7 +49,7 @@ final class CartCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
         label.textColor = .baseButton
-        label.textAlignment = .right
+        label.textAlignment = .left
         return label
     }()
     
@@ -113,7 +113,7 @@ final class CartCell: UITableViewCell {
         productNameLabel.snp.makeConstraints { make in
             make.top.equalTo(sellerNameLabel.snp.bottom).offset(4)
             make.left.equalTo(productImageView.snp.right).offset(8)
-            make.right.equalToSuperview().offset(-8)
+            make.right.equalToSuperview().offset(-12)
         }
         
         priceLabel.snp.makeConstraints { make in

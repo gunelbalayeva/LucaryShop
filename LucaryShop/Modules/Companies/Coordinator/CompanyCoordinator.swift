@@ -7,8 +7,9 @@
 
 import Foundation
 import UIKit
-final class CompanyCoordinator{
-    weak var parentCoordinator: AppCoordinator?
+final class CompanyCoordinator:Coordinator{
+    weak var parentCoordinator: Coordinator?
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     private let companyService: CompanyService
     private let productService: ProductService
@@ -19,12 +20,13 @@ final class CompanyCoordinator{
     var productDetailCoordinator: ProductDetailCoordinator?
     var companyDetailCoordinator:CompanyDetailCoordinator?
     
-    init(parentCoordinator: AppCoordinator? = nil,
+    init(parentCoordinator: Coordinator? = nil,
          navigationController: UINavigationController,
          companyService: CompanyService,
          productService: ProductService,
          favoritesService: FavoritesService,
-         cartService: CartService,orderService:OrderService ) {
+         cartService: CartService,
+         orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.companyService = companyService
@@ -33,8 +35,11 @@ final class CompanyCoordinator{
         self.cartService = cartService
         self.orderService = orderService
     }
+    func start(with categoryId: String) {
+        
+    }
     
-    
+
     func start() {
         let builder = CompanyBuilder(
             coordinator: self,

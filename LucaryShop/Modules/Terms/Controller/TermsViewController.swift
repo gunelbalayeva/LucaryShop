@@ -22,6 +22,10 @@ final class TermsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Qaydalar və Şərtlər"
+        NotificationCenter.default.addObserver(self,
+               selector: #selector(languageDidChange),
+               name: .appLanguageDidChange,
+               object: nil)
         setupNavigationBar()
         contentView.textView.text = viewModel.termsText
     }
@@ -41,4 +45,13 @@ final class TermsViewController: UIViewController {
     private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc
+    private func languageDidChange() {
+        updateTextsForCurrentLanguage()
+    }
+
+    func updateTextsForCurrentLanguage() {
+        title = LocalizedStrings.termsTitle
+  }
 }

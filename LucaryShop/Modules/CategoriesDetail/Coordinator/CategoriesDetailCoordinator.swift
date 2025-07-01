@@ -7,8 +7,13 @@
 
 import Foundation
 import UIKit
-final class CategoriesDetailCoordinator{
-    weak var parentCoordinator: AppCoordinator?
+final class CategoriesDetailCoordinator:Coordinator{
+    func start() {
+        
+    }
+    
+    weak var parentCoordinator: Coordinator?
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     private let categoryService:CategoryService
     private let productService: ProductService
@@ -18,7 +23,13 @@ final class CategoriesDetailCoordinator{
     var productDetailCoordinator: ProductDetailCoordinator?
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, categoryService: CategoryService, productService: ProductService, favoritesService: FavoritesService, cartService: CartService, orderService: OrderService) {
+    init(parentCoordinator: Coordinator? = nil,
+         navigationController: UINavigationController,
+         categoryService: CategoryService,
+         productService: ProductService,
+         favoritesService: FavoritesService,
+         cartService: CartService,
+         orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.categoryService = categoryService
@@ -26,9 +37,11 @@ final class CategoriesDetailCoordinator{
         self.favoritesService = favoritesService
         self.cartService = cartService
         self.orderService = orderService
+        print("✅ CategoriesDetail Coordinator YARADILDI")
     }
     
     func start(with categoryId: String) {
+        print("🧾 Göndərilən categoryId: \(categoryId)")
         let viewModel = CategoriesDetailViewModel(categoryId:categoryId ,
                                                   categoryService: categoryService,
                                                   productService: productService,
@@ -56,5 +69,9 @@ final class CategoriesDetailCoordinator{
     
     func finish() {
         onFinish?()
+    }
+    
+    deinit {
+        print("❌ CategoriesDetailCoordinator SILINDI")
     }
 }

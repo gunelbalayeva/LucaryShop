@@ -6,7 +6,7 @@
 //
 
 import UIKit
-extension CategoriesDetailViewController:UICollectionViewDelegate,UICollectionViewDataSource {
+extension CategoriesDetailViewController:UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.products.count
@@ -16,6 +16,7 @@ extension CategoriesDetailViewController:UICollectionViewDelegate,UICollectionVi
         if let cell = categoriesDetailView.categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: CategoriesDetailCell.identifier, for: indexPath) as? CategoriesDetailCell {
             let product = viewModel.products[indexPath.item]
             cell.configure(with: product)
+            print("Product",product)
             return cell
         }
         return UICollectionViewCell()
@@ -26,4 +27,10 @@ extension CategoriesDetailViewController:UICollectionViewDelegate,UICollectionVi
         print("selectedProductId: \(selectedProduct.id)")
         viewModel.coordinator?.navigateToProductDetail(productId: selectedProduct.id)
     }
+    
+//    func collectionView(_ collectionView: UICollectionView,
+//                           layout collectionViewLayout: UICollectionViewLayout,
+//                           sizeForItemAt indexPath: IndexPath) -> CGSize {
+//           return CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: 240)
+//       }
 }

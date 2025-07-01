@@ -10,7 +10,6 @@ import Security
 final class KeychainManager {
     static let shared = KeychainManager()
       private init() {}
-
       func save(token: String, for key: String = "jwtToken") {
           guard let data = token.data(using: .utf8) else { return }
 

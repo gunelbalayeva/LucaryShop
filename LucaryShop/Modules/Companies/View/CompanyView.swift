@@ -10,6 +10,7 @@ final class CompanyView: UIView{
     var onHomeTapped: (() -> Void)?
     var onCategoryTapped: (() -> Void)?
     let tabSwitcher = BaseTabSwitcherView()
+
     private var didSetInitialTab = false
     
     let companiesCollectionView: UICollectionView = {

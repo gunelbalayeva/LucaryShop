@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  LucaryShop
+
+  Created by User on 01.07.25.
+  
+*/
+//Language screen
+"language_title" = "Язык приложения";
+
+// Home screen
+"search_bar" = "Поиск";
+"home" = "Дом";
+"partners" = "Партнеры";
+"products" = "Продукты";
+"company_head" = "Компании";
+
+
+// Profile Screen
+"editedAccount" = "Редактировать аккаунт";
+"languageScreen" = "Язык приложения" ;
+"orders" = "Мои заказы";
+"aboutUsScreen" = "О нас";
+"termsScreen" = "Условия и положения";
+"logoutScreen" = "Выйти";
+
+"logout_title" = "Выйти";
+"logout_message" = "Вы уверены, что хотите выйти?";
+"logout_cancel" = "Отмена";
+"logout_confirm" = "Да";
+
+// Companies
+"product_count_format" = "%d продуктов";
+

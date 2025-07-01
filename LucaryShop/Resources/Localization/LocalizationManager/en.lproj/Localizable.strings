@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  LucaryShop
+
+  Created by User on 01.07.25.
+  
+*/
+// Language Screen
+"language_title" = "Application language";
+
+// Home Screen
+"search_bar" = "Search";
+"home" = "Home";
+"partners" = "Partners";
+"products" = "Products";
+"company_head" = "Companies";
+
+// Profile Screen
+"editedAccount" = "Edit account";
+"languageScreen" = "Application language" ;
+"orders" = "My orders";
+"aboutUsScreen" = "About us";
+"termsScreen" = "Terms and Conditions";
+"logoutScreen" = "Log out";
+
+"logout_title" = "Logout";
+"logout_message" = "Are you sure you want to log out?";
+"logout_cancel" = "Cancel";
+"logout_confirm" = "Yes";
+
+// Companies
+"product_count_format" = "%d products";
+

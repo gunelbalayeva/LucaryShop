@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Company: Codable {
+struct Company: Codable ,Hashable{
     let id: String
     let name: String
     let profileImage: String

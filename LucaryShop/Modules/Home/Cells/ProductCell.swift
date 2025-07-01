@@ -7,6 +7,11 @@
 
 import UIKit
 import Kingfisher
+
+enum ProductSection {
+    case main
+}
+
 final class ProductCell: UICollectionViewCell {
     
     private let imageView: UIImageView = {

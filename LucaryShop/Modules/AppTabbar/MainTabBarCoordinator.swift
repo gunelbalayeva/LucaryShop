@@ -6,8 +6,13 @@
 //
 
 import UIKit
-final class MainTabBarCoordinator: Coordinator {
+final class MainTabBarCoordinator:Coordinator {
+    func start(with categoryId: String) {
+        
+    }
+    
     weak var parentCoordinator: AppCoordinator?
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     var tabBarController: UITabBarController
     let productService: ProductService
@@ -48,23 +53,25 @@ final class MainTabBarCoordinator: Coordinator {
         self.cartService = cartService
     }
     
+
     func start() {
         guard let cartService = cartService else {
             print("CartService yoxdur, tabbar başlatmaq olmur")
             return
         }
         // 1.Home
-        let homeNav = UINavigationController()
-        let homeCoordinator = HomeCoordinator(parentCoordinator: parentCoordinator,
-                                              navigationController: homeNav,
-                                              productService: productService,
-                                              categoryService: categoryService,
-                                              companyService: companyService,
-                                              cartService: cartService,
-                                              favoritesService: favoriteService, 
-                                              orderService: orderService)
-        self.homeCoordinator = homeCoordinator
-        homeCoordinator.start()
+           let homeNav = UINavigationController()
+           let homeCoordinator = HomeCoordinator(parentCoordinator: self, 
+                                                navigationController: homeNav,
+                                                productService: productService,
+                                                categoryService: categoryService,
+                                                companyService: companyService,
+                                                cartService: cartService,
+                                                favoritesService: favoriteService,
+                                                orderService: orderService)
+           self.homeCoordinator = homeCoordinator
+           childCoordinators.append(homeCoordinator)
+           homeCoordinator.start()
         // 2.Cart
         
         let cartNav = UINavigationController()
@@ -77,7 +84,7 @@ final class MainTabBarCoordinator: Coordinator {
         
         // 3.Favorite
         let favoriteNav = UINavigationController()
-        let favoriteCoordinator = FavoritesCoordinator(parentCoordinator: parentCoordinator,
+        let favoriteCoordinator = FavoritesCoordinator(parentCoordinator: self,
                                                        navigationController: favoriteNav,
                                                        profileService: profileService,
                                                        favoriteService: favoriteService,
@@ -92,9 +99,14 @@ final class MainTabBarCoordinator: Coordinator {
         let profileCoordinator = ProfileCoordinator(navigationController: profileNav,
                                                     profileService: profileService,
                                                     authService: authService,
-                                                    orderService: orderService)
+                                                    orderService: orderService,
+                                                    childCoordinators: childCoordinators)
         self.profileCoordinator = profileCoordinator
+        profileCoordinator.onFinish = { [weak self] in
+            self?.parentCoordinator?.startAuthFlow(.login)
+        }
         profileCoordinator.start()
+
         tabBarController.viewControllers = [homeNav, cartNav, favoriteNav, profileNav]
         configureTabBarItems()
         navigationController.setViewControllers([tabBarController], animated: true)
@@ -113,4 +125,17 @@ final class MainTabBarCoordinator: Coordinator {
         tabBarController.viewControllers?[3].tabBarItem = UITabBarItem(title: "Profil",
                                                                        image: UIImage(systemName: "person.circle"), tag: 3)
     }
+    
+    func childDidFinish(_ child: Coordinator) {
+        childCoordinators.removeAll { $0 === child }
+        
+        if child === homeCoordinator {
+            homeCoordinator = nil
+        }
+    }
+
+    deinit {
+        print("MainTabBarCoordinator silindi")
+    }
+
 }

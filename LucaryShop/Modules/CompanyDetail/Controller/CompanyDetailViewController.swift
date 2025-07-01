@@ -29,9 +29,10 @@ final class CompanyDetailViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .brown
         call()
-        bind()
         viewModel.fetchCompanyDetail()
+        bind()
         setupNavigationBar()
     }
     

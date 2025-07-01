@@ -7,22 +7,24 @@
 import Foundation
 import UIKit
 import Combine
-
 final class CompanyViewController: UIViewController {
     let companyView = CompanyView()
     let viewModel: CompanyViewModel
     private var cancellables = Set<AnyCancellable>()
+     var filteredCompanies: [Company] = []
+    var dataSource: UICollectionViewDiffableDataSource<CompanySection, Company>!
 
+    override func loadView() {
+        self.view = companyView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationItem.hidesBackButton = true
+        setupDataSource()
         call()
         binding()
-    }
-
-    override func loadView() {
-        self.view = companyView
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,9 +44,15 @@ final class CompanyViewController: UIViewController {
     }
 
     func call(){
-        companyView.companiesCollectionView.dataSource = self
+        NotificationCenter.default.addObserver(self,
+               selector: #selector(languageDidChange),
+               name: .appLanguageDidChange,
+               object: nil)
+           updateTextsForCurrentLanguage()
+        companyView.tabSwitcher.searchBar.delegate = self
         companyView.companiesCollectionView.delegate = self
-        companyView.companiesCollectionView.register(CompanyCell.self, forCellWithReuseIdentifier: CompanyCell.identifier)
+        companyView.companiesCollectionView.register(CompanyCell.self,
+                                                     forCellWithReuseIdentifier: CompanyCell.identifier)
 
         companyView.onHomeTapped = { [weak self] in
             self?.viewModel.coordinator?.finish()
@@ -52,14 +60,44 @@ final class CompanyViewController: UIViewController {
         }
     }
 
+    private func setupDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<CompanySection, Company>(
+            collectionView: companyView.companiesCollectionView
+        ) { (collectionView, indexPath, company) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompanyCell.identifier, 
+                                                          for: indexPath) as! CompanyCell
+            cell.configure(with: company)
+            return cell
+        }
+    }
+
+     func applySnapshot(companies: [Company]) {
+        var snapshot = NSDiffableDataSourceSnapshot<CompanySection, Company>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(companies, toSection: .main)
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+
     func binding() {
         viewModel.fetchCompanies()
         viewModel.$companies
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.companyView.companiesCollectionView.reloadData()
+            .sink { [weak self] companies in
+                self?.applySnapshot(companies: companies)
+                print("count: \(companies.count)")
             }
             .store(in: &cancellables)
     }
+    
+    @objc private func languageDidChange() {
+        updateTextsForCurrentLanguage()
+    }
+
+    func updateTextsForCurrentLanguage() {
+        companyView.tabSwitcher.searchBar.placeholder = LocalizedStrings.searchBar
+        companyView.tabSwitcher.homeButton.setTitle(LocalizedStrings.home, for: .normal)
+        companyView.tabSwitcher.categoryButton.setTitle(LocalizedStrings.companyHead, for: .normal)
+    }
+
 }
 

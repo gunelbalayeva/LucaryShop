@@ -7,8 +7,9 @@
 
 import UIKit
 
-final class ProductDetailCoordinator {
-    weak var parentCoordinator: AppCoordinator?
+final class ProductDetailCoordinator :Coordinator{
+    weak var parentCoordinator: Coordinator?
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     let productService: ProductService
     let favoritesService: FavoritesService
@@ -17,7 +18,12 @@ final class ProductDetailCoordinator {
     var cartCoordinator: CartCoordinator?
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, favoritesService: FavoritesService, cartService: CartService, orderService: OrderService) {
+    init(parentCoordinator: Coordinator? = nil,
+         navigationController: UINavigationController,
+         productService: ProductService,
+         favoritesService: FavoritesService,
+         cartService: CartService,
+         orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.productService = productService
@@ -26,6 +32,9 @@ final class ProductDetailCoordinator {
         self.orderService = orderService
     }
     
+    func start() {
+        
+    }
     
     func start(with productId: String) {
         let viewModel = ProductDetailViewModel(productId: productId,

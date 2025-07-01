@@ -8,13 +8,17 @@
 import Foundation
 import UIKit
 final class SecurePaymentCoordinator {
-    weak var parentCoordinator: AppCoordinator?
+    weak var parentCoordinator: Coordinator?
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     let cartService: CartService
     let orderService: OrderService
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, cartService: CartService, orderService: OrderService) {
+    init(parentCoordinator: Coordinator? = nil,
+         navigationController: UINavigationController,
+         cartService: CartService,
+         orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.cartService = cartService

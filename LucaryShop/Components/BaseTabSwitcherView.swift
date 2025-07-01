@@ -30,8 +30,8 @@ final class BaseTabSwitcherView: UIView {
         return button
     }()
     
-    private let searchBar: UISearchBar = {
-        let bar = UISearchBar()
+     var searchBar: UISearchBar = {
+        var bar = UISearchBar()
         bar.placeholder = "Axtar"
         bar.searchTextField.backgroundColor = .white
         bar.searchTextField.layer.cornerRadius = 8
@@ -42,8 +42,8 @@ final class BaseTabSwitcherView: UIView {
         return bar
     }()
     
-    private let homeButton: CustomButton = {
-        let button = CustomButton(style: .plain)
+     var homeButton: CustomButton = {
+        var button = CustomButton(style: .plain)
         button.setTitle("Home", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.contentHorizontalAlignment = .center
@@ -51,8 +51,8 @@ final class BaseTabSwitcherView: UIView {
         return button
     }()
     
-    private let categoryButton: CustomButton = {
-        let button = CustomButton(style: .plain)
+     var categoryButton: CustomButton = {
+        var button = CustomButton(style: .plain)
         button.setTitle("Partnyorlar", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.contentHorizontalAlignment = .center

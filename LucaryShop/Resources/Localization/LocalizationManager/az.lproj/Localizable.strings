@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  LucaryShop
+
+  Created by User on 01.07.25.
+  
+*/
+// Language screen
+"language_title" = "Tətbiq dili";
+
+// Home screen
+"search_bar" = "Axtar";
+"home" = "Ev";
+"partners" = "Tərəfdaşlar";
+"products" = "Məhsullar";
+"company_head" = "Şirkətlər";
+
+// Profile Screen
+"editedAccount" = "Hesabı redaktə edin";
+"languageScreen" = "Tətbiq dili" ;
+"orders" = "Sifarişlərim";
+"aboutUsScreen" = "Haqqımızda";
+"termsScreen" = "Qaydalar və Şərtlər";
+"logoutScreen" = "Çıxış et";
+
+"logout_title" = "Çıxış et";
+"logout_message" = "Hesabdan çıxış etmək istədiyinizə əminsiniz?";
+"logout_cancel" = "İmtina et";
+"logout_confirm" = "Bəli";
+
+// Companies
+"product_count_format" = "%d məhsul";
+

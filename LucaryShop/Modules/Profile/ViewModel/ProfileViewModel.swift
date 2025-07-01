@@ -59,5 +59,5 @@ final class ProfileViewModel {
     func openTerms() {
         coordinator?.openTerms()
     }
-
+    
 }

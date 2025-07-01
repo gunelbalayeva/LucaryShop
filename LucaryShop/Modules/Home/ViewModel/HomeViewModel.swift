@@ -7,7 +7,7 @@
 
 import Foundation
 final class HomeViewModel {
-    weak var coordinator: HomeCoordinator?
+     var coordinator: HomeCoordinator?
     private let productService: ProductService
     private let categoryService: CategoryService
     private let companyService: CompanyService
@@ -47,7 +47,6 @@ final class HomeViewModel {
         newArrivals.removeAll()
         productService.fetchAllProducts(page: currentPage, size: pageSize) { [weak self] result in
             DispatchQueue.main.async {
-                print("Yeni sorgu atıldı: \(self!.currentPage)")
                 switch result {
                 case .success(let products):
                     print("Gələn məhsullar: \(products.count)")

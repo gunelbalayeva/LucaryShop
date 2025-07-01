@@ -6,13 +6,14 @@
 //
 import UIKit
 final class CartCoordinator{
-    weak var parentCoordinator: AppCoordinator?
+    weak var parentCoordinator: Coordinator?
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     let cartService: CartService
     let orderService: OrderService
     var onFinish: (() -> Void)?
     
-    init(parentCoordinator: AppCoordinator? = nil,
+    init(parentCoordinator: Coordinator? = nil,
          navigationController: UINavigationController,
          cartService: CartService,
          orderService: OrderService) {

@@ -19,25 +19,34 @@ final class CategoriesDetailViewModel{
          categoryService: CategoryService,
          productService: ProductService,
          coordinator: CategoriesDetailCoordinator?) {
+        print("📌 ViewModel categoryId: \(categoryId)")
         self.categoryId = categoryId
         self.categoryService = categoryService
         self.productService = productService
         self.coordinator = coordinator
+        print("✅ CategoriesDetailViewModel YARADILDI")
     }
     
 
     func fetchProducts() {
+        print("🟢 fetchProducts çağırıldı \(categoryId)")
         productService.fetchProducts(by: categoryId, pageNumber: 0, pageSize: 20) { [weak self] result in
             switch result {
             case .success(let response):
+                print("🧩 Yeni məhsullar gəldi: \(response.products.count)")
                 DispatchQueue.main.async {
                     self?.products = response.products
                     self?.categoryName = response.name
                 }
             case .failure(let error):
-                print("Error fetching products: \(error)")
+                print("❌ Məhsullar gətirilə bilmədi: \(error)")
             }
         }
     }
 
+
+    
+    deinit {
+        print("❌ CategoriesDetailViewModel SILINDI")
+    }
 }

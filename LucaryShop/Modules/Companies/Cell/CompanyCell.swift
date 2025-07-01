@@ -6,6 +6,11 @@
 //
 
 import UIKit
+
+enum CompanySection {
+    case main
+}
+
 final class CompanyCell:UICollectionViewCell {
     private let imageView: UIImageView = {
         let iv = UIImageView()
@@ -69,7 +74,7 @@ final class CompanyCell:UICollectionViewCell {
     
     func configure(with company: Company) {
         nameLabel.text = company.name
-        productCountLabel.text = "\(company.productCount) məhsul"
+        productCountLabel.text = LocalizedStrings.productCount(company.productCount)
         
         if let url = URL(string: company.profileImage) {
             imageView.kf.setImage(
@@ -83,4 +88,5 @@ final class CompanyCell:UICollectionViewCell {
             imageView.image = UIImage(named: "selectPhoto")
         }
     }
+
 }

@@ -7,8 +7,13 @@
 
 import Foundation
 import UIKit
-final class FavoritesCoordinator{
-    weak var parentCoordinator: AppCoordinator?
+final class FavoritesCoordinator: Coordinator{
+    func start(with categoryId: String) {
+        
+    }
+    
+    weak var parentCoordinator: MainTabBarCoordinator?
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     private let profileService: ProfileService
     private let favoriteService: FavoritesService
@@ -18,7 +23,13 @@ final class FavoritesCoordinator{
     var onFinish: (() -> Void)?
     private var childCoordinator: ProductDetailCoordinator?
 
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, profileService: ProfileService, favoriteService: FavoritesService, productService: ProductService, cartService: CartService, orderService: OrderService) {
+    init(parentCoordinator: MainTabBarCoordinator? = nil,
+         navigationController: UINavigationController,
+         profileService: ProfileService,
+         favoriteService: FavoritesService,
+         productService: ProductService,
+         cartService: CartService,
+         orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.profileService = profileService
@@ -31,7 +42,7 @@ final class FavoritesCoordinator{
 
     func navigateToProductDetail(with productId: String) {
         let coordinator = ProductDetailCoordinator(
-            parentCoordinator: parentCoordinator,
+            parentCoordinator: self,
             navigationController: navigationController,
             productService: productService,
             favoritesService: favoriteService,

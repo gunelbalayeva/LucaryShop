@@ -6,10 +6,9 @@
 //
 
 import UIKit
-
 extension String {
-    var localized: String {
-        return LocalizationManager.shared.localizedString(forKey: self)
-    }
+        var localized: String {
+            return NSLocalizedString(self, bundle: Bundle.localized, comment: "")
+        }
 }
 

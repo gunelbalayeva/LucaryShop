@@ -32,9 +32,21 @@ final class LanguageSelectionViewController:UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc
+    private func languageDidChange() {
+        print("Language changed!") 
+        updateTextsForCurrentLanguage()
+    }
+    
     private func setupView() {
         view.backgroundColor = .verifyBg
         title = "Tətbiq dili"
+        NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(languageDidChange),
+                name: .appLanguageDidChange,
+                object: nil
+            )
     }
     
     private func setupNavigationBar() {
@@ -59,6 +71,11 @@ final class LanguageSelectionViewController:UIViewController {
     @objc
     private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    func updateTextsForCurrentLanguage() {
+        title = LocalizedStrings.languageTitle
+       
     }
 }
 

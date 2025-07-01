@@ -31,6 +31,7 @@ final class CompanyDetailView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        print("CompanyDetail yuklenib")
         setupUI()
         setupConstraints()
     }

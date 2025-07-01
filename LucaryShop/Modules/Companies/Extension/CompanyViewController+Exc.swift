@@ -6,24 +6,28 @@
 //
 
 import UIKit
-extension CompanyViewController :UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.companies.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = companyView.companiesCollectionView.dequeueReusableCell(withReuseIdentifier: CompanyCell.identifier, for: indexPath) as? CompanyCell {
-            let companies = viewModel.companies[indexPath.item]
-            cell.configure(with: companies)
-            return cell
-        }
-        return UICollectionViewCell()
-    }
-    
+extension CompanyViewController :UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedProduct = viewModel.companies[indexPath.item]
-        print("selectedProductId: \(selectedProduct.id)")
-        viewModel.coordinator?.navigateToCompaniesDetail(companyId: selectedProduct.id)
+        if let company = dataSource.itemIdentifier(for: indexPath) {
+            viewModel.coordinator?.navigateToCompaniesDetail(companyId: company.id)
+        }
+    }
+}
+
+
+extension CompanyViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            filteredCompanies = viewModel.companies
+        } else {
+            filteredCompanies = viewModel.companies.filter {
+                $0.name.lowercased().contains(searchText.lowercased())
+            }
+        }
+        applySnapshot(companies: filteredCompanies)
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

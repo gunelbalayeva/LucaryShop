@@ -9,13 +9,14 @@ import Foundation
 import UIKit
 import Combine
 final class CategoriesDetailViewController:UIViewController{
-    
     let categoriesDetailView = CategoriesDetailView()
     let viewModel:CategoriesDetailViewModel
     private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .red
+        print("🟢 CategoriesDetailViewController LOADED")
         setupCollectionViews()
         setupNavigationBar()
         binding()
@@ -35,6 +36,12 @@ final class CategoriesDetailViewController:UIViewController{
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("✅ View Appear oldu")
+        print("🧩 CollectionView frame: \(categoriesDetailView.categoriesCollectionView.frame)")
+    }
+
     private func setupCollectionViews() {
         view.backgroundColor = .systemBackground
         let collectionView = categoriesDetailView.categoriesCollectionView
@@ -50,7 +57,8 @@ final class CategoriesDetailViewController:UIViewController{
     func binding() {
         viewModel.$products
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
+            .sink { [weak self] newProducts in
+                print("🧩 Yeni məhsullar gəldi: \(newProducts.count)")
                 self?.categoriesDetailView.categoriesCollectionView.reloadData()
             }
             .store(in: &cancellables)
@@ -75,5 +83,9 @@ final class CategoriesDetailViewController:UIViewController{
     @objc
     private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    deinit {
+        print("❌ CategoriesDetailViewController SILINDI")
     }
 }

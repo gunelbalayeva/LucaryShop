@@ -30,6 +30,10 @@ final class ProfileViewController:UIViewController{
     }
     
     private func setupBindings() {
+        NotificationCenter.default.addObserver(self,
+               selector: #selector(languageDidChange),
+               name: .appLanguageDidChange,
+               object: nil)
         profileView.onTappedEdited = { [weak self] in
             self?.viewModel.openEditProfile()
         }
@@ -53,6 +57,51 @@ final class ProfileViewController:UIViewController{
         profileView.onTappedLogout = { [weak self] in
             self?.viewModel.logout()
         }
+        profileView.onTappedLogout = { [weak self] in
+            self?.showLogoutAlert()
+        }
     }
 
+    private func showLogoutAlert() {
+        let alert = UIAlertController(
+            title: LocalizedStrings.logoutTitle,
+            message: LocalizedStrings.logoutMessage,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(
+            title: LocalizedStrings.logoutCancel,
+            style: .cancel,
+            handler: nil
+        ))
+        
+        alert.addAction(UIAlertAction(
+            title: LocalizedStrings.logoutConfirm,
+            style: .destructive,
+            handler: { [weak self] _ in
+                self?.viewModel.logout()
+            }
+        ))
+
+        present(alert, animated: true)
+    }
+
+    
+    @objc
+    private func languageDidChange() {
+        updateTextsForCurrentLanguage()
+    }
+
+    func updateTextsForCurrentLanguage() {
+        profileView.editedAccountButton.setTitle(LocalizedStrings.editedAccountButton, for: .normal)
+        profileView.goToLanguaceScreenButton.setTitle(LocalizedStrings.goToLanguageScreenButton, for: .normal)
+        profileView.goToOrdersButton.setTitle(LocalizedStrings.goToOrdersButton, for: .normal)
+        profileView.goToAboutUsScreenButton.setTitle(LocalizedStrings.goToAboutUsScreenButton, for: .normal)
+        profileView.goToTermsScreenButton.setTitle(LocalizedStrings.goToTermsScreenButton, for: .normal)
+        profileView.goToLogoutScreenButton.setTitle(LocalizedStrings.goToLogoutScreenButton, for: .normal)   
+        LocalizationManager.shared.currentLanguage = .en
+        Bundle.setLanguage("en")
+        NotificationCenter.default.post(name: .appLanguageDidChange, object: nil)
+
+    }
 }

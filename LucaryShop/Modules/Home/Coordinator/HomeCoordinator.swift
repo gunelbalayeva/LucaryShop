@@ -7,20 +7,37 @@
 
 import UIKit
 
-final class HomeCoordinator {
-    weak var parentCoordinator: AppCoordinator?
+final class HomeCoordinator: Coordinator {
+    func start(with categoryId: String) {
+        
+    }
+     var parentCoordinator: Coordinator?
     var navigationController: UINavigationController
+    var childCoordinators: [Coordinator] = []
+    
+    // Servislər
     let productService: ProductService
     let categoryService: CategoryService
     let companyService: CompanyService
     let cartService: CartService
     let favoritesService: FavoritesService
-    var companyCoordinator: CompanyCoordinator?
-    private var orderService:OrderService
-    var onFinish: (() -> Void)?
-    var productDetailCoordinator: ProductDetailCoordinator?
+    private let orderService: OrderService
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, productService: ProductService, categoryService: CategoryService, companyService: CompanyService, cartService: CartService, favoritesService: FavoritesService, companyCoordinator: CompanyCoordinator? = nil, orderService: OrderService) {
+    // Child coordinatorlar
+     var companyCoordinator: CompanyCoordinator?
+     var productDetailCoordinator: ProductDetailCoordinator?
+     var categoriesDetailCoordinator: CategoriesDetailCoordinator?
+    
+    var onFinish: (() -> Void)?
+    
+    init(parentCoordinator: Coordinator? = nil,
+         navigationController: UINavigationController,
+         productService: ProductService,
+         categoryService: CategoryService,
+         companyService: CompanyService,
+         cartService: CartService,
+         favoritesService: FavoritesService,
+         orderService: OrderService) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.productService = productService
@@ -28,51 +45,67 @@ final class HomeCoordinator {
         self.companyService = companyService
         self.cartService = cartService
         self.favoritesService = favoritesService
-        self.companyCoordinator = companyCoordinator
         self.orderService = orderService
+       
     }
-    
     
     func start() {
         let viewModel = HomeViewModel(coordinator: self,
-                                      productService: productService,
-                                      categoryService: categoryService,
-                                      companyService: companyService,
-                                      favoritesService: favoritesService)
+                                    productService: productService,
+                                    categoryService: categoryService,
+                                    companyService: companyService,
+                                    favoritesService: favoritesService)
         let vc = HomeViewController(homeViewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func childDidFinish(_ child: Coordinator) {
+        childCoordinators.removeAll { $0 === child }
+
+        if child is CategoriesDetailCoordinator {
+            categoriesDetailCoordinator = nil
+        } else if child is CompanyCoordinator {
+            companyCoordinator = nil
+        } else if child is ProductDetailCoordinator {
+            productDetailCoordinator = nil
+        }
+    }
+
+    
+    // MARK: - Navigation Methods
     
     func navigateToCompany() {
         if let companyVC = navigationController.viewControllers.first(where: { $0 is CompanyViewController }) {
             navigationController.popToViewController(companyVC, animated: true)
             return
         }
+        
         let coordinator = CompanyCoordinator(
-            parentCoordinator: parentCoordinator,
+            parentCoordinator: self,
             navigationController: navigationController,
             companyService: companyService,
             productService: productService,
             favoritesService: favoritesService,
-            cartService: cartService, 
+            cartService: cartService,
             orderService: orderService
         )
+        
         self.companyCoordinator = coordinator
+        childCoordinators.append(coordinator)
+        
         coordinator.onFinish = { [weak self] in
-            self?.companyCoordinator = nil
+            self?.childDidFinish(coordinator)
             print("CompanyCoordinator finish oldu və təmizləndi")
         }
+        
         print("CompanyCoordinator yaradılır və səhifə açılır")
         coordinator.start()
     }
-
-
-
     
     func navigateToCategoriesDetail(categoryId: String) {
+        print("➡️ navigateToCategoriesDetail çağırıldı")
         let coordinator = CategoriesDetailCoordinator(
-            parentCoordinator: parentCoordinator,
+            parentCoordinator: self,
             navigationController: navigationController,
             categoryService: categoryService,
             productService: productService,
@@ -80,51 +113,48 @@ final class HomeCoordinator {
             cartService: cartService,
             orderService: orderService
         )
-        coordinator.onFinish = { [] in
-            print("CategoriesDetailCoordinator bitdi")
+        
+        self.categoriesDetailCoordinator = coordinator
+        self.childCoordinators.append(coordinator)
+
+        coordinator.onFinish = { [weak self, weak coordinator] in
+            guard let self, let coordinator else { return }
+            self.childDidFinish(coordinator)
+            print("CategoriesDetailCoordinator finish oldu")
         }
         coordinator.start(with: categoryId)
     }
-    
-    
-    
-    func startAndReturnViewController() -> UIViewController {
-        let viewModel = HomeViewModel(coordinator: self,
-                                      productService: productService,
-                                      categoryService: categoryService,
-                                      companyService: companyService,
-                                      favoritesService: favoritesService)
-        let vc = HomeViewController(homeViewModel: viewModel)
-        return vc
-    }
-    
-    
-    func updateHomeSelectedIndex(_ index: Int) {
-        if let vc = navigationController.viewControllers.last as? HomeViewController {
-            vc.updateSelectedIndex(index)
-        }
-    }
-    
-    
+
     func navigateToProductDetail(productId: String) {
         let detailCoordinator = ProductDetailCoordinator(
-            parentCoordinator: self.parentCoordinator,
+            parentCoordinator: self,
             navigationController: navigationController,
             productService: productService,
             favoritesService: favoritesService,
             cartService: cartService,
             orderService: orderService
         )
+        
         self.productDetailCoordinator = detailCoordinator
+        childCoordinators.append(detailCoordinator)
+        
         detailCoordinator.onFinish = { [weak self] in
+            self?.childDidFinish(detailCoordinator)
             print("ProductDetailCoordinator bitdi")
-            self?.productDetailCoordinator = nil
         }
+        
         detailCoordinator.start(with: productId)
     }
-
+    
+    // MARK: - Helper Methods
+    func updateHomeSelectedIndex(_ index: Int) {
+        if let vc = navigationController.viewControllers.last as? HomeViewController {
+            vc.updateSelectedIndex(index)
+        }
+    }
     
     func finish() {
         onFinish?()
     }
+    
 }

@@ -73,4 +73,8 @@ final class AuthService {
     func logout() {
         KeychainManager.shared.deleteToken()
     }
+    
+    func isLoggedIn() -> Bool {
+        return KeychainManager.shared.getToken() != nil
+    }
 }

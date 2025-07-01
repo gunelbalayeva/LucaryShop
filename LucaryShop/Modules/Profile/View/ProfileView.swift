@@ -37,13 +37,14 @@ final class ProfileView: UIView {
     
     let surnameLabel = UILabel().withStyle(text: "", size: 14)
     let emailLabel = UILabel().withStyle(text: "gunelbalayeva97@gmail.com", size: 12)
-    let editedAccountButton = ProfileView.makeButton(title: "Hesabı redaktə edin")
-    let goToLanguaceScreenButton = ProfileView.makeButton(title: "Tətbiq dili")
-    let goToOrdersButton = ProfileView.makeButton(title: "Sifarişlərim")
-    let goToAboutUsScreenButton = ProfileView.makeButton(title: "Haqqımızda")
-    let goToTermsScreenButton = ProfileView.makeButton(title: "Qaydalar və Şərtlər")
-    let goToLogoutScreenButton: CustomButton = {
-        let button = CustomButton(style: .plain)
+    
+    var editedAccountButton = ProfileView.makeButton(title: "Hesabı redaktə edin")
+    var goToLanguaceScreenButton = ProfileView.makeButton(title: "Tətbiq dili")
+    var goToOrdersButton = ProfileView.makeButton(title: "Sifarişlərim")
+    var goToAboutUsScreenButton = ProfileView.makeButton(title: "Haqqımızda")
+    var goToTermsScreenButton = ProfileView.makeButton(title: "Qaydalar və Şərtlər")
+    var goToLogoutScreenButton: CustomButton = {
+        var button = CustomButton(style: .plain)
         button.setTitle("Çıxış et", for: .normal)
         button.setTitleColor(.red, for: .normal)
         button.contentHorizontalAlignment = .leading

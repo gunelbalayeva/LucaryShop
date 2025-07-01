@@ -11,7 +11,7 @@ import SnapKit
 final class HomeView: UIView {
     var onCompaniesTapped: (() -> Void)?
     
-    private let headerLogoName: UILabel = {
+     var headerLogoName: UILabel = {
         let label = UILabel()
         label.text = "Lucary"
         label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
@@ -19,16 +19,16 @@ final class HomeView: UIView {
         return label
     }()
     
-    private let menyuButton: CustomButton = {
+     let menyuButton: CustomButton = {
         let button = CustomButton(style: .plain)
-//        let image = UIImage(systemName: "square.grid.2x2")
-//        button.setImage(image, for: .normal)
-//        button.tintColor = .onboardingLabel
+        //        let image = UIImage(systemName: "square.grid.2x2")
+        //        button.setImage(image, for: .normal)
+        //        button.tintColor = .onboardingLabel
         return button
     }()
     
-    private let searchBar: UISearchBar = {
-        let bar = UISearchBar()
+    var searchBar: UISearchBar = {
+        var bar = UISearchBar()
         bar.placeholder = "Axtar"
         bar.searchTextField.backgroundColor = .white
         bar.searchTextField.layer.cornerRadius = 8
@@ -39,8 +39,8 @@ final class HomeView: UIView {
         return bar
     }()
     
-    private let homeButton: CustomButton = {
-        let button = CustomButton(style: .plain)
+     var homeButton: CustomButton = {
+        var button = CustomButton(style: .plain)
         button.setTitle("Home", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.contentHorizontalAlignment = .center
@@ -48,8 +48,8 @@ final class HomeView: UIView {
         return button
     }()
     
-    private let categoryButton: CustomButton = {
-        let button = CustomButton(style: .plain)
+     var categoryButton: CustomButton = {
+        var button = CustomButton(style: .plain)
         button.setTitle("Partnyorlar", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.contentHorizontalAlignment = .center
@@ -83,13 +83,13 @@ final class HomeView: UIView {
     }()
     
     let headLabel:UILabel = {
-        let label = UILabel().withStyle(text: "Məhsullar", size: 16)
+        var label = UILabel().withStyle(text: "Məhsullar", size: 16)
         label.font =  UIFont.systemFont(ofSize: 20, weight: .bold)
         return label
     }()
     
-    private let companyHeadLabel: UILabel = {
-      let label =  UILabel().withStyle(text: "Kategoriyalar", size: 16)
+     let companyHeadLabel: UILabel = {
+        var label =  UILabel().withStyle(text: "Kategoriyalar", size: 16)
         label.font =  UIFont.systemFont(ofSize: 20, weight: .bold)
         return label
     }()
@@ -116,7 +116,7 @@ final class HomeView: UIView {
         stack.alignment = .center
         return stack
     }()
-
+    
     let categoriesCollectionView: UICollectionView
     private let productList: UICollectionView
     private var productListTopConstraint: Constraint?
@@ -192,7 +192,8 @@ final class HomeView: UIView {
         
         productList.snp.makeConstraints { make in
             productListTopConstraint = make.top.equalTo(headLabel.snp.bottom).offset(16).constraint
-            make.left.right.bottom.equalToSuperview().inset(16)
+            make.left.right.equalToSuperview().inset(16)
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(16)
         }
     }
     
@@ -203,7 +204,7 @@ final class HomeView: UIView {
         categoryButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     }
     
-     var selectedIndex: Int = 0
+    var selectedIndex: Int = 0
     
     @objc
     private func buttonTapped(_ sender: UIButton) {
@@ -219,7 +220,7 @@ final class HomeView: UIView {
         super.layoutSubviews()
         updateUnderlinePosition()
     }
-
+    
     func updateUnderlinePosition(animated: Bool = true) {
         let targetX = selectedIndex == 0 ? 0 : buttonStackView.frame.width / 2
         underlineLeadingConstraint?.update(offset: targetX)
@@ -235,10 +236,9 @@ final class HomeView: UIView {
             animations()
         }
     }
-   
+    
     @objc
     private func menyuButtonTapped(){
-        print("Menyu gosterilir")
     }
     
     @objc

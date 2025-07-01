@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 final class ProfileCoordinator: Coordinator {
-    weak var parentCoordinator: AppCoordinator?
+    weak var parentCoordinator: Coordinator?
     var navigationController: UINavigationController
     private let profileService: ProfileService
     private let authService: AuthService
@@ -16,14 +16,27 @@ final class ProfileCoordinator: Coordinator {
     var languageCoordinator:LanguageSelectionCoordinator?
     var orderService:OrderService
     
-    init(parentCoordinator: AppCoordinator? = nil, navigationController: UINavigationController, profileService: ProfileService, authService: AuthService, languageCoordinator: LanguageSelectionCoordinator? = nil, orderService: OrderService) {
+    init(parentCoordinator: Coordinator? = nil, 
+         navigationController: UINavigationController,
+         profileService: ProfileService,
+         authService: AuthService,
+         languageCoordinator: LanguageSelectionCoordinator? = nil,
+         orderService: OrderService,
+         childCoordinators: [Coordinator]) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         self.profileService = profileService
         self.authService = authService
         self.languageCoordinator = languageCoordinator
         self.orderService = orderService
+        self.childCoordinators = childCoordinators
     }
+    
+    func start(with categoryId: String) {
+        
+    }
+    
+    var childCoordinators: [Coordinator]
     
     func start() {
         let builder = ProfileBuilder(profileService: profileService,
@@ -32,19 +45,12 @@ final class ProfileCoordinator: Coordinator {
         let vc = builder.build()
         navigationController.pushViewController(vc, animated: true)
     }
-    
-    func startAndReturnViewController() -> UIViewController {
-        let vc = ProfileBuilder(profileService: profileService,
-                                authService: authService,
-                                coordinator: self).build()
-        return UINavigationController(rootViewController: vc)
-    }
-    
+   
     
     func finish() {
-        onFinish?()
-        parentCoordinator?.childDidFinish(self)
+        onFinish?() 
     }
+
     
     func openEditProfile() { // BUNU YAZMAMISAM
 //        let builder = ProfileBuilder(profileService: profileService,
@@ -79,5 +85,4 @@ final class ProfileCoordinator: Coordinator {
         coordinator.start()
         print("Şərtlər")
     }
-
 }

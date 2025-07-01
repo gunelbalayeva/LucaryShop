@@ -8,7 +8,6 @@
 import Foundation
 enum CategoryEndpoint {
     case getAll
-
     var path: String { "/categories" }
     var method: String { "GET" }
     var headers: [String: String] {

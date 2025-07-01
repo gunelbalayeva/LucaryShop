@@ -7,12 +7,12 @@
 
 import UIKit
 import Combine
-
-final class HomeViewController:UIViewController {
-    
+final class HomeViewController:UIViewController, UISearchBarDelegate {
     let homeViewModel:HomeViewModel
     private var cancellables = Set<AnyCancellable>()
-    
+    var dataSource: UICollectionViewDiffableDataSource<ProductSection, Product>!
+    var filteredProducts: [Product] = []
+
     let categoriesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -29,26 +29,34 @@ final class HomeViewController:UIViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 8
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2 - 24, height: 240)
+        layout.sectionInset = UIEdgeInsets(top: 25, left: 0, bottom: 4, right: 0)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
+        collectionView.alwaysBounceVertical = true
+        collectionView.contentInsetAdjustmentBehavior = .never
         return collectionView
     }()
-    
+
     
     lazy var homeView = HomeView(
         categoriesCollectionView: categoriesCollectionView,
         productList: productList
     )
     
-    
     override func loadView() {
         self.view = homeView
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(languageDidChange),
+                name: .appLanguageDidChange,
+                object: nil
+            )
+        setupProductDataSource()
         setupCollectionViews()
         setupActions()
         observeViewModel()
@@ -74,19 +82,20 @@ final class HomeViewController:UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     private func setupCollectionViews() {
+        homeView.searchBar.delegate = self
         categoriesCollectionView.dataSource = self
         categoriesCollectionView.delegate = self
         categoriesCollectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
-        productList.dataSource = self
+        productList.dataSource = dataSource
         productList.delegate = self
         productList.register(ProductCell.self, forCellWithReuseIdentifier: ProductCell.identifier)
+        productList.isScrollEnabled = true
+        productList.alwaysBounceVertical = true
         categoriesCollectionView.configureScrolling(hidesIndicators: true, enablesScroll: true)
         productList.configureScrolling(hidesIndicators: true, enablesScroll: true)
     }
-    
-    
+
     func updateSelectedIndex(_ index: Int) {
         homeView.selectedIndex = index
         homeView.updateUnderlinePosition()
@@ -99,14 +108,16 @@ final class HomeViewController:UIViewController {
         }
     }
     
-    
     private func observeViewModel() {
         homeViewModel.$newArrivals
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.productList.reloadData()
+            .sink { [weak self] newProducts in
+                guard let self = self else { return }
+                self.filteredProducts = newProducts
+                self.applySnapshot(with: newProducts)
             }
             .store(in: &cancellables)
+
         homeViewModel.$categories
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -151,6 +162,66 @@ final class HomeViewController:UIViewController {
         }
     }
     
+    private func setupProductDataSource() {
+           dataSource = UICollectionViewDiffableDataSource<ProductSection, Product>(collectionView: productList) { [weak self] collectionView, indexPath, product -> UICollectionViewCell? in
+               guard let self = self else { return nil }
+               let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
+               cell.configure(with: product)
+               cell.onFavoriteTapped = {
+                   self.homeViewModel.toggleFavorite(for: product.id) { success in
+                       DispatchQueue.main.async {
+                           if success {
+                               self.applySnapshot(with: self.filteredProducts)
+                           }
+                       }
+                   }
+               }
+               return cell
+           }
+       }
+
+       private func applySnapshot(with products: [Product]) {
+           var snapshot = NSDiffableDataSourceSnapshot<ProductSection, Product>()
+           snapshot.appendSections([.main])
+           snapshot.appendItems(products, toSection: .main)
+           dataSource.apply(snapshot, animatingDifferences: true)
+       }
+
+    func filterProducts(with query: String) {
+        let currentOffset = productList.contentOffset
+        if query.isEmpty {
+            filteredProducts = homeViewModel.newArrivals
+        } else {
+            filteredProducts = homeViewModel.newArrivals.filter {
+                $0.name.lowercased().contains(query.lowercased())
+            }
+        }
+        print("Filtered count:", filteredProducts.count)
+        applySnapshot(with: filteredProducts)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.productList.setContentOffset(currentOffset, animated: false)
+        }
+        if filteredProducts.count == 1 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let indexPath = IndexPath(item: 0, section: 0)
+                self.productList.scrollToItem(at: indexPath, at: .top, animated: true)
+            }
+        }
+    }
+  
+    @objc
+    private func languageDidChange() {
+        updateTextsForCurrentLanguage()
+    }
+
+    func updateTextsForCurrentLanguage() {
+        homeView.searchBar.placeholder = LocalizedStrings.searchBar
+        homeView.homeButton.setTitle(LocalizedStrings.home, for: .normal)
+        homeView.categoryButton.setTitle(LocalizedStrings.companyHead, for: .normal)
+        homeView.headLabel.text = LocalizedStrings.products
+        homeView.companyHeadLabel.text = LocalizedStrings.companyHead
+    }
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

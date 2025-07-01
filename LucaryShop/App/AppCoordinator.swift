@@ -10,9 +10,7 @@
 
 import Foundation
 import UIKit
-protocol Coordinator:AnyObject {
-    func start()
-}
+
 
 enum AuthFlowType {
     case login
@@ -33,49 +31,51 @@ enum HomeCategoryFlowType{
     case category
 }
 
-enum ProductFlowType{
-    case productDetail
-    case cart
-    
-}
-
-enum ProfileFlowType {
-    case language
-}
-
-
 final class AppCoordinator: Coordinator {
+    func start(with categoryId: String) {
+        
+    }
+    
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
+    
     private let authService: AuthService
     let verificationId: String
-    private var childCoordinators: [Coordinator] = []
     var productDetailCoordinator: ProductDetailCoordinator?
     var aboutCoordinator:AboutCoordinator?
     var termsCoordinator:TermsCoordinator?
     var profilecoordinator:ProfileCoordinator?
-    
-    init(navigationController: UINavigationController, authService: AuthService, verificationId: String) {
+    private var mainTabBarCoordinator: MainTabBarCoordinator?
+    weak var parentCoordinator: Coordinator?
+
+    init(navigationController: UINavigationController,
+         authService: AuthService,
+         verificationId: String,
+         parentCoordinator: Coordinator? = nil) {
         self.navigationController = navigationController
         self.authService = authService
         self.verificationId = verificationId
-    
+        self.parentCoordinator = parentCoordinator
+        NotificationCenter.default.addObserver(
+                   self,
+                   selector: #selector(languageDidChange),
+                   name: .appLanguageDidChange,
+                   object: nil
+               )
     }
     
     func childDidFinish(_ child: Coordinator) {
         childCoordinators.removeAll { $0 === child }
     }
-    
-    func start() {
-        startHomeFlow(.home)
-//        print("🏁 AppCoordinator startHomeFlow çağırıldı")
-////
-//                let vc = SplashBuild(cordinator: self).build()
-//                navigationController.setViewControllers([vc], animated: true)
-    }
-    
-  
 
     
+    func start() {
+        
+        startHomeFlow(.home)
+//        let vc = SplashBuild(cordinator: self).build()
+//            navigationController.setViewControllers([vc], animated: true)
+    }
+
     func goToPermissionsOnboarding() {
         let vc = PermissionsOnboardingBuilder(coordinator: self).build()
         navigationController.pushViewController(vc, animated: true)
@@ -107,7 +107,6 @@ final class AppCoordinator: Coordinator {
                 navigationController: navigationController,
                 authService: authService)
             registerCoordinator.onFinish = { [weak self] in
-                print("Hello Home - men bosam deye cagirilmiram")
                 self?.startHomeFlow(.home)
             }
             registerCoordinator.start()
@@ -128,53 +127,63 @@ final class AppCoordinator: Coordinator {
         }
     }
     
-    
-    func startHomeFlow(_ flow :TabbarFlowType) {
-        print(" MainTabBarCoordinator start çağırıldı")
-            let productService = ProductService()
-            let categoryService = CategoryService()
-            let companyService = CompanyService()
-            let orderService = OrderService()
-            let favoriteService = FavoritesService()
-            let profileService = ProfileService()
-            let cartService = CartService()
-            let tabBarController = UITabBarController()
-            let mainTabBarCoordinator = MainTabBarCoordinator(
-                parentCoordinator: self,
-                navigationController: navigationController,
-                tabBarController: tabBarController,
-                productService: productService,
-                categoryService: categoryService,
-                companyService: companyService,
-                orderService: orderService,
-                favoriteService: favoriteService,
-                authService: authService,
-                profileService: profileService,
-                cartService: cartService
-            )
-            childCoordinators.append(mainTabBarCoordinator)
-            mainTabBarCoordinator.start()
+    func startHomeFlow(_ flow: TabbarFlowType) {
+        if let mainTabBarCoordinator = self.mainTabBarCoordinator {
+            print("MainTabBarCoordinator artıq mövcuddur.")
             switch flow {
             case .home:
-                tabBarController.selectedIndex = 0
+                mainTabBarCoordinator.tabBarController.selectedIndex = 0
             case .cart:
-                tabBarController.selectedIndex = 1
+                mainTabBarCoordinator.tabBarController.selectedIndex = 1
             case .favorites:
-                tabBarController.selectedIndex = 2
+                mainTabBarCoordinator.tabBarController.selectedIndex = 2
             case .profile:
-                tabBarController.selectedIndex = 3
+                mainTabBarCoordinator.tabBarController.selectedIndex = 3
             }
+            return
         }
-        
-   
-        func startProfile(_ flow :ProfileFlowType){
-            switch flow {
-            case .language:
-                let languageCoordinator = LanguageSelectionCoordinator(
-                    parentCoordinator: self,
-                    navigationController: navigationController)
-                languageCoordinator.startLanguage()
-            }
+        if let existingCoordinator = mainTabBarCoordinator {
+               print("Mövcud MainTabBarCoordinator silinir.")
+               childCoordinators.removeAll { $0 === existingCoordinator }
+               mainTabBarCoordinator = nil
+           }
+        print("Yeni MainTabBarCoordinator yaradılır.")
+        let productService = ProductService()
+        let categoryService = CategoryService()
+        let companyService = CompanyService()
+        let orderService = OrderService()
+        let favoriteService = FavoritesService()
+        let profileService = ProfileService()
+        let cartService = CartService()
+        let tabBarController = UITabBarController()
+
+        let mainTabBarCoordinator = MainTabBarCoordinator(
+            parentCoordinator: self,
+            navigationController: navigationController,
+            tabBarController: tabBarController,
+            productService: productService,
+            categoryService: categoryService,
+            companyService: companyService,
+            orderService: orderService,
+            favoriteService: favoriteService,
+            authService: authService,
+            profileService: profileService,
+            cartService: cartService
+        )
+        self.mainTabBarCoordinator = mainTabBarCoordinator
+        childCoordinators.append(mainTabBarCoordinator)
+        mainTabBarCoordinator.start()
+
+        switch flow {
+        case .home:
+            tabBarController.selectedIndex = 0
+        case .cart:
+            tabBarController.selectedIndex = 1
+        case .favorites:
+            tabBarController.selectedIndex = 2
+        case .profile:
+            tabBarController.selectedIndex = 3
         }
     }
+}
 
