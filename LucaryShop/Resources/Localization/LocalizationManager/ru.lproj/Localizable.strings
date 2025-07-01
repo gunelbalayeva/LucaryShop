@@ -32,3 +32,28 @@
 // Companies
 "product_count_format" = "%d продуктов";
 
+
+// Tabbar
+"home" = "Главная";
+"orders" = "Корзина";
+"favorites" = "Избранное";
+"profile" = "Профиль";
+
+// My Favorite
+"headerLabel" = "Избранное";
+
+// My Cart
+"confirmCart" = "Подтвердить корзину";
+"sumName" = "Итого:";
+
+
+// Orders
+"orderDate" = "Дата:";
+"orderStatus" = "Статус:";
+"orderProductCount" = "Количество товаров:";
+"orderTotal" = "Итого: %.2f AZN";
+"orderHeader" = "Заказ";
+"cartQuantity" = "Кол-во";
+"errorTitle" = "Ошибка";
+"okButton" = "ОК";
+

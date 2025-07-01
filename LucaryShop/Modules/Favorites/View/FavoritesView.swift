@@ -9,8 +9,8 @@ import UIKit
 
 final class FavoritesView:UIView{
     
-    private let headerLabel:UILabel = {
-        let label =  UILabel().withStyle(text: "Sevimlilər", size: 16)
+     var headerLabel:UILabel = {
+        var label =  UILabel().withStyle(text: "Sevimlilər", size: 16)
         label.font =  UIFont.systemFont(ofSize: 20, weight: .heavy)
         label.textAlignment = .center
         return label

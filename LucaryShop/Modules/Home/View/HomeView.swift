@@ -39,9 +39,10 @@ final class HomeView: UIView {
         return bar
     }()
     
+
      var homeButton: CustomButton = {
         var button = CustomButton(style: .plain)
-        button.setTitle("Home", for: .normal)
+        button.setTitle("Ev", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.contentHorizontalAlignment = .center
         button.alpha = 1.0
@@ -50,7 +51,7 @@ final class HomeView: UIView {
     
      var categoryButton: CustomButton = {
         var button = CustomButton(style: .plain)
-        button.setTitle("Partnyorlar", for: .normal)
+        button.setTitle("Tərəfdaşlar", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.contentHorizontalAlignment = .center
         button.alpha = 0.5

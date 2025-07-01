@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 final class MainTabBarCoordinator:Coordinator {
     func start(with categoryId: String) {
         
@@ -61,7 +62,7 @@ final class MainTabBarCoordinator:Coordinator {
         }
         // 1.Home
            let homeNav = UINavigationController()
-           let homeCoordinator = HomeCoordinator(parentCoordinator: self, 
+           let homeCoordinator = HomeCoordinator(parentCoordinator: self,
                                                 navigationController: homeNav,
                                                 productService: productService,
                                                 categoryService: categoryService,
@@ -112,19 +113,25 @@ final class MainTabBarCoordinator:Coordinator {
         navigationController.setViewControllers([tabBarController], animated: true)
     }
     
-    private func configureTabBarItems() {
+    func updateTextsForLanguage() {
+        configureTabBarItems()
+    }
+
+    func configureTabBarItems() {
         tabBarController.tabBar.backgroundColor = .systemBackground
         tabBarController.tabBar.tintColor = UIColor(named: "logoColor")
         tabBarController.tabBar.unselectedItemTintColor = UIColor(named: "unSelectedTabbar")
-        tabBarController.viewControllers?[0].tabBarItem = UITabBarItem(title: "Əsas Səhifə",
+        
+        tabBarController.viewControllers?[0].tabBarItem = UITabBarItem(title: LocalizedStrings.tabHome,
                                                                        image: UIImage(systemName: "house"), tag: 0)
-        tabBarController.viewControllers?[1].tabBarItem = UITabBarItem(title: "Səbət",
+        tabBarController.viewControllers?[1].tabBarItem = UITabBarItem(title: LocalizedStrings.tabCart,
                                                                        image: UIImage(named: "sebet"), tag: 1)
-        tabBarController.viewControllers?[2].tabBarItem = UITabBarItem(title: "Sevimlilər",
+        tabBarController.viewControllers?[2].tabBarItem = UITabBarItem(title: LocalizedStrings.tabFavorites,
                                                                        image: UIImage(systemName: "heart"), tag: 2)
-        tabBarController.viewControllers?[3].tabBarItem = UITabBarItem(title: "Profil",
+        tabBarController.viewControllers?[3].tabBarItem = UITabBarItem(title: LocalizedStrings.tabProfile,
                                                                        image: UIImage(systemName: "person.circle"), tag: 3)
     }
+
     
     func childDidFinish(_ child: Coordinator) {
         childCoordinators.removeAll { $0 === child }

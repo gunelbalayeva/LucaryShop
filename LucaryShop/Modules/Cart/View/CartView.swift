@@ -16,8 +16,8 @@ final class CartView: UIView {
         return tableView
     }()
     
-    private let sumNameLabel: UILabel = {
-        let label = UILabel()
+     var sumNameLabel: UILabel = {
+        var label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.textColor = .darkGray
         label.textAlignment = .left
@@ -25,17 +25,17 @@ final class CartView: UIView {
         return label
     }()
     
-    private let sumPriceLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+    var  sumPriceLabel: UILabel = {
+        var label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
         label.textColor = .darkGray
         label.textAlignment = .left
         label.text = "0 AZN"
         return label
     }()
     
-    private let confirmCartButton: CustomButton = {
-        let button = CustomButton(style: .filled, height: 48, width: 200)
+     var confirmCartButton: CustomButton = {
+        var button = CustomButton(style: .filled, height: 48, width: 200)
         button.setTitle("Səbəti təsdiqlə", for: .normal)
         return button
     }()

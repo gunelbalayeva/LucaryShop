@@ -11,13 +11,15 @@ import UIKit
 import SnapKit
 
 final class OrderCell: UITableViewCell {
-    private let dateHeaderLabel: UILabel = {
-        let label = UILabel()
+     var dateHeaderLabel: UILabel = {
+        var label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
         label.textColor = UIColor(named: "blueColor") ?? .darkGray
         label.textAlignment = .left
         label.text = "Sifariş"
+        label.text = LocalizedStrings.orderHeader
         return label
+         
     }()
     
     private let dateLabel = UILabel().withStyle(text: "", size: 16)
@@ -70,11 +72,11 @@ final class OrderCell: UITableViewCell {
     
     func configure(with order: Order) {
         let formattedDate = String(order.date.prefix(10))
-        dateLabel.text = "Tarix: \(formattedDate)"
-        statusLabel.text = "Status: \(order.status)"
-        productCountLabel.text = "Məhsul sayı: \(order.products.count)"
-        priceLabel.text = String(format: "Cəmi: %.2f AZN", order.totalPrice)
-        
+        dateLabel.text = "\(LocalizedStrings.orderDate) \(formattedDate)"
+        statusLabel.text = "\(LocalizedStrings.orderStatus) \(order.status)"
+        productCountLabel.text = "\(LocalizedStrings.orderProductCount) \(order.products.count)"
+        priceLabel.text = String(format: LocalizedStrings.orderTotal, order.totalPrice)
+
         switch order.status.uppercased() {
         case "PENDING":
             statusLabel.textColor = .systemOrange
@@ -93,4 +95,5 @@ final class OrderCell: UITableViewCell {
             productsStackView.addArrangedSubview(productView)
         }
     }
+
 }

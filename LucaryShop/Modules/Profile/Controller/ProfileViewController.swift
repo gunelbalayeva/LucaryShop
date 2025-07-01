@@ -99,9 +99,6 @@ final class ProfileViewController:UIViewController{
         profileView.goToAboutUsScreenButton.setTitle(LocalizedStrings.goToAboutUsScreenButton, for: .normal)
         profileView.goToTermsScreenButton.setTitle(LocalizedStrings.goToTermsScreenButton, for: .normal)
         profileView.goToLogoutScreenButton.setTitle(LocalizedStrings.goToLogoutScreenButton, for: .normal)   
-        LocalizationManager.shared.currentLanguage = .en
-        Bundle.setLanguage("en")
-        NotificationCenter.default.post(name: .appLanguageDidChange, object: nil)
-
+        
     }
 }

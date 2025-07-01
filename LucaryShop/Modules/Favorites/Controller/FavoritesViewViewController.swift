@@ -26,6 +26,8 @@ final class FavoritesViewViewController:UIViewController{
         view.backgroundColor = .systemBackground
         collectionview.dataSource = self
         collectionview.delegate = self
+        NotificationCenter.default.addObserver( self, selector: #selector(languageDidChange), name: .appLanguageDidChange, object: nil
+            )
         collectionview.register(FavoriteCell.self, forCellWithReuseIdentifier: FavoriteCell.identifier)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(favoritesDidChange),
@@ -65,6 +67,16 @@ final class FavoritesViewViewController:UIViewController{
     private func favoritesDidChange() {
         loadFavorites()
     }
+    
+    @objc
+    private func languageDidChange() {
+        updateTextsForCurrentLanguage()
+    }
+
+    func updateTextsForCurrentLanguage() {
+        favoriteView.headerLabel.text = LocalizedStrings.headerLabel
+    }
+
     
     deinit {
         NotificationCenter.default.removeObserver(self)

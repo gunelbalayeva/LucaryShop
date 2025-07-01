@@ -31,3 +31,28 @@
 // Companies
 "product_count_format" = "%d məhsul";
 
+// Tabbar
+"home" = "Əsas Səhifə";
+"orders" = "Səbət";
+"favorites" = "Sevimlilər";
+"profile" = "Profil";
+
+
+// My Favorite
+"headerLabel" = "Sevimlilərim";
+
+// My Cart
+"confirmCart" = "Səbəti təsdiqlə";
+"sumName" = "Cəmi:";
+
+// Orders
+"orderHeader" = "Sifariş";
+"orderDate" = "Tarix:";
+"orderStatus" = "Status:";
+"orderProductCount" = "Məhsul sayı:";
+"orderTotal" = "Cəmi: %.2f AZN";
+"cartQuantity" = "Say";
+"errorTitle" = "Xəta";
+"okButton" = "Tamam";
+
+

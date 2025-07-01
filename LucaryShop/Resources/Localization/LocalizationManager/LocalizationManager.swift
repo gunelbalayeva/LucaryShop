@@ -7,20 +7,20 @@
 
 import UIKit
 enum Language: String, CaseIterable {
-    case az, en, ru, tr
-    
-    var title: String {
-        switch self {
-        case .az: return "Azərbaycan dili"
-        case .en: return "English"
-        case .ru: return "Русский"
-        case .tr: return "Türkçe"
-        }
+case az, en, ru, tr
+
+var title: String {
+    switch self {
+    case .az: return "Azərbaycan dili"
+    case .en: return "English"
+    case .ru: return "Русский"
+    case .tr: return "Türkçe"
     }
-    
-    var localeIdentifier: String {
-        return self.rawValue
-    }
+}
+
+var localeIdentifier: String {
+    return self.rawValue
+}
 }
 
 final class LocalizationManager {
@@ -53,22 +53,32 @@ final class LocalizationManager {
     }
 }
 
-private var bundleKey: UInt8 = 0
+private var associatedLanguageBundle: UInt8 = 0
 
 extension Bundle {
-    static func setLanguage(_ language: String) {
-        guard let path = Bundle.main.path(forResource: language, ofType: "lproj"),
-              let bundle = Bundle(path: path) else {
-            return
+    static var localized: Bundle {
+        get {
+            objc_sync_enter(Bundle.main)
+            defer { objc_sync_exit(Bundle.main) }
+            if let bundle = objc_getAssociatedObject(Bundle.main, &associatedLanguageBundle) as? Bundle {
+                return bundle
+            }
+            return Bundle.main
         }
-
-        objc_setAssociatedObject(Bundle.main, &bundleKey, bundle, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        set {
+            objc_sync_enter(Bundle.main)
+            defer { objc_sync_exit(Bundle.main) }
+            objc_setAssociatedObject(Bundle.main, &associatedLanguageBundle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
     }
 
-    static var localized: Bundle {
-        if let bundle = objc_getAssociatedObject(Bundle.main, &bundleKey) as? Bundle {
-            return bundle
+    static func setLanguage(_ languageCode: String) {
+        guard let path = Bundle.main.path(forResource: languageCode, ofType: "lproj"),
+              let bundle = Bundle(path: path) else {
+            print("⚠️ Bundle tapılmadı: \(languageCode)")
+            localized = .main
+            return
         }
-        return Bundle.main
+        localized = bundle
     }
 }

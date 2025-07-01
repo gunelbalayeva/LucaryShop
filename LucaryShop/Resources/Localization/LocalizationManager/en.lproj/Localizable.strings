@@ -31,3 +31,30 @@
 // Companies
 "product_count_format" = "%d products";
 
+// Tabbar
+"home" = "Home";
+"orders" = "Cart";
+"favorites" = "Favorites";
+"profile" = "Profile";
+
+// My Favorite
+"headerLabel" = "Favorites";
+
+// My Cart
+"confirmCart" = "Confirm Cart";
+"sumName" = "Total:";
+
+
+// Orders
+"orderDate" = "Date:";
+"orderStatus" = "Status:";
+"orderProductCount" = "Product Count:";
+"orderTotal" = "Total: %.2f AZN";
+"orderHeader" = "Order";
+"cartQuantity" = "Qty";
+"errorTitle" = "Error";
+"okButton" = "OK";
+
+
+
+

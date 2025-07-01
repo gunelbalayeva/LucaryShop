@@ -57,17 +57,18 @@ final class AppCoordinator: Coordinator {
         self.verificationId = verificationId
         self.parentCoordinator = parentCoordinator
         NotificationCenter.default.addObserver(
-                   self,
-                   selector: #selector(languageDidChange),
-                   name: .appLanguageDidChange,
-                   object: nil
-               )
+               self,
+               selector: #selector(languageDidChange),
+               name: .appLanguageDidChange,
+               object: nil
+           )
     }
     
     func childDidFinish(_ child: Coordinator) {
         childCoordinators.removeAll { $0 === child }
     }
 
+    
     
     func start() {
         
@@ -76,6 +77,24 @@ final class AppCoordinator: Coordinator {
 //            navigationController.setViewControllers([vc], animated: true)
     }
 
+   
+
+    @objc
+    func languageDidChange() {
+        let lang = LocalizationManager.shared.currentLanguage
+        print("🌐 Dil dəyişdi: \(lang.rawValue)")
+        
+        Bundle.setLanguage(lang.rawValue)
+        
+        if let existingCoordinator = self.mainTabBarCoordinator {
+            existingCoordinator.updateTextsForLanguage()
+        } else {
+            startHomeFlow(.home)
+        }
+    }
+
+
+    
     func goToPermissionsOnboarding() {
         let vc = PermissionsOnboardingBuilder(coordinator: self).build()
         navigationController.pushViewController(vc, animated: true)
@@ -103,7 +122,7 @@ final class AppCoordinator: Coordinator {
             
         case .register:
             let registerCoordinator = RegisterCoordinator(
-                parentCoordinator:self, 
+                parentCoordinator:self,
                 navigationController: navigationController,
                 authService: authService)
             registerCoordinator.onFinish = { [weak self] in
@@ -185,5 +204,9 @@ final class AppCoordinator: Coordinator {
             tabBarController.selectedIndex = 3
         }
     }
-}
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 
+}

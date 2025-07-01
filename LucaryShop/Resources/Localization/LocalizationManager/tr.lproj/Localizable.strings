@@ -33,3 +33,26 @@
 // Companies
 "product_count_format" = "%d ürün";
 
+// Tabbar
+"home" = "Ana Sayfa";
+"orders" = "Sepet";
+"favorites" = "Favoriler";
+"profile" = "Profil";
+
+// My Favorite
+"headerLabel" = "Favorilerim";
+
+// My Cart
+"confirmCart" = "Sepeti Onayla";
+"sumName" = "Toplam:";
+
+//Order
+"orderDate" = "Tarih:";
+"orderStatus" = "Durum:";
+"orderProductCount" = "Ürün Sayısı:";
+"orderTotal" = "Toplam: %.2f AZN";
+"orderHeader" = "Sipariş";
+"cartQuantity" = "Adet";
+"errorTitle" = "Hata";
+"okButton" = "Tamam";
+

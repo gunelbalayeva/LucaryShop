@@ -18,11 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene  = (scene as? UIWindowScene) else { return }
-
+        let navigationController = UINavigationController()
+        
         let selectedLang = LocalizationManager.shared.currentLanguage
         Bundle.setLanguage(selectedLang.rawValue)
-
-        let navigationController = UINavigationController()
         window = UIWindow(windowScene: scene)
         coordinator = AppCoordinator(navigationController: navigationController, authService: authService, verificationId: verificationId)
         coordinator?.start()

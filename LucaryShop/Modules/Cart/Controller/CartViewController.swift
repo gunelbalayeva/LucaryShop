@@ -29,14 +29,20 @@ final class CartViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "My Cart"
         view.backgroundColor = .systemBackground
-        title = "Səbətim"
+        NotificationCenter.default.addObserver(self,
+               selector: #selector(languageDidChange),
+               name: .appLanguageDidChange,
+               object: nil)
+        
         NotificationCenter.default.addObserver(
                self,
                selector: #selector(handleCartChange(_:)),
                name: CartService.cartDidChangeNotification,
                object: nil
            )
+       
 
         setupNavigationBar()
         setupTableView()
@@ -152,6 +158,15 @@ final class CartViewController:UIViewController {
         }
     }
 
+    @objc private func languageDidChange() {
+        updateTextsForCurrentLanguage()
+    }
+
+    func updateTextsForCurrentLanguage() {
+        cartView.confirmCartButton.setTitle(LocalizedStrings.confirmCartButtonI, for: .normal)
+        cartView.sumNameLabel.text = LocalizedStrings.sumNameLabel
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

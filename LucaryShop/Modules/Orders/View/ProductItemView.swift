@@ -49,7 +49,8 @@ final class ProductItemView: UIView {
     
     func configure(with product: CartItem) {
         nameLabel.text = product.name
-        quantityLabel.text = "Say: \(product.quantity)"
+        quantityLabel.text = "\(LocalizedStrings.quantity): \(product.quantity)"
+        
         if let url = URL(string: product.imgUrl) {
             imageView.kf.setImage(with: url)
         }

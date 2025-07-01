@@ -217,7 +217,7 @@ final class HomeViewController:UIViewController, UISearchBarDelegate {
     func updateTextsForCurrentLanguage() {
         homeView.searchBar.placeholder = LocalizedStrings.searchBar
         homeView.homeButton.setTitle(LocalizedStrings.home, for: .normal)
-        homeView.categoryButton.setTitle(LocalizedStrings.companyHead, for: .normal)
+        homeView.categoryButton.setTitle(LocalizedStrings.partners, for: .normal)
         homeView.headLabel.text = LocalizedStrings.products
         homeView.companyHeadLabel.text = LocalizedStrings.companyHead
     }

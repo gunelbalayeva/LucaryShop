@@ -89,7 +89,8 @@ final class CompanyViewController: UIViewController {
             .store(in: &cancellables)
     }
     
-    @objc private func languageDidChange() {
+    @objc
+    private func languageDidChange() {
         updateTextsForCurrentLanguage()
     }
 

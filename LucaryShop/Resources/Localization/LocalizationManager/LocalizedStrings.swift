@@ -8,6 +8,7 @@
 import Foundation
 
 enum LocalizedStrings {
+    
     //Localized screen
     static var languageTitle: String { "language_title".localized }
     
@@ -40,4 +41,31 @@ enum LocalizedStrings {
         String(format: "product_count_format".localized, count)
     }
 
+    // TabBar titles
+       static var tabHome: String { "home".localized }
+       static var tabCart: String { "orders".localized }
+       static var tabFavorites: String { "favorites".localized }
+       static var tabProfile: String { "profile".localized }
+    
+    // Sevimliler
+    static var headerLabel :String{"headerLabel".localized}
+    
+    
+    // Sebetim
+    static var confirmCartButtonI:String {"confirmCart".localized}
+    static var sumNameLabel : String {"sumName".localized}
+    
+   
+    // Sifarislerim
+    static var orderDate = NSLocalizedString("orderDate", comment: "")
+    static var orderStatus = NSLocalizedString("orderStatus", comment: "")
+    static var orderProductCount = NSLocalizedString("orderProductCount", comment: "")
+    static var orderTotal = NSLocalizedString("orderTotal", comment: "")
+    static var orderHeader = NSLocalizedString("orderHeader", comment: "")
+    static var quantity = NSLocalizedString("cartQuantity", comment: "")
+    static var orderTitle :String{"orderTitle".localized}
+    static var errorTitle = NSLocalizedString("errorTitle", comment: "")
+    static var okButton = NSLocalizedString("okButton", comment: "")
+
+    
 }

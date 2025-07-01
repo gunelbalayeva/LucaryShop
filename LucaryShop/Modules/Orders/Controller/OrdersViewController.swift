@@ -17,6 +17,7 @@ final class OrdersViewController:UIViewController {
         view.backgroundColor = .systemBackground
         navigationItem.hidesBackButton = true
         title = "Sifarişlərim"
+        title = LocalizedStrings.orderHeader
         setupNavigationBar()
         setupTableView()
         binding()
@@ -59,11 +60,16 @@ final class OrdersViewController:UIViewController {
         viewModel.fetchOrders()
     }
 
-    private func showErrorAlert(message: String) {
-        let alert = UIAlertController(title: "Xəta", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
+   private func showErrorAlert(message: String) {
+       let alert = UIAlertController(
+           title: LocalizedStrings.errorTitle,
+           message: message,
+           preferredStyle: .alert
+       )
+       alert.addAction(UIAlertAction(title: LocalizedStrings.okButton, style: .default))
+       present(alert, animated: true)
+   }
+
       
     private func setupNavigationBar() {
         let config = UIImage.SymbolConfiguration(weight: .heavy)
