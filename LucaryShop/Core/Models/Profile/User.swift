@@ -7,11 +7,10 @@
 
 import Foundation
 struct User : Codable {
-        let id: Int
-        let name: String
-        let email: String
-        let phone: String?
-    }
+    let name: String?
+    let surname: String?
+    let email: String?
+}
 
 struct ProfileUpdateRequest: Codable {
     let name: String

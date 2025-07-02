@@ -16,11 +16,15 @@ final class OrdersViewController:UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationItem.hidesBackButton = true
+        NotificationCenter.default.addObserver(self,
+               selector: #selector(languageDidChange),
+               name: .appLanguageDidChange,
+               object: nil)
         title = "Sifarişlərim"
-        title = LocalizedStrings.orderHeader
         setupNavigationBar()
         setupTableView()
         binding()
+        
     }
     
     init(viewModel: OrdersViewModel) {
@@ -83,4 +87,13 @@ final class OrdersViewController:UIViewController {
     private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc private func languageDidChange() {
+        updateTextsForCurrentLanguage()
+    }
+
+    func updateTextsForCurrentLanguage() {
+        title = LocalizedStrings.orderHeader
+    }
+    
 }

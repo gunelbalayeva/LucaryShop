@@ -224,6 +224,9 @@
 		CED1C55F2E1154700064AC1F /* About.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CED1C55E2E1154700064AC1F /* About.mp4 */; };
 		CED1C5612E12FC6F0064AC1F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5602E12FC6F0064AC1F /* Coordinator.swift */; };
 		CED1C56C2E140D220064AC1F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CED1C5662E1409850064AC1F /* Localizable.strings */; };
+		CED1C5712E1517910064AC1F /* UsersRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5702E1517910064AC1F /* UsersRegister.swift */; };
+		CED1C5742E1517E00064AC1F /* UsersChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5732E1517E00064AC1F /* UsersChangePassword.swift */; };
+		CED1C5772E15185F0064AC1F /* ChangePasswordEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C5762E15185F0064AC1F /* ChangePasswordEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -445,6 +448,9 @@
 		CED1C5692E14098C0064AC1F /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CED1C56A2E140C3E0064AC1F /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		CED1C56B2E140C3F0064AC1F /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CED1C5702E1517910064AC1F /* UsersRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRegister.swift; sourceTree = "<group>"; };
+		CED1C5732E1517E00064AC1F /* UsersChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersChangePassword.swift; sourceTree = "<group>"; };
+		CED1C5762E15185F0064AC1F /* ChangePasswordEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -579,6 +585,7 @@
 		CE17880B2DF472A800A91620 /* MyServices */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C56E2E1515E10064AC1F /* Profile */,
 				CED1C52D2E105A170064AC1F /* Orders */,
 				CED1C50C2E0ED4210064AC1F /* Cart */,
 				CED1C4FD2E0DAD690064AC1F /* Company */,
@@ -586,7 +593,6 @@
 				CED1C4D42E0B1DAE0064AC1F /* Favorites */,
 				CED1C4D22E0976F10064AC1F /* ProductProductDetail */,
 				CED1C4D02E0972650064AC1F /* Auth */,
-				CED1C42E2E0411F50064AC1F /* ProfileService.swift */,
 			);
 			path = MyServices;
 			sourceTree = "<group>";
@@ -594,6 +600,8 @@
 		CE17880C2DF472C500A91620 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C5722E1517BF0064AC1F /* UsersChangePassword */,
+				CED1C56F2E1517790064AC1F /* UsersRegister */,
 				CED1C4B52E0603A40064AC1F /* CompanyDetail */,
 				CED1C44B2E043AE10064AC1F /* Company */,
 				CED1C4372E0413430064AC1F /* Order */,
@@ -610,6 +618,7 @@
 		CE17880D2DF472E000A91620 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C5782E1521630064AC1F /* UsersRegister */,
 				CED1C5502E114DF90064AC1F /* AboutUs */,
 				CED1C5382E1146530064AC1F /* Terms */,
 				CE1788182DF473E000A91620 /* Profile */,
@@ -1280,6 +1289,8 @@
 		CED1C3B62E02C5880064AC1F /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C5752E1518460064AC1F /* UsersChangePassword */,
+				CED1C56D2E1515D40064AC1F /* Profile */,
 				CED1C52C2E1059FD0064AC1F /* Orders */,
 				CED1C50B2E0ED4000064AC1F /* Cart */,
 				CED1C4FC2E0DAD4E0064AC1F /* Company */,
@@ -1287,7 +1298,6 @@
 				CED1C4D52E0B1E1A0064AC1F /* Favorites */,
 				CED1C4D32E0977910064AC1F /* Products */,
 				CED1C4D12E09727E0064AC1F /* Auth */,
-				CED1C4302E0412150064AC1F /* ProfileEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -2068,6 +2078,61 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CED1C56D2E1515D40064AC1F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C4302E0412150064AC1F /* ProfileEndpoint.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CED1C56E2E1515E10064AC1F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C42E2E0411F50064AC1F /* ProfileService.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CED1C56F2E1517790064AC1F /* UsersRegister */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5702E1517910064AC1F /* UsersRegister.swift */,
+			);
+			path = UsersRegister;
+			sourceTree = "<group>";
+		};
+		CED1C5722E1517BF0064AC1F /* UsersChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5732E1517E00064AC1F /* UsersChangePassword.swift */,
+			);
+			path = UsersChangePassword;
+			sourceTree = "<group>";
+		};
+		CED1C5752E1518460064AC1F /* UsersChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5762E15185F0064AC1F /* ChangePasswordEndpoint.swift */,
+			);
+			path = UsersChangePassword;
+			sourceTree = "<group>";
+		};
+		CED1C5782E1521630064AC1F /* UsersRegister */ = {
+			isa = PBXGroup;
+			children = (
+				CED1C5792E1521870064AC1F /* Builder */,
+			);
+			path = UsersRegister;
+			sourceTree = "<group>";
+		};
+		CED1C5792E1521870064AC1F /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2245,6 +2310,7 @@
 				CEA1C35D2DFC519000E9B74B /* Register.swift in Sources */,
 				CED1C4722E048C940064AC1F /* FavoritesViewModel.swift in Sources */,
 				CED1C4202E030F0B0064AC1F /* Localizable+Exc.swift in Sources */,
+				CED1C5712E1517910064AC1F /* UsersRegister.swift in Sources */,
 				CE5E3C9A2DF885C1005B827B /* SplashBuild.swift in Sources */,
 				CE5C6C502DF4B0B200821985 /* OnboardingBuilder.swift in Sources */,
 				CED1C4F22E0D42BF0064AC1F /* CategoriesDetailBuilder.swift in Sources */,
@@ -2327,6 +2393,7 @@
 				CE5E3C832DF854C5005B827B /* WelcomeOnboardingViewController .swift in Sources */,
 				CEA1C36A2DFC600500E9B74B /* URLSessionNetworkService.swift in Sources */,
 				CED1C4612E0460130064AC1F /* OrderCoordinator.swift in Sources */,
+				CED1C5772E15185F0064AC1F /* ChangePasswordEndpoint.swift in Sources */,
 				CED1C4672E0481430064AC1F /* ProfileView.swift in Sources */,
 				CE5E3CA42DF8D49E005B827B /* UIStackView.swift in Sources */,
 				CED1C51E2E0FE5570064AC1F /* SecurePaymentBuilder.swift in Sources */,
@@ -2350,6 +2417,7 @@
 				CE5C6C5D2DF4B20400821985 /* OrdersViewController.swift in Sources */,
 				CED1C4222E0310A40064AC1F /* LanguageController+Exc.swift in Sources */,
 				CEA1C34E2DFB0BE100E9B74B /*  ChangePasswordViewModel.swift in Sources */,
+				CED1C5742E1517E00064AC1F /* UsersChangePassword.swift in Sources */,
 				CED1C5302E106B240064AC1F /* OrderCell.swift in Sources */,
 				CED1C4542E044EBC0064AC1F /* MainTabBarCoordinator.swift in Sources */,
 				CE17881C2DF4861C00A91620 /* UIImageView+Kingfisher.swift in Sources */,

@@ -22,4 +22,14 @@ final class ProfileService {
             completion(result.map { _ in () })
         }
     }
+    
+    func changePassword(request: ChangePasswordRequest, completion: @escaping (Result<Void, Error>) -> Void) {
+        let endpoint = ChangePasswordEndpoint.changePassword(request)
+        networkService.request(endpoint.request) { (result: Result<EmptyResponse, Error>) in
+            completion(result.map { _ in () })
+        }
+    }
+
 }
+
+

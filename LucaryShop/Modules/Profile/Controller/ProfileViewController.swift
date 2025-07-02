@@ -6,15 +6,18 @@
 //
 
 import UIKit
-
+import Combine
 final class ProfileViewController:UIViewController{
     private let profileView = ProfileView()
     private let viewModel : ProfileViewModel
-    
+    private var cancellables = Set<AnyCancellable>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupBindings()
+        bindViewModel()
+        viewModel.fetchProfile()
     }
     
     init(viewModel: ProfileViewModel) {
@@ -55,12 +58,23 @@ final class ProfileViewController:UIViewController{
         }
 
         profileView.onTappedLogout = { [weak self] in
-            self?.viewModel.logout()
-        }
-        profileView.onTappedLogout = { [weak self] in
             self?.showLogoutAlert()
         }
     }
+    
+    
+    private func bindViewModel() {
+        viewModel.$user
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] user in
+                guard let user = user else { return }
+                self?.profileView.userNameLabel.text = user.name
+                self?.profileView.surnameLabel.text = user.surname
+                self?.profileView.emailLabel.text = user.email
+            }
+            .store(in: &cancellables)
+    }
+
 
     private func showLogoutAlert() {
         let alert = UIAlertController(
@@ -99,6 +113,5 @@ final class ProfileViewController:UIViewController{
         profileView.goToAboutUsScreenButton.setTitle(LocalizedStrings.goToAboutUsScreenButton, for: .normal)
         profileView.goToTermsScreenButton.setTitle(LocalizedStrings.goToTermsScreenButton, for: .normal)
         profileView.goToLogoutScreenButton.setTitle(LocalizedStrings.goToLogoutScreenButton, for: .normal)   
-        
     }
 }

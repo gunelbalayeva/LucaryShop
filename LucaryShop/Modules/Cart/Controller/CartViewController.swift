@@ -158,7 +158,8 @@ final class CartViewController:UIViewController {
         }
     }
 
-    @objc private func languageDidChange() {
+    @objc
+    private func languageDidChange() {
         updateTextsForCurrentLanguage()
     }
 

@@ -29,15 +29,14 @@ final class ProfileView: UIView {
     }()
     
     let userNameLabel :UILabel = {
-        let label =  UILabel().withStyle(text: "Gunel", size: 20)
+        let label =  UILabel().withStyle(text: "", size: 20)
         label.font =  UIFont.systemFont(ofSize: 20, weight: .heavy)
         label.textColor = .gray
         return label
     }()
     
     let surnameLabel = UILabel().withStyle(text: "", size: 14)
-    let emailLabel = UILabel().withStyle(text: "gunelbalayeva97@gmail.com", size: 12)
-    
+    let emailLabel = UILabel().withStyle(text: "", size: 12)    
     var editedAccountButton = ProfileView.makeButton(title: "Hesabı redaktə edin")
     var goToLanguaceScreenButton = ProfileView.makeButton(title: "Tətbiq dili")
     var goToOrdersButton = ProfileView.makeButton(title: "Sifarişlərim")

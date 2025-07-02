@@ -37,9 +37,4 @@ final class OrdersViewModel{
             }
         }
     }
-
-
-//        func selectOrder(_ order: Order) {
-//            coordinator?.navigateToOrderDetail(order: order)
-//        }
 }
