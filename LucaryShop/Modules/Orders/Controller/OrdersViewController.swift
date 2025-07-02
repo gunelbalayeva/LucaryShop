@@ -88,12 +88,12 @@ final class OrdersViewController:UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc private func languageDidChange() {
+    @objc
+    private func languageDidChange() {
         updateTextsForCurrentLanguage()
     }
 
     func updateTextsForCurrentLanguage() {
         title = LocalizedStrings.orderHeader
     }
-    
 }

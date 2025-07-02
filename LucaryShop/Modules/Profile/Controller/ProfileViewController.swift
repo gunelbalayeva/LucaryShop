@@ -15,6 +15,7 @@ final class ProfileViewController:UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        navigationItem.hidesBackButton = true
         setupBindings()
         bindViewModel()
         viewModel.fetchProfile()

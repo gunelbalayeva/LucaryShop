@@ -8,11 +8,8 @@
 import UIKit
 import MapKit
 final class AboutView: UIView {
-    
-    // MARK: - UI Components
     private let scrollView = UIScrollView()
     private let contentStack = UIStackView()
-
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -83,7 +80,6 @@ final class AboutView: UIView {
         return map
     }()
     
-    // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -96,11 +92,9 @@ final class AboutView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Setup
     
     private func setupView() {
         backgroundColor = .verifyBg
-        
         scrollView.alwaysBounceVertical = true
         scrollView.contentInsetAdjustmentBehavior = .never
         
@@ -111,8 +105,6 @@ final class AboutView: UIView {
         
         addSubview(scrollView)
         scrollView.addSubview(contentStack)
-        
-        // Add arranged views
         contentStack.addArrangedSubview(imageView)
         contentStack.addArrangedSubview(headerLabel)
         contentStack.addArrangedSubview(textView)
@@ -140,7 +132,6 @@ final class AboutView: UIView {
         playPauseButton.addTarget(self, action: #selector(togglePlayPause), for: .touchUpInside)
     }
 
-    // MARK: - Public Methods
     func setText(_ text: String) {
         textView.text = text
     }
@@ -158,7 +149,9 @@ final class AboutView: UIView {
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
         mapView.setRegion(
-            MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)),
+            MKCoordinateRegion(center: coordinate,
+                               span: MKCoordinateSpan(latitudeDelta: 0.05,
+                                                      longitudeDelta: 0.05)),
             animated: false
         )
     }
@@ -167,7 +160,6 @@ final class AboutView: UIView {
         contactTextView.text = text
     }
 
-    // MARK: - Actions
     
     @objc private func togglePlayPause() {
         if playerView.isPlaying() {

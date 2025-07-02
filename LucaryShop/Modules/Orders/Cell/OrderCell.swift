@@ -7,9 +7,6 @@
 
 import UIKit
 import SnapKit
-import UIKit
-import SnapKit
-
 final class OrderCell: UITableViewCell {
      var dateHeaderLabel: UILabel = {
         var label = UILabel()
@@ -76,7 +73,6 @@ final class OrderCell: UITableViewCell {
         statusLabel.text = "\(LocalizedStrings.orderStatus) \(order.status)"
         productCountLabel.text = "\(LocalizedStrings.orderProductCount) \(order.products.count)"
         priceLabel.text = String(format: LocalizedStrings.orderTotal, order.totalPrice)
-
         switch order.status.uppercased() {
         case "PENDING":
             statusLabel.textColor = .systemOrange
@@ -87,9 +83,7 @@ final class OrderCell: UITableViewCell {
         default:
             statusLabel.textColor = .darkGray
         }
-
-        productsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        
+        productsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }        
         order.products.forEach { product in
             let productView = ProductItemView(product: product)
             productsStackView.addArrangedSubview(productView)

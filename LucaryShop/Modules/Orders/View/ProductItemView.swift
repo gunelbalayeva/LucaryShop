@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import SnapKit
 import Kingfisher
-
 final class ProductItemView: UIView {
     private let imageView = UIImageView()
     private let nameLabel = UILabel()

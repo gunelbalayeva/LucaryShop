@@ -100,8 +100,7 @@ final class MainTabBarCoordinator:Coordinator {
         let profileCoordinator = ProfileCoordinator(navigationController: profileNav,
                                                     profileService: profileService,
                                                     authService: authService,
-                                                    orderService: orderService,
-                                                    childCoordinators: childCoordinators)
+                                                    orderService: orderService )
         self.profileCoordinator = profileCoordinator
         profileCoordinator.onFinish = { [weak self] in
             self?.parentCoordinator?.startAuthFlow(.login)

@@ -7,14 +7,16 @@
 
 import Foundation
 final class ProfileViewModel {
-    private let profileService: ProfileService
     private let authService: AuthService
+    private let profileService: ProfileService
     private var coordinator: ProfileCoordinator?
     @Published var user: User?
     @Published var isLoading = false
     @Published var errorMessage: String?
     
-    init(profileService: ProfileService, authService: AuthService, coordinator: ProfileCoordinator? = nil) {
+    init(profileService: ProfileService,
+         authService: AuthService,
+         coordinator: ProfileCoordinator? = nil) {
         self.profileService = profileService
         self.authService = authService
         self.coordinator = coordinator

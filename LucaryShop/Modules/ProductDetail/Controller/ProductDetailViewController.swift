@@ -17,7 +17,7 @@ final class ProductDetailViewController:UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupNavigationBar()
-        viewModel.fetchProductDetail()
+//        viewModel.fetchProductDetail()
         bindViewModel()
         setupActions()
     }

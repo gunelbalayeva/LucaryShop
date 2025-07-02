@@ -15,7 +15,7 @@ enum ProfileEndpoint {
         case .getMe:
             return "/users/me"
         case .update:
-            return "/users/me"
+            return "/users/update" 
         }
     }
 
@@ -47,10 +47,11 @@ enum ProfileEndpoint {
 
     var request: APIRequest {
         APIRequest(
-            url: URL(string: "https://e-commerce-app-150649679863.europe-west1.run.app\(path)")!,
+            url: URL(string: "https://api.lucaryservice.com\(path)")!,
             method: method,
             headers: headers,
             body: body
         )
     }
 }
+

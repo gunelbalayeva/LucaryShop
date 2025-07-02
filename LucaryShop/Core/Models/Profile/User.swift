@@ -12,9 +12,9 @@ struct User : Codable {
     let email: String?
 }
 
-struct ProfileUpdateRequest: Codable {
+struct ProfileUpdateRequest: Encodable {
     let name: String
+    let surname: String
     let email: String
-    let phone: String?
 }
 
