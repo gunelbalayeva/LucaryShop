@@ -7,19 +7,20 @@
 
 import Foundation
 import UIKit
+import Lottie
 final class UsersRegisterView:UIView{
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     var onCreateAccountTapped: (() -> Void)?
     
-    private let headImageView: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        image.setHeight(100)
-        image.clipsToBounds = true
-        image.image = UIImage(named: "logo")
-        return image
+    private let headImageView: LottieAnimationView = {
+        let animation = LottieAnimationView(name: "Updates")
+        animation.contentMode = .scaleAspectFit
+        animation.loopMode = .loop
+        animation.play()
+        return animation
     }()
+    
     
     private let headLabel = UILabel().withStyle(text: "Update information", size: 24 )
     private let usernameLabel = UILabel().withStyle(text: "Name", size: 16)

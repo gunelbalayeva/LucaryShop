@@ -233,6 +233,7 @@
 		CED1C58D2E1530BD0064AC1F /* ErrorUserRegisterPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1C58C2E1530BD0064AC1F /* ErrorUserRegisterPopup.swift */; };
 		CED1C5902E15B5020064AC1F /* UpdateSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C58E2E15B5010064AC1F /* UpdateSuccess.json */; };
 		CED1C5912E15B5020064AC1F /* UpdateError.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C58F2E15B5020064AC1F /* UpdateError.json */; };
+		CED1C5932E16D2CB0064AC1F /* Updates.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C5922E16D2CB0064AC1F /* Updates.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -463,6 +464,7 @@
 		CED1C58C2E1530BD0064AC1F /* ErrorUserRegisterPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorUserRegisterPopup.swift; sourceTree = "<group>"; };
 		CED1C58E2E15B5010064AC1F /* UpdateSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UpdateSuccess.json; sourceTree = "<group>"; };
 		CED1C58F2E15B5020064AC1F /* UpdateError.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UpdateError.json; sourceTree = "<group>"; };
+		CED1C5922E16D2CB0064AC1F /* Updates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Updates.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1192,6 +1194,7 @@
 		CEA1C3742DFE175200E9B74B /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C5922E16D2CB0064AC1F /* Updates.json */,
 				CED1C58E2E15B5010064AC1F /* UpdateSuccess.json */,
 				CED1C58F2E15B5020064AC1F /* UpdateError.json */,
 				CED1C5262E1034150064AC1F /* SecurityError.json */,
@@ -2255,6 +2258,7 @@
 				CE5E3C702DF757BF005B827B /* MeaCulpa-Regular.ttf in Resources */,
 				CED1C3892DFEB6330064AC1F /* Success.json in Resources */,
 				CED1C5902E15B5020064AC1F /* UpdateSuccess.json in Resources */,
+				CED1C5932E16D2CB0064AC1F /* Updates.json in Resources */,
 				CED1C5282E1034160064AC1F /* SecurityError.json in Resources */,
 				CE5E3C912DF85C8A005B827B /* Oswald-VariableFont_wght.ttf in Resources */,
 				CED1C3942E004FC10064AC1F /* ChangePassword.json in Resources */,

@@ -14,7 +14,7 @@ final class GetStartedOnboardingViewController :UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .onboarding
+        view.backgroundColor = .systemBackground
         setupUI()
         bindActions()
     }

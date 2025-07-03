@@ -82,7 +82,7 @@ final class AppCoordinator: Coordinator {
     @objc
     func languageDidChange() {
         let lang = LocalizationManager.shared.currentLanguage
-        print("🌐 Dil dəyişdi: \(lang.rawValue)")
+        print("Dil dəyişdi: \(lang.rawValue)")
         
         Bundle.setLanguage(lang.rawValue)
         

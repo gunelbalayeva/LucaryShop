@@ -18,7 +18,7 @@
 // Profile Screen
 "editedAccount" = "Edit account";
 "languageScreen" = "Application language" ;
-"orders" = "My orders";
+"profileOrders" = "My Orders";
 "aboutUsScreen" = "About us";
 "termsScreen" = "Terms and Conditions";
 "logoutScreen" = "Log out";

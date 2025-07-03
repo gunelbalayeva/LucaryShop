@@ -27,11 +27,9 @@ final class SuccessUserRegisterPopup :UIView {
     
     private func setupUI() {
         backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        
         containerView.makeCardStyle()
         addSubview(containerView)
         containerView.centerInSuperview(size: CGSize(width: 300, height: 350))
-        
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .playOnce
         containerView.addSubview(animationView)
@@ -40,7 +38,7 @@ final class SuccessUserRegisterPopup :UIView {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(200)
         }
-        messageLabel.text = "Təbriklər, \(userName)! Profil məlumatlarınız yeniləndi."
+        messageLabel.text = "Təbriklər,\(userName)! Profil məlumatlarınız yeniləndi."
         messageLabel.setStyle(fontSize: 18, weight: .bold, textColor: UIColor(named: "logoColor") ?? .black, alignment: .center, numberOfLines: 0)
         containerView.addSubview(messageLabel)
         messageLabel.snp.makeConstraints {

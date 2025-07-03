@@ -32,6 +32,7 @@ enum ProfileEndpoint {
         var headers = ["Content-Type": "application/json"]
         if let token = KeychainManager.shared.getToken() {
             headers["Authorization"] = "Bearer \(token)"
+            print("Profile tokeb",token)
         }
         return headers
     }

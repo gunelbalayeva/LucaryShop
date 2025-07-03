@@ -24,7 +24,7 @@ final class CompanyViewController: UIViewController {
         navigationItem.hidesBackButton = true
         setupDataSource()
         call()
-//        binding()
+        binding()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

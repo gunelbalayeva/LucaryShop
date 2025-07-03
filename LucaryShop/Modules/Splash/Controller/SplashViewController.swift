@@ -20,7 +20,7 @@ final class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .bg
+        view.backgroundColor = .systemBackground
         viewModel.startWaveAnimation(on: splashView.shadowView)
         viewModel.startLabelAnimation(for: splashView.animatedLabel)
         navigateToOnboarding()

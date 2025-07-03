@@ -18,7 +18,7 @@
 // Profile Screen
 "editedAccount" = "Hesabı redaktə edin";
 "languageScreen" = "Tətbiq dili" ;
-"orders" = "Sifarişlərim";
+"profileOrders" = "Sifarişlərim";
 "aboutUsScreen" = "Haqqımızda";
 "termsScreen" = "Qaydalar və Şərtlər";
 "logoutScreen" = "Çıxış et";

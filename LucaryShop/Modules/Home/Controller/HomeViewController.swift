@@ -61,7 +61,7 @@ final class HomeViewController:UIViewController, UISearchBarDelegate {
         setupActions()
         observeViewModel()
         setupFavoriteSubscriptions()
-//        homeViewModel.fetchHomeData()
+        homeViewModel.fetchHomeData()
         setupFavoriteNotifications()
     }
     

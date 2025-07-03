@@ -19,7 +19,7 @@
 // Profile Screen
 "editedAccount" = "Редактировать аккаунт";
 "languageScreen" = "Язык приложения" ;
-"orders" = "Мои заказы";
+"profileOrders" = "Мои заказы";
 "aboutUsScreen" = "О нас";
 "termsScreen" = "Условия и положения";
 "logoutScreen" = "Выйти";

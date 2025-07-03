@@ -22,7 +22,7 @@ enum LocalizedStrings {
     // Profile screen
     static var editedAccountButton:String { "editedAccount".localized }
     static var goToLanguageScreenButton :String{ "languageScreen".localized }
-    static var goToOrdersButton:String{"orders".localized}
+    static var goToOrdersButton:String{"profileOrders".localized}
     static var goToAboutUsScreenButton:String {"aboutUsScreen".localized}
     static var goToTermsScreenButton :String {"termsScreen".localized}
     static var goToLogoutScreenButton:String {"logoutScreen".localized}

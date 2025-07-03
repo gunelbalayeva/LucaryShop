@@ -21,7 +21,7 @@ final class PermissionsOnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .onboarding
+        view.backgroundColor = .systemBackground
         setupUI()
     }
     
