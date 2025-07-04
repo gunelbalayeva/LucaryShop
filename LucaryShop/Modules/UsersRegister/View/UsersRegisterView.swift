@@ -78,7 +78,7 @@ final class UsersRegisterView:UIView{
             axis: .vertical,
             alignment: .fill,
             spacing: 16,
-            insets: UIEdgeInsets(top: 8, left: 24, bottom: 32, right: 24)
+            insets: UIEdgeInsets(top: 0, left: 24, bottom: 45, right: 24)
         )
         
         [nameTextField, surnameTextField, emailTextField].forEach {

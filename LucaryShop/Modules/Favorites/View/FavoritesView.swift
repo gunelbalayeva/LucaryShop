@@ -30,9 +30,10 @@ final class FavoritesView:UIView{
     func setupUI() {
         addSubviews(views: headerLabel, favoriteCollectionView)
         headerLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(16) 
             make.left.right.equalToSuperview().inset(16)
         }
+
         
         favoriteCollectionView.snp.makeConstraints { make in
             make.top.equalTo(headerLabel.snp.bottom)

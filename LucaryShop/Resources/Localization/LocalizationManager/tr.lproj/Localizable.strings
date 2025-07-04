@@ -11,9 +11,9 @@
 // Home screen
 "search_bar" = "Ara";
 "home" = "Ev";
-"partners" = "Ortaklar";
+"partners" = "Şirketler";
 "products" = "Ürünler";
-"company_head" = "Şirketler";
+"company_head" = "Kategoriler";
 
 
 // Profile Screen

@@ -23,8 +23,16 @@ final class LanguageCell: UITableViewCell{
     func configure(language: Language, isSelected: Bool) {
         languageLabel.text = language.title
         iconImageView.image = UIImage(named: language.rawValue)
-        accessoryType = isSelected ? .checkmark : .none
+        
+        if isSelected {
+            let checkmarkImageView = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
+            checkmarkImageView.tintColor = UIColor.gray 
+            accessoryView = checkmarkImageView
+        } else {
+            accessoryView = nil
+        }
     }
+
     
     private func setupUI() {
         iconImageView.contentMode = .scaleAspectFit

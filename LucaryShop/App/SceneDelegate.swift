@@ -23,7 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let selectedLang = LocalizationManager.shared.currentLanguage
         Bundle.setLanguage(selectedLang.rawValue)
         window = UIWindow(windowScene: scene)
-        coordinator = AppCoordinator(navigationController: navigationController, authService: authService, verificationId: verificationId)
+        coordinator = AppCoordinator(navigationController: navigationController,
+                                     authService: authService,
+                                     verificationId: verificationId)
         coordinator?.start()
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

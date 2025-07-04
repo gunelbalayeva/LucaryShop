@@ -11,9 +11,9 @@
 // Home screen
 "search_bar" = "Axtar";
 "home" = "Ev";
-"partners" = "Tərəfdaşlar";
+"partners" = "Şirkətlər";
 "products" = "Məhsullar";
-"company_head" = "Şirkətlər";
+"company_head" = "Kateqoriyalar";
 
 // Profile Screen
 "editedAccount" = "Hesabı redaktə edin";

@@ -21,7 +21,6 @@ final class OrdersViewController:UIViewController {
                name: .appLanguageDidChange,
                object: nil)
         title = "Sifarişlərim"
-        setupNavigationBar()
         setupTableView()
         binding()
         
@@ -75,19 +74,6 @@ final class OrdersViewController:UIViewController {
    }
 
       
-    private func setupNavigationBar() {
-        let config = UIImage.SymbolConfiguration(weight: .heavy)
-        let image = UIImage(systemName: "chevron.backward", withConfiguration: config)
-        let backButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(backButtonTapped))
-        backButton.tintColor = .darkGray
-        navigationItem.leftBarButtonItem = backButton
-    }
-    
-    @objc
-    private func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     @objc
     private func languageDidChange() {
         updateTextsForCurrentLanguage()

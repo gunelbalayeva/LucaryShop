@@ -75,7 +75,6 @@ final class LanguageSelectionViewController:UIViewController {
     
     func updateTextsForCurrentLanguage() {
         title = LocalizedStrings.languageTitle
-       
     }
 }
 

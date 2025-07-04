@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 final class AuthService {
     private let networkService: NetworkService
 

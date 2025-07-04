@@ -11,9 +11,9 @@
 // Home screen
 "search_bar" = "Поиск";
 "home" = "Дом";
-"partners" = "Партнеры";
+"partners" = "Компании";
 "products" = "Продукты";
-"company_head" = "Компании";
+"company_head" = "Категории";
 
 
 // Profile Screen
@@ -23,7 +23,6 @@
 "aboutUsScreen" = "О нас";
 "termsScreen" = "Условия и положения";
 "logoutScreen" = "Выйти";
-
 "logout_title" = "Выйти";
 "logout_message" = "Вы уверены, что хотите выйти?";
 "logout_cancel" = "Отмена";
@@ -34,8 +33,8 @@
 
 
 // Tabbar
-"home" = "Главная";
-"orders" = "Корзина";
+"home" = "Дом";
+"orders" = "Мои заказы";
 "favorites" = "Избранное";
 "profile" = "Профиль";
 

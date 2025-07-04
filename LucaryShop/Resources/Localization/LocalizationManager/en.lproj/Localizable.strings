@@ -11,9 +11,9 @@
 // Home Screen
 "search_bar" = "Search";
 "home" = "Home";
-"partners" = "Partners";
+"partners" = "Companies";
 "products" = "Products";
-"company_head" = "Companies";
+"company_head" = "Categories";
 
 // Profile Screen
 "editedAccount" = "Edit account";
@@ -43,7 +43,6 @@
 // My Cart
 "confirmCart" = "Confirm Cart";
 "sumName" = "Total:";
-
 
 // Orders
 "orderDate" = "Date:";

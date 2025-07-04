@@ -6,8 +6,10 @@
 //
 
 // gunelbalayeva97@gmail.com
-// gunel12345
+// gunel1234
 
+// nazlibalayeva0@gmail.com
+// nazli1234
 import Foundation
 import UIKit
 
@@ -72,9 +74,9 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         
-        startHomeFlow(.home)
-//        let vc = SplashBuild(cordinator: self).build()
-//            navigationController.setViewControllers([vc], animated: true)
+//        startHomeFlow(.home)
+        let vc = SplashBuild(cordinator: self).build()
+            navigationController.setViewControllers([vc], animated: true)
     }
 
    
@@ -145,66 +147,92 @@ final class AppCoordinator: Coordinator {
             startAuthFlow(.login)
         }
     }
+    private var loadingView: UIView?
+
+    private func showLoadingIndicator() {
+        hideLoadingIndicator()
+
+        let loadingView = UIView(frame: UIScreen.main.bounds)
+        loadingView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.center = loadingView.center
+        indicator.startAnimating()
+        
+        loadingView.addSubview(indicator)
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.addSubview(loadingView)
+        }
+
+        self.loadingView = loadingView
+    }
+
+    private func hideLoadingIndicator() {
+        loadingView?.removeFromSuperview()
+        loadingView = nil
+    }
+
     
     func startHomeFlow(_ flow: TabbarFlowType) {
-        if let mainTabBarCoordinator = self.mainTabBarCoordinator {
-            print("MainTabBarCoordinator artıq mövcuddur.")
+        resetTabBar()
+        showLoadingIndicator()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+                guard let self = self else { return }
+
+                self.hideLoadingIndicator()
+            print("Yeni MainTabBarCoordinator yaradılır.")
+            let productService = ProductService()
+            let categoryService = CategoryService()
+            let companyService = CompanyService()
+            let orderService = OrderService()
+            let favoriteService = FavoritesService()
+            let profileService = ProfileService()
+            let cartService = CartService()
+            let tabBarController = UITabBarController()
+            
+            let mainTabBarCoordinator = MainTabBarCoordinator(
+                parentCoordinator: self,
+                navigationController: navigationController,
+                tabBarController: tabBarController,
+                productService: productService,
+                categoryService: categoryService,
+                companyService: companyService,
+                orderService: orderService,
+                favoriteService: favoriteService,
+                authService: authService,
+                profileService: profileService,
+                cartService: cartService
+            )
+            
+            self.mainTabBarCoordinator = mainTabBarCoordinator
+            childCoordinators.append(mainTabBarCoordinator)
+            mainTabBarCoordinator.start()
+            
             switch flow {
             case .home:
-                mainTabBarCoordinator.tabBarController.selectedIndex = 0
+                tabBarController.selectedIndex = 0
             case .cart:
-                mainTabBarCoordinator.tabBarController.selectedIndex = 1
+                tabBarController.selectedIndex = 1
             case .favorites:
-                mainTabBarCoordinator.tabBarController.selectedIndex = 2
+                tabBarController.selectedIndex = 2
             case .profile:
-                mainTabBarCoordinator.tabBarController.selectedIndex = 3
+                tabBarController.selectedIndex = 3
             }
-            return
-        }
-        if let existingCoordinator = mainTabBarCoordinator {
-               print("Mövcud MainTabBarCoordinator silinir.")
-               childCoordinators.removeAll { $0 === existingCoordinator }
-               mainTabBarCoordinator = nil
-           }
-        print("Yeni MainTabBarCoordinator yaradılır.")
-        let productService = ProductService()
-        let categoryService = CategoryService()
-        let companyService = CompanyService()
-        let orderService = OrderService()
-        let favoriteService = FavoritesService()
-        let profileService = ProfileService()
-        let cartService = CartService()
-        let tabBarController = UITabBarController()
-
-        let mainTabBarCoordinator = MainTabBarCoordinator(
-            parentCoordinator: self,
-            navigationController: navigationController,
-            tabBarController: tabBarController,
-            productService: productService,
-            categoryService: categoryService,
-            companyService: companyService,
-            orderService: orderService,
-            favoriteService: favoriteService,
-            authService: authService,
-            profileService: profileService,
-            cartService: cartService
-        )
-        self.mainTabBarCoordinator = mainTabBarCoordinator
-        childCoordinators.append(mainTabBarCoordinator)
-        mainTabBarCoordinator.start()
-
-        switch flow {
-        case .home:
-            tabBarController.selectedIndex = 0
-        case .cart:
-            tabBarController.selectedIndex = 1
-        case .favorites:
-            tabBarController.selectedIndex = 2
-        case .profile:
-            tabBarController.selectedIndex = 3
         }
     }
-    
+
+    func resetTabBar() {
+        if let existingCoordinator = mainTabBarCoordinator {
+            print("MainTabBarCoordinator reset edilir.")
+            childCoordinators.removeAll { $0 === existingCoordinator }
+            mainTabBarCoordinator = nil
+        }
+
+        navigationController.setViewControllers([], animated: false)
+    }
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

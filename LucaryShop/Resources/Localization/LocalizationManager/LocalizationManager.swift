@@ -75,7 +75,7 @@ extension Bundle {
     static func setLanguage(_ languageCode: String) {
         guard let path = Bundle.main.path(forResource: languageCode, ofType: "lproj"),
               let bundle = Bundle(path: path) else {
-            print("⚠️ Bundle tapılmadı: \(languageCode)")
+            print("Bundle tapılmadı: \(languageCode)")
             localized = .main
             return
         }

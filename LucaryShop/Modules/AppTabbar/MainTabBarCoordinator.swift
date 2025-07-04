@@ -109,7 +109,7 @@ final class MainTabBarCoordinator:Coordinator {
 
         tabBarController.viewControllers = [homeNav, cartNav, favoriteNav, profileNav]
         configureTabBarItems()
-        navigationController.setViewControllers([tabBarController], animated: true)
+        navigationController.setViewControllers([tabBarController], animated: false)
     }
     
     func updateTextsForLanguage() {

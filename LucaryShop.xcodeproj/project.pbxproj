@@ -688,6 +688,7 @@
 		CE1788112DF4733000A91620 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				CED1C45B2E045B730064AC1F /* Extension */,
 				CE1788432DF48E4A00A91620 /* Coordinator */,
 				CE1788402DF48E2800A91620 /* Builder */,
 				CE17883D2DF48DD500A91620 /* ViewModel */,
@@ -1164,7 +1165,6 @@
 		CEA1C3332DFADD8700E9B74B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CED1C45B2E045B730064AC1F /* Extension */,
 				CE17883B2DF48DA200A91620 /* LoginViewController.swift */,
 			);
 			path = Controller;

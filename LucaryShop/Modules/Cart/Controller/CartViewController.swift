@@ -31,6 +31,7 @@ final class CartViewController:UIViewController {
         super.viewDidLoad()
         title = "My Cart"
         view.backgroundColor = .systemBackground
+        navigationItem.hidesBackButton = true
         NotificationCenter.default.addObserver(self,
                selector: #selector(languageDidChange),
                name: .appLanguageDidChange,
@@ -42,9 +43,6 @@ final class CartViewController:UIViewController {
                name: CartService.cartDidChangeNotification,
                object: nil
            )
-       
-
-        setupNavigationBar()
         setupTableView()
         showLoading()
         bindViewModel()
@@ -97,7 +95,7 @@ final class CartViewController:UIViewController {
     
     private func showErrorAlert(message: String) {
         let alert = UIAlertController(title: "Xəta", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Tamam", style: .default))
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
     
@@ -131,19 +129,7 @@ final class CartViewController:UIViewController {
         view.viewWithTag(999)?.removeFromSuperview()
     }
     
-    private func setupNavigationBar() {
-        let config = UIImage.SymbolConfiguration(weight: .heavy)
-        let image = UIImage(systemName: "chevron.backward", withConfiguration: config)
-        let backButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(backButtonTapped))
-        backButton.tintColor = .darkGray
-        navigationItem.leftBarButtonItem = backButton
-    }
-    
-    @objc
-    private func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-    
+
     @objc
     private func handleCartChange(_ notification: Notification) {
         let cleared = notification.userInfo?["cleared"] as? Bool ?? false
