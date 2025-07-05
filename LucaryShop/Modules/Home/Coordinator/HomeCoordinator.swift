@@ -103,7 +103,7 @@ final class HomeCoordinator: Coordinator {
     }
     
     func navigateToCategoriesDetail(categoryId: String) {
-        print("➡️ navigateToCategoriesDetail çağırıldı")
+        print("navigateToCategoriesDetail çağırıldı")
         let coordinator = CategoriesDetailCoordinator(
             parentCoordinator: self,
             navigationController: navigationController,

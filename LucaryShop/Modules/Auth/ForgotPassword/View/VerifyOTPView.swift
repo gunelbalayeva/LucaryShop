@@ -56,7 +56,7 @@ final class VerifyOTPView:UIView{
     }
     
     private func setupUI() {
-        backgroundColor = .verifyBg
+        backgroundColor = UIColor(named: "Verify")
         addSubviews(views: animationView, headLabel, otpStackView,submitButton)
         [ sixTextField].forEach {
             $0.setHeight(52)

@@ -103,7 +103,7 @@ final class MainTabBarCoordinator:Coordinator {
                                                     orderService: orderService )
         self.profileCoordinator = profileCoordinator
         profileCoordinator.onFinish = { [weak self] in
-            self?.parentCoordinator?.startAuthFlow(.login)
+            self?.parentCoordinator?.resetToLogin()
         }
         profileCoordinator.start()
 

@@ -86,7 +86,9 @@ private extension CategoryCell {
     }
     
     func updateCornerRadius() {
-        imageView.layer.cornerRadius = imageView.frame.width / 2
-        imageView.layer.masksToBounds = true
+        DispatchQueue.main.async {
+            self.imageView.layer.cornerRadius = self.imageView.frame.width / 2
+            self.imageView.layer.masksToBounds = true
+        }
     }
 }

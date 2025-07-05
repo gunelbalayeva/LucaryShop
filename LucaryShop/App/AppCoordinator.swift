@@ -73,21 +73,17 @@ final class AppCoordinator: Coordinator {
     
     
     func start() {
-        
 //        startHomeFlow(.home)
         let vc = SplashBuild(cordinator: self).build()
-            navigationController.setViewControllers([vc], animated: true)
+        navigationController.setViewControllers([vc], animated: true)
     }
 
-   
 
     @objc
     func languageDidChange() {
         let lang = LocalizationManager.shared.currentLanguage
         print("Dil dəyişdi: \(lang.rawValue)")
-        
         Bundle.setLanguage(lang.rawValue)
-        
         if let existingCoordinator = self.mainTabBarCoordinator {
             existingCoordinator.updateTextsForLanguage()
         } else {
@@ -95,8 +91,6 @@ final class AppCoordinator: Coordinator {
         }
     }
 
-
-    
     func goToPermissionsOnboarding() {
         let vc = PermissionsOnboardingBuilder(coordinator: self).build()
         navigationController.pushViewController(vc, animated: true)
@@ -148,27 +142,46 @@ final class AppCoordinator: Coordinator {
         }
     }
     private var loadingView: UIView?
+    private var loadingLabel: UILabel?
+    private var loadingTimer: Timer?
 
     private func showLoadingIndicator() {
         hideLoadingIndicator()
 
         let loadingView = UIView(frame: UIScreen.main.bounds)
-        loadingView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        loadingView.backgroundColor = UIColor(named: "Verify")
 
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.center = loadingView.center
-        indicator.startAnimating()
-        
-        loadingView.addSubview(indicator)
+        let label = UILabel()
+        label.text = "Loading"
+        label.font = UIFont.systemFont(ofSize: 22, weight: .heavy)
+        label.textColor = UIColor(named: "baseButton")
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)
+        ])
+
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
             window.addSubview(loadingView)
         }
 
         self.loadingView = loadingView
+        self.loadingLabel = label
+
+        var dotCount = 0
+        loadingTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+            dotCount = (dotCount + 1) % 4
+            self?.loadingLabel?.text = "Loading" + String(repeating: ".", count: dotCount)
+        }
     }
 
     private func hideLoadingIndicator() {
+        loadingTimer?.invalidate()
+        loadingTimer = nil
+        loadingLabel = nil
         loadingView?.removeFromSuperview()
         loadingView = nil
     }
@@ -178,9 +191,8 @@ final class AppCoordinator: Coordinator {
         resetTabBar()
         showLoadingIndicator()
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
                 guard let self = self else { return }
-
                 self.hideLoadingIndicator()
             print("Yeni MainTabBarCoordinator yaradılır.")
             let productService = ProductService()
@@ -223,6 +235,13 @@ final class AppCoordinator: Coordinator {
         }
     }
 
+    func resetToLogin() {
+        childCoordinators.removeAll()
+        mainTabBarCoordinator = nil
+        navigationController.setViewControllers([], animated: false)
+        startAuthFlow(.login)
+    }
+
     func resetTabBar() {
         if let existingCoordinator = mainTabBarCoordinator {
             print("MainTabBarCoordinator reset edilir.")
@@ -236,5 +255,4 @@ final class AppCoordinator: Coordinator {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
 }

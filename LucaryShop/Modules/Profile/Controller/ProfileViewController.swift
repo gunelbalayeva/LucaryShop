@@ -17,8 +17,8 @@ final class ProfileViewController:UIViewController{
         view.backgroundColor = .systemBackground
         navigationItem.hidesBackButton = true
         setupBindings()
-        bindViewModel()
         viewModel.fetchProfile()
+        bindViewModel()
     }
     
     init(viewModel: ProfileViewModel) {
