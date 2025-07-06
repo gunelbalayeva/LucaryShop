@@ -12,8 +12,6 @@
 // nazli1234
 import Foundation
 import UIKit
-
-
 enum AuthFlowType {
     case login
     case register
@@ -40,7 +38,6 @@ final class AppCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
-    
     private let authService: AuthService
     let verificationId: String
     var productDetailCoordinator: ProductDetailCoordinator?
@@ -70,8 +67,7 @@ final class AppCoordinator: Coordinator {
         childCoordinators.removeAll { $0 === child }
     }
 
-    
-    
+        
     func start() {
 //        startHomeFlow(.home)
         let vc = SplashBuild(cordinator: self).build()
@@ -115,7 +111,6 @@ final class AppCoordinator: Coordinator {
                 self?.startHomeFlow(.home)
             }
             loginCoordinator.start()
-            
         case .register:
             let registerCoordinator = RegisterCoordinator(
                 parentCoordinator:self,
@@ -135,22 +130,19 @@ final class AppCoordinator: Coordinator {
         }
     }
     
-    
     func didFinishForgotPasswordFlow() {
         if !(navigationController.topViewController is LoginViewController) {
             startAuthFlow(.login)
         }
     }
+    
     private var loadingView: UIView?
     private var loadingLabel: UILabel?
     private var loadingTimer: Timer?
-
     private func showLoadingIndicator() {
         hideLoadingIndicator()
-
         let loadingView = UIView(frame: UIScreen.main.bounds)
         loadingView.backgroundColor = UIColor(named: "Verify")
-
         let label = UILabel()
         label.text = "Loading"
         label.font = UIFont.systemFont(ofSize: 22, weight: .heavy)
@@ -167,10 +159,8 @@ final class AppCoordinator: Coordinator {
            let window = windowScene.windows.first {
             window.addSubview(loadingView)
         }
-
         self.loadingView = loadingView
         self.loadingLabel = label
-
         var dotCount = 0
         loadingTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
             dotCount = (dotCount + 1) % 4
@@ -186,14 +176,18 @@ final class AppCoordinator: Coordinator {
         loadingView = nil
     }
 
-    
+    private var isHomeFlowInProgress = false
     func startHomeFlow(_ flow: TabbarFlowType) {
+        guard !isHomeFlowInProgress else {
+            print("startHomeFlow artıq işləyir, təkrar çağırılmadı.")
+            return
+        }
+        isHomeFlowInProgress = true
         resetTabBar()
         showLoadingIndicator()
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
-                guard let self = self else { return }
-                self.hideLoadingIndicator()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+            guard let self = self else { return }
+            self.hideLoadingIndicator()
             print("Yeni MainTabBarCoordinator yaradılır.")
             let productService = ProductService()
             let categoryService = CategoryService()
@@ -203,35 +197,27 @@ final class AppCoordinator: Coordinator {
             let profileService = ProfileService()
             let cartService = CartService()
             let tabBarController = UITabBarController()
-            
             let mainTabBarCoordinator = MainTabBarCoordinator(
                 parentCoordinator: self,
-                navigationController: navigationController,
+                navigationController: self.navigationController,
                 tabBarController: tabBarController,
                 productService: productService,
                 categoryService: categoryService,
                 companyService: companyService,
                 orderService: orderService,
                 favoriteService: favoriteService,
-                authService: authService,
+                authService: self.authService,
                 profileService: profileService,
-                cartService: cartService
-            )
-            
+                cartService: cartService )
             self.mainTabBarCoordinator = mainTabBarCoordinator
-            childCoordinators.append(mainTabBarCoordinator)
+            self.childCoordinators.append(mainTabBarCoordinator)
             mainTabBarCoordinator.start()
-            
             switch flow {
-            case .home:
-                tabBarController.selectedIndex = 0
-            case .cart:
-                tabBarController.selectedIndex = 1
-            case .favorites:
-                tabBarController.selectedIndex = 2
-            case .profile:
-                tabBarController.selectedIndex = 3
-            }
+            case .home: tabBarController.selectedIndex = 0
+            case .cart: tabBarController.selectedIndex = 1
+            case .favorites: tabBarController.selectedIndex = 2
+            case .profile: tabBarController.selectedIndex = 3 }
+            self.isHomeFlowInProgress = false
         }
     }
 

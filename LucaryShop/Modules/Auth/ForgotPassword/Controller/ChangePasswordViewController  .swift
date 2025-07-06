@@ -33,7 +33,8 @@ final class ChangePasswordViewController:UIViewController{
         }
     }
     
-    init(viewModel: ChangePasswordViewModel, coordinator: ForgotPasswordCoordinator) {
+    init(viewModel: ChangePasswordViewModel,
+         coordinator: ForgotPasswordCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)

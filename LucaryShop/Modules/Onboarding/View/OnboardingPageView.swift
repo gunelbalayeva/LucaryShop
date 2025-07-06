@@ -55,7 +55,7 @@ final class OnboardingPageView: UIView {
         imageContainerView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(80)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(488)
+            make.height.equalTo(410)
         }
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

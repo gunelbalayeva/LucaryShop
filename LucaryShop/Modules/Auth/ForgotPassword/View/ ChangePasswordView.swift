@@ -4,10 +4,8 @@
 //
 //  Created by User on 12.06.25.
 //
-
 import UIKit
 import Lottie
-
 final class ChangePasswordView: UIView {
     var changePasswordTapped: (() -> Void)?
     private let headLabel = UILabel().withStyle(text: "Change Password", size: 24 )
@@ -44,7 +42,6 @@ final class ChangePasswordView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-   
     private func setupLayout() {
         addSubview(animationView)
         animationView.snp.makeConstraints { make in
@@ -57,8 +54,6 @@ final class ChangePasswordView: UIView {
             make.top.equalTo(animationView.snp.bottom).offset(16)
             make.centerX.equalToSuperview()
         }
-       
-       
         addSubview(passwordLabel)
         passwordLabel.snp.makeConstraints { make in
             make.top.equalTo(headLabel.snp.bottom).offset(16)
@@ -78,7 +73,9 @@ final class ChangePasswordView: UIView {
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(50)
         }
-        changePasswordButton.addTarget(self, action: #selector(changePasswordTappedAction), for: .touchUpInside)
+        changePasswordButton.addTarget(self, 
+                                       action: #selector(changePasswordTappedAction),
+                                       for: .touchUpInside)
     }
 
     

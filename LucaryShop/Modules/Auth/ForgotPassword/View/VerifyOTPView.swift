@@ -65,7 +65,9 @@ final class VerifyOTPView:UIView{
             $0.keyboardType = .numberPad
             $0.textColor = .baseButton
         }
-        submitButton.addTarget(self, action: #selector(verifyCodeTapped), for: .touchUpInside)
+        submitButton.addTarget(self,
+                               action: #selector(verifyCodeTapped),
+                               for: .touchUpInside)
     }
     
     private func setupConstraints() {

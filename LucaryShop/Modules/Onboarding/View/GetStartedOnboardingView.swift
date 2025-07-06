@@ -83,19 +83,19 @@ final class GetStartedOnboardingView: UIView {
         imageContainerView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(80)
             $0.leading.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(488)
+            $0.height.equalTo(410)
         }
         imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(imageContainerView.snp.bottom).offset(20)
+            $0.top.equalTo(imageContainerView.snp.bottom).offset(50)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
         buttonsStackView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(100)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(170)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(326)
             $0.bottom.lessThanOrEqualToSuperview().offset(-40)

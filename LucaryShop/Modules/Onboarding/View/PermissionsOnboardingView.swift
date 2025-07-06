@@ -69,13 +69,13 @@ final class PermissionsOnboardingView: UIView {
         imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        imageContainerView.setSize(width: 396, height: 480)
+        imageContainerView.setSize(width: 396, height: 410)
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(imageContainerView.snp.bottom).offset(20)
+            $0.top.equalTo(imageContainerView.snp.bottom).offset(50)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
         startNowButton.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(40)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(80)
             $0.centerX.equalToSuperview()
             $0.bottom.lessThanOrEqualToSuperview().offset(-20)
         }

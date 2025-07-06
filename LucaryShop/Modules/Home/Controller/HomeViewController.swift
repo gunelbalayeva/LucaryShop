@@ -86,10 +86,12 @@ final class HomeViewController:UIViewController, UISearchBarDelegate {
         homeView.searchBar.delegate = self
         categoriesCollectionView.dataSource = self
         categoriesCollectionView.delegate = self
-        categoriesCollectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
+        categoriesCollectionView.register(CategoryCell.self, 
+                                          forCellWithReuseIdentifier: CategoryCell.identifier)
         productList.dataSource = dataSource
         productList.delegate = self
-        productList.register(ProductCell.self, forCellWithReuseIdentifier: ProductCell.identifier)
+        productList.register(ProductCell.self,
+                             forCellWithReuseIdentifier: ProductCell.identifier)
         productList.isScrollEnabled = true
         productList.alwaysBounceVertical = true
         categoriesCollectionView.configureScrolling(hidesIndicators: true, enablesScroll: true)

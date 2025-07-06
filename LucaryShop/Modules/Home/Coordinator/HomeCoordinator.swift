@@ -11,23 +11,18 @@ final class HomeCoordinator: Coordinator {
     func start(with categoryId: String) {
         
     }
-     var parentCoordinator: Coordinator?
+    var parentCoordinator: Coordinator?
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
-    
-    // Servislər
     let productService: ProductService
     let categoryService: CategoryService
     let companyService: CompanyService
     let cartService: CartService
     let favoritesService: FavoritesService
     private let orderService: OrderService
-    
-    // Child coordinatorlar
-     var companyCoordinator: CompanyCoordinator?
-     var productDetailCoordinator: ProductDetailCoordinator?
-     var categoriesDetailCoordinator: CategoriesDetailCoordinator?
-    
+    var companyCoordinator: CompanyCoordinator?
+    var productDetailCoordinator: ProductDetailCoordinator?
+    var categoriesDetailCoordinator: CategoriesDetailCoordinator?
     var onFinish: (() -> Void)?
     
     init(parentCoordinator: Coordinator? = nil,
@@ -46,22 +41,22 @@ final class HomeCoordinator: Coordinator {
         self.cartService = cartService
         self.favoritesService = favoritesService
         self.orderService = orderService
-       
+        
     }
     
     func start() {
         let viewModel = HomeViewModel(coordinator: self,
-                                    productService: productService,
-                                    categoryService: categoryService,
-                                    companyService: companyService,
-                                    favoritesService: favoritesService)
+                                      productService: productService,
+                                      categoryService: categoryService,
+                                      companyService: companyService,
+                                      favoritesService: favoritesService)
         let vc = HomeViewController(homeViewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     
     func childDidFinish(_ child: Coordinator) {
         childCoordinators.removeAll { $0 === child }
-
+        
         if child is CategoriesDetailCoordinator {
             categoriesDetailCoordinator = nil
         } else if child is CompanyCoordinator {
@@ -70,7 +65,7 @@ final class HomeCoordinator: Coordinator {
             productDetailCoordinator = nil
         }
     }
-
+    
     
     // MARK: - Navigation Methods
     
@@ -116,7 +111,7 @@ final class HomeCoordinator: Coordinator {
         
         self.categoriesDetailCoordinator = coordinator
         self.childCoordinators.append(coordinator)
-
+        
         coordinator.onFinish = { [weak self, weak coordinator] in
             guard let self, let coordinator else { return }
             self.childDidFinish(coordinator)
@@ -124,7 +119,7 @@ final class HomeCoordinator: Coordinator {
         }
         coordinator.start(with: categoryId)
     }
-
+    
     func navigateToProductDetail(productId: String) {
         let detailCoordinator = ProductDetailCoordinator(
             parentCoordinator: self,

@@ -140,7 +140,9 @@ final class HomeView: UIView {
     private func setupUI() {
         backgroundColor = .white
         updateUnderlinePosition()
-        addSubviews(views: headerStackView, searchBar, buttonStackView, underlineView, bannerImage, companyStackView, categoriesCollectionView, headLabel, productList)
+        addSubviews(views: headerStackView, searchBar,
+                    buttonStackView, underlineView, bannerImage,
+                    companyStackView, categoriesCollectionView, headLabel, productList)
         companyHeadLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         companyHeadLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
@@ -250,7 +252,9 @@ final class HomeView: UIView {
     
     func updateProductListTopConstraint(hideHeader: Bool) {
         UIView.animate(withDuration: 0.3) {
-            [self.bannerImage, self.companyStackView, self.categoriesCollectionView, self.headLabel].forEach { view in
+            [self.bannerImage, self.companyStackView,
+             self.categoriesCollectionView,
+             self.headLabel].forEach { view in
                 view.alpha = hideHeader ? 0 : 1
             }
             self.productListTopConstraint?.deactivate()

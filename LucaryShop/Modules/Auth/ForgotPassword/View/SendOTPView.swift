@@ -47,9 +47,12 @@ final class SendOTPView :UIView{
     
     private func setupUI() {
         backgroundColor = .white
-        addSubviews(views: headImageView, headLabel, emailLabel, emailTextField, getPasswordButton)
+        addSubviews(views: headImageView, headLabel,
+                    emailLabel, emailTextField, getPasswordButton)
         setupConstraints()
-        getPasswordButton.addTarget(self, action: #selector(sendCodeTapped), for: .touchUpInside)
+        getPasswordButton.addTarget(self,
+                                    action: #selector(sendCodeTapped),
+                                    for: .touchUpInside)
     }
     
     private func setupConstraints() {
