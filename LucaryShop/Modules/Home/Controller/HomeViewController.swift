@@ -63,6 +63,7 @@ final class HomeViewController:UIViewController, UISearchBarDelegate {
         setupFavoriteSubscriptions()
         homeViewModel.fetchHomeData()
         setupFavoriteNotifications()
+        updateTextsForCurrentLanguage()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -36,17 +36,21 @@ final class AppCoordinator: Coordinator {
         
     }
     
+    private let authService: AuthService
+    private var mainTabBarCoordinator: MainTabBarCoordinator?
+    private var loadingView: UIView?
+    private var loadingLabel: UILabel?
+    private var loadingTimer: Timer?
+    private var isHomeFlowInProgress = false
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
-    private let authService: AuthService
-    let verificationId: String
     var productDetailCoordinator: ProductDetailCoordinator?
     var aboutCoordinator:AboutCoordinator?
     var termsCoordinator:TermsCoordinator?
     var profilecoordinator:ProfileCoordinator?
-    private var mainTabBarCoordinator: MainTabBarCoordinator?
     weak var parentCoordinator: Coordinator?
-
+    let verificationId: String
+    
     init(navigationController: UINavigationController,
          authService: AuthService,
          verificationId: String,
@@ -136,9 +140,7 @@ final class AppCoordinator: Coordinator {
         }
     }
     
-    private var loadingView: UIView?
-    private var loadingLabel: UILabel?
-    private var loadingTimer: Timer?
+
     private func showLoadingIndicator() {
         hideLoadingIndicator()
         let loadingView = UIView(frame: UIScreen.main.bounds)
@@ -176,7 +178,7 @@ final class AppCoordinator: Coordinator {
         loadingView = nil
     }
 
-    private var isHomeFlowInProgress = false
+  
     func startHomeFlow(_ flow: TabbarFlowType) {
         guard !isHomeFlowInProgress else {
             print("startHomeFlow artıq işləyir, təkrar çağırılmadı.")
@@ -221,6 +223,7 @@ final class AppCoordinator: Coordinator {
         }
     }
 
+    
     func resetToLogin() {
         childCoordinators.removeAll()
         mainTabBarCoordinator = nil
@@ -228,16 +231,17 @@ final class AppCoordinator: Coordinator {
         startAuthFlow(.login)
     }
 
+    
     func resetTabBar() {
         if let existingCoordinator = mainTabBarCoordinator {
             print("MainTabBarCoordinator reset edilir.")
             childCoordinators.removeAll { $0 === existingCoordinator }
             mainTabBarCoordinator = nil
         }
-
         navigationController.setViewControllers([], animated: false)
     }
 
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
