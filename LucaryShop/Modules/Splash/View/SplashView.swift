@@ -23,7 +23,7 @@ final class SplashView: UIView {
     }()
     
     let logoImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "logo"))
+        let imageView = UIImageView(image: UIImage(named: "splashLogo"))
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 100
         imageView.layer.masksToBounds = true

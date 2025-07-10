@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 final class GetStartedOnboardingBuilder {
     private let coordinator: AppCoordinator
     
@@ -16,8 +15,8 @@ final class GetStartedOnboardingBuilder {
     
     
     func build() -> UIViewController {
-        let onboardingModel = OnboardingModel(imageName: "FeaturesOnboarding",
-                                              title: "Lucary hesabınız var?")
+        let onboardingModel = OnboardingModel(imageName: "lucary4",
+                                              title: "   Lucary sizi gözləyir!                                    Lucary hesabınız varmı?")
         let viewModel = GetStartedOnboardingViewModel(model: onboardingModel, cordinator: coordinator)
         let vc = GetStartedOnboardingViewController(viewModel: viewModel)
         return vc

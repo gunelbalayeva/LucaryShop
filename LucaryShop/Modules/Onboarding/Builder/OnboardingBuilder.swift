@@ -19,13 +19,13 @@ final class OnboardingViewControllerBuilder {
     func build() -> UIViewController {
         let welcome = WelcomeOnboardingViewController(
             viewModel: OnboardingViewModel(
-                model: OnboardingModel(imageName: "GetStartedOnboarding", 
-                                       title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. !"))
+                model: OnboardingModel(imageName: "lucary1", 
+                                       title: "  Lucary - Əl işi tablo, brelok, çanta və dekorativ aksesuarlar. Bura sənət sevənlərin, fərqli gözəllik axtaranların yeridir      "))
         )
         let features = FeaturesOnboardingViewController(
             viewModel: OnboardingViewModel(
-                model:OnboardingModel(imageName: "FeaturesOnboarding", 
-                                      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. !"))
+                model:OnboardingModel(imageName: "lucary2", 
+                                      title: "    Ad gününə və ya xüsusi anlara uyğun — şəxsi mesajla tablolar, adla breloklar, şəkillərlə çantalar. Xəyali hədiyyələri gerçəyə çevirin!    "))
             )
         let permissions = PermissionsOnboardingBuilder(coordinator: coordinator).build()
         return PageViewController(pages: [welcome, features, permissions])

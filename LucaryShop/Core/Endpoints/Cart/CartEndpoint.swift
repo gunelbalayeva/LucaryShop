@@ -58,7 +58,6 @@ enum CartEndpoint {
     var request: APIRequest {
         var components = URLComponents(string: "https://e-commerce-app-150649679863.europe-west1.run.app\(path)")!
         components.queryItems = queryItems
-
         return APIRequest(
             url: components.url!,
             method: method,

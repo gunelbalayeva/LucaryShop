@@ -19,10 +19,8 @@
 		CE17881C2DF4861C00A91620 /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17881B2DF4861C00A91620 /* UIImageView+Kingfisher.swift */; };
 		CE17881E2DF4862D00A91620 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17881D2DF4862D00A91620 /* String+Localization.swift */; };
 		CE1788202DF4864000A91620 /* Combine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17881F2DF4864000A91620 /* Combine+Extensions.swift */; };
-		CE1788222DF4865500A91620 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788212DF4865500A91620 /* NotificationManager.swift */; };
 		CE1788242DF4866D00A91620 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788232DF4866D00A91620 /* LocalizationManager.swift */; };
 		CE1788262DF4867C00A91620 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788252DF4867C00A91620 /* KeychainManager.swift */; };
-		CE1788282DF4868D00A91620 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788272DF4868D00A91620 /* UserDefaultsManager.swift */; };
 		CE17882A2DF486B700A91620 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1788292DF486B700A91620 /* APIClient.swift */; };
 		CE17882C2DF486C500A91620 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17882B2DF486C500A91620 /* RequestBuilder.swift */; };
 		CE17882E2DF486D200A91620 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17882D2DF486D200A91620 /* AuthEndpoint.swift */; };
@@ -249,10 +247,8 @@
 		CE17881B2DF4861C00A91620 /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		CE17881D2DF4862D00A91620 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		CE17881F2DF4864000A91620 /* Combine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Extensions.swift"; sourceTree = "<group>"; };
-		CE1788212DF4865500A91620 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		CE1788232DF4866D00A91620 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		CE1788252DF4867C00A91620 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
-		CE1788272DF4868D00A91620 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		CE1788292DF486B700A91620 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		CE17882B2DF486C500A91620 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		CE17882D2DF486D200A91620 /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
@@ -588,9 +584,7 @@
 		CE17880A2DF4728C00A91620 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				CE1788212DF4865500A91620 /* NotificationManager.swift */,
 				CE1788252DF4867C00A91620 /* KeychainManager.swift */,
-				CE1788272DF4868D00A91620 /* UserDefaultsManager.swift */,
 				CED1C3B32E02AF7F0064AC1F /* InputSanitizer.swift */,
 			);
 			path = Utilities;
@@ -2330,14 +2324,12 @@
 				CED1C4FA2E0D89C10064AC1F /* UIColloctionViewCell+Exc.swift in Sources */,
 				CE1788302DF486E900A91620 /* URLSession+Extensions.swift in Sources */,
 				CE5E3C8F2DF856BE005B827B /* GetStartedOnboardingBuilder.swift in Sources */,
-				CE1788282DF4868D00A91620 /* UserDefaultsManager.swift in Sources */,
 				CED1C3962E018D880064AC1F /* Login+exc.swift in Sources */,
 				CED1C3A12E01E9080064AC1F /* LanguageSelectionViewController.swift in Sources */,
 				CE5C6C042DF4916700821985 /* ForgotPasswordViewModel.swift in Sources */,
 				CE46264D2DF61BD80026AFE6 /* SplashView.swift in Sources */,
 				CED1C52B2E10348A0064AC1F /* SecurityErrorPopup.swift in Sources */,
 				CED1C50A2E0DF1B20064AC1F /* CompanyDetailsCell.swift in Sources */,
-				CE1788222DF4865500A91620 /* NotificationManager.swift in Sources */,
 				CED1C3B42E02AF7F0064AC1F /* InputSanitizer.swift in Sources */,
 				CED1C4572E0455BD0064AC1F /* ProductDetailView.swift in Sources */,
 				CED1C42F2E0411F50064AC1F /* ProfileService.swift in Sources */,

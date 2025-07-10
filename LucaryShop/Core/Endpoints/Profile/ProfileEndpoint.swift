@@ -9,7 +9,6 @@ import Foundation
 enum ProfileEndpoint {
     case getMe
     case update(ProfileUpdateRequest)
-
     var path: String {
         switch self {
         case .getMe:

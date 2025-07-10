@@ -30,10 +30,11 @@ final class GetStartedOnboardingView: UIView {
         image.clipsToBounds = true
         return image
     }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.setStyle(fontName: "Oswald",
-                       fontSize: 30, weight: .semibold,
+                       fontSize: 22, weight: .semibold,
                        textColor: UIColor(named: "onboardingLabelColor") ?? .label,
                        alignment: .center, numberOfLines: 0)
         return label
@@ -90,12 +91,12 @@ final class GetStartedOnboardingView: UIView {
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(imageContainerView.snp.bottom).offset(50)
+            $0.top.equalTo(imageContainerView.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
         buttonsStackView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(170)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(150)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(326)
             $0.bottom.lessThanOrEqualToSuperview().offset(-40)

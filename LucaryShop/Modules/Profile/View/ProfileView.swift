@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-
 final class ProfileView: UIView {
     private let scrollView = UIScrollView()
     private let contentView = UIView()

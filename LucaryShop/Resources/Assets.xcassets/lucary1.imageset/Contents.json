@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "playstore.png",
+      "filename" : "ca4e0647ed83f7a7876f8ead413f2b10.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ca4e0647ed83f7a7876f8ead413f2b10 1.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "ca4e0647ed83f7a7876f8ead413f2b10 2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

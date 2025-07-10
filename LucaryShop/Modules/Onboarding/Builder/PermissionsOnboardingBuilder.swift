@@ -16,8 +16,8 @@ final class PermissionsOnboardingBuilder {
     
     func build() -> UIViewController {
             let onboardingModel = OnboardingModel(
-                imageName: "image",
-                title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. !"
+                imageName: "lucary3",
+                title: "Lucary komandası olaraq yerli ustaların əl işini daha geniş auditoriyaya çatdırırıq. Hər sifariş həm də sənətə dəstək deməkdir"
             )
             let viewModel = PermissionsOnboardingViewModel(
                 model: onboardingModel,

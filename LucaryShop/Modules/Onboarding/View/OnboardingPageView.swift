@@ -32,7 +32,7 @@ final class OnboardingPageView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.setStyle(fontName: "Oswald",
-                       fontSize: 30, weight: .semibold,
+                       fontSize: 22, weight: .semibold,
                        textColor: UIColor(named: "onboardingLabelColor") ?? .label,
                        alignment: .center, numberOfLines: 0)
         return label
@@ -55,7 +55,7 @@ final class OnboardingPageView: UIView {
         imageContainerView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(80)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(410)
+            make.height.equalTo(440)
         }
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

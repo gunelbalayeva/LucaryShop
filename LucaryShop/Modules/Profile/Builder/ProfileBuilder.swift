@@ -12,7 +12,9 @@ final class ProfileBuilder {
     private let authService: AuthService
     private var coordinator: ProfileCoordinator
     
-    init(profileService: ProfileService, authService: AuthService, coordinator: ProfileCoordinator) {
+    init(profileService: ProfileService,
+         authService: AuthService,
+         coordinator: ProfileCoordinator) {
         self.profileService = profileService
         self.authService = authService
         self.coordinator = coordinator

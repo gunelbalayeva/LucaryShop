@@ -9,7 +9,6 @@ import Foundation
 enum CompanyEndpoint {
     case getAll
     case getById(String)
-
     var path: String {
         switch self {
         case .getAll:

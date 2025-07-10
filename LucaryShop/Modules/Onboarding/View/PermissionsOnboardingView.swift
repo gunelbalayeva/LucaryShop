@@ -32,7 +32,7 @@ final class PermissionsOnboardingView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.setStyle(fontName: "Oswald",
-                       fontSize: 30, weight: .semibold,
+                       fontSize: 22, weight: .semibold,
                        textColor: UIColor(named: "onboardingLabelColor") ?? .label,
                        alignment: .center, numberOfLines: 0)
         return label
@@ -40,7 +40,7 @@ final class PermissionsOnboardingView: UIView {
     
     private let startNowButton: CustomButton = {
         let button = CustomButton(style: .filled, height: 50, width: 200)
-        button.setTitle("Start Now", for: .normal)
+        button.setTitle("İndi Başla", for: .normal)
         return button
     }()
     
@@ -69,13 +69,13 @@ final class PermissionsOnboardingView: UIView {
         imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        imageContainerView.setSize(width: 396, height: 410)
+        imageContainerView.setSize(width: 396, height: 400)
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(imageContainerView.snp.bottom).offset(50)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
         startNowButton.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(80)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(70)
             $0.centerX.equalToSuperview()
             $0.bottom.lessThanOrEqualToSuperview().offset(-20)
         }

@@ -8,9 +8,7 @@
 import Foundation
 enum OrderEndpoint {
     case getOrders
-
     var path: String { "/orders" }
-
     var method: String { "GET" }
 
     var headers: [String: String] {
