@@ -43,8 +43,8 @@ final class ProductDetailCoordinator :Coordinator{
                                                cartService: cartService,
                                                coordinator: self)
         let vc = ProductDetailViewController(viewModel: viewModel)
+        vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)
-        print(" Navigation stack count: \(navigationController.viewControllers.count)")
     }
 
     func goToCart() {

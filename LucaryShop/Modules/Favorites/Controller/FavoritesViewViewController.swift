@@ -34,12 +34,6 @@ final class FavoritesViewViewController:UIViewController{
                                                name: FavoritesService.favoritesDidChangeNotification,
                                                object: nil)
        loadFavorites()
-        
-        if let token = KeychainManager.shared.getToken() {
-            print("Token favorite: \(token)")
-        } else {
-            print("Token tapılmadı")
-        }
     }
     
     
