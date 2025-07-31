@@ -33,6 +33,7 @@
 
 // Tabbar
 "home" = "Home";
+"partners" = "Partners";
 "orders" = "Cart";
 "favorites" = "Favorites";
 "profile" = "Profile";

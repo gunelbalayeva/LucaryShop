@@ -4,12 +4,14 @@
 //
 //  Created by User on 07.06.25.
 //
-
+//muzaffarbalayev@gmail.com
+//muzaffar1234
 // gunelbalayeva97@gmail.com
 // gunel1234
 
 // nazlibalayeva0@gmail.com
 // nazli1234
+
 import Foundation
 import UIKit
 enum AuthFlowType {
@@ -18,9 +20,9 @@ enum AuthFlowType {
     case forgotPassword
 }
 
-
 enum TabbarFlowType {
     case home
+    case company
     case cart
     case favorites
     case profile
@@ -32,10 +34,6 @@ enum HomeCategoryFlowType{
 }
 
 final class AppCoordinator: Coordinator {
-    func start(with categoryId: String) {
-        
-    }
-    
     private let authService: AuthService
     private var mainTabBarCoordinator: MainTabBarCoordinator?
     private var loadingView: UIView?
@@ -60,25 +58,30 @@ final class AppCoordinator: Coordinator {
         self.verificationId = verificationId
         self.parentCoordinator = parentCoordinator
         NotificationCenter.default.addObserver(
-               self,
-               selector: #selector(languageDidChange),
-               name: .appLanguageDidChange,
-               object: nil
-           )
+            self,
+            selector: #selector(languageDidChange),
+            name: .appLanguageDidChange,
+            object: nil
+        )
     }
     
     func childDidFinish(_ child: Coordinator) {
         childCoordinators.removeAll { $0 === child }
     }
-
-        
+    
     func start() {
-//        startHomeFlow(.home)
-        let vc = SplashBuild(cordinator: self).build()
-        navigationController.setViewControllers([vc], animated: true)
+        if authService.isLoggedIn() {
+            startHomeFlow(.home)
+        } else {
+            let vc = SplashBuild(cordinator: self).build()
+            navigationController.setViewControllers([vc], animated: true)
+        }
     }
-
-
+    
+    func start(with categoryId: String) {
+        
+    }
+    
     @objc
     func languageDidChange() {
         let lang = LocalizationManager.shared.currentLanguage
@@ -90,7 +93,7 @@ final class AppCoordinator: Coordinator {
             startHomeFlow(.home)
         }
     }
-
+    
     func goToPermissionsOnboarding() {
         let vc = PermissionsOnboardingBuilder(coordinator: self).build()
         navigationController.pushViewController(vc, animated: true)
@@ -140,7 +143,6 @@ final class AppCoordinator: Coordinator {
         }
     }
     
-
     private func showLoadingIndicator() {
         hideLoadingIndicator()
         let loadingView = UIView(frame: UIScreen.main.bounds)
@@ -156,7 +158,7 @@ final class AppCoordinator: Coordinator {
             label.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor)
         ])
-
+        
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
             window.addSubview(loadingView)
@@ -169,7 +171,7 @@ final class AppCoordinator: Coordinator {
             self?.loadingLabel?.text = "Loading" + String(repeating: ".", count: dotCount)
         }
     }
-
+    
     private func hideLoadingIndicator() {
         loadingTimer?.invalidate()
         loadingTimer = nil
@@ -177,20 +179,18 @@ final class AppCoordinator: Coordinator {
         loadingView?.removeFromSuperview()
         loadingView = nil
     }
-
-  
+    
+    
     func startHomeFlow(_ flow: TabbarFlowType) {
         guard !isHomeFlowInProgress else {
-            print("startHomeFlow artıq işləyir, təkrar çağırılmadı.")
             return
         }
         isHomeFlowInProgress = true
         resetTabBar()
         showLoadingIndicator()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             guard let self = self else { return }
             self.hideLoadingIndicator()
-            print("Yeni MainTabBarCoordinator yaradılır.")
             let productService = ProductService()
             let categoryService = CategoryService()
             let companyService = CompanyService()
@@ -216,22 +216,22 @@ final class AppCoordinator: Coordinator {
             mainTabBarCoordinator.start()
             switch flow {
             case .home: tabBarController.selectedIndex = 0
-            case .cart: tabBarController.selectedIndex = 1
-            case .favorites: tabBarController.selectedIndex = 2
-            case .profile: tabBarController.selectedIndex = 3 }
+            case .company: tabBarController.selectedIndex = 1
+            case .cart: tabBarController.selectedIndex = 2
+            case .favorites: tabBarController.selectedIndex = 3
+            case .profile: tabBarController.selectedIndex = 4
+            }
             self.isHomeFlowInProgress = false
         }
     }
-
-    
+   
     func resetToLogin() {
         childCoordinators.removeAll()
         mainTabBarCoordinator = nil
         navigationController.setViewControllers([], animated: false)
         startAuthFlow(.login)
     }
-
-    
+        
     func resetTabBar() {
         if let existingCoordinator = mainTabBarCoordinator {
             print("MainTabBarCoordinator reset edilir.")
@@ -240,7 +240,6 @@ final class AppCoordinator: Coordinator {
         }
         navigationController.setViewControllers([], animated: false)
     }
-
     
     deinit {
         NotificationCenter.default.removeObserver(self)

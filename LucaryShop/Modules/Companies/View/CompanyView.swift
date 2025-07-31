@@ -54,7 +54,9 @@ final class CompanyView: UIView{
         tabSwitcher.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
             make.left.right.equalToSuperview().inset(16)
+            make.height.equalTo(180) 
         }
+
         
         companiesCollectionView.snp.makeConstraints { make in
             make.top.equalTo(tabSwitcher.snp.bottom).offset(16)

@@ -29,6 +29,7 @@ final class MainTabBarCoordinator:Coordinator {
     private var favoriteCoordinator: FavoritesCoordinator?
     private var profileCoordinator: ProfileCoordinator?
     private var cartCoordinator:CartCoordinator?
+    private var companyCoordinator:CompanyCoordinator?
     
     init(parentCoordinator: AppCoordinator? = nil,
          navigationController: UINavigationController,
@@ -73,8 +74,22 @@ final class MainTabBarCoordinator:Coordinator {
            self.homeCoordinator = homeCoordinator
            childCoordinators.append(homeCoordinator)
            homeCoordinator.start()
-        // 2.Cart
         
+        // 2. Company
+        let companyNav = UINavigationController()
+        let companyCoordinator = CompanyCoordinator(parentCoordinator: self,
+                                                    navigationController: companyNav,
+                                                    companyService: companyService,
+                                                    productService: productService,
+                                                    favoritesService: favoriteService,
+                                                    cartService: cartService,
+                                                    orderService: orderService)
+        self.companyCoordinator = companyCoordinator
+        childCoordinators.append(companyCoordinator)
+        companyCoordinator.start()
+        
+        
+        // 3.Cart
         let cartNav = UINavigationController()
         let cartCoordinator = CartCoordinator(navigationController: cartNav,
                                               cartService: cartService,
@@ -83,7 +98,7 @@ final class MainTabBarCoordinator:Coordinator {
         cartCoordinator.start()
         
         
-        // 3.Favorite
+        // 4.Favorite
         let favoriteNav = UINavigationController()
         let favoriteCoordinator = FavoritesCoordinator(parentCoordinator: self,
                                                        navigationController: favoriteNav,
@@ -95,7 +110,7 @@ final class MainTabBarCoordinator:Coordinator {
         self.favoriteCoordinator = favoriteCoordinator
         favoriteCoordinator.start()
         
-        //4. Profile
+        //5. Profile
         let profileNav = UINavigationController()
         let profileCoordinator = ProfileCoordinator(navigationController: profileNav,
                                                     profileService: profileService,
@@ -107,7 +122,7 @@ final class MainTabBarCoordinator:Coordinator {
         }
         profileCoordinator.start()
 
-        tabBarController.viewControllers = [homeNav, cartNav, favoriteNav, profileNav]
+        tabBarController.viewControllers = [homeNav, companyNav, cartNav, favoriteNav, profileNav]
         configureTabBarItems()
         navigationController.setViewControllers([tabBarController], animated: false)
     }
@@ -120,15 +135,17 @@ final class MainTabBarCoordinator:Coordinator {
         tabBarController.tabBar.backgroundColor = .systemBackground
         tabBarController.tabBar.tintColor = UIColor(named: "logoColor")
         tabBarController.tabBar.unselectedItemTintColor = UIColor(named: "unSelectedTabbar")
-        
+
         tabBarController.viewControllers?[0].tabBarItem = UITabBarItem(title: LocalizedStrings.tabHome,
                                                                        image: UIImage(systemName: "house"), tag: 0)
-        tabBarController.viewControllers?[1].tabBarItem = UITabBarItem(title: LocalizedStrings.tabCart,
-                                                                       image: UIImage(named: "sebet"), tag: 1)
-        tabBarController.viewControllers?[2].tabBarItem = UITabBarItem(title: LocalizedStrings.tabFavorites,
-                                                                       image: UIImage(systemName: "heart"), tag: 2)
-        tabBarController.viewControllers?[3].tabBarItem = UITabBarItem(title: LocalizedStrings.tabProfile,
-                                                                       image: UIImage(systemName: "person.circle"), tag: 3)
+        tabBarController.viewControllers?[1].tabBarItem = UITabBarItem(title: LocalizedStrings.partners,
+                                                                       image: UIImage(systemName: "building.2"), tag: 1)
+        tabBarController.viewControllers?[2].tabBarItem = UITabBarItem(title: LocalizedStrings.tabCart,
+                                                                       image: UIImage(named: "sebet"), tag: 2)
+        tabBarController.viewControllers?[3].tabBarItem = UITabBarItem(title: LocalizedStrings.tabFavorites,
+                                                                       image: UIImage(systemName: "heart"), tag: 3)
+        tabBarController.viewControllers?[4].tabBarItem = UITabBarItem(title: LocalizedStrings.tabProfile,
+                                                                       image: UIImage(systemName: "person.circle"), tag: 4)
     }
 
     
@@ -143,5 +160,4 @@ final class MainTabBarCoordinator:Coordinator {
     deinit {
         print("MainTabBarCoordinator silindi")
     }
-
 }

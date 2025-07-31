@@ -15,7 +15,6 @@
 "products" = "Ürünler";
 "company_head" = "Kategoriler";
 
-
 // Profile Screen
 "editedAccount" = "Hesabı düzenle";
 "languageScreen" = "Uygulama dili" ;
@@ -35,6 +34,7 @@
 
 // Tabbar
 "home" = "Ana Sayfa";
+"partners" = "Ortaklar";
 "orders" = "Sepet";
 "favorites" = "Favoriler";
 "profile" = "Profil";

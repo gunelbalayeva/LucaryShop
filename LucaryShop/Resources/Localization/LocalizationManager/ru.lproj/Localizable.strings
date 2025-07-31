@@ -34,6 +34,7 @@
 
 // Tabbar
 "home" = "Дом";
+"partners" = "Партнёры";
 "orders" = "Мои заказы";
 "favorites" = "Избранное";
 "profile" = "Профиль";

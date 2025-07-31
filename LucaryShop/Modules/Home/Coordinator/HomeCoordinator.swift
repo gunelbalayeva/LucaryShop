@@ -144,7 +144,6 @@ final class HomeCoordinator: Coordinator {
     // MARK: - Helper Methods
     func updateHomeSelectedIndex(_ index: Int) {
         if let vc = navigationController.viewControllers.last as? HomeViewController {
-            vc.updateSelectedIndex(index)
         }
     }
     

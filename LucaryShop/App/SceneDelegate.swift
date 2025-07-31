@@ -8,11 +8,9 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    
     var window: UIWindow?
     var coordinator: AppCoordinator?
-    let authService = AuthService(networkService: URLSessionNetworkService())
-    
+    let authService = AuthService(networkService: URLSessionNetworkService())    
 //    let authService = AuthService(networkService: AlamofireNetworkService())
     let verificationId: String = ""
 

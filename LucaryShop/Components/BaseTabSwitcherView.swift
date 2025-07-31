@@ -42,31 +42,6 @@ final class BaseTabSwitcherView: UIView {
         return bar
     }()
     
-     var homeButton: CustomButton = {
-        var button = CustomButton(style: .plain)
-        button.setTitle("Home", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        button.contentHorizontalAlignment = .center
-        button.alpha = 1.0
-        return button
-    }()
-    
-     var categoryButton: CustomButton = {
-        var button = CustomButton(style: .plain)
-        button.setTitle("Partnyorlar", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        button.contentHorizontalAlignment = .center
-        button.alpha = 0.5
-        return button
-    }()
-    
-    private lazy var buttonStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [homeButton, categoryButton])
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
-        return stack
-    }()
-    
     private let underlineView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "baseButton")
@@ -107,7 +82,7 @@ final class BaseTabSwitcherView: UIView {
     }
 
     private func setupViews() {
-       addSubviews(views: headerStackView, searchBar,buttonStackView,underlineView)
+       addSubviews(views: headerStackView, searchBar,underlineView)
     
     }
     
@@ -127,25 +102,11 @@ final class BaseTabSwitcherView: UIView {
             make.left.right.equalToSuperview()
             make.height.equalTo(44)
         }
-
-        buttonStackView.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom).offset(8)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(44)
-            make.bottom.equalToSuperview() 
-        }
-
-        underlineView.snp.makeConstraints { make in
-            make.top.equalTo(buttonStackView.snp.bottom)
-            make.height.equalTo(2)
-            make.width.equalTo(buttonStackView.snp.width).dividedBy(2)
-            underlineLeadingConstraint = make.left.equalTo(buttonStackView.snp.left).constraint
-        }
     }
     
     private func setupActions() {
-        homeButton.addTarget(self, action: #selector(homeTapped), for: .touchUpInside)
-        categoryButton.addTarget(self, action: #selector(categoryTapped), for: .touchUpInside)
+//        homeButton.addTarget(self, action: #selector(homeTapped), for: .touchUpInside)
+//        categoryButton.addTarget(self, action: #selector(categoryTapped), for: .touchUpInside)
     }
     
     @objc
@@ -161,18 +122,18 @@ final class BaseTabSwitcherView: UIView {
     }
     
     func updateUnderlinePosition(animated: Bool = true) {
-        let offset = selectedIndex == 0 ? 0 : buttonStackView.frame.width / 2
-        underlineLeadingConstraint?.update(offset: offset)
-        
-        homeButton.alpha = selectedIndex == 0 ? 1.0 : 0.5
-        categoryButton.alpha = selectedIndex == 1 ? 1.0 : 0.5
-        
-        let animations = { self.layoutIfNeeded() }
-        
-        if animated {
-            UIView.animate(withDuration: 0.3, animations: animations)
-        } else {
-            animations()
-        }
+//        let offset = selectedIndex == 0 ? 0 : buttonStackView.frame.width / 2
+//        underlineLeadingConstraint?.update(offset: offset)
+//        
+//        homeButton.alpha = selectedIndex == 0 ? 1.0 : 0.5
+//        categoryButton.alpha = selectedIndex == 1 ? 1.0 : 0.5
+//        
+//        let animations = { self.layoutIfNeeded() }
+//        
+//        if animated {
+//            UIView.animate(withDuration: 0.3, animations: animations)
+//        } else {
+//            animations()
+//        }
     }
 }

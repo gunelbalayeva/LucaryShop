@@ -9,19 +9,24 @@ import UIKit
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == productList {
-            let offsetY = scrollView.contentOffset.y
-            let contentHeight = scrollView.contentSize.height
-            let frameHeight = scrollView.frame.size.height
-            if offsetY > contentHeight - frameHeight * 1.5 {
-                if let lastIndexPath = productList.indexPathsForVisibleItems.max() {
-                    homeViewModel.loadNextPageIfNeeded(currentIndex: lastIndexPath.item)
-                }
-            }
-            let shouldHide = offsetY > 10
-            homeView.updateProductListTopConstraint(hideHeader: shouldHide)
-        }
-    }
+           guard scrollView == productList else { return }
+           let offsetY = scrollView.contentOffset.y
+           let contentHeight = scrollView.contentSize.height
+           let frameHeight = scrollView.frame.size.height
+           
+           if offsetY > contentHeight - frameHeight * 1.5 {
+               if let lastIndexPath = productList.indexPathsForVisibleItems.max() {
+                   homeViewModel.loadNextPageIfNeeded(currentIndex: lastIndexPath.item)
+               }
+           }
+           
+           let shouldHide = offsetY > 10
+           homeView.updateProductListTopConstraint(hideHeader: shouldHide)
+           
+           if offsetY < 0 {
+               scrollView.contentOffset.y = 0
+           }
+       }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == categoriesCollectionView {

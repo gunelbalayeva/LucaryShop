@@ -96,9 +96,6 @@ final class CompanyViewController: UIViewController {
 
     func updateTextsForCurrentLanguage() {
         companyView.tabSwitcher.searchBar.placeholder = LocalizedStrings.searchBar
-        companyView.tabSwitcher.homeButton.setTitle(LocalizedStrings.home, for: .normal)
-        companyView.tabSwitcher.categoryButton.setTitle(LocalizedStrings.partners, for: .normal)
     }
-
 }
 

@@ -33,10 +33,10 @@
 
 // Tabbar
 "home" = "Əsas Səhifə";
+"partners" = "Tərəfdaşlar";
 "orders" = "Səbət";
 "favorites" = "Sevimlilər";
 "profile" = "Profil";
-
 
 // My Favorite
 "headerLabel" = "Sevimlilərim";
