@@ -29,13 +29,14 @@ final class ProductDetailView: UIView {
     
     private let descriptionLabel :UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
         label.numberOfLines = 0
         return label
     }()
     
     private let priceLabel: UILabel = {
         let label = UILabel()
-        label.text = "35 AZN"
+        label.text = ""
         label.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
         label.textColor = UIColor(named: "priceColor")
         return label
@@ -54,12 +55,12 @@ final class ProductDetailView: UIView {
     }()
     
     
-    private let goToCartButton: CustomButton = {
-        let button = CustomButton(style: .outlined)
-        button.setTitle("Səbətdən çıxar", for: .normal)
-        return button
-    }()
-    
+//    private let goToCartButton: CustomButton = {
+//        let button = CustomButton(style: .outlined)
+//        button.setTitle("Səbətdən çıxar", for: .normal)
+//        return button
+//    }()
+//    
     
     private var isFavorite: Bool = false
     private let scrollView = UIScrollView()
@@ -76,19 +77,24 @@ final class ProductDetailView: UIView {
     
     
     private func setupUI() {
-        addSubviews(views: imageView, scrollView)
+        addSubviews(views: imageView, scrollView, addToCartButton)
         scrollView.addSubview(contentStack)
+        
         imageView.snp.makeConstraints {
-            $0.top.left.right.equalToSuperview()
-            $0.height.equalTo(460)
+            $0.top.equalToSuperview().offset(55)
+            $0.left.equalToSuperview().offset(8)
+            $0.right.equalToSuperview().inset(8)
+            $0.height.equalTo(380)
         }
+
+
         scrollView.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom)
             $0.left.right.bottom.equalToSuperview()
         }
         contentStack.configure(axis: .vertical, alignment: .fill, spacing: 16)
         contentStack.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
+            $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 16, left: 16, bottom: 80, right: 16))
             $0.width.equalTo(scrollView.snp.width).offset(-32)
         }
         let namePriceStack = UIStackView(arrangedSubviews: [nameLabel, priceLabel])
@@ -98,15 +104,15 @@ final class ProductDetailView: UIView {
         contentStack.addArrangedSubview(topInfoStack)
         favoriteButton.setSize(width: 40, height: 40)
         contentStack.addArrangedSubview(descriptionLabel)
-        let buttonStack = UIStackView(arrangedSubviews: [addToCartButton, goToCartButton])
-        buttonStack.configure(axis: .horizontal, alignment: .fill, spacing: 12)
-        buttonStack.distribution = .fillEqually
-        contentStack.addArrangedSubview(buttonStack)
-        buttonStack.snp.makeConstraints {
+        addToCartButton.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(16)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(12)
             $0.height.equalTo(50)
         }
+        
+
         addToCartButton.addTarget(self, action: #selector(addToCartTapped), for: .touchUpInside)
-        goToCartButton.addTarget(self, action: #selector(goToCartTapped), for: .touchUpInside)
+//        goToCartButton.addTarget(self, action: #selector(goToCartTapped), for: .touchUpInside)
     }
     
     
@@ -133,7 +139,6 @@ final class ProductDetailView: UIView {
             favoriteButton.tintColor = isFavorite ? UIColor.red : UIColor.gray
         }
     }
-    
     
     @objc
     func goToCartTapped(){
