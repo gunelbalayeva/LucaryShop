@@ -15,6 +15,7 @@ final class VerifyOTPViewController :UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
         setupUI()
         vertfyOtpView.verifyOTPCodeTapped = { [weak self] in
             self?.submitOTP()

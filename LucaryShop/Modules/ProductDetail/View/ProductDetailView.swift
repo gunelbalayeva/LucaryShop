@@ -81,12 +81,11 @@ final class ProductDetailView: UIView {
         scrollView.addSubview(contentStack)
         
         imageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(65)
+            $0.top.equalToSuperview().offset(140)
             $0.left.equalToSuperview().offset(8)
             $0.right.equalToSuperview().inset(8)
             $0.height.equalTo(380)
         }
-
 
         scrollView.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom)

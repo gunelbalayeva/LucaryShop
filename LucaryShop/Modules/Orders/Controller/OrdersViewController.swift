@@ -15,14 +15,15 @@ final class OrdersViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        navigationItem.hidesBackButton = true
         NotificationCenter.default.addObserver(self,
                selector: #selector(languageDidChange),
                name: .appLanguageDidChange,
                object: nil)
         title = "Sifarişlərim"
+        navigationItem.hidesBackButton = false
         setupTableView()
         binding()
+        setupNavigationBar()
         
     }
     
@@ -81,5 +82,20 @@ final class OrdersViewController:UIViewController {
 
     func updateTextsForCurrentLanguage() {
         title = LocalizedStrings.orderHeader
+    }
+    
+    
+    private func setupNavigationBar() {
+        let config = UIImage.SymbolConfiguration(weight: .heavy)
+        let image = UIImage(systemName: "chevron.backward", withConfiguration: config)
+        let backButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = .darkGray
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    
+    @objc
+    private func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
 }

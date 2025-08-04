@@ -542,7 +542,6 @@
 				CE17880C2DF472C500A91620 /* Models */,
 				CED1C3B62E02C5880064AC1F /* Endpoints */,
 				CE17880B2DF472A800A91620 /* MyServices */,
-				CE1788092DF4727B00A91620 /* Networking */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -949,6 +948,7 @@
 			isa = PBXGroup;
 			children = (
 				CED1C4BC2E0614350064AC1F /* HomeView.swift */,
+				CE1788092DF4727B00A91620 /* Networking */,
 			);
 			path = View;
 			sourceTree = "<group>";

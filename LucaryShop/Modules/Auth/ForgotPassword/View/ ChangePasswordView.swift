@@ -34,7 +34,7 @@ final class ChangePasswordView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .verifyBg
+        backgroundColor = .white
         setupLayout()
     }
     

@@ -16,7 +16,6 @@ final class ProductDetailViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
         setupNavigationBar()
         viewModel.fetchProductDetail()
         bindViewModel()
@@ -38,15 +37,17 @@ final class ProductDetailViewController:UIViewController {
     }
     
     
-    private func setupNavigationBar() {
-        let config = UIImage.SymbolConfiguration(weight: .heavy)
-        let image = UIImage(systemName: "chevron.backward", withConfiguration: config)
-        let backButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(backButtonTapped))
-        backButton.tintColor = .darkGray
-        navigationItem.leftBarButtonItem = backButton
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
     }
-    
-    
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
+
     private func bindViewModel() {
         viewModel.$product
             .receive(on: DispatchQueue.main)
@@ -80,6 +81,15 @@ final class ProductDetailViewController:UIViewController {
             self?.viewModel.addToCart()
         }
     }
+    
+    private func setupNavigationBar() {
+        let config = UIImage.SymbolConfiguration(weight: .heavy)
+        let image = UIImage(systemName: "chevron.backward", withConfiguration: config)
+        let backButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = .darkGray
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
     
     @objc
     private func backButtonTapped() {

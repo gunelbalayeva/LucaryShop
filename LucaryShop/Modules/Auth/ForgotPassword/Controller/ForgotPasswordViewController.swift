@@ -15,7 +15,7 @@ final class ForgotPasswordViewController :UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
-        title = "Forgot Password"
+        navigationItem.hidesBackButton = true
         setupUI()
     }
     

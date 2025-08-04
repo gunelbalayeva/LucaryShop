@@ -32,6 +32,7 @@ final class CartViewController:UIViewController {
         title = "My Cart"
         view.backgroundColor = .systemBackground
         navigationItem.hidesBackButton = true
+        self.hidesBottomBarWhenPushed = false
         NotificationCenter.default.addObserver(self,
                selector: #selector(languageDidChange),
                name: .appLanguageDidChange,

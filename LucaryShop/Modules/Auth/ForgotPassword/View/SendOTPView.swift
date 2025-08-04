@@ -57,7 +57,7 @@ final class SendOTPView :UIView{
     
     private func setupConstraints() {
         headImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(80)
+            make.top.equalToSuperview().offset(100)
             make.centerX.equalToSuperview()
         }
         headImageView.setSize(width: 150, height: 150)

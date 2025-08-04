@@ -19,11 +19,7 @@ final class ChangePasswordViewController:UIViewController{
         setupBindings()
         setupActions()
         setupUI()
-        if let token = KeychainManager.shared.getToken() {
-            print(token)
-        } else {
-            print("Token tapılmadı")
-        }
+        navigationItem.hidesBackButton = true
     }
     
     private func setupUI() {
