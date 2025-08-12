@@ -18,6 +18,20 @@ With Lucary, you can:
 > **Lucary – Feel the art in every touch.**
 
 
+# Texnologiyalar
+
+- UIKit Framework (`UIViewController`, `UICollectionView`, `UISearchBar` və s.)  
+- SnapKit  
+- Combine Framework  
+- MVVM (Model-View-ViewModel) Design Pattern  
+- Coordinator Pattern  
+- Networking / API Services  
+- UICollectionViewDiffableDataSource  
+- NotificationCenter  
+- Localization  
+- UI/UX – UICollectionView, Search Bar, UITableView  
+- Memory Management  
+- Builder Pattern
 
 
 
