@@ -6,6 +6,11 @@
 Handmade goods, decorative items, original artworks, and much more — **now just a tap away!**
 
 ---
+##  App Preview
+
+<p align="center">
+  <img src="LucaryShop/Lucary.gif" alt="Lucary Shop" width="270"/>
+</p>
 
 ## About the Project
 
