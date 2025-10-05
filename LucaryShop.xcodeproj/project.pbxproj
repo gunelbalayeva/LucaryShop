@@ -116,6 +116,7 @@
 		CEA1C3732DFE15EE00E9B74B /* Lottie-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEA1C3722DFE15EE00E9B74B /* Lottie-Dynamic */; };
 		CEA1C3782DFE189D00E9B74B /* SuccessPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1C3772DFE189D00E9B74B /* SuccessPopupView.swift */; };
 		CEA1C37A2DFE1BA400E9B74B /* fireworks.json in Resources */ = {isa = PBXBuildFile; fileRef = CEA1C3792DFE1BA400E9B74B /* fireworks.json */; };
+		CEA612632E92D1D300B0BDCB /* Lucary.gif in Resources */ = {isa = PBXBuildFile; fileRef = CEA612622E92D1D300B0BDCB /* Lucary.gif */; };
 		CED1C3892DFEB6330064AC1F /* Success.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C3882DFEB6330064AC1F /* Success.json */; };
 		CED1C38B2DFEB9ED0064AC1F /* Error.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C38A2DFEB9ED0064AC1F /* Error.json */; };
 		CED1C38D2DFF09280064AC1F /* VerifyOTP.json in Resources */ = {isa = PBXBuildFile; fileRef = CED1C38C2DFF09280064AC1F /* VerifyOTP.json */; };
@@ -339,6 +340,7 @@
 		CEA1C36B2DFC613900E9B74B /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		CEA1C3772DFE189D00E9B74B /* SuccessPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupView.swift; sourceTree = "<group>"; };
 		CEA1C3792DFE1BA400E9B74B /* fireworks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fireworks.json; sourceTree = "<group>"; };
+		CEA612622E92D1D300B0BDCB /* Lucary.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Lucary.gif; sourceTree = "<group>"; };
 		CED1C3882DFEB6330064AC1F /* Success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Success.json; sourceTree = "<group>"; };
 		CED1C38A2DFEB9ED0064AC1F /* Error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Error.json; sourceTree = "<group>"; };
 		CED1C38C2DFF09280064AC1F /* VerifyOTP.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VerifyOTP.json; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 		CE1787E22DF46D3100A91620 /* LucaryShop */ = {
 			isa = PBXGroup;
 			children = (
+				CEA612622E92D1D300B0BDCB /* Lucary.gif */,
 				CE17880A2DF4728C00A91620 /* Utilities */,
 				CE1788042DF4722C00A91620 /* Extensions */,
 				CE1788192DF473FF00A91620 /* Components */,
@@ -2256,6 +2259,7 @@
 				CED1C5282E1034160064AC1F /* SecurityError.json in Resources */,
 				CE5E3C912DF85C8A005B827B /* Oswald-VariableFont_wght.ttf in Resources */,
 				CED1C3942E004FC10064AC1F /* ChangePassword.json in Resources */,
+				CEA612632E92D1D300B0BDCB /* Lucary.gif in Resources */,
 				CEA1C37A2DFE1BA400E9B74B /* fireworks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
